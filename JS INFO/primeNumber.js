@@ -8,4 +8,4 @@ function primeNumberChecker(n) {
     }
     isPrime === true ? console.log(true) : console.log(false);
 }
-//primeNumberChecker(35)
+primeNumberChecker(35)
