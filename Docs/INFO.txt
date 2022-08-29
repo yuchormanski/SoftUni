@@ -1,0 +1,72 @@
+Раренство по стойност                        ==
+Равенство по стойност и тип данни            ===
+Различно по стойност                         !=
+Различно по стойност и тип данни             !==
+По-голямо                                    >
+По-малко                                     <
+По-голямо или равно   (= винаги е от дясно)  >=
+По-малко или равно                           <=
+Четно или нечетно (even or odd)              % 2 == 0
+Добавяне на условие                          &&
+Конкатенация - долепяне на string(текст)…
+При Конкатенация променливите се добавят с back tick (``)  и ${....}
+console.log(area.toFixed(3)); // закръгляване до трети знак след точката
+
+за да се извърши сравнение се извършват първо всичи други операции
+            let a=10;
+            let b=5;
+            console.log(a===b*2) отговор - true.  
+
+
+boolean – булева променлива се инициализира като всички останали
+Може да има само следните две стойности: true (вярно) или false (грешно)
+
+                    let isValid = true;
+Може да се създаде и с условие, което се свежда до true или false
+                    let isPositive = a > 0;
+
+Math.floor - закръгляване към по-малко
+Math.ceil - закръгляване към по-голямо
+Math.trunc - изрязване на всичко след десетичната точката
+Math.abs - от отрицателна в положителна стоиност
+Math.pow(х, y)  - степенуване х на степен y
+Math.sqrt() - квадратен корен
+Math.max(a,b,c ...) - връща най-голямото число от подадените
+Math.min(a,b,c ...) - връща най-малкото число от подадените
+
+toFixed() - форматиране до знака, изискан в скобите, след дессетичната точка - ВИНАГИ СТАВА STRING!!!!
+parseFloat()  - връща стринг, като изрязва последната нула (ако има такава) след десетичната запетя (10.120 - 10.12)
+
+something.replace(a, b) - replace a with b => something.replace('s', 'S') = Something
+abc.split('') - split string to char = 'a''b''c'
+array.join('') - join the array ['a''b''c'] = 'abc'
+array.reverse() - reverse the array order = ['a''b''c'] => ['c''b''a']
+a.repeat(x) - repeat 'a' x times
+STRING.includes('') - true or false => xyz.includes('x') - true
+string.length - Number string length
+ABCDEFG.slice(0, 4) -изрязва част от стринга по зададен стринг индекс диапазон => ABCD; ABCDEFG.slice(1, 4) => BCD
+let first = array.shift() - премахва първия елемент от масива и го запазва във first 
+let last = array.pop() -премахва последния елемент от масива и го запазва във last. If the array is empty, undefined is returned and the array is not modified.
+The splice() method adds and/or removes array elements. - https://www.w3schools.com/jsref/jsref_splice.asp
+array.push('x') - добавя х накрая на съществуващ array [a,b,c] => [a,b,c,x];
+array.unshift('x') - добавя х в началото на съществуващ array [a,b,c] => [х,a,b,c];
+
+
+
+function sumDigits(numArr, strArr, x, xyz) {
+    //let aa = xyz.replace('y', 'Y'); console.log(aa);                // replace y with Y
+    //let ab = xyz.split(''); console.log(ab);                        // split string to chars
+    //let ac = strArr.join(''); console.log(ac);                      // join the array ['a''b''c']
+    //let ad = numArr.reverse(); console.log(ad);                     // reverse the array order
+    //let ae = x.repeat(3); console.log(ae);                          //a.repeat(x) - repeat 'a' x times
+    //let ag = xyz.includes('y'); console.log(ag);                    //STRING.includes('') - true or false => xyz.includes('x') - true
+    //let af = xyz.length; console.log(af);                           //string.length - Number string length
+    //let ah = xyz.slice(0,2); console.log(ah);                       //ABCDEFG.slice(0, 4) -изрязва част от стринга по зададен стринг индекс диапазон => ABCD; ABCDEFG.slice(1, 4) => BCD
+    //let ai = strArr.shift(); console.log(ai);                       //let first = array.shift() - премахва първия елемент от масива и го запазва във first 
+    //let aj = numArr.pop(); console.log(aj);                         //let last = array.pop() -премахва последния елемент от масива и го запазва във last. If the array is empty, undefined is returned and the array is not modified.
+    //The splice() method adds and/or removes array elements. - https://www.w3schools.com/jsref/jsref_splice.asp
+    //strArr.push(x); console.log(strArr);                            //array.push('x') - добавя х накрая на съществуващ array [a,b,c] => [a,b,c,x];
+    //numArr.unshift(xyz);console.log(numArr);                        //array.unshift('x') - добавя х в началото на съществуващ array [a,b,c] => [х,a,b,c];
+
+}
+sumDigits([1, 2, 3,], ['a', 'b', 'c'], 'x', 'xyz')
