@@ -19,7 +19,4 @@ function fishingBoat(input) {
     console.log(`Yes! You have ${(budget - sum).toFixed(2)} leva left.`) :
     console.log(`Not enough money! You need ${(sum - budget).toFixed(2)} leva.`)
 }
-fishingBoat(["3000",
-"Summer",
-"11"])
-
+fishingBoat(["3000","Summer","11"])
