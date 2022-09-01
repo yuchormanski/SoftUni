@@ -4,10 +4,10 @@ function christmasPreparation (input){
     let glue = Number(input[2]);
     let discount = Number(input[3]);
     let sum = 0;
-    sum = (paper * 5.8 + fabric * 7.2 + glue * 1.2) * (discount/100);
+    sum = (paper * 5.8 + fabric * 7.2 + glue * 1.2) * ((100 - discount)/100);
     console.log(sum.toFixed(3));
 }
-christmasPreparation(["2","3","2.5","25"])
+christmasPreparation(["7","8","0.5","45"])
 
 
 /**
