@@ -16,6 +16,8 @@ function sumDigits(numArr, strArr, x, xyz) {
     //let al = xyz.search('y'); console.log(al);                      // търси зададения елемент в стринга и връща индекса му
     //let al = xyz.search('y',2); console.log(al);                      // търси зададения елемент в стринга и връща индекса му, като започва от зададената позиция
     //console.log(xyz.indexOf('y',2));                                // връща индекса на първия търсен елемент от стринга , като започва от зададената позиция(ако не се включи стартира от 0)
+    //numArr.sort(function (a, b) { return b - a }); console.log(numArr);  //сортиране на масив числа от голямо към малко
+    //numArr.sort(function (a, b) { return a - b }); console.log(numArr);  //сортиране на масив числа от малко към голямо
 
 }
 sumDigits([1, 2, 3,], ['a', 'b', 'c'], 'x', 'xyz')
