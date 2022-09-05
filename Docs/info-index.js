@@ -14,6 +14,8 @@ function sumDigits(numArr, strArr, x, xyz) {
     //strArr.push(x); console.log(strArr);                            //array.push('x') - добавя х накрая на съществуващ array [a,b,c] => [a,b,c,x];
     //numArr.unshift(xyz);console.log(numArr);                        //array.unshift('x') - добавя х в началото на съществуващ array [a,b,c] => [х,a,b,c];
     //let al = xyz.search('y'); console.log(al);                      // търси зададения елемент в стринга и връща индекса му
+    //let al = xyz.search('y',2); console.log(al);                      // търси зададения елемент в стринга и връща индекса му, като започва от зададената позиция
+    //console.log(xyz.indexOf('y',2));                                // връща индекса на първия търсен елемент от стринга , като започва от зададената позиция(ако не се включи стартира от 0)
 
 }
 sumDigits([1, 2, 3,], ['a', 'b', 'c'], 'x', 'xyz')
