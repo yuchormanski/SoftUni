@@ -30,6 +30,7 @@ function bitcoinMining(dig) {
 }
 bitcoinMining([50, 100])
 
+
 /* 11.	* Bitcoin "Mining"
 Write a JavaScript program that calculates the total amount of bitcoins you purchased 
 with the gold you mined during your shift at the mine. Your shift consists of a 
