@@ -1,31 +1,30 @@
 function bitcoinMining(dig) {
     let day = 0;
     let money = 0
+    let gold = 0;
     let bitcoin = 0;
     let firstBitcoinDay = 0;
+
     for (let i = 0; i < dig.length; i++) {
-        day++;
-        let bit = 0;
-        let digged = 0;
-        if (day === 3) {
-            digged = ((dig[i] * 0.7) * 67.51).toFixed(2);
-        } else {
-            digged = (dig[i] * 67.51).toFixed(2);
-        }
-        money += Number(digged);
+        day = i + 1;
+        day % 3 === 0 ? gold = dig[i] * 0.7 : gold = dig[i];
+        let goldMOney = gold * 67.51;
+        let dayBit = 0;
+        money += goldMOney;
+        // Buy bitcoin if have enough money
         if (money >= 11949.16) {
-            bit = Math.floor(money / 11949.16)
-            money -= bit * 11949.16;
-            if (bit > 0 && firstBitcoinDay === 0) {
+            dayBit = (Math.floor(money / 11949.16));
+            // first day buying
+            if (firstBitcoinDay === 0) {
                 firstBitcoinDay = day;
             }
+            //money after buying
+            money -= dayBit * 11949.16;
+            bitcoin += dayBit;
         }
-        bitcoin += bit;
     }
     console.log(`Bought bitcoins: ${bitcoin}`);
-    if(bitcoin !== 0){
-        console.log(`Day of the first purchased bitcoin: ${firstBitcoinDay}`);
-    }
+    bitcoin === 0 ? null : console.log(`Day of the first purchased bitcoin: ${firstBitcoinDay}`);
     console.log(`Left money: ${money.toFixed(2)} lv.`);
 }
 bitcoinMining([50, 100])
@@ -36,8 +35,8 @@ Write a JavaScript program that calculates the total amount of bitcoins you purc
 with the gold you mined during your shift at the mine. Your shift consists of a 
 certain number of days where you mine an amount of gold in grams. Your program 
 will receive an array with the amount of gold you mined each day, where the 
-first day of your shift is the first index of the array. Also, someone was stealing 
-every third day from the start of your shift 30% from the mined gold for this day. 
+first day of your shift is the first index of the array.
+Also, someone was stealing every third day from the start of your shift 30% from the mined gold for this day. 
 You need to check, which day you have enough money to buy your first bitcoin. 
 For the different exchanges use these prices:
 
