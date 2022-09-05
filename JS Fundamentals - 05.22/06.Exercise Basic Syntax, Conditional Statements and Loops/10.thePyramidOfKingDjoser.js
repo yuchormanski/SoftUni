@@ -4,6 +4,7 @@ function thePyramidOfKingDjoser(base, increment){
     let lapisLazuli = 0;
     let gold = 0;
     let flor = 1;
+    
     for(let i = base; i > 0; i-=2){
         let fBase = base;
         let lengthBase = fBase * 4 - 4;
