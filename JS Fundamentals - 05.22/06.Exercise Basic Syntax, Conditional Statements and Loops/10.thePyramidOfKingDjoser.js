@@ -23,7 +23,7 @@ function thePyramidOfKingDjoser(base, increment){
         base -= 2;
         flor++;
     }
-    console.log(`Stone required: ${Math.ceil(stone)}\nMarble required: ${Math.ceil(marble)}\nLapis Lazuli required: ${Math.ceil(lapisLazuli)}\nGold required: ${Math.ceil(gold)}\nFinal pyramid height: ${Math.floor(flor)}`);
+    console.log(`Stone required: ${Math.ceil(stone)}\nMarble required: ${Math.ceil(marble)}\nLapis Lazuli required: ${Math.ceil(lapisLazuli)}\nGold required: ${Math.ceil(gold)}\nFinal pyramid height: ${Math.floor(flor * increment)}`);
 }
 thePyramidOfKingDjoser(11, 0.75)
 
