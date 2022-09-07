@@ -1,13 +1,9 @@
-function specialNumbers(n){
+function specialNumbers(n) {
     let sum = 0;
-    for(let i = 1; i <= n; i++){
-
-        
-        if(sum === 5 || sum === 7 || sum === 11 ){
-          console.log(`${i} -> True`);  
-        } else {
-            console.log(`${i} -> False`);
-        }     
+    for (let i = 1; i <= n; i++) {
+        // (divide by 10 and everything after decimal point) - last digit from i
+        sum = (parseInt(i / 10)) + (i % 10);
+        sum === 5 || sum === 7 || sum === 11 ? console.log(`${i} -> True`) : console.log(`${i} -> False`);
     }
 }
 specialNumbers(20)
