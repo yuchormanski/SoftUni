@@ -8,6 +8,10 @@ function lowerOrUpper(str) {
 }
 lowerOrUpper('L')
 
+/* function lowerOrUpper(char){
+    char === char.toUpperCase()? console.log(`upper-case`): console.log(`lower-case`);
+} */
+
 /* 7.	Lower or Upper
 Write a function that prints whether a given character is upper-case or lower-case.
 Examples
