@@ -12,6 +12,7 @@ function reverseInPlace(arr) {
     }
     console.log(arr.join(' '));
     function swapElements(arr, i, j){
+        
     }
 }
 reverseInPlace(['abc', 'def', 'hig', 'klm', 'nop'])
