@@ -1,21 +1,33 @@
-function condenseArrayToNumber(arr){
+function condenseArrayToNumber(arr) {
     let sum = 0;
-    let arrLength = arr.length-1;
-    for(let i = 0; i < arrLength; i++){
-        sum += (arr[i] + arr[i + 1])
+    let arrLength = arr.length - 1;
+    for (let j = 0; j <= arr.length; j++) {
+        if(arr.length === 1){
+            console.log(arr[0]); 
+            return;
+          }
+        let arrTwo = [];
+        for (let i = 0; i < arrLength; i++) {
+
+            sum = (arr[i] + arr[i + 1]);
+            arrTwo.push(sum);
+        }
+        arr = arrTwo;
+        if(arr.length === 1){
+          console.log(sum); 
+          return;
+        }
+        arrLength = arr.length - 1;
+        j -= 1;
     }
-    if(arrLength === 0){
-        sum = arr[0];
-    }
-    console.log(sum);
 }
-condenseArrayToNumber([5,0,4,1,2])
-/* 
+condenseArrayToNumber([2,10,3])
+/*
 8.	Condense Array to Number
-Write a program, which receives an array of numbers, and condenses them by summing 
-adjacent couples of elements until a single number is obtained. 
+Write a program, which receives an array of numbers, and condenses them by summing
+adjacent couples of elements until a single number is obtained.
 Examples
-For example, if we have 3 elements [2, 10, 3], we sum the first two and the second 
+For example, if we have 3 elements [2, 10, 3], we sum the first two and the second
 two elements and obtain {2+10, 10+3} = {12, 13}, then we sum again all adjacent elements and obtain {12+13} = {25}.
 Input	            Output	            Comments
 [2,10,3]	        25	                2 10 3 -> 2+10 10+3 -> 12 13 -> 12 + 13 -> 25
