@@ -24,7 +24,7 @@ function maxSequenceOfEqualElements(numberArray) {
     accumulator = accumulator.split('').join(' ');
     console.log(accumulator);
 }
-maxSequenceOfEqualElements([0, 1, 1, 5, 2, 2, 6, 3, 3])
+maxSequenceOfEqualElements([1, 1, 1, 2, 3, 1, 3, 3])
 
 /* 7.	Max Sequence of Equal Elements
 Write a function that finds the longest sequence of equal elements in an array of numbers. 
