@@ -1,0 +1,10 @@
+Два вида езици за програмиране:
+компилационен - C#; Java; C; Swift; GO Rust
+интерпретаторни - Python; Javascript, PHP, Purl, Ruby
+
+
+Statically - typed - типизирани - ясно изразени типове данни - C#, Java,C++
+Dynamically - typed - нетипизирани - JS, Python, PHP
+Combined typing - C#
+
+
