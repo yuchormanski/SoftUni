@@ -12,7 +12,6 @@ function passwordValidator(pass) {
 
     //only letters and digits
     function letterDigits() {
-
         for (let i = 0; i < pass.length; i++) {
             let current = pass[i].charCodeAt();
 
