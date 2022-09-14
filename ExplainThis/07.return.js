@@ -1,4 +1,4 @@
-function readFullName(firstName, lastName) {
+/* function readFullName(firstName, lastName) {
     return firstName + " " + lastName;
 }
 
@@ -53,8 +53,4 @@ solve3()
   }
 }
 solve4(2,3,"multiply") */
-
-
-
-
 
