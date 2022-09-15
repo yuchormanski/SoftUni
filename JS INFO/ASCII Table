@@ -35,3 +35,5 @@ Dec  Char                           Dec  Char     Dec  Char     Dec  Char
 
 string.charCodeAt()
 String.fromCharCode(97)
+power symbol  - Alt + 0178 (numeric keyboard)
+square root symbol - Alt + 251 
