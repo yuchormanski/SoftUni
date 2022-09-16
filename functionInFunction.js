@@ -1,5 +1,4 @@
 function solve(a,b,c,d){
-
     let fSum = first();
     let sSum = second();
     console.log(fSum + sSum);
