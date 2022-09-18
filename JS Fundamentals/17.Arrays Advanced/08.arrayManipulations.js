@@ -47,16 +47,17 @@ function arrayManipulations(mainArray) {
         function removeAt() {
             if (current[0] === 'RemoveAt') {
                 let command = Number(current[1]);
-                numArray.splice(command, 1)
+                numArray.splice(command, 1);
             }
         }
 
         function remove() {
             if (current[0] === 'Remove') {
-                let toBeRemoved = Number(current[1])
+                let toBeRemoved = Number(current[1]);
                 // filtered the numArray to remove specific element
-                let filteredArray = numArray.filter(function (e) { return e !== toBeRemoved })
-                numArray = filteredArray
+                //let filteredArray = numArray.filter(function (e) { return e !== toBeRemoved })
+                let filteredArray = numArray.filter(el => el !== toBeRemoved);
+                numArray = filteredArray;
             }
         }
 
