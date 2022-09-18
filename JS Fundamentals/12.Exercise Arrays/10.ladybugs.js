@@ -1,25 +1,25 @@
 function ladybugs(moves) {
-    let [area, ladybugIndex, direction, j] = [moves.shift(), moves.shift().split(' '), '', 0];
-    let result = 0;
+    let area = moves.shift();
+    let bugs = moves.shift().split(' ');
     let field = [];
-    // creating the field
-    for (let i = 0; i < area; i++) {
-        if (i === Number(ladybugIndex[i])) {
-            field.push(1)
+    for(let f = 0; f < area; f++){
+        if(bugs[f] >= 0){
+            field.push(1);
         } else {
-            field.push(0)
+            field.push(0);
         }
     }
+    
 
-    let currentMove = moves[j];
-    currentMove = currentMove.split(' ');
-    direction = currentMove[1];
-    let bug = field[j];
- 
-    console.log(currentMove);
-
-
-
+    for (i = 0; i < moves.length; i++) {
+        let currentMove = moves[i].split(' ');
+        let r = currentMove.includes('right');
+        let l = currentMove.includes('left');
+        if(r) {
+            if(currentMove[i] + currentMove[2])
+            bug[i] = bug[i] + currentMove[2];
+        }
+    }
 }
 ladybugs([3, '0 1', '0 right 1', '2 right 1'])
 

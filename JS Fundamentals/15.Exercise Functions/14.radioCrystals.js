@@ -1,9 +1,4 @@
-function radioCrystals(arr) {
-    let i = 0;
-    let [desired, crystal] = [arr.shift(), arr[i]];
-    let [currentCrystal, crystalCount] = [0, arr.length];
-    while (currentCrystal < crystalCount) {
-        console.log(`Processing chunk ${crystal} microns`);
+function processCrystal(desired, crystal) {
         // Cut
         if (crystal / 4 >= desired) {
             let cut = 0;
@@ -73,11 +68,21 @@ function radioCrystals(arr) {
         if (crystal === desired) {
             console.log(`Finished crystal ${desired} microns`);
         }
-        currentCrystal++;
-        crystal = arr[++i];
+
+}
+
+
+function radioCrystals(arr) {
+    let desired = arr.shift();
+    for (let i = 0; i < arr.length; i++) {
+        crystal = arr[i];
+        console.log(`Processing chunk ${crystal} microns`);
+        processCrystal(desired, crystal);
     }
 }
-radioCrystals([1375, 50000])
+// radioCrystals([1375, 50000]);
+// radioCrystals([1000, 4000, 8100]);
+processCrystal(1200, 3333);  
 
 /* 14.	Radio Crystals 
 You need to write a JS program that monitors the current thickness of the crystal and 
