@@ -7,6 +7,7 @@ function sumDigits(numArr, strArr, x, xyz) {
     //let ag = xyz.includes('y'); console.log(ag);                         //STRING.includes('') - true or false => xyz.includes('x') - true
     //let af = xyz.length; console.log(af);                                //string.length - Number string length
     //let ah = xyz.slice(0,2); console.log(ah);                            //ABCDEFG.slice(0, 4) -изрязва част от стринга по зададен стринг индекс диапазон => ABCD; ABCDEFG.slice(1, 4) => BCD
+    //let lastElement = numArr.slice(-1); console.log(lastElement);        //Providing one index value returns the element at that position & a negative index value calculates the index from the end of the array.
     //let ai = strArr.shift(); console.log(ai);                            //let first = array.shift() - премахва първия елемент от масива и го запазва във first 
     //let aj = numArr.pop(); console.log(aj);                              //let last = array.pop() -премахва последния елемент от масива и го запазва във last. If the array is empty, undefined is returned and the array is not modified.
     //let ak = strArr.splice(1, 1); console.log(strArr);                   //method adds and/or removes array elements. - https://www.w3schools.com/jsref/jsref_splice.asp
