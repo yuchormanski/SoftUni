@@ -24,28 +24,36 @@ Input	                Output
 
 function arrayManipulations(mainArray) {
     let numArray = mainArray.shift().split(' ');
-    numArray.map(Number)
+    //converting array from string to Numbers
+    numArray = numArray.map(str => {
+        return Number(str);
+    });
+
     for (let i = 0; i < mainArray.length; i++) {
         let current = mainArray[i];
+        current = current.split(' ');
+        add();
+        remove();
+        removeAt();
+        insert();
 
         function add() {
-            if (current.includes('Add')) {
-                let command = Number(current.slice(-1));
+            if (current[0] === 'Add') {
+                let command = Number(current[1]);
                 numArray.push(command);
             }
         }
 
         function removeAt() {
-            if (current.includes('RemoveAt')) {
-                let command = Number(current.slice(-1));
+            if (current[0] === 'RemoveAt') {
+                let command = Number(current[1]);
                 numArray.splice(command, 1)
             }
         }
 
         function remove() {
-            if (current.includes('Remove')) {
-                let command = current.split(' ');
-                let toBeRemoved = Number(command[1])
+            if (current[0] === 'Remove') {
+                let toBeRemoved = Number(current[1])
                 // filtered the numArray to remove specific element
                 let filteredArray = numArray.filter(function (e) { return e !== toBeRemoved })
                 numArray = filteredArray
@@ -53,17 +61,12 @@ function arrayManipulations(mainArray) {
         }
 
         function insert() {
-            if (current.includes('Insert')) {
-                current = current.split(' ');
+            if (current[0] === 'Insert') {
                 let addThis = Number(current[1]);
                 let atIndex = Number(current[2]);
                 numArray.splice(atIndex, 0, addThis);
             }
         }
-        add();
-        remove();
-        removeAt();
-        insert();
     }
     console.log(numArray.join(' '));
 }
