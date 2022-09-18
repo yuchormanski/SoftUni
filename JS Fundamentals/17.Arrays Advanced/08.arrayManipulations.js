@@ -23,11 +23,11 @@ Input	                Output
 'Insert 6 2']	 */
 
 function arrayManipulations(mainArray) {
-    let numArray = mainArray.shift().split(' ');
+    let numArray = mainArray.shift().split(' ').map(Number);
     //converting array from string to Numbers
-    numArray = numArray.map(str => {
+    /* numArray = numArray.map(str => {
         return Number(str);
-    });
+    }); */
 
     for (let i = 0; i < mainArray.length; i++) {
         let current = mainArray[i];
@@ -82,3 +82,45 @@ arrayManipulations(['6 12 2 65 6 42',
     'Remove 12',
     'RemoveAt 3',
     'Insert 6 2'])
+
+/*  from the web
+    function solve(commands) {
+        let arr = commands.shift().split(' ').map(Number);
+        for (let i = 0; i < commands.length; i++) {
+            let [command, firstNum, secondNum] = commands[i].split(' ');
+            firstNum = Number(firstNum);
+            secondNum = Number(secondNum);
+            switch (command) {
+                case 'Add':
+                    add(firstNum);
+                    break;
+                case 'Remove':
+                    remove(firstNum);
+                    break;
+                case 'RemoveAt':
+                    removeAt(firstNum);
+                    break;
+                case 'Insert':
+                    insert(firstNum, secondNum);
+                    break;
+            }
+        }
+        function add(el) {
+            arr.push(el);
+        }
+        function remove(num) {
+            arr = arr.filter(el => el !== num);
+        }
+        function removeAt(index) {
+            arr.splice(index, 1);
+        }
+        function insert(num, index) {
+            arr.splice(index, 0, num);
+        }
+        console.log(arr.join(' '));
+    }
+    solve(['6 12 2 65 6 42',
+    'Add 8',
+    'Remove 12',
+    'RemoveAt 3',
+    'Insert 6 2']) */
