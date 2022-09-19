@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./style.css" type="text/css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+  <script defer src="./app.js"></script>
+  <title>JavaScript Arrays Advanced Example</title>
+</head>
+
+<body>
+  <div class="container">
+    <div id="array-container" class="array-container">
+      <div class="block">
+        <span class="value"></span>
+      </div>
+      <div class="block">
+        <span class="value"></span>
+      </div>
+      <div class="block">
+        <span class="value"></span>
+      </div>
+      <div class="block">
+        <span class="value"></span>
+      </div>
+      <div class="block">
+        <span class="value"></span>
+      </div>
+    </div>
+
+    <ul>
+      <li class="function-test">
+        <i class="fas fa-arrow-circle-right"></i>
+        <span class="function-name">Array - <span class="function">indexOf(value)</span> method</span>
+        <input placeholder="value" id="input-index-of" type="text" />
+        <button id="btn-index-of">Find</button>
+      </li>
+      <li class="function-test">
+        <i class="fas fa-arrow-circle-right"></i>
+        <span class="function-name">Array - <span class="function">includes(value)</span> method</span>
+        <input placeholder="value" id="input-includes" type="text" />
+        <button id="btn-includes">Check</button>
+      </li>
+      <li class="function-test">
+        <i class="fas fa-arrow-circle-right"></i>
+        <span class="function-name">Array - <span class="function">push(value)</span> method</span>
+        <input placeholder="value" id="input-push" type="text" />
+        <button id="btn-push">Add at End</button>
+      </li>
+      <li class="function-test">
+        <i class="fas fa-arrow-circle-right"></i>
+        <span class="function-name">Array - <span class="function">unshift(value)</span> method</span>
+        <input placeholder="value" id="input-unshift" type="text" />
+        <button id="btn-unshift">Add at Beginning</button>
+      </li>
+      <li class="function-test">
+        <i class="fas fa-arrow-circle-right"></i>
+        <span class="function-name">Array - <span class="function">pop()</span> method</span>
+        <button id="btn-pop">Remove Last</button>
+      </li>
+      <li class="function-test">
+        <i class="fas fa-arrow-circle-right"></i>
+        <span class="function-name">Array - <span class="function">shift()</span> method</span>
+        <button id="btn-shift">Remove First</button>
+      </li>
+      <li class="function-test">
+        <i class="fas fa-arrow-circle-right"></i>
+        <span class="function-name">Array - <span class="function">slice(startIndex, endIndex?)</span> method</span>
+        <input placeholder="start index" id="input-slice-start" type="text" />
+        <input placeholder="end index (optional)" id="input-slice-end" type="text" />
+        <button id="btn-slice">Slice</button>
+      </li>
+      <li class="function-test">
+        <i class="fas fa-arrow-circle-right"></i>
+        <span class="function-name">Array - <span class="function">splice(startIndex, deleteCount)</span> method</span>
+        <input placeholder="start index" id="input-remove-start" type="text" />
+        <input placeholder="how much to remove?" id="input-remove-count" type="text" />
+        <button id="btn-remove">Remove Many</button>
+      </li>
+      <li class="function-test">
+        <i class="fas fa-arrow-circle-right"></i>
+        <span class="function-name">Array - <span class="function">splice(insertIndex, 0, value)</span> method</span>
+        <input placeholder="insertion index" id="input-insert-start" type="text" />
+        <input placeholder="value to insert?" id="input-insert-value" type="text" />
+        <button id="btn-insert-at">Insert At</button>
+      </li>
+    </ul>
+  </div>
+</body>
+
+</html>

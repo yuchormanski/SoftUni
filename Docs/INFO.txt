@@ -33,6 +33,10 @@ Math.pow(х, y)  - степенуване х на степен y
 Math.sqrt() - квадратен корен
 Math.max(a,b,c ...) - връща най-голямото число от подадените
 Math.min(a,b,c ...) - връща най-малкото число от подадените
+Math.random() - връща произволно число между 0 и <1. 
+            function randomNum() {  return Math.random(max);} console.log(randomNum(5)) - връща произволно число между 0 и <5. max - не се включва
+            function randomNum(min, max) {  return Math.random() * (max - min) + min;} console.log(randomNum(2,5)) 2= долна граница(включена), 5 горна (не се включва)
+
 Number.isInteger() - true; false
 
 toFixed() - форматиране до знака, изискан в скобите, след дессетичната точка - ВИНАГИ СТАВА STRING!!!!

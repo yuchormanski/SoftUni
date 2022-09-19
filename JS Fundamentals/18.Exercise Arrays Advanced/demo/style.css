@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit:400,400i,700,700i,800,800i,900,900i&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font: 18px/1.5 'Kanit', sans-serif;
+}
+
+.container {
+  background-image: linear-gradient(to bottom, #ffffff, #f7fafe, #ecf7f9, #e5f3ed, #e8edde);
+  width: 1400px;
+  max-width: 100%;
+  min-width: 50%;
+  margin: 0 auto;
+  color: #333;
+  padding: 1rem 5rem; 
+}
+
+.array-container {  
+  padding-bottom: 2rem;  
+}
+
+.block {
+  display: inline-block;
+  box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.75);   
+  color: #fff; 
+  margin-bottom: 0.5rem;   
+  background-image: linear-gradient(to left bottom, #1c3a66, #006b9e, #009da7, #00ca78, #a8eb12);
+}
+
+.block:not(:last-child) {
+  margin-right: 30px;
+}
+
+.value {
+  width: 7rem;
+  height: 8rem;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 1px 1px 1px #000; 
+}
+
+ul {
+  list-style: none;     
+}
+
+i {
+  margin-right: 0.5rem;
+  color: #a8eb12;
+}
+
+.function-test {  
+  display: flex;   
+  margin-bottom: 0.7rem; 
+  align-items: center;  
+}
+
+.function-name {
+  flex: 0 0 37%;
+  display: inline-block;
+}
+
+input {
+  outline: none;
+  border: none;
+  width: 9rem;
+  height: 2.2rem;
+  border-radius: 5px;
+  padding-left: 0.5rem;
+  background: #cccccb; 
+  flex: 0 0 15%;   
+  margin-right: 0.5rem;  
+}
+
+input:focus,
+button:focus {
+  box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.25);
+}
+
+button {
+  border: none;
+  outline: none;
+  width: 8rem;
+  padding: 0.56rem 0.4rem;
+  border-radius: 5px;
+  background: #1C3A66;
+  color: #fff;
+  font-size: 0.9rem;
+  flex: 0 0 20%;
+  border: 2px solid #1C3A66;
+}
+
+button:hover {
+  background: transparent;
+  color: #1C3A66;
+  box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.25);
+  transition: all 0.5s ease;
+  font-weight: bold;
+}
+
+.function {
+  font-weight: bold; 
+}
