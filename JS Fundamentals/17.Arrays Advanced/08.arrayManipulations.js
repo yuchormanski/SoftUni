@@ -24,49 +24,38 @@ Input	                Output
 
 function arrayManipulations(mainArray) {
     let numArray = mainArray.shift().split(' ').map(Number);
-    //converting array from string to Numbers
-    /* numArray = numArray.map(str => {
-        return Number(str);
-    }); */
 
     for (let i = 0; i < mainArray.length; i++) {
         let current = mainArray[i];
         current = current.split(' ');
-        add();
-        remove();
-        removeAt();
-        insert();
 
+        if (current[0] === 'Add') { add() }
+        else if (current[0] === 'RemoveAt') { removeAt() }
+        else if (current[0] === 'Remove') { remove() }
+        else if (current[0] === 'Insert') { insert() }
+        
         function add() {
-            if (current[0] === 'Add') {
-                let command = Number(current[1]);
-                numArray.push(command);
-            }
+            let command = Number(current[1]);
+            numArray.push(command);
         }
 
         function removeAt() {
-            if (current[0] === 'RemoveAt') {
-                let command = Number(current[1]);
-                numArray.splice(command, 1);
-            }
+            let command = Number(current[1]);
+            numArray.splice(command, 1);
         }
 
         function remove() {
-            if (current[0] === 'Remove') {
-                let toBeRemoved = Number(current[1]);
-                // filtered the numArray to remove specific element
-                //let filteredArray = numArray.filter(function (e) { return e !== toBeRemoved })
-                let filteredArray = numArray.filter(el => el !== toBeRemoved);
-                numArray = filteredArray;
-            }
+            let toBeRemoved = Number(current[1]);
+            // filtered the numArray to remove specific element
+            //let filteredArray = numArray.filter(function (e) { return e !== toBeRemoved })
+            let filteredArray = numArray.filter(el => el !== toBeRemoved);
+            numArray = filteredArray;
         }
 
         function insert() {
-            if (current[0] === 'Insert') {
-                let addThis = Number(current[1]);
-                let atIndex = Number(current[2]);
-                numArray.splice(atIndex, 0, addThis);
-            }
+            let addThis = Number(current[1]);
+            let atIndex = Number(current[2]);
+            numArray.splice(atIndex, 0, addThis);
         }
     }
     console.log(numArray.join(' '));
@@ -124,3 +113,8 @@ arrayManipulations(['6 12 2 65 6 42',
     'Remove 12',
     'RemoveAt 3',
     'Insert 6 2']) */
+
+        //converting array from string to Numbers
+    /* numArray = numArray.map(str => {
+        return Number(str);
+    }); */
