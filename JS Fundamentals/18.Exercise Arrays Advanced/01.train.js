@@ -40,14 +40,14 @@ function train(mainArray) {
 
         if (command[0] === "Add") {
             let addWagon = Number(command[1]);
-            wagons.push(addWagon)
+            wagons.push(addWagon);
         } else {
             passengers = Number(command[0]);
             for (let j = 0; j < wagons.length; j++) {
                 let currentWagon = wagons[j];
                 if (currentWagon + passengers <= maxInWagon) {
-                    let topup = currentWagon + passengers
-                    wagons.splice(j, 1, topup)
+                    let topup = currentWagon + passengers;
+                    wagons.splice(j, 1, topup);
                     break;
                 }
             }
