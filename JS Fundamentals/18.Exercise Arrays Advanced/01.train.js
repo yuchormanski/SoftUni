@@ -30,7 +30,6 @@ Input	                        Output
 
 function train(mainArray) {
     let wagons = mainArray.shift().split(' ').map(Number);
-    let newComposition = [];
     let maxInWagon = mainArray.shift();
 
     maxInWagon = Number(maxInWagon);
