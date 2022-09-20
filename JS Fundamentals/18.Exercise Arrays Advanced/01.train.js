@@ -43,19 +43,18 @@ function train(mainArray) {
             let addWagon = Number(command[1]);
             wagons.push(addWagon)
         } else {
-            //TODO modify only current wagon
             passengers = Number(command[0]);
-            for(let j = 0; j < wagons.length; j++){
+            for (let j = 0; j < wagons.length; j++) {
                 let currentWagon = wagons[j];
-                if(currentWagon + passengers <= maxInWagon){
+                if (currentWagon + passengers <= maxInWagon) {
                     let topup = currentWagon + passengers
-                    wagons.shift();                         //
-                    wagons.unshift(topup);                  //
-                    break;                   
-                }  
+                    wagons.splice(j, 1, topup)
+                    break;
+                }
             }
         }
     }
+    console.log(wagons.join(' '));
 }
 train(['32 54 21 12 4 0 23',
     '75',
@@ -64,3 +63,12 @@ train(['32 54 21 12 4 0 23',
     '30',
     '10',
     '75'])
+
+train(['0 0 0 10 2 4',
+    '10',
+    'Add 10',
+    '10',
+    '10',
+    '10',
+    '8',
+    '6'])
