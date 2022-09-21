@@ -1,28 +1,36 @@
-function maxSequenceOfEqualElements(numberArray) {
-    let buff = numberArray[0]; // first element to be compared
-    let forCheck = buff; // buffer for first sequence
-    let accumulator = ''; // buffer for longest sequence found
-    let counter = 1;
-    for (let i = 1; i < numberArray.length; i++) {
-        let current = numberArray[i];
-        if (forCheck === current) {
-            buff += `${current}`;
-            counter++;
-        } else {
-            forCheck = current;
-            buff = current;
-            counter = 1;
-        }
-        if (buff.length >= counter) {
-            //check if first sequence length is smaller or bigger than saved
-            if (accumulator.length < buff.length) {
-                accumulator = buff;
+function maxSequenceOfEqualElements(arr) {
+    let counter = 0;
+    let buff = '';
+    let safe = '';
+    let safeCounter = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        let currentI = arr[i];
+        let j = i + 1;
+        buff = `${currentI} `
+        for (j; j < arr.length; j++) {
+            let currentJ = arr[j];
+            if (currentI === currentJ) {
+                buff += `${currentI} `
+                counter++;
+            } else {
+                if (counter > safeCounter) {
+                    safe = buff;
+                    safeCounter = counter;
+                }
+                counter = 0;
+                break;
             }
         }
+        if (j === arr.length) {
+            if (counter > safeCounter) {
+                safe = buff;
+                safeCounter = counter;
+            }
+            return console.log(safe);
+        }
     }
-    // splitted the string to array and joined to new string with interval between elements
-    accumulator = accumulator.split('').join(' ');
-    console.log(accumulator);
+    console.log(safe);
 }
 maxSequenceOfEqualElements([1, 1, 1, 2, 3, 1, 3, 3])
 
