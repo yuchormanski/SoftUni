@@ -17,12 +17,12 @@ function sorting(arrayToSort) {
     // reverse array  
     max.reverse();
     // index for max array element
-    let j = 1;
+    let j = 0;
                        // length of the original array
     for (let i = 0; i < max.length * 2; i++) {
         // add element only on even positions
         if (i % 2 === 0) {
-            let current = max[j-1];
+            let current = max[j];
             arrayToSort.splice(i, 0, current);
             j++;
         }
