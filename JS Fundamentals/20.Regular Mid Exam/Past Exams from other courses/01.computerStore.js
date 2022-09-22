@@ -33,7 +33,7 @@ to the final price!
     
  */    // https://judge.softuni.org/Contests/Practice/Index/2517#0.
 
- function computerStore(order) {
+function computerStore(order) {
     let price = 0;
 
     for (let i = 0; i < order.length; i++) {
@@ -70,7 +70,5 @@ computerStore([
     '450',
     '20',
     '17.66',
-    '19.30', 'regular'
-])
-
-
+    '19.30',
+    'regular'])
