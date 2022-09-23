@@ -6,7 +6,7 @@ function specialNumbers(n) {
         sum === 5 || sum === 7 || sum === 11 ? console.log(`${i} -> True`) : console.log(`${i} -> False`);
     }
 }
-specialNumbers(20)
+specialNumbers(15)
 
 /* 9.	Special Numbers
 Write a program that receives a number n.  For all numbers in the range [1…n] print the number 

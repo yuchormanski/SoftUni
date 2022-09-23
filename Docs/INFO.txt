@@ -38,40 +38,9 @@ Math.random() - връща произволно число между 0 и <1.
             function randomNum(min, max) {  return Math.random() * (max - min) + min;} console.log(randomNum(2,5)) 2= долна граница(включена), 5 горна (не се включва)
 
 Number.isInteger() - true; false
+array.indexOf('aaa') => aaa[index] 
 
 toFixed() - форматиране до знака, изискан в скобите, след дессетичната точка - ВИНАГИ СТАВА STRING!!!!
 parseFloat()  - връща стринг, като изрязва последната нула (ако има такава) след десетичната запетя (10.120 - 10.12)
-
-something.replace(a, b) - replace a with b => something.replace('s', 'S') = Something
-abc.split('') - split string to char = 'a''b''c'
-array.join('') - join the array ['a''b''c'] = 'abc'
-array.reverse() - reverse the array order = ['a''b''c'] => ['c''b''a']
-a.repeat(x) - repeat 'a' x times
-STRING.includes('') - true or false => xyz.includes('x') - true
-string.length - Number string length
-ABCDEFG.slice(0, 4) -изрязва част от стринга по зададен стринг индекс диапазон => ABCD; ABCDEFG.slice(1, 4) => BCD
-let first = array.shift() - премахва първия елемент от масива и го запазва във first 
-let last = array.pop() -премахва последния елемент от масива и го запазва във last. If the array is empty, undefined is returned and the array is not modified.
-The splice() method adds and/or removes array elements. - https://www.w3schools.com/jsref/jsref_splice.asp
-array.push('x') - добавя х накрая на съществуващ array [a,b,c] => [a,b,c,x];
-array.unshift('x') - добавя х в началото на съществуващ array [a,b,c] => [х,a,b,c];
-
-
-
-function sumDigits(numArr, strArr, x, xyz) {
-    //let aa = xyz.replace('y', 'Y'); console.log(aa);                // replace y with Y
-    //let ab = xyz.split(''); console.log(ab);                        // split string to chars
-    //let ac = strArr.join(''); console.log(ac);                      // join the array ['a''b''c']
-    //let ad = numArr.reverse(); console.log(ad);                     // reverse the array order
-    //let ae = x.repeat(3); console.log(ae);                          //a.repeat(x) - repeat 'a' x times
-    //let ag = xyz.includes('y'); console.log(ag);                    //STRING.includes('') - true or false => xyz.includes('x') - true
-    //let af = xyz.length; console.log(af);                           //string.length - Number string length
-    //let ah = xyz.slice(0,2); console.log(ah);                       //ABCDEFG.slice(0, 4) -изрязва част от стринга по зададен стринг индекс диапазон => ABCD; ABCDEFG.slice(1, 4) => BCD
-    //let ai = strArr.shift(); console.log(ai);                       //let first = array.shift() - премахва първия елемент от масива и го запазва във first 
-    //let aj = numArr.pop(); console.log(aj);                         //let last = array.pop() -премахва последния елемент от масива и го запазва във last. If the array is empty, undefined is returned and the array is not modified.
-    //The splice() method adds and/or removes array elements. - https://www.w3schools.com/jsref/jsref_splice.asp
-    //strArr.push(x); console.log(strArr);                            //array.push('x') - добавя х накрая на съществуващ array [a,b,c] => [a,b,c,x];
-    //numArr.unshift(xyz);console.log(numArr);                        //array.unshift('x') - добавя х в началото на съществуващ array [a,b,c] => [х,a,b,c];
-
-}
-sumDigits([1, 2, 3,], ['a', 'b', 'c'], 'x', 'xyz')
+     n = 3.14534245   => parseFloat(n.toFixed(3)) => 3.145
+parseInt(1.234) - връща цяло число => 1; 23.54  => 23
