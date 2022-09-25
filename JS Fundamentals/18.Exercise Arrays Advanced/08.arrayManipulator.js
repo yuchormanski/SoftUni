@@ -27,12 +27,12 @@ function arrayManipulator(mainArray, commandsArray) {
   let arrayLength = commandsArray.length;
   let isPrint = false;
   let final = ``;
-
+ 
   for (let el = 0; el < arrayLength; el++) {
     let currentCommand = commandsArray[el];
     currentCommand = currentCommand.split(' ');
     let command = currentCommand[0];
-
+ 
     command === 'add' ? add() :
       command === 'addMany' ? addMany() :
         command === 'contains' ? contains() :
@@ -40,8 +40,8 @@ function arrayManipulator(mainArray, commandsArray) {
             command === 'shift' ? shift() :
               command === 'sumPairs' ? sumPairs() :
                 command === 'print' ? print() : null
-
-
+ 
+ 
     function add() { //add <index> <element> – adds element at the specified index
       mainArray.splice(currentCommand[1], 0, currentCommand[2])
     }
@@ -53,21 +53,21 @@ function arrayManipulator(mainArray, commandsArray) {
         mainArray.splice(i++, 0, el)
       }
     }
-
+ 
     function contains() { //contains <element> – prints the index of the first occurrence of the specified element
       let indexOfEl = Number(currentCommand[1]);
       if (mainArray.includes(indexOfEl)) {
         return console.log(mainArray.indexOf(indexOfEl));
       } else { return console.log(-1); }
     }
-
+ 
     function remove() { //remove <index> – removes the element at the specified index
       if (currentCommand[1] < 0) {
         return;
       }
       mainArray.splice(currentCommand[1], 1);
     }
-
+ 
     function shift() { //shift <positions> – shifts every element of the array the number of positions to the left (with rotation)
       if (currentCommand[1] < 0) {
         return;
@@ -78,7 +78,7 @@ function arrayManipulator(mainArray, commandsArray) {
         mainArray.push(buff);
       }
     }
-
+ 
     function sumPairs() { //sumPairs – sums the elements in the array by pairs
       let mainArrayLength = mainArray.length;
       let mutantArray = [];
@@ -97,16 +97,16 @@ function arrayManipulator(mainArray, commandsArray) {
       }
       mainArray = mutantArray;
     }
-
+ 
     function print() { //print – stop receiving more commands and print the last state of the array
       final = `[ ${mainArray.join(', ')} ]`
       return isPrint = true;
     }
-
+ 
     if (isPrint) {
       console.log(final);
       return;
     }
   }
 }
-arrayManipulator([2, 2, 4, 2, 4], ["add 1 4", "sumPairs", "print"]) 
+arrayManipulator([2, 2, 4, 2, 4,], ["add 1 4", "sumPairs", "print"]) 
