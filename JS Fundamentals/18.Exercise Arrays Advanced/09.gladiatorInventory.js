@@ -77,19 +77,17 @@ function gladiatorInventory(inventoryCommand) {
                 inventory.push(fixing);
             }
         }
-        //TODO fix output
         function upgrade() {
             let elCheck = element
             let elPart = elCheck.split('-');
             if (inventory.includes(elPart[0])) {
-
                 let upgradeIndex = inventory.indexOf(elPart[0])
-                inventory.splice(upgradeIndex + 1, 0, element);
+                let output = `${elPart[0]}:${elPart[1]}`
+                inventory.splice(upgradeIndex + 1, 0, output);
             }
         }
     }
     console.log(inventory.join(' '));
-
 }
 gladiatorInventory(['SWORD Shield Spear',
     'Buy Bag',
