@@ -66,25 +66,42 @@ the explosion kills them and they are no longer valid targets for Snowball. So i
 
 function bunnyKill(input) {
     let coordinates = input.pop().split(',').map(Number);
-
+    let top, middle, bottom = '';
+    let [rowTop, rowMiddle, rowBottom] = [[], [], []];
 
 
     for (let i = 0; i < input.length; i++) {
-        let row = input[i].split(',').join('').split(' ');
+        if (i === 0) {
+            rowTop = input[i].split(',').join('').split(' ');
+            rowMiddle = input[i + 1].split(',').join('').split(' ');
+        } else {
+            rowTop = input[i - 1].split(',').join('').split(' ');
+            rowMiddle = input[i].split(',').join('').split(' ');
+            rowBottom = input[i + 1].split(',').join('').split(' ');
+        }
 
-        for (let j = 0; j < row.length; j++) {
-            let current = row[j];
-            if (coordinates[0] === i) {
-                if (coordinates[1] === j) {
+        for(let j = 0)
 
-                    
-                    console.log(coordinates); // debug
-                }
-            }
+        if(coordinates[0] === i){
+
         }
 
 
 
+
+        console.log(rowTop);
+        console.log(rowMiddle);
+        console.log(rowBottom);
+        // for (let j = 0; j < row.length; j++) {
+        //     let current = row[j];
+        //     if (coordinates[0] === i) {
+        //         if (coordinates[1] === j) {
+
+
+        //             console.log(coordinates); // debug
+        //         }
+        //     }
+        // }
     }
 
 
