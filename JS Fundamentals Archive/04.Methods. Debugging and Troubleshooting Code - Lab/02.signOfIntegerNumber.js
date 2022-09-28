@@ -12,4 +12,4 @@ function signOfIntegerNumber(number) {
             number === 0 ? console.log(`The number ${number} is zero.`) : null;
 
 }
-signOfIntegerNumber(-5)
+signOfIntegerNumber(0.1)

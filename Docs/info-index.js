@@ -13,6 +13,7 @@ function sumDigits(numArr, strArr, x, xyz) {
     //let ak = strArr.splice(1, 1); console.log(strArr);                   //method adds and/or removes array elements. - https://www.w3schools.com/jsref/jsref_splice.asp
     //let ak = strArr.splice(1, 0, 'd'); console.log(strArr);
     //strArr.push(x); console.log(strArr);                                 //array.push('x') - добавя х накрая на съществуващ array [a,b,c] => [a,b,c,x];
+                //може са се добавят повече от един елемент. str.push(x,y,'abc','ala-bala')
     //numArr.unshift(xyz);console.log(numArr);                             //array.unshift('x') - добавя х в началото на съществуващ array [a,b,c] => [х,a,b,c];
     //let al = xyz.search('y'); console.log(al);                           // търси зададения елемент в стринга и връща индекса му
     //let al = xyz.search('y',2); console.log(al);                         // търси зададения елемент в стринга и връща индекса му, като започва от зададената позиция
