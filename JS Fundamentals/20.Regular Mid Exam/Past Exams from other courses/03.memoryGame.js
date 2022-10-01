@@ -87,29 +87,29 @@ a 2 4 a 2 4
 function memoryGame(main) {
     // SLICE to keep main array untouched
     let game = main.slice(0, 1).join('').split(' ');
-    let moves = main.slice(1, main.length)
+    let moves = main.slice(1)
     let counter = 0;
 
-    for (let i = 0; i !== 'end'; i++) {
-        counter++;
-        let currentMove = moves[i].split(' ');
-        let indexOne = currentMove[0];
-        let indexTwo = currentMove[1];
+    for (let i = 0; i < moves.length; i++) {
 
+        let currentMove = moves[i];
         // IF receives 'end' before find all titles
-        if (indexOne === 'end') {
+        if (currentMove === 'end') {
             return console.log(`Sorry you lose :(\n${game.join(' ')}`);
-        } else {
-            indexOne = Number(indexOne);
-            indexTwo = Number(indexTwo);
-            //SETTING first element to remove - avoiding reducing the array length
-            let bigger = Math.max(indexOne,indexTwo);
-            let smaller = Math.min(indexOne,indexTwo);
-            indexOne = bigger;
-            indexTwo = smaller;
         }
+        counter++;
+        currentMove = currentMove.split(' ');
+        let indexOne = Number(currentMove[0]);
+        let indexTwo = Number(currentMove[1]);
 
-        //IF move has a negative index
+        //SETTING to remove element with bigger index to avoid reducing the array length
+        let bigger = Math.max(indexOne, indexTwo);
+        let smaller = Math.min(indexOne, indexTwo);
+        indexOne = bigger;
+        indexTwo = smaller;
+
+
+        //IF move has a negative index or cheat
         if (indexOne < 0 || indexTwo < 0 || indexOne === indexTwo) {
             console.log(`Invalid input! Adding additional elements to the board`);
             game.splice((game.length / 2), 0, `-${counter}a`);
