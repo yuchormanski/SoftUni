@@ -110,7 +110,11 @@ function memoryGame(main) {
 
 
         //IF move has a negative index or cheat
-        if (indexOne < 0 || indexTwo < 0 || indexOne === indexTwo) {
+        if (indexOne < 0 || 
+            indexTwo < 0 || 
+            indexOne === indexTwo || 
+            indexOne > game.length - 1 || 
+            indexTwo > game.length - 1) {
             console.log(`Invalid input! Adding additional elements to the board`);
             game.splice((game.length / 2), 0, `-${counter}a`);
             game.splice((game.length / 2 + 1), 0, `-${counter}a`)
