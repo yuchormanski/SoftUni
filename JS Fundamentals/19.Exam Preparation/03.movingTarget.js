@@ -26,6 +26,7 @@ function movingTarget(mainArray) {
                 console.log(`Invalid placement!`);
             }
 
+            
         } else if (action === 'Strike') { 
             if (targets.length - 1 < act + power || act - power < 0) {
                 console.log("Strike missed!");
