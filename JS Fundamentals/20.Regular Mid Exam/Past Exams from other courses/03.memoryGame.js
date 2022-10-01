@@ -32,6 +32,26 @@ console the following message:
 
 Constraints
 •	All elements in the sequence will always have a matching element.
+INput: 
+["1 1 2 2 3 3 4 4 5 5",
+    "1 0",
+    "-1 0",
+    "1 0",
+    "1 0",
+    "1 0",
+    "end"]
+
+Output:
+Congrats! You have found matching elements - 1!
+Invalid input! Adding additional elements to the board
+Congrats! You have found matching elements - 2!
+Congrats! You have found matching elements - 3!
+Congrats! You have found matching elements - -2a!
+Sorry you lose :(
+4 4 5 5
+
+
+
 
 ["a 2 4 a 2 4", 
     "0 3", 
@@ -39,15 +59,29 @@ Constraints
     "0 1",
     "0 1", 
     "end"
-    ] 
+    ]
+
+Congrats! You have found matching elements - a!
+Congrats! You have found matching elements - 2!
+Congrats! You have found matching elements - 4!
+You have won in 3 turns!
+
     
-    ["a 2 4 a 2 4",
+["a 2 4 a 2 4",
     "4 0",
     "0 2",
     "0 1",
     "0 1",
     "end",
-] */
+]
+Try again!
+Try again!
+Try again!
+Try again!
+Sorry you lose :(
+a 2 4 a 2 4
+
+*/
 
 
 function memoryGame(main) {
