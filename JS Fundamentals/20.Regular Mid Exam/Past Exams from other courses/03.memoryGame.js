@@ -51,6 +51,7 @@ Constraints
 
 
 function memoryGame(main) {
+    // SLICE to keep main array untouched
     let game = main.slice(0, 1).join('').split(' ');
     let moves = main.slice(1, main.length)
     let counter = 0;
@@ -64,6 +65,14 @@ function memoryGame(main) {
         // IF receives 'end' before find all titles
         if (indexOne === 'end') {
             return console.log(`Sorry you lose :(\n${game.join(' ')}`);
+        } else {
+            indexOne = Number(indexOne);
+            indexTwo = Number(indexTwo);
+            //SETTING first element to remove - avoiding reducing the array length
+            let bigger = Math.max(indexOne,indexTwo);
+            let smaller = Math.min(indexOne,indexTwo);
+            indexOne = bigger;
+            indexTwo = smaller;
         }
 
         //IF move has a negative index
@@ -77,12 +86,18 @@ function memoryGame(main) {
         //IF matched
         if (game[indexOne] === game[indexTwo]) {
             console.log(`Congrats! You have found matching elements - ${game[indexOne]}!`);
-            let removed = game[indexOne];
-            game.splice(indexOne, 1);
 
-            if (game.includes(removed)) {
-                indexTwo = game.indexOf(removed)
-            }
+            //FIRST version
+            // let removed = game[indexOne];
+            // game.splice(indexOne, 1);
+
+            // if (game.includes(removed)) {
+            //     indexTwo = game.indexOf(removed)
+            // }
+            // game.splice(indexTwo, 1)
+
+            //SECOND version
+            game.splice(indexOne, 1);
             game.splice(indexTwo, 1)
         } else {   // IF not matched
             console.log(`Try again!`);
