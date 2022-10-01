@@ -17,6 +17,7 @@ boolean – булева променлива се инициализира ка
                     let isValid = true;
 Може да се създаде и с условие, което се свежда до true или false
                     let isPositive = a > 0;
+let i = Number.MIN_SAFE_INTEGER/Number.MAX_SAFE_INTEGER;
 
 Math.floor - закръгляване към по-малко
 Math.ceil - закръгляване към по-голямо
