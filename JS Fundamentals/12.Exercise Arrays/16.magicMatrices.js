@@ -26,6 +26,31 @@ Hints
  */
 
 function magicMatrices(mainArray) {
+    let sum;
+    for (let r = 0; r < mainArray.length; r++) {
+        let sumR = 0;
+        for (let c = 0 ; c < mainArray[r].length; c++) {
+            sumR += mainArray[r][c];
+        }
+        if (r === 0) {
+            sum = sumR;
+        }
+        if (sum != sumR) {
+            return false;
+        }
+    };
+    for (let c = 0; c < mainArray[0].length; c++) {
+        let sumC = 0;
+        for (let r = 0 ; r < mainArray.length; r++) {
+            sumC += mainArray[r][c];
+        }
+        if (sum != sumC) {
+            return false;
+        }
+    };
+
+    return true;
+
     let isMagical = false;
     let blockA = mainArray[0];
     let blockB = mainArray[1];

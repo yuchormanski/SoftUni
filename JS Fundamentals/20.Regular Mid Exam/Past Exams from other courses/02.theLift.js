@@ -35,36 +35,35 @@ Third state – 4 4 4 -> 10 people left, but there're no more wagons. */
 
 function theLift(liftArray) {
     let passengers = liftArray.slice(0, 1);
-    let wagons = liftArray.slice(-1).join('').split(' ');;
-    let total = 0;
+    let wagons = liftArray.slice(-1).join('').split(' ');
 
-    let fullWagon = '';
     for (let i = 0; i < wagons.length; i++) {
-        let currentWagon = Number(wagons[i]);
+        wagons[i] = Number(wagons[i]);
+        // TODO: if wagon[i] > 4
 
-        if (currentWagon < 4) {
-            let freeSpace = 4 - currentWagon;
+        let freeSpace = 4 - wagons[i];
+        if (freeSpace > 0) {
             if (passengers >= freeSpace) {
                 passengers -= freeSpace;
-
+                freeSpace = 0;
+                wagons[i] = 4;
             } else {
-                freeSpace = passengers;
-                passengers = 0;
+                wagons[i] += passengers;
+                passengers -= freeSpace;
+                break;
             }
-            total += (freeSpace + currentWagon);
-            fullWagon += (freeSpace + currentWagon);
         }
     }
-    fullWagon = fullWagon.split('').join(' ')
 
-    if (passengers === 0 && wagons.length * 4 > total) {
+    // fullWagon = fullWagon.split('').join(' ')
+
+    if (passengers > 0) {
+        console.log(`There isn't enough space! ${passengers} people in a queue!`);
+    } else if (passengers < 0) {
         console.log('The lift has empty spots!');
-    } else if (wagons.length * 4 === total){
-        console.log(`There isn't enough space! ${passengers} people in a queue!`);
-    }else if (passengers > 0){
-        console.log(`There isn't enough space! ${passengers} people in a queue!`);
     }
-    console.log(fullWagon);
+    console.log(wagons.join(' '));
 }
-theLift(["10", "0 2 0"])
-//theLift(["15", "0 0 0 0 0"])
+theLift(["10", "0 2 0"]);
+theLift(["15", "0 0 0 0 0"]);
+theLift([20, "1 2 3 4 5 6"]);
