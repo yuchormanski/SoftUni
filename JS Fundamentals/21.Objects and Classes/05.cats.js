@@ -34,7 +34,12 @@ function cats(catArray){
      }
 	// TODO: Iterate through cats[] and invoke .meow()
         //using for…of loop
-
+        function meow(){
+            console.log(`${this.name}, age ${this.age} says Meow`);
+        }
+        for(let cat of Cat){
+            cat.meow()
+        }
 }
 
 cats(['Mellow 2', 'Tom 5'])
