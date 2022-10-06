@@ -7,6 +7,7 @@ function shootForTheWin(valueArray) {
 
     for (let i = 0; i < arrayLength; i++) {
         //TODO: when "End"
+        if(//TODO: when "End"))
         let index = Number(indexTargets[i]);
 
         // IF there is target
