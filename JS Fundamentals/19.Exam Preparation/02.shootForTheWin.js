@@ -4,10 +4,15 @@ function shootForTheWin(valueArray) {
     let indexTargets = valueArray;
     let arrayLength = valueArray.length;
     let shottedValue;
+    let counter = 0;
 
     for (let i = 0; i < arrayLength; i++) {
         //TODO: when "End"
-        if(//TODO: when "End"))
+        if (indexTargets[i] === 'End') {
+            let endResult = targets.join(' ');
+
+            return console.log(`Shot targets: ${counter} -> ${endResult}`);
+        }
         let index = Number(indexTargets[i]);
 
         // IF there is target
@@ -16,6 +21,7 @@ function shootForTheWin(valueArray) {
         } else {
             shottedValue = targets[index];
             targets[index] = -1;
+            counter++;
         }
 
 
@@ -25,26 +31,16 @@ function shootForTheWin(valueArray) {
             let nextTarget = targets[j];
 
             // Reduce or Increase values
-                if (nextTarget === -1) {
-                    null;
-                } else if (nextTarget > shottedValue) {
-                    targets[j] = nextTarget - shottedValue;
-                } else {
-                    targets[j] = nextTarget + shottedValue;
-                }
-                
-            
+            if (nextTarget === -1) {
+                null;
+            } else if (nextTarget > shottedValue) {
+                targets[j] = nextTarget - shottedValue;
+            } else {
+                targets[j] = nextTarget + shottedValue;
+            }
         }
-
-
-
-
     }
-
 }
-shootForTheWin(["24 50 36 70",
-    "0",
-    "4",
-    "3",
-    "1",
-    "End"])
+//shootForTheWin(["24 50 36 70", "0", "4", "3", "1", "End"])
+shootForTheWin(["30 30 12 60 54 66", "5", "2", "4", "0", "End"])
+
