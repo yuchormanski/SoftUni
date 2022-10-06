@@ -7,10 +7,9 @@ function shootForTheWin(valueArray) {
     let counter = 0;
 
     for (let i = 0; i < arrayLength; i++) {
-        //TODO: when "End"
+        // when "End"
         if (indexTargets[i] === 'End') {
             let endResult = targets.join(' ');
-
             return console.log(`Shot targets: ${counter} -> ${endResult}`);
         }
         let index = Number(indexTargets[i]);
@@ -23,11 +22,8 @@ function shootForTheWin(valueArray) {
             targets[index] = -1;
             counter++;
         }
-
-
         // manipulation over other targets
         for (let j = 0; j < targets.length; j++) {
-
             let nextTarget = targets[j];
 
             // Reduce or Increase values
