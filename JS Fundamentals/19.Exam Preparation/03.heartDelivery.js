@@ -50,46 +50,51 @@ Input	                 Output	                                Comments
 
   */
 function heartDelivery(valentinesArray) {
-  let arrKeeper = valentinesArray.slice(0,1);
-  arrKeeper  = arrKeeper.shift().split('@').map(Number);
   let neighborhood = valentinesArray.shift().split('@').map(Number);
-  
-  let commands = valentinesArray.slice(0);
-  let index;
-  let newIndex;
-  let notVisitedHouse = 0;
-  for (let i = 0; i <= valentinesArray.length; i++) {
-    let currentHouse = neighborhood[i];
-    let jump = commands.shift().split(' ');
-    let step = Number(jump[1]);
-    let isVisited = true;
-    
-    //TODO: when reaching Love
-    if (jump[0] === "Love!") {
-      console.log(`Cupid's last position was ${newIndex}.`);
-      break;
-    }
-    index = neighborhood.indexOf(currentHouse);
-    if (currentHouse === 0) {
-      console.log(`Place ${index} already had Valentine's day."`);
-    } else {
-      newIndex = index + step;
-      neighborhood[newIndex] -= 2;
+  let index = 0;
+  let target = 0;
 
-      // IF when reaching 0
-      if (neighborhood[newIndex] === 0) {
-        console.log(`Place ${newIndex} has Valentine's day." `);
+  for (let command of valentinesArray) {
+    //IF reached the last command 'love'
+    if (command === 'Love!') { return love() }
+
+    let splitted = command.split(' ');
+    let step = Number(splitted[1]);
+    target = index++ + step;
+
+    // IF going outside of the array
+    if (target >= neighborhood.length) {
+      target = 0;
+    }
+
+    // Current house manipulation
+    if (neighborhood[target] === 0) {
+      index = 0;
+      console.log(`Place ${target} already had Valentine's day.`);
+    } else {
+      neighborhood[target] -= 2;
+      if (neighborhood[target] === 0) {
+        console.log(`Place ${target} has Valentine's day.`);
       }
-    } 
-  }
-  for(let el = 0; el < arrKeeper.length; el++){
-    if(arrKeeper[el] === neighborhood[el]) {
-      isVisited = false;
-      notVisitedHouse++;
     }
   }
-  if(!isVisited){
-      console.log(`Cupid has failed ${notVisitedHouse} places."`);
+  //IF reached the last command 'love'
+  function love() {
+    let response = '';
+    let counter = 0;
+    for (let count of neighborhood) {
+      if (count > 0) {
+        counter++;
+      }
     }
+    if (counter > 0) {
+      response = `Cupid has failed ${counter} places.`;
+    } else {
+      response = `Mission was successful.`
+    }
+    let report = `Cupid's last position was ${target}.\n${response}`
+    return console.log(report);
+  }
 }
-heartDelivery(["10@10@10@2", "Jump 1", "Jump 2", "Love!"])
+//heartDelivery(["10@10@10@2", "Jump 1", "Jump 2", "Love!"])
+heartDelivery(["2@4@2", "Jump 2", "Jump 2", "Jump 8", "Jump 3", "Jump 1", "Love!"])
