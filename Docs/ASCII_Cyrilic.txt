@@ -1,34 +1,34 @@
-char	code	description
-===========================
-А	1040
-Я	1072
-а	1072	lowercase а
-б	1073
-в	1074
-г
-д
-е
-ж
-з
-и
-й
-к
-л
-м
-н
-о
-п
-р
-с
-т
-у
-ф
-х
-ц
-ч
-ш
-щ
-ъ
-ь
-ю	1102
-я	1103
+char	code	description		            char	code	description
+===========================			        ===========================		
+а	    1072	lowercase а		            А	    1040	
+б	    1073	lowercase	                Б	    1041	
+в	    1074	lowercase	                В	    1042	
+г	    1075	lowercase	                Г	    1043	
+д	    1076	lowercase	                Д	    1044	
+е	    1077	lowercase	                Е	    1045	
+ж	    1078	lowercase	                Ж	    1046	
+з	    1079	lowercase	                З	    1047	
+и	    1080	lowercase	                И	    1048	
+й	    1081	lowercase	                Й	    1049	
+к	    1082	lowercase		            К	    1050	
+л	    1083	lowercase		            Л	    1051	
+м	    1084	lowercase		            М	    1052	
+н	    1085	lowercase		            Н	    1053	
+о	    1086	lowercase		            О	    1054	
+п	    1087	lowercase		            П	    1055	
+р	    1088	lowercase		            Р	    1056	
+с	    1089	lowercase		            С	    1057	
+т	    1090	lowercase		            Т	    1058	
+у	    1091	lowercase		            У	    1059	
+ф	    1092	lowercase		            Ф	    1060	
+х	    1093	lowercase		            Х	    1061	
+ц	    1094	lowercase		            Ц	    1062	
+ч	    1095	lowercase		            Ч	    1063	
+ш	    1096	lowercase		            Ш	    1064	
+щ	    1097	lowercase		            Щ	    1065	
+ъ	    1098	lowercase		            Ъ	    1066	
+ь	    1099	lowercase		            Ы	    1067	
+ю	    1102	lowercase		            Ь	    1068	
+я	    1103	lowercase		            Э	    1069	
+	    			                        Ю	    1070	
+	    			                        Я	    1071	

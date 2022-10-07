@@ -51,29 +51,28 @@ Input                                                   Output
 function treasureHunt(chest) {
     let treasure = chest.slice(0, 1).shift().split('|');
     let treasureQty = treasure.length;
-    let commands = chest.slice(1)
-
+    let commands = chest.slice(1);
     for (let command of commands) {
 
         // IF Yohoho
         if (command === "Yohoho!") {
-                //At end sum of left items length
+            //At end sum of left items length
             if (treasure.length !== 0) {
                 let treasureLeftSum = 0;
                 for (let k = 0; k < treasure.length; k++) {
                     treasureLeftSum += treasure[k].length;
                 }
-    
+
                 let avg = treasureLeftSum / treasureQty
-                console.log(`Average treasure gain: ${avg.toFixed(2)} pirate credits.`);
+                return console.log(`Average treasure gain: ${avg.toFixed(2)} pirate credits.`);
             } else {
-                console.log("Failed treasure hunt.");
+                return console.log("Failed treasure hunt.");
             }
         }
 
         command = command.split(" ");
         let doIt = command[0];
-        let index = command[1];
+        let index = Number(command[1]);
 
         //IF command  = "Loot"
         if (doIt === "Loot") {
@@ -86,8 +85,7 @@ function treasureHunt(chest) {
         }
         //IF command = "Drop {index}":
         if (doIt === "Drop") {
-            index = Number(index);
-            if (index >= 0 || index < treasure.length) {
+            if (index >= 0 && index < treasure.length) {
                 let changePosition = treasure.splice(index, 1).join('');
                 treasure.push(changePosition);
             }
@@ -95,11 +93,12 @@ function treasureHunt(chest) {
 
         //IF command = "Steal {count}"
         if (doIt === "Steal") {
-            index = Number(index);
             let stealItem = [];
-            let stealed = '';
-            if (index >= 0 || index < treasure.length) {
-                for (let j = index; j > 0; j--) {
+            if (index >= 0) {
+                if (index > treasure.length) {
+                    index = treasure.length;
+                }
+                for (let j = 0; j < index; j++) {
                     stealItem.unshift(treasure.pop())
                 }
                 console.log(stealItem.join(', '));
@@ -107,15 +106,15 @@ function treasureHunt(chest) {
         }
     }
 }
-// treasureHunt(["Gold|Silver|Bronze|Medallion|Cup",
-//     "Loot Wood Gold Coins",
-//     "Loot Silver Pistol",
-//     "Drop 3",
-//     "Steal 3",
-//     "Yohoho!"])
-treasureHunt(["Diamonds|Silver|Shotgun|Gold",
+treasureHunt(["Gold|Silver|Bronze|Medallion|Cup",
+    "Loot Wood Gold Coins",
+    "Loot Silver Pistol",
+    "Drop 3",
+    "Steal 3",
+    "Yohoho!"])
+/* treasureHunt(["Diamonds|Silver|Shotgun|Gold",
     "Loot Silver Medals Coal",
     "Drop -1",
     "Drop 1",
     "Steal 6",
-    "Yohoho!"])
+    "Yohoho!"]) */
