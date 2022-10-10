@@ -1,28 +1,23 @@
 function numberModification(num) {
-    let [temp, average, counter, i, buff] = [0, 0, 0, 0, ''];
-    let numStr = num.toString().split('');
+    let average = 0;
+    let numToString = num.toString();
 
-    while (average < 5) {
-        
-        // if first digit of number is greater or equal to 5
-        if (Number(numStr[i]) >= 5) {
-            return console.log(num);
+    while (average <= 5) {
+        let numLength = numToString.length;
+        let sum = 0;
+        for (let i = 0; i < numToString.length; i++) {
+            sum += Number(numToString[i]);
         }
-        counter++;
-        // append a 9 to the end of the number
-        if (i >= numStr.length) {
-            temp += 9;
-            buff += `9`;
+        if (sum / numLength < 5) {
+            numToString += 9;
         } else {
-            temp += Number(numStr[i]);
-            buff += `${numStr[i++]}`;
+            average = sum / numLength
         }
-        //average value of all digits of temp
-        average = temp / counter;
     }
-    console.log(`${buff}`);
+    console.log(numToString);
 }
-numberModification(1)
+numberModification(5835)
+//numberModification(101)
 
 /* 12.	Number Modification
 Write a JS program that changes a number until the average of all its digits is not higher than 5. 
@@ -39,3 +34,4 @@ Input	                Output
 101	                    1019999
 5835	                5835
  */
+
