@@ -18,28 +18,28 @@ Hints
 •	Loop through the array using for…of a cycle and invoke .meow() method
  */
 
-function cats(catArray){
-    // TODO: Create the Cat class
+function classCat(arr) {
 
-	let cats = [];
     class Cat {
-        constructor(name, age) {
+        constructor(name,age) {
             this.name = name;
             this.age = age;
-          }
-    };
-	for (let i = 0; i < catArray.length; i++) {
-        	   let catData = catArray[i].split(' ');
-            cats.push(new Cat(catData[0], catData[1]));
-     }
-	// TODO: Iterate through cats[] and invoke .meow()
-        //using for…of loop
-        function meow(){
+        }
+ 
+        meow() {
             console.log(`${this.name}, age ${this.age} says Meow`);
         }
-        for(let cat of Cat){
-            cat.meow()
-        }
+    }
+ 
+    for (let i = 0; i < arr.length; i++) {
+        let catData = arr[i].split(' ');
+        let name, age;
+        [name, age] = [catData[0], catData[1]];
+        let cat = new Cat(name, age);
+ 
+        cat.meow();
+    }
+    
 }
 
-cats(['Mellow 2', 'Tom 5'])
+classCat(['Mellow 2', 'Tom 5'])
