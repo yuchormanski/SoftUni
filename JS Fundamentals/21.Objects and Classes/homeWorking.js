@@ -1,7 +1,7 @@
 function app() {
     let myObj = {
-        name:     "Nikolay",     // name => property(собственост), key: 'Nikolay' => value(стойност)
-        age:      46,
+        name: "Nikolay",     // name => property(собственост), key: 'Nikolay' => value(стойност)
+        age: 46,
     }
     myObj.town = "Sofia"  //възможно е добавяне на ключове и стойности към обекта
     console.table(myObj)
@@ -9,7 +9,7 @@ function app() {
 }
 //app()
 
-function sec(){
+function sec() {
     let myObj = {};
     myObj.name = "NIkolay";
     myObj.age = 46;
@@ -17,11 +17,12 @@ function sec(){
 }
 //sec()
 
-function personalInfo(firstName,lastName, age) {
-    let myObj = { };
-    myObj.firstName = firstName;
-    myObj.lastName = lastName,
-    myObj.age = age;
+function personalInfo(firstName, lastName, age) {
+    let myObj = {
+        firstName : firstName,
+        lastName : lastName,
+        age : age
+    };
     return myObj
 }
 //console.log(personalInfo("Nikolay","Yuchormanski",46));

@@ -19,17 +19,20 @@ Output
     country -> Bulgaria
     postCode -> 1000
  */
-function city(town) {
+function city() {
+    let town = {
+        name: "Sofia",
+        area: 492,
+        population: 1238438,
+        country: "Bulgaria",
+        postCode: "1000"
+    }
+
+
     for (let key of Object.keys(town)) {
         console.log(`${key} -> ${town[key]}`);
     }
 }
-city({
-    name: "Sofia",
-    area: 492,
-    population: 1238438,
-    country: "Bulgaria",
-    postCode: "1000"
-})
+city()
 
 
