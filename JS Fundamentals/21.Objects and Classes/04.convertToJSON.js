@@ -10,12 +10,16 @@ Input	                            Output
 Hints
 •	Use JSON.stringify() to parse the object to JSON string
  */
-function convertToJSON(name, lastName, hairColor){
-    let person = {
-        name,
+function toJSON(firstName, lastName, hairColor) {
+    let res = {
+        // firstName, // firstName : firstName,   -> ако ключовете се казват както параметрите може да се съкрати изписването
+        // lastName,
+        // hearColor
+        name: firstName,
         lastName,
         hairColor
-	};
-    console.log(JSON.stringify(person));
+    }
+    let resStr = JSON.stringify(res);
+    console.log(resStr);
 }
-convertToJSON('George', 'Jones', 'Brown')
+toJSON('George', 'Jones', 'Brown')

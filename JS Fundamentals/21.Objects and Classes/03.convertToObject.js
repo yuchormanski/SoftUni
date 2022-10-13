@@ -19,11 +19,22 @@ Hints
 •	Use JSON.parse() method to parse JSON string to an object
 
  */
-function convertToObject(json) {
-    let person = JSON.parse(json);
-    let entries = Object.entries(person);
-    for (let [key, value] of entries) {
-        console.log(`${key}: ${value}`);
+
+
+
+// function convertToObject(json) {
+//     let person = JSON.parse(json);
+//     let entries = Object.entries(person);
+//     for (let [key, value] of entries) {
+//         console.log(`${key}: ${value}`);
+//     }
+// }
+// convertToObject('{"name": "George", "age": 40, "town": "Sofia"}')
+
+function convert(JSONdata) {
+    let convertedData = JSON.parse(JSONdata);
+    for (let key of Object.keys(convertedData)) {
+        console.log(`${key}: ${convertedData[key]}`);
     }
 }
-convertToObject('{"name": "George", "age": 40, "town": "Sofia"}')
+convert('{"name": "George", "age": 40,"town": "Sofia"}')

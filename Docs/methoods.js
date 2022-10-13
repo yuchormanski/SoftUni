@@ -10,7 +10,7 @@ x.charCodeAt(); //
 ['a', 'b', 'c'].splice(1, 1, 'd'); // ['b','c','d'] // .splice(startIndex, elementQty,elementToAdd)
 ['a', 'b', 'c'].indexOf('b'); // 1
 ['a', 'b', 'c'].includes('c'); // true
-['a', 'b', 'c'].sort() //a,b,c
+['a', 'c', 'B'].sort((a, b) => a.localeCompare(b)); //a,b,c
 [3, 5, 6, 8].find((n) => n % 2 === 0); // 6
 [3, 5, 6, 8].findIndex((n) => n % 2 === 0); // 2
 [3, 5, 6, 8].map((n) => n * 2); // [6, 10, 12, 16]
@@ -20,7 +20,7 @@ x.charCodeAt(); //
 [3, 5, 6, 8].some((n) => n > 6); // true
 [3, 5, 6, 8].reverse(); //[8, 6, 5, 3]
 [3, 5, 6, 8].at(-2); // 7
-[3, 6, 5, 8].sort(function (a, b) { return b - a }); // [8,6,5,3]
+[3, 6, 5, 8].sort((a, b) => b - a ); // [8,6,5,3]
 xyz.replace('y', 'Y'); // xYz
 xyz.split(','); // [x, y, z]
 x.repeat(3); // xxx
@@ -28,3 +28,4 @@ xyz.includes('y'); // true
 xyz.length; // 3
 xyz.search('y'); // 1 // .search(element) -> return index
 xyz.search('y',2); // .search(element, startIndex) -> return index
+
