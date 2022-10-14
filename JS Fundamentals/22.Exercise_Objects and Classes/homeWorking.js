@@ -53,7 +53,6 @@ function toJSON(firstName, lastName, hairColor) {
 
 
 function cat(catArray) {
-
     class Cats {
         constructor(name, age) {
             this.name = name;
@@ -72,10 +71,36 @@ function cat(catArray) {
 
         cat.meow();
     }
-
-
 }
-cat(['Mellow 2', 'Tom 5'])
+//cat(['Mellow 2', 'Tom 5'])
+
+function songs(listArray) {
+
+    class Song {
+        constructor(type, name, time) {
+            this.type = type;
+            this.name = name;
+            this.time = time;
+        }
+    }
+    let songs = [];
+    let numberOfSongs = listArray.shift();
+    let typeSong = listArray.pop();
+
+    for (let i = 0; i < numberOfSongs; i++) {
+        let [type, name, time] = listArray[i].split('_');
+        let song = new Song(type, name, time)
+        songs.push(song);
+    }
+
+    if(typeSong === 'all'){
+        songs.forEach((i) => console.log(i.name));
+    } else {
+        let filtered = songs.filter((i) => i.type === typeSong);
+        filtered.forEach((i) => console.log(i.name));
+    }
+}
+songs([2,'like_Replay_3:15', 'ban_Photoshop_3:48','all'])
 
 
 

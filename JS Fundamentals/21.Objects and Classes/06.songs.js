@@ -39,7 +39,6 @@ function songs(listArray) {
             this.type = type;
             this.name = name;
             this.time = time;
-
         }
     }
     let songs = [];
@@ -52,8 +51,6 @@ function songs(listArray) {
         songs.push(song);
     }
 
-
-    
     if(typeSong === 'all'){
         songs.forEach((i) => console.log(i.name));
     } else {
@@ -61,7 +58,4 @@ function songs(listArray) {
         filtered.forEach((i) => console.log(i.name));
     }
 }
-songs([2,
-    'like_Replay_3:15',
-    'ban_Photoshop_3:48',
-    'all'])
+songs([2,'like_Replay_3:15', 'ban_Photoshop_3:48','all'])
