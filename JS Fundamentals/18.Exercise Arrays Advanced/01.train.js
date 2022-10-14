@@ -31,9 +31,9 @@ Input	                        Output
 function train(mainArray) {
     let wagons = mainArray.shift().split(' ').map(Number);
     let maxInWagon = mainArray.shift();
-
     maxInWagon = Number(maxInWagon);
     let passengers = 0;
+
     for (let i = 0; i < mainArray.length; i++) {
         let arrayElement = mainArray[i];
         let command = arrayElement.split(' ');
@@ -43,6 +43,7 @@ function train(mainArray) {
             wagons.push(addWagon);
         } else {
             passengers = Number(command[0]);
+            
             for (let j = 0; j < wagons.length; j++) {
                 let currentWagon = wagons[j];
                 if (currentWagon + passengers <= maxInWagon) {
@@ -63,11 +64,11 @@ train(['32 54 21 12 4 0 23',
     '10',
     '75'])
 
-train(['0 0 0 10 2 4',
-    '10',
-    'Add 10',
-    '10',
-    '10',
-    '10',
-    '8',
-    '6'])
+//train(['0 0 0 10 2 4',
+    // '10',
+    // 'Add 10',
+    // '10',
+    // '10',
+    // '10',
+    // '8',
+    // '6'])
