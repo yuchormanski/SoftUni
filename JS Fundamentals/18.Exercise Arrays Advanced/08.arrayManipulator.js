@@ -23,7 +23,7 @@ Input	                                                                          
 [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2],["sumPairs", "sumPairs", "addMany 0 -1 -2 -3", "print"]    [ -1, -2, -3, 6, 6, 6 ]
  */
 
-function arrayManipulator(mainArray, commandsArray) {
+/* function arrayManipulator(mainArray, commandsArray) {
   let arrayLength = commandsArray.length;
   let isPrint = false;
   let final = ``;
@@ -109,4 +109,58 @@ function arrayManipulator(mainArray, commandsArray) {
     }
   }
 }
-arrayManipulator([2, 2, 4, 2, 4,], ["add 1 4", "sumPairs", "print"]) 
+arrayManipulator([2, 2, 4, 2, 4,], ["add 1 4", "sumPairs", "print"])  */
+
+function arrayManipulator(mainArray, commandsArray) {
+
+  for(let i = 0; i < commandsArray.length; i++){
+    let currentCommand = commandsArray[i].split(' ');
+
+    if(currentCommand[0] === "add"){
+      mainArray.splice(currentCommand[1],0,currentCommand[2]);
+
+    } else if (currentCommand[0] === "addMany"){ 
+      currentCommand.shift();
+      let index = currentCommand.shift();
+      let k =0;
+      while(currentCommand.length !== 0){
+        let cur = currentCommand.shift();
+        mainArray.splice(index +k, 0, cur);
+        k++;
+      }
+    } else if(currentCommand[0] === "contains"){ 
+      currentCommand[1] = Number(currentCommand[1]);
+      if(mainArray.includes(currentCommand[1])){
+          console.log(mainArray.indexOf(currentCommand[1]));
+      } else {console.log(-1)}
+    }else if(currentCommand[0] === "remove"){
+      mainArray.splice(currentCommand[1],1);
+    }else if(currentCommand[0] === "shift"){
+      let times = currentCommand[1];
+      for(let d = 0; d < times; d++){
+        let taken = mainArray.shift();
+        mainArray.push(taken);
+      }
+    }else if(currentCommand[0] === "sumPairs"){
+      let copy = [];
+      for(let m = 0; m < mainArray.length; m+=2){
+        if(m === mainArray.length-1){
+          mainArray[m+1] = 0;
+        }
+        let cur = Number(mainArray[m])+ Number(mainArray[m+1])
+        copy.push(cur);
+      }
+      mainArray = copy;
+    }
+    if(currentCommand[0] === "print"){
+
+      let end = mainArray.map(Number).join(', ');
+      console.log(`[ ${end} ]`);
+      return
+    } 
+    
+  }
+}
+arrayManipulator([2, 2, 4, 2, 4],
+  ["add 1 4", "sumPairs", "print"]
+  ) 
