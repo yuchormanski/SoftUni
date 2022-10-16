@@ -20,9 +20,11 @@ input                                       output
  */
 
 function towns(inputData) {
+    //CREATE object
     let theTown = {};
 
     for (let el of inputData) {
+        // SETTING the object properties and values
         let [town, latitude, longitude] = el.split(' | ');
         theTown.town = town;
         theTown.latitude = Number(latitude).toFixed(2);
