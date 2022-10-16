@@ -48,62 +48,44 @@ Input                                                   Output
                                                         Failed treasure hunt.
                                                         
  */
-function treasureHunt(chest) {
-    let treasure = chest.slice(0, 1).shift().split('|');
-    let treasureQty = treasure.length;
-    let commands = chest.slice(1);
-    for (let command of commands) {
-
-        // IF Yohoho
-        if (command === "Yohoho!") {
-            //At end sum of left items length
-            if (treasure.length !== 0) {
-                let treasureLeftSum = 0;
-                for (let k = 0; k < treasure.length; k++) {
-                    treasureLeftSum += treasure[k].length;
-                }
-
-                let avg = treasureLeftSum / treasureQty
-                return console.log(`Average treasure gain: ${avg.toFixed(2)} pirate credits.`);
-            } else {
-                return console.log("Failed treasure hunt.");
-            }
+function treasureHunt(lootArray) {
+    let chest = lootArray.slice(0, 1).join('').split('|');
+    let sum = 0;
+    for (let i = 1; i < lootArray.length; i++) {
+        let element = lootArray[i].split(' ');
+        let command = element.shift();
+        if (command === 'Yohoho!') {
+            break;
         }
-
-        command = command.split(" ");
-        let doIt = command[0];
-        let index = Number(command[1]);
-
-        //IF command  = "Loot"
-        if (doIt === "Loot") {
-            for (let i = 1; i < command.length; i++) {
-                let item = command[i];
-                if (!treasure.includes(item)) {
-                    treasure.unshift(item);
+        if (command === 'Loot') {
+            for (let el of element) {
+                if (!chest.includes(el)) {
+                    chest.unshift(el);
                 }
             }
-        }
-        //IF command = "Drop {index}":
-        if (doIt === "Drop") {
-            if (index >= 0 && index < treasure.length) {
-                let changePosition = treasure.splice(index, 1).join('');
-                treasure.push(changePosition);
+        } else if (command === 'Drop') {
+            let index = Number(element);
+            if (index >= 0 && index < chest.length) {
+                let moveIt = chest.splice(index, 1).join('');
+                chest.push(moveIt);
             }
-        }
+        } else if (command === 'Steal') {
+            let count = Number(element);
+            let taken = chest.slice(-count);
+            chest.splice(-count);
+            console.log(taken.join(', '));
 
-        //IF command = "Steal {count}"
-        if (doIt === "Steal") {
-            let stealItem = [];
-            if (index >= 0) {
-                if (index > treasure.length) {
-                    index = treasure.length;
-                }
-                for (let j = 0; j < index; j++) {
-                    stealItem.unshift(treasure.pop())
-                }
-                console.log(stealItem.join(', '));
-            }
         }
+    }
+    for (let item of chest) {
+        sum += item.length;
+    }
+    let average = sum / chest.length;
+
+    if (chest.length > 0) {
+        console.log(`Average treasure gain: ${average.toFixed(2)} pirate credits.`);
+    } else {
+        console.log('Failed treasure hunt.');
     }
 }
 treasureHunt(["Gold|Silver|Bronze|Medallion|Cup",

@@ -22,6 +22,7 @@ Input                                                                           
 function storeProvision(currentStock, orderedProducts) {
     //create object
     let products = {};
+    
     // add items to object
     for(let i = 0; i < currentStock.length; i+=2){
         let item = currentStock[i]
