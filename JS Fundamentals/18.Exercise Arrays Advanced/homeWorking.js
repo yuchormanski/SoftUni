@@ -138,10 +138,10 @@ function pirates(lootArray) {
         } else if (command === 'Steal') {
             let count = Number(element);
 
-                let taken = chest.slice(-count);
-                chest.splice(-count);
-                console.log(taken.join(', '));
-            
+            let taken = chest.slice(-count);
+            chest.splice(-count);
+            console.log(taken.join(', '));
+
         }
     }
     for (let item of chest) {
@@ -155,9 +155,52 @@ function pirates(lootArray) {
         console.log('Failed treasure hunt.');
     }
 }
-pirates(["Gold|Silver|Bronze|Medallion|Cup",
-    "Loot Wood Gold Coins",
-    "Loot Silver Pistol",
-    "Drop 3",
-    "Steal 3",
-    "Yohoho!"])
+// pirates(["Gold|Silver|Bronze|Medallion|Cup",
+//     "Loot Wood Gold Coins",
+//     "Loot Silver Pistol",
+//     "Drop 3",
+//     "Steal 3",
+//     "Yohoho!"])
+
+
+/* function heartDelivery(inputData) {
+    let numArray = inputData.slice(0, 1).join('').split('@').map(Number);
+    let commands = inputData.slice(1);
+    let arrIndex = 0;
+    let target = arrIndex;
+    let counter = 0;
+    for (let command of commands) {
+        let [jump, index] = command.split(' ');
+        if (jump === "Love!") {
+            console.log(`Cupid's last position was ${target}.`);
+            for (let el of numArray) {
+                el > 0 ? counter++ : null;
+            }
+            counter > 0 ? console.log(`Cupid has failed ${counter} places.`) : console.log('Mission was successful.');
+            return;
+        }
+        index = Number(index);
+        
+        target = arrIndex + index;
+        if (target >= numArray.length) {
+            target = 0;
+        }
+        arrIndex = target;
+        if (numArray[target] > 0) {
+            numArray[target] -= 2;
+            if (numArray[target] <= 0) {    
+                console.log(`Place ${target} has Valentine's day.`);
+            }
+        } else {
+            console.log(`Place ${target} already had Valentine's day.`);
+        }
+    }
+}
+heartDelivery(["2@4@2",
+    "Jump 2",
+    "Jump 2",
+    "Jump 8",
+    "Jump 3",
+    "Jump 1",
+    "Love!"]) */
+
