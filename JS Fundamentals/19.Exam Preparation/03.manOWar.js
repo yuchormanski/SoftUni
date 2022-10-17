@@ -45,84 +45,88 @@ Input
 https://judge.softuni.org/Contests/Practice/Index/1773#2
  */
 
-function manOWar(battle) {
-    let pirateShip = battle.shift().split('>').map(Number);
-    let warship = battle.shift().split('>').map(Number);
-    let maxHealth = Number(battle.shift());
-    let battleLength = battle.length;
-    let count = 0;
-    let pirateSum = 0;
-    let warshipSum = 0;
-    let isDead = false;
+function manOWar(data) {
+    let pirateShip = data.shift().split('>').map(Number);
+    let warship = data.shift().split('>').map(Number);
+    let maxCapacity = Number(data.shift());
 
-    for (let i = 0; i < battleLength; i++) {
-        let command = battle[i].split(' ');
-        let action = command[0];
-        let indexOne = Number(command[1]);
-        let indexTwo = Number(command[2]);
-        let indexThree = Number(command[3]);
+    for (let i = 0; i < data.length; i++) {
+        let current = data[i].split(' ');
+        let command = current[0];
 
-        if (action === "Retire") { retire() };
-        if (action === "Fire") { fire() };
-        if (action === "Defend") { defend() };
-        if (action === "Repair") { repair() };
-        if (action === "Status") { status() };
-        if (isDead) { return };
-
-        function retire() {
-            for (let p = 0; p < pirateShip.length; p++) {
-                pirateSum += pirateShip[p];
-            }
-            for (let w = 0; w < warship.length; w++) {
-                warshipSum += warship[w];
-            }
-            console.log(`Pirate ship status: ${pirateSum}\nWarship status: ${warshipSum}`);
-            return;
-        }
-
-        function fire() {
-            // IF the index is valid 
-            if (indexOne >= 0 && indexOne < warship.length) {
-                warship[indexOne] -= indexTwo;
-                if (warship[indexOne] <= 0) {
-                    console.log(`You won! The enemy ship has sunken.`);
-                    isDead = true;
+        //IF Fire
+        if (command === 'Fire') {
+            let index = Number(current[1]);
+            let damage = Number(current[2]);
+            // IF index is valid
+            if (index < 0 || index >= warship.length) {
+                continue;
+            } else {
+                warship[index] -= damage;
+                if (warship[index] <= 0) {
+                    console.log('You won! The enemy ship has sunken.');
                     return;
                 }
             }
-        }
-
-        function defend() {
-            // IF the index is valid 
-            if ((indexOne >= 0 && indexOne < pirateShip.length) && (indexTwo >= indexOne && indexTwo < pirateShip.length)) {
-                for (let j = indexOne; j <= indexTwo; j++) {
-                    pirateShip[j] -= indexThree;
-                    if (pirateShip[j] <= 0) {
-                        console.log(`You lost! The pirate ship has sunken.`);
-                        isDead = true;
+        } //IF Defend
+        else if (command === 'Defend') {
+            let [startIndex, endIndex, damage] = [Number(current[1]), Number(current[2]), Number(current[3])];
+            // IF index is valid
+            if (startIndex >= 0 && endIndex < pirateShip.length) {
+                for (let section = startIndex; section <= endIndex; section++) {
+                    pirateShip[section] -= damage;
+                    if (pirateShip[section] <= 0) {
+                        console.log('You lost! The pirate ship has sunken.');
                         return;
                     }
                 }
             }
         }
 
-        function repair() {
-            // IF the index is valid 
-            if (indexOne >= 0 && indexOne < pirateShip.length) {
-                pirateShip[indexOne] += indexTwo;
-                if (pirateShip[indexOne] > maxHealth) {
-                    pirateShip[indexOne] = maxHealth;
+        // Repair
+        else if (command === 'Repair') {
+            let index = Number(current[1]);
+            let health = Number(current[2]);
+            // IF index is valid
+            if (index >= 0 && index < pirateShip.length) {
+                // IF exceeds max Health
+                if ((pirateShip[index] + health) > maxCapacity) {
+                    pirateShip[index] = maxCapacity
+                } else {
+                    pirateShip[index] += health;
                 }
             }
+
         }
 
-        function status() {
+        //Status
+        else if (command === 'Status') {
+            let count = 0;
             for (let k = 0; k < pirateShip.length; k++) {
-                if (pirateShip[k] < maxHealth * 0.20) {
-                    count++;
+                let currentHealth = pirateShip[k];
+                //IF lower than 20% of max Health
+                if (currentHealth < maxCapacity * 0.2) {
+                    count++
                 }
             }
             console.log(`${count} sections need repair.`);
+        }
+
+        // Retire
+        else if (command === 'Retire') {
+            let pSum = 0;
+            let wSum = 0;
+            // pirate sections sum    TODO: learn reduce()
+            for (let pSection of pirateShip) {
+                pSum += pSection;
+            }
+            // warship sections sum    TODO: learn reduce()
+            for (let wSection of warship) {
+                wSum += wSection;
+            }
+            console.log(`Pirate ship status: ${pSum}`);
+            console.log(`Warship status: ${wSum}`);
+            return;
         }
     }
 }
