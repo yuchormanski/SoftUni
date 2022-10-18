@@ -1,35 +1,38 @@
-function movingTarget(data) {
-    let targets = data.shift().split(' ').map(Number);
-    for (let current of data) {
-        current = current.split(' ');
-        let command = current[0];
-        if (command === 'End') {
-            let output = targets.join('|');
-            console.log(output);
-            return;
-        }
-        let index = Number(current[1]);
-        if (command === 'Shoot') {
-            if (index >= 0 && index < targets.length) {
-                    targets[index] -= Number(current[2]);
-                    if (targets[index] <= 0) {
-                        targets.splice(index, 1);
-                    }   
+function movingTarget(mainArray) {
+    let targets = mainArray.shift().split(' ');
+
+    for (let i = 0; i < mainArray.length; i++) {
+        let command = mainArray[i].split(' ');
+        let action = command[0];
+        let act = Number(command[1]);
+        let power = Number(command[2]);
+
+        // IF command 'End'
+        if (action === "End") {
+            return console.log(targets.join('|'));
+            
+        } else if (action === 'Shoot') {
+            if (targets.length - 1 >= act) {
+                if (targets[act] - power <= 0) {
+                    targets.splice(act, 1);
+                } else {
+                    targets[act] -= power;
+                }
             }
-        } else if (command === 'Add') {
-            if (index >= 0 && index < targets.length) {
-                targets[index] += Number(current[2]);
+
+        } else if (action === 'Add') {
+            if (targets.length - 1 >= act) {
+                targets.splice(act, 0, power)
             } else {
-                console.log('Invalid placement!');
+                console.log(`Invalid placement!`);
             }
-        } else if (command === 'Strike') {
-            let power = Number(current[2]);
-            let start = index - power;
-            let end = power * 2 + 1;
-            if (start >= 0 && end < targets.length) {
-                targets.splice(start, end);
+
+        } else if (action === 'Strike') {
+            if (targets.length - 1 < act + power || act - power < 0) {
+                console.log("Strike missed!");
             } else {
-                console.log('Strike missed!');
+                let sIndex = act - power;
+                targets.splice(sIndex, power * 2 + 1)
             }
         }
     }
