@@ -7,7 +7,7 @@ x.charCodeAt(); //
 ['a', 'b'].concat('c'); // ['a','b','c']
 ['a', 'b', 'c'].join('-'); // 'a-b-c'
 ['a', 'b', 'c'].slice(1); // ['b','c']
-['a', 'b', 'c'].splice(1, 1, 'd'); // ['b','c','d'] // .splice(startIndex, elementQty,elementToAdd)
+['a', 'b', 'c'].splice(1, 1, 'd'); // ['a','d','c'] // .splice(startIndex, elementQty,elementToAdd)
 ['a', 'b', 'c'].indexOf('b'); // 1
 ['a', 'b', 'c'].includes('c'); // true
 ['a', 'c', 'B'].sort((a, b) => a.localeCompare(b)); //a,b,c
