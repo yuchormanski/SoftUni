@@ -28,5 +28,5 @@ function lastKNumbersSequence(n, k) {
     console.log(sequence.join(" "));
 }
 lastKNumbersSequence(6, 3)
-lastKNumbersSequence(8,2)
-lastKNumbersSequence(9,5)
+lastKNumbersSequence(8, 2)
+lastKNumbersSequence(9, 5)
