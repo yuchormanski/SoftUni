@@ -7,6 +7,8 @@ Input	            Output
  ['20 50 10',
  '8 33 145']
                     145		
+
+                     // judge input - [ [ 3, 5, 7, 12 ], [ -1, 4, 33, 2 ], [ 8, 3, 0, 4 ] ]
  ['3 5 7 12',
  '-1 4 33 2',
  '8 3 0 4']	        33
@@ -14,30 +16,19 @@ Input	            Output
 function biggestElement(matrix) {
     let matrixLength = matrix.length;
     let biggest = Number.MIN_SAFE_INTEGER;
-    let numR = 0;
-    let numC = 0;
 
-    // for (let row = 0; row < matrixLength; row++) {
-    //     numR = matrix[row].split(' ').map(Number)
-    //     let rowLength = numR.length;
-    //     for (let column = 0; column < rowLength; column++) {
-    //         numC = numR[column]
-    //         numC > biggest ? biggest = numC : null;
-    //     }
-
-
-
-    for(let i =0 i < matrix.length; i++){
-
-        for(let j = 0; j < i.length; j++){}
-
-
+    for (let row = 0; row < matrixLength; row++) {
+        let numR = matrix[row];
+        let rowLength = numR.length;
+        for (let column = 0; column < rowLength; column++) {
+            let numC = numR[column]
+            numC > biggest ? biggest = numC : null;
+        }
     }
     console.log(biggest);
 }
-biggestElement([3 5 17 12 91 5,
-                -1 7 4 33 6 22,
-                1 8 99 3 10 43])
+biggestElement([[3, 5, 7, 12],
+[-1, 4, 33, 2],
+[8, 3, 0, 4]])
 
 
-                judge input - [ [ 3, 5, 7, 12 ], [ -1, 4, 33, 2 ], [ 8, 3, 0, 4 ] ]
