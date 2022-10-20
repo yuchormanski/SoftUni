@@ -24,7 +24,8 @@ function biggestElement(matrix) {
     //         numC = numR[column]
     //         numC > biggest ? biggest = numC : null;
     //     }
-    // }
+
+
 
     for(let i =0 i < matrix.length; i++){
 
