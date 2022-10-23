@@ -303,4 +303,10 @@ heartDelivery(["2@4@2",
     "Repair 3 18",
     "Retire"])
      */
-    
+
+
+function myLife(lifeStart) {
+    lifeStart % 2 === 0 ? console.log("I'm coding"): console.log("I'm cycling");;
+    myLife(lifeStart + 1);
+}
+myLife(0)
