@@ -111,7 +111,7 @@ Input	                                                                          
 }
 arrayManipulator([2, 2, 4, 2, 4,], ["add 1 4", "sumPairs", "print"])  */
 
-function arrayManipulator(mainArray, commandsArray) {
+/* function arrayManipulator(mainArray, commandsArray) {
 
   for(let i = 0; i < commandsArray.length; i++){
     let currentCommand = commandsArray[i].split(' ');
@@ -163,4 +163,79 @@ function arrayManipulator(mainArray, commandsArray) {
 }
 arrayManipulator([2, 2, 4, 2, 4],
   ["add 1 4", "sumPairs", "print"]
+  )  */
+
+function arrayManipulator(mainArray, commandsArray) {
+
+  for (let i = 0; i < commandsArray.length; i++) {
+    let commands = commandsArray[i].split(' ');
+    let command = commands.shift();
+
+    if (command === 'add') {
+      let index = Number(commands[0]);
+      //IF mainArray index is valid
+      if (mainArray[index]) {
+        let element = Number(commands[1]);
+        mainArray.splice(index, 0, element);
+      }
+      continue;
+    }
+
+    else if (command === 'addMany') {
+      let index = Number(commands.shift());
+      //IF mainArray index is valid
+      // if (mainArray[index]) {
+        for (let j = index; commands.length > 0; j++) {
+          mainArray.splice(j, 0, Number(commands.shift()));
+        }
+      // }
+      continue;
+    }
+
+    else if(command === 'contains'){
+      let elIndex = Number(commands[0]);
+      if(mainArray.includes(elIndex)){
+        console.log(mainArray.indexOf(elIndex));
+      } else {
+        console.log(-1);
+      }
+      continue;
+    }
+
+    else if(command === 'remove'){
+      let index = Number(commands.shift());
+      mainArray.splice(index,1);
+    }
+
+    else if(command === 'shift'){
+      let position = Number(commands[0]);
+      for(let k = 0; k < position; k++){
+        let buff = mainArray.splice(0,1).join();
+        mainArray.push(Number(buff));
+      }
+    }
+
+    else if(command === 'sumPairs'){
+      for(let l = 0; l < mainArray.length; l++){
+        let el1 = mainArray[l];
+        let el2 = mainArray[l + 1];
+        if (!el2){el2 = 0};
+        let sum = el1 + el2;
+        mainArray.splice(l,2,sum);
+      }
+    }
+
+
+    else if (command === 'print'){
+      console.log(`[ ${mainArray.join(', ')} ]`);
+      return;
+    }
+  }
+
+}
+arrayManipulator([1, 2, 3, 4, 5],
+  ['addMany 5 9 8 7 6 5', 'contains 15', 'remove 3', 'shift 1', 'print']
   ) 
+
+  //-1
+// [ 2, 3, 5, 9, 8, 7, 6, 5, 1 ]
