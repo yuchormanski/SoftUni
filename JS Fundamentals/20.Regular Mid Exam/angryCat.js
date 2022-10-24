@@ -1,14 +1,14 @@
 function angryCat(items, entryPoint, valuable) {
-    let left = items.slice(0, entryPoint - 1);
-    let right = items.slice(entryPoint);
+    let left = items.slice(0, entryPoint);
+    let right = items.slice(entryPoint+1);
     let sumL = 0;
     let sumR = 0;
 
     if (valuable === "expensive") {
-        sumL = left.filter(n => n >= items[entryPoint+1]).reduce((el,x) => el + x);
+        sumL = left.filter(n => n >= items[entryPoint]).reduce((el,x) => el + x);
         sumR = right.filter(n => n >= items[entryPoint]).reduce((el,x) => el + x);
     } else if (valuable === "cheap"){
-        sumL = left.filter(n => n < items[entryPoint+1]).reduce((el,x) => el + x);
+        sumL = left.filter(n => n < items[entryPoint]).reduce((el,x) => el + x);
         sumR = right.filter(n => n < items[entryPoint]).reduce((el,x) => el + x);
     }
     if(sumL >= sumR){
