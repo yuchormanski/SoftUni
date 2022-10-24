@@ -64,18 +64,53 @@ function schoolLibrary(data) {
     let bookShelf = data.slice(0, 1).join().split('&');
     let commands = data.slice(1)
     for (const el of commands) {
-        let [command, value] = el.split(' | ');
+        let [command, value1, value2] = el.split(' | ');
         // "Add Book | {book name}"
+        if (command === "Add Book") {
+            !bookShelf.includes(value1) ? bookShelf.unshift(value1) : null;
+        }
         // "Take Book | {book name}"
+        else if (command === "Take Book") {
+            bookShelf = bookShelf.filter((n) => n !== value1);
+        }
         // "Swap Books | {book1} | {book2}"
+        else if (command === "Swap Books") {
+            if (bookShelf.includes(value1) && bookShelf.includes(value2)) {
+                let index1 = bookShelf.findIndex(n => n === value1);
+                let index2 = bookShelf.findIndex(n => n === value2);
+                let temp = bookShelf[index1];
+                bookShelf[index1] = bookShelf[index2];
+                bookShelf[index2] = temp;
+            }
+        }
         // "Insert Book | {book name}"
+        else if (command === "Insert Book") {
+            !bookShelf.includes(value1) ? bookShelf.push(value1) : null;
+        }
         // "Check Book | {index}"
+        else if (command === "Check Book") {
+            bookShelf[value1] ? console.log(bookShelf[value1]) : null;
+        }
         // "Done"
+        else if (command === "Done") {
+            console.log(bookShelf.join(', '));
+            return;
+        }
     }
-
 }
 schoolLibrary(["Don Quixote&The Great Gatsby&Moby Dick",
     "Add Book | Ulysses",
     "Take Book | Don Quixote",
     "Insert Book | Alice's Adventures in Wonderland",
+    "Done"])
+
+schoolLibrary(["Anna Karenina&Heart of Darkness&Catch-22&The Stranger",
+    "Add Book | Catch-22",
+    "Swap Books | Anna Karenina | Catch-22",
+    "Take Book | David Copperfield",
+    "Done"])
+
+schoolLibrary(["War and Peace&Hamlet&Ulysses&Madame Bovary",
+    "Check Book | 2",
+    "Swap Books | Don Quixote | Ulysses",
     "Done"])
