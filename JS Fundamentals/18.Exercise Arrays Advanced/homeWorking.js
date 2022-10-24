@@ -305,8 +305,56 @@ heartDelivery(["2@4@2",
      */
 
 
-function myLife(lifeStart) {
-    lifeStart % 2 === 0 ? console.log("I'm coding"): console.log("I'm cycling");;
-    myLife(lifeStart + 1);
+// function myLife(lifeStart) {
+//     lifeStart % 2 === 0 ? console.log("I'm coding"): console.log("I'm cycling");;
+//     myLife(lifeStart + 1);
+// }
+// myLife(0)
+
+function numbers(input) {
+    let sequence = input.shift()
+    .split(' ')
+    .map(Number);
+ 
+    while (input.length !== 0) {
+ 
+        let line = input.shift().split(' ');
+        let command = line[0];
+        let number = Number(line[1]);
+        let secondNumber = Number(line[2]);
+ 
+        if (command === 'Finish') {
+            break;
+        }
+ 
+        switch (command) {
+            case 'Add':
+                sequence.push(number);
+                break;
+
+            case 'Remove':
+                let index = sequence.indexOf(number);
+                if (index > -1) {
+                    sequence.splice(index, 1);
+                }
+                break;
+ 
+            case 'Replace':
+                let i = sequence.indexOf(number);
+                if (i > -1) {
+                    sequence.splice(i, 1, secondNumber);
+                }
+                break;    
+ 
+            case 'Collapse':
+                sequence = sequence.filter((x) => x >= number);
+                break;
+        }
+    }
+    console.log(sequence.join(' '));
 }
-myLife(0)
+ 
+// numbers(["4 4 4","Add 1","Collapse 3","Replace 4 10"]);
+// numbers((["1 4 5 19","Add 1","Remove 4","Finish"]));
+// numbers(["5 9 70 -56 9 9","Replace 9 10","Remove 9","Finish"]);
+// numbers(["1 20 -1 10","Collapse 10","Finish"]);
