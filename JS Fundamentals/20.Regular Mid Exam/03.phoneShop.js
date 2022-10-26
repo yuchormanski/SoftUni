@@ -46,8 +46,9 @@ function phoneShop(listOfPhones) {
         }
         // o	"Bonus phone - {oldPhone}:{newPhone}"
         else if (command === 'Bonus phone') {
-            let interval = phone.replace(':',' ')
-            let [oldPhone, newPhone] = interval.split(' ');
+            // let interval = phone.replace(':',' ')
+            // let [oldPhone, newPhone] = interval.split(' ');
+            let [oldPhone, newPhone] = phone.split(':');
             if (inStore.includes(oldPhone)) {
                 let index = inStore.indexOf(oldPhone);
                 inStore.splice(index + 1, 0, newPhone);
@@ -68,8 +69,8 @@ function phoneShop(listOfPhones) {
         }
     }
 }
-phoneShop(["SamsungA50, MotorolaG5, IphoneSE",    "Add - Iphone10",    "Remove - IphoneSE",    "End"])
+// phoneShop(["SamsungA50, MotorolaG5, IphoneSE",    "Add - Iphone10",    "Remove - IphoneSE",    "End"])
 phoneShop(["HuaweiP20, XiaomiNote","Remove - Samsung","Bonus phone - XiaomiNote:Iphone5","End"])
-phoneShop(["SamsungA50, MotorolaG5, HuaweiP10","Last - SamsungA50","Add - MotorolaG5","End"])
+// phoneShop(["SamsungA50, MotorolaG5, HuaweiP10","Last - SamsungA50","Add - MotorolaG5","End"])
 
 
