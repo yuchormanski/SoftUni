@@ -1,7 +1,7 @@
 function ladybug(mainArray) {
     let fieldLength = mainArray.shift();
     let moves = mainArray.shift().split(' ').join('');
-    let [field, , startIndex, direction, targetIndex] = [[], 0, '', 0];
+    let [field,startIndex, direction, targetIndex] = [[], 0, '', 0];
     let bug;
 
     makeField(); //   field creation
@@ -68,8 +68,8 @@ function ladybug(mainArray) {
         return field.splice(startIndex, 1, 0); //free startIndex place
     }
 }
-ladybug([3, '0 1', '-1 right 1', '0 right 1', '2 right 1', '1 right 5'])
-//ladybug([3, '0 1', '0 right 1', '2 right 1'])
+// ladybug([3, '0 1', '-1 right 1', '0 right 1', '2 right 1', '1 right 5'])
+ladybug([3, '0 1', '0 right 1', '2 right 1'])
 //ladybug([3, '0 1 2', '0 right 1', '1 right 1', '2 right 1'])
 //ladybug([5, '3', '2 right 1', '3 left 2', '1 left -2'])
 
