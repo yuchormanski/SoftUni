@@ -1,5 +1,6 @@
 function mathPower(n, power) {
     console.log(Math.pow(n, power));
+    console.log(n**power);
 }
 mathPower(3, 4)
 
