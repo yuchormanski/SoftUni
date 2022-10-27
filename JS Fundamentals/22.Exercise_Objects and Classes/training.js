@@ -91,22 +91,5 @@ function storeProvision(currentStock, ordered) {
         inStore.forEach((product) => console.log(`${product.item} -> ${product.qty}`))
     }
 }
-storeProvision(['Chips', '5',
-    'CocaCola', '9',
-    'Bananas', '14',
-    'Pasta', '4',
-    'Beer', '2'],
-
-    ['Flour', '44',
-        'Oil', '12',
-        'Pasta', '7',
-        'Tomatoes', '70',
-        'Bananas', '30'])
-// if (inStore[Product.item].includes(newItem)) {
-//     inStore[Product.qty] += ordered[j + 1];
-//     break;
-// } else {
-//     product = new Product(currentStock[j], Number(currentStock[j + 1]));
-//     inStore.push(product);
-//     break;
-// }
+storeProvision(['Chips', '5','CocaCola', '9','Bananas', '14','Pasta', '4','Beer', '2'],
+                ['Flour', '44', 'Oil', '12','Pasta', '7','Tomatoes', '70', 'Bananas', '30'])
