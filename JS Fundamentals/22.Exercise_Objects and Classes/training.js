@@ -77,7 +77,7 @@ function storeProvision(currentStock, ordered) {
                     if (storeItem === newItem) {
                         inStore[j].qty += newQty;
                         found = true;
-                    } 
+                    }
                 }
                 //IF is new item add to store
                 if (!found) {
@@ -87,9 +87,9 @@ function storeProvision(currentStock, ordered) {
             }
         }
     }
-    function print(){ 
+    function print() {
         inStore.forEach((product) => console.log(`${product.item} -> ${product.qty}`))
     }
 }
-storeProvision(['Chips', '5','CocaCola', '9','Bananas', '14','Pasta', '4','Beer', '2'],
-                ['Flour', '44', 'Oil', '12','Pasta', '7','Tomatoes', '70', 'Bananas', '30'])
+// storeProvision(['Chips', '5','CocaCola', '9','Bananas', '14','Pasta', '4','Beer', '2'],
+//                 ['Flour', '44', 'Oil', '12','Pasta', '7','Tomatoes', '70', 'Bananas', '30'])
