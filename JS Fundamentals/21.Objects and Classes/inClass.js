@@ -68,18 +68,28 @@ let info = ref/adress ----------------> {name: Pesho, ...}
  */
 // ----------------------------------------------------------------------
 
-const myObj = {},
-      str = 'myString',
-      rand = Math.random(),
-      anotherObj = {};
+// const myObj = {},
+//       str = 'myString',
+//       rand = Math.random(),
+//       anotherObj = {};
 
-// Now, creating additional properties.
-myObj.type              = 'Dot syntax for a key named type';
-myObj['date created']   = 'This key has a space';
-myObj[str]              = 'This key is in variable str';
-myObj[rand]             = 'A random number is the key here';
-myObj[anotherObj]       = 'This key is object anotherObj';
-myObj['']               = 'This key is an empty string';
+// // Now, creating additional properties.
+// myObj.type              = 'Dot syntax for a key named type';
+// myObj['date created']   = 'This key has a space';
+// myObj[str]              = 'This key is in variable str';
+// myObj[rand]             = 'A random number is the key here';
+// myObj[anotherObj]       = 'This key is object anotherObj';
+// myObj['']               = 'This key is an empty string';
 
-console.log(myObj);
-console.log(myObj.myString);
+// console.log(myObj);
+// console.log(myObj.myString);
+
+//-----------------------------------------
+
+function test(input){
+    let obj = {};
+    for(let el of input){
+        obj[el] = '';
+    }
+}
+// test(['one','two','three','four'])
