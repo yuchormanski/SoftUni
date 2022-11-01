@@ -11,7 +11,7 @@ function wordTracker(wordArray) {
 
     let occurrences = {};
     createObject();
-
+    //creating object by given word and check how many times repeat it  
     function createObject() {
         for (let el of first) {
             let counter = 0;
@@ -24,21 +24,18 @@ function wordTracker(wordArray) {
         }
     }
 
-    let sorted = Object.values(occurrences).sort((a, b) => b - a);
-    for (let num of sorted) {
-        for (let el in occurrences) {
-            if(occurrences[el] === num ){
-                console.log(`${el} - ${occurrences[el]}`);
-                
-            }
-        }
+    // getting object properties as array and sort them by object values(second array element) 
+    let sorted = Object.entries(occurrences).sort((a, b) => b[1] - a[1])
+    for (let el of sorted) {
+        let [word, count] = [el[0], el[1]];
+        console.log(`${word} - ${count}`);
     }
 }
-// wordTracker([
-//     'this sentence',
-//     'In', 'this', 'sentence', 'you', 'have', 'to', 'count', 'the', 'occurrences', 'of', 'the', 'words', 'this', 'and', 'sentence', 'because', 'this', 'is', 'your', 'task'
-// ])
-
 wordTracker([
-    'is the',
-    'first', 'sentence', 'Here', 'is', 'is', 'is', 'another', 'the', 'And', 'finally', 'the', 'the', 'sentence'])
+    'this sentence',
+    'In', 'this', 'sentence', 'you', 'have', 'to', 'count', 'the', 'occurrences', 'of', 'the', 'words', 'this', 'and', 'sentence', 'because', 'this', 'is', 'your', 'task'
+])
+
+// wordTracker([
+//     'is the',
+//     'first', 'sentence', 'Here', 'is', 'another', 'the', 'And', 'finally', 'the', 'the', 'sentence'])
