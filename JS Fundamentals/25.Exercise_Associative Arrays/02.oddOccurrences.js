@@ -3,7 +3,6 @@ Write a function that extracts the elements of a sentence, if it appears an odd 
 The input comes as a single string. The words will be separated by a single space.
  */
 
-
  function oddOccurrences() {
 
  }
