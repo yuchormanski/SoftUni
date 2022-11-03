@@ -42,8 +42,8 @@ phoneBook.set('pes', '0483598893')
 phoneBook.set('pewereho', '04835322983')
 
 console.log(phoneBook.get('pesho'));  // .get взима стоността на pesho
-                                    // .size
-                                    // .has(pesho)
+console.log(phoneBook.size);         // .size
+console.log(phoneBook.has('pesho'));// .has(pesho)
                                     // .set(key, value)
                                     // .delte(gosho)
                                     //.clear()   чисти целия мап
