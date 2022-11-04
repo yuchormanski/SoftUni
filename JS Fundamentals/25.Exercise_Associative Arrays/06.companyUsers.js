@@ -14,18 +14,23 @@ The input always will be valid.
  */
 
 function companyUsers(data) {
+    // create empty object
     let companiesInfo = {};
     for (let line of data) {
         let [company, userID] = line.split(' -> ');
+        // IF don't exist - create key
         if (!companiesInfo[company]) {
             companiesInfo[company] = []
         }
+        // check for equal value
         if (!companiesInfo[company].includes(userID)) {
             companiesInfo[company].push(userID);
         }
     }
+    //sort object keys a-b
     let sortedCompanies = Object.keys(companiesInfo).sort((a, b) => a.localeCompare(b));
 
+    //print result by sorted keys
     for (let currentComp of sortedCompanies) {
         console.log(currentComp);
         for(let user of companiesInfo[currentComp]){
