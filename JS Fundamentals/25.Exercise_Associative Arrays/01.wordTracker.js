@@ -19,12 +19,12 @@ function wordTracker(wordArray) {
                 if (listEl === el) {
                     counter++;
                 }
-            }
+            } 
             occurrences[el] = counter;
         }
     }
 
-    // getting object properties as array and sort them by object values(second array element) 
+    // getting object properties as array and sort them by object values(second array element ) 
     let sorted = Object.entries(occurrences).sort((a, b) => b[1] - a[1])
     for (let el of sorted) {
         let [word, count] = [el[0], el[1]];
