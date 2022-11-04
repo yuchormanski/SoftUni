@@ -22,6 +22,7 @@ function cardGame(game) {
             card = card.split('')
             let type = card.pop();
             let power = card.join();
+            //TODO : sum th values
         }
     }
 }
