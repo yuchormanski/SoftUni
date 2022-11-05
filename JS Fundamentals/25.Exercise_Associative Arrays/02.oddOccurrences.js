@@ -18,7 +18,7 @@ function oddOccurrences(data) {
     let sorted = Object.entries(sentenceObj).sort((a, b) => b[1] - a[1]);
     //create print buffer
     let buffer = [];
-    // push to buffer if cont is odd
+    // push to buffer if count is odd
     sorted.forEach(arr => {
         arr[1] % 2 !== 0 ? buffer.push(arr[0]) : null;
     });
