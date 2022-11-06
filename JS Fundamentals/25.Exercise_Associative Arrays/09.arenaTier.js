@@ -19,7 +19,7 @@ Foreach gladiator prints their technique and skill ordered descending, then orde
 Input / Constraints
 You will receive an array of strings as a parameter to your solution.
 •	The input comes in the form of commands in one of the formats specified above.
-•	Gladiator and technique will always be one-word string, containing no whitespaces.
+•	Gladiator and technique will always be one-word string, containing no whitespace.
 •	Skill will be an integer in the range [0, 1000].
 •	There will be no invalid input lines.
 •	The program ends when you receive the command "Ave Cesar".
