@@ -4,7 +4,7 @@ function binaryToDecimal(n) {
     let digit = parseInt(binary, 2);
     console.log(digit);
 }
-// binaryToDecimal('00001001')
+binaryToDecimal('00001001')
 
 function binaryToDecimalProcess(n) {
     let nL = n.length - 1;
@@ -16,7 +16,7 @@ function binaryToDecimalProcess(n) {
     }
     console.log(sum);
 }
-// binaryToDecimalProcess('00001001')
+binaryToDecimalProcess('00001001')
 
 
 
@@ -47,4 +47,6 @@ function decimalToBinaryProcess(n) {
     }
     console.log(binary.join(''));
 }
-decimalToBinaryProcess(240)
+decimalToBinaryProcess(-14)
+
+
