@@ -20,8 +20,8 @@ x.charCodeAt(); //
 [3, 5, 6, 8].some((n) => n > 6); // true
 [3, 5, 6, 8].reverse(); //[8, 6, 5, 3]
 [3, 5, 6, 8].at(-2); // 7
-[3, 6, 5, 8].sort((a, b) => b - a ); // [8,6,5,3]
-[1,2,3,4,5,6].forEach((x) => console.log(x + 1)); // 2,3,4,5,6,7 every on new line
+[3, 6, 5, 8].sort((a, b) => b - a); // [8,6,5,3]
+[1, 2, 3, 4, 5, 6].forEach((x) => console.log(x + 1)); // 2,3,4,5,6,7 every on new line
 [7, 8, 9, 7, 2, 3, 4, 1, 2] -> let unique = new Set(array); console.log(...unique);
 xyz.replace('y', 'Y'); // xYz
 xyz.split(','); // [x, y, z]
@@ -29,5 +29,12 @@ x.repeat(3); // xxx
 xyz.includes('y'); // true
 xyz.length; // 3
 xyz.search('y'); // 1 // .search(element) -> return index
-xyz.search('y',2); // .search(element, startIndex) -> return index
+xyz.search('y', 2); // .search(element, startIndex) -> return index
+'  xyz '.trim() -> 'xyz' // trimStart(); trimEnd()
+'xyz'.startsWith('x'); // true endsWith()
+'xyz'.padStart(7, 'x'); // -> xxxxxyz; adds string at he beginning until reached the length; padStart(length,string);
+'xyz'.padEnd(7, 'z'); // ->xyzzzzz;
+'abcdefghij'.substring(3, 6); //-> def; substring(startIndex - included , endIndex - excluded);
+n = '00001001'; parseInt(n, 2); // -> 9
+n = 9; n.toString(2); // -> 1001
 

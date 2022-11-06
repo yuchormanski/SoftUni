@@ -11,7 +11,7 @@ function rectangle() {
         }
     }
 }
-//rectangle()
+// rectangle()
 
 function printSq(input) {
     let a = Number(input[0])
@@ -50,7 +50,7 @@ function squareFrame(input) {
     }
     console.log("+" + " " + "- ".repeat(n - 2) + "+");
 }
-//squareFrame(["5"])
+squareFrame(["5"])
 
 function rhombusOfStars(input) {
     let n = Number(input[0]);

@@ -61,8 +61,13 @@ function arenaTier(input) {
             let totalSkill = Object.values(warrior).reduce((skill, x) => skill + x);
             if(totalSkill === skill){
                 console.log(`${gladiator}: ${totalSkill} skill`);
-
                 //TODO: print gladiator skill descending
+                let sortedSkills = Object.values(warrior).sort((a,b) => b-a);
+                for(let skill of Object.values(warrior)){
+                    if(skill === )
+                    console.log(skill);
+                }
+
                     //TODO: print gladiator technique sorted ascending if equal skill
 
 

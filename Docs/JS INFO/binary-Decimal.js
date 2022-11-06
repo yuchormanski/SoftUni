@@ -4,7 +4,7 @@ function binaryToDecimal(n) {
     let digit = parseInt(binary, 2);
     console.log(digit);
 }
-binaryToDecimal(00001001)
+binaryToDecimal('00001001')
 
 ////decimal number to binary
 function decToBin(n) {
