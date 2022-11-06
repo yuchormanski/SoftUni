@@ -59,17 +59,17 @@ function partyTime(guestList) {
     console.log(leaved.length);
     leaved.forEach(el => console.log(el))
 }
-partyTime([
-    '7IK9Yo0h',
-    '9NoBUajQ',
-    'Ce8vwPmE',
-    'SVQXQCbc',
-    'tSzE5t0p',
-    'PARTY',
-    '9NoBUajQ',
-    'Ce8vwPmE',
-    'SVQXQCbc'
-])
+// partyTime([
+//     '7IK9Yo0h',
+//     '9NoBUajQ',
+//     'Ce8vwPmE',
+//     'SVQXQCbc',
+//     'tSzE5t0p',
+//     'PARTY',
+//     '9NoBUajQ',
+//     'Ce8vwPmE',
+//     'SVQXQCbc'
+// ])
 
 // partyTime([
 //     'm8rfQBvl',
@@ -102,3 +102,4 @@ partyTime([
 //     '7ugX7bm0',
 //     '9CQBGUeJ'
 // ])
+

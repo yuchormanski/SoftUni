@@ -2,24 +2,25 @@ function partyTime(guestList) {
     let vipArray = [];
     let regularArray = [];
 
-    for (let i =0; i < guestList.length; ) {
+    for (let i = 0; i < guestList.length;) {
         let customer = guestList[i];
         if (customer === "PARTY") {
             let party = guestList.shift();
             break
         };
-        if (customer.split('')[0].charCodeAt() > 47 && customer.split('')[0].charCodeAt() <= 57) {
+        // if (customer.split('')[0].charCodeAt() > 47 && customer.split('')[0].charCodeAt() <= 57) {
+        if (!isNaN(customer.split('')[0])) {
             vipArray.push(guestList.shift());
         } else {
             regularArray.push(guestList.shift());
         }
     }
-    for (let el of guestList){
-        if(vipArray.includes(el)){
-            vipArray.splice(vipArray.indexOf(el),1);
+    for (let el of guestList) {
+        if (vipArray.includes(el)) {
+            vipArray.splice(vipArray.indexOf(el), 1);
         } else {
-            if(regularArray.includes(el)){
-                regularArray.splice(regularArray.indexOf(el),1);
+            if (regularArray.includes(el)) {
+                regularArray.splice(regularArray.indexOf(el), 1);
             }
         }
     }
