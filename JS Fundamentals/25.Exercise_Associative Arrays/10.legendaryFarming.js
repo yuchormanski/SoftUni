@@ -29,74 +29,81 @@ Output
 function legendaryFarming(line) {
 
     const allItems = {};
-    allItems.legendary = {};
+    allItems.legendary = {
+        shards: 0,
+        fragments: 0,
+        motes: 0,
+    };
     allItems.junk = {};
     let lineItems = line.split(' ');
     let lineLength = lineItems.length;
+    let currentLegendary = allItems.legendary;
+    let theLegendary = '';
+    startCollecting();
+    console.log(`${theLegendary} obtained!`);
+    sorting();
 
-    for (let i = 0; i < lineLength; i += 2) {
-        let qty = Number(lineItems[i]);
-        let thing = lineItems[i + 1].toLowerCase();
-        // thing = thing.toLowerCase()
+    function startCollecting() {
+        for (let i = 0; i < lineLength; i += 2) {
+            let qty = Number(lineItems[i]);
+            let thing = lineItems[i + 1].toLowerCase();
 
-        //collecting legendary
-        if (thing === 'shards' || thing === 'fragments' || thing === 'motes') { //"Shards", "Fragments", and "Motes" 
-            //start collecting items to Object
-            //IF didn't exist
-            let currentLegendary = allItems.legendary;
-
-            //TODO: if 250
-            if (thing === 'shards') {
-                if (!currentLegendary.Shadowmourne) {
-                    currentLegendary.Shadowmourne = qty;
-                } else {
-                    currentLegendary.Shadowmourne += qty;
+            //collecting legendary
+            if (thing === 'shards' || thing === 'fragments' || thing === 'motes') {  
+                //start collecting items to Object
+                //IF didn't exist
+                if (thing === 'shards') {
+                    currentLegendary.shards += qty;
+                    if (currentLegendary.shards >= 250) {
+                        currentLegendary.shards -= 250
+                        return theLegendary = 'Shadowmourne';
+                    }
+                }
+                else if (thing === 'fragments') {
+                    currentLegendary.fragments += qty;
+                    if (currentLegendary.fragments >= 250) {
+                        currentLegendary.fragments -= 250;
+                        return theLegendary = 'Valanyr';
+                    }
+                }
+                else if (thing === 'motes') {
+                    currentLegendary.motes += qty;
+                    if (currentLegendary.motes >= 250) {
+                        currentLegendary.motes -= 250;
+                        return theLegendary = 'Dragonwrath';
+                    }
                 }
             }
-            else if (thing === 'fragments') {
-                if (!currentLegendary.Valanyr) {
-                    currentLegendary.Valanyr = qty;
-                } else {
-                    currentLegendary.Valanyr += qty;
-                }
-            }
-            else if (thing === 'motes') {
-                if (!currentLegendary.Dragonwrath) {
-                    currentLegendary.Dragonwrath = qty;
-                } else {
-                    currentLegendary.Dragonwrath += qty;
-                }
-            }
-        }
-        //collecting junk
-        else {
-            //start collecting items to Object
-            //IF didn't exist
-            let currentJunk = allItems.junk;
-            if (!currentJunk[thing]) {
-                currentJunk[thing] = qty;
-            }
-            //IF exist
+            //collecting junk
             else {
-                currentJunk[thing] += qty;
+                //start collecting items to Object
+                //IF didn't exist
+                let currentJunk = allItems.junk;
+                if (!currentJunk[thing]) {
+                    currentJunk[thing] = qty;
+                }
+                //IF exist
+                else {
+                    currentJunk[thing] += qty;
+                }
             }
         }
     }
+    function sorting() {
+        let legendaryItems = [];
+        let junkItems = [];
+        Object.entries(allItems.legendary).forEach(stuff => legendaryItems.push(stuff));
+        Object.entries(allItems.junk).forEach(stuff => junkItems.push(stuff));
+        legendaryItems.sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(x => x[0].toLowerCase());
+        junkItems.sort((a, b) => a[0].localeCompare(b[0])).map(x => x[0].toLowerCase());
+        legendaryItems = [...legendaryItems, ...junkItems];
+
+        for (let [item, qty] of legendaryItems) {
+            console.log(`${item}: ${qty}`);
+        }
+    }
 }
-legendaryFarming('3 Motes 5 stones 5 Shards 6 leathers 255 fragments 7 Shards')
-// legendaryFarming('123 silver 6 shards 8 shards 5 motes 9 fangs 75 motes 103 MOTES 8 Shards 86 Motes 7 stones 19 silver')
+// legendaryFarming('3 Motes 5 stones 5 Shards 6 leathers 255 fragments 7 Shards');
+legendaryFarming('123 silver 6 shards 8 shards 5 motes 9 fangs 75 motes 103 MOTES 8 Shards 86 Motes 7 stones 19 silver');
 
-// Valanyr obtained!
-// fragments: 5
-// shards: 5
-// motes: 3
-// leathers: 6
-// stones: 5
-
-// Dragonwrath obtained!
-// shards: 22
-// motes: 19
-// fragments: 0
-// fangs: 9
-// silver: 123
 
