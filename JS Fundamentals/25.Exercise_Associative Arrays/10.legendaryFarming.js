@@ -40,18 +40,18 @@ function legendaryFarming(line) {
     let currentLegendary = allItems.legendary;
     let theLegendary = '';
     startCollecting();
+    //print the legendary when done
     console.log(`${theLegendary} obtained!`);
     sorting();
 
     function startCollecting() {
         for (let i = 0; i < lineLength; i += 2) {
             let qty = Number(lineItems[i]);
-            let thing = lineItems[i + 1].toLowerCase();
+            let thing = lineItems[i + 1].toLowerCase();  //convert to lower case to ensure checking
 
             //collecting legendary
             if (thing === 'shards' || thing === 'fragments' || thing === 'motes') {  
-                //start collecting items to Object
-                //IF didn't exist
+                //start collecting items to Object and adding quantity
                 if (thing === 'shards') {
                     currentLegendary.shards += qty;
                     if (currentLegendary.shards >= 250) {
@@ -90,12 +90,15 @@ function legendaryFarming(line) {
         }
     }
     function sorting() {
-        let legendaryItems = [];
-        let junkItems = [];
+        let legendaryItems = []; // array for legendary items properties
+        let junkItems = []; // array for junk items properties
         Object.entries(allItems.legendary).forEach(stuff => legendaryItems.push(stuff));
         Object.entries(allItems.junk).forEach(stuff => junkItems.push(stuff));
+        //sort legendary first by quantity then alphabetical
         legendaryItems.sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(x => x[0].toLowerCase());
+        //sort junk alphabetical
         junkItems.sort((a, b) => a[0].localeCompare(b[0])).map(x => x[0].toLowerCase());
+        //merge arrays
         legendaryItems = [...legendaryItems, ...junkItems];
 
         for (let [item, qty] of legendaryItems) {
