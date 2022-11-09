@@ -22,9 +22,9 @@ Find all occurrences of that word in the text and replace them with the correspo
 // }
 // censoredWords('A small sentence with some words', 'small');
 
-function censoredWords(sentence, word){
-     let result =sentence;
-    while(result.includes(word)){
+function censoredWords(sentence, word) {
+    let result = sentence;
+    while (result.includes(word)) {
         result = result.replace(word, '*'.repeat(word.length));
         console.log(result);
     }
