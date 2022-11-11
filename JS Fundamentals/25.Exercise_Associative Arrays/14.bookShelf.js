@@ -74,7 +74,8 @@ function bookShelf(libraryData) {
             }
         }
     }
-}
+};
+
 // bookShelf([
 //     '1 -> history',
 //     '1 -> action',
