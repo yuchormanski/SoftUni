@@ -5,7 +5,7 @@ function bitAtPosition1(n) {
     let binary = n.toString(2);
     console.log(binary.slice(-2, -1));
 }
-// bitAtPosition1(2);
+bitAtPosition1(2);
 // bitAtPosition1()
 
 

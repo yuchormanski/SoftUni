@@ -16,7 +16,7 @@ function binaryToDecimalProcess(n) {
     }
     console.log(sum);
 }
-// binaryToDecimalProcess('00001001')
+// binaryToDecimalProcess('101011')
 
 
 
@@ -47,6 +47,6 @@ function decimalToBinaryProcess(n) {
     }
     console.log(binary.join('').padStart(8, '0'));
 }
-decimalToBinaryProcess(65)
+decimalToBinaryProcess(20)
 
 
