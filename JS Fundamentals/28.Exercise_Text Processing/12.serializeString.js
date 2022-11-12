@@ -6,8 +6,6 @@ Your task is to serialize the string in the following way:
 {char}:{index1}/{index2}/{index3}
 The char will be the character, and the indexes will be the indexes it is found at in the string. */
 
-
-
 function serializeString(input) {
     let letters = {};
     let data = input[0];
