@@ -14,6 +14,7 @@ function modernTimesOfHashTag(inputString) {
                 letter = letter.toLowerCase().charCodeAt();
                 if (letter < 97 || letter > 122) {
                     isOnlyLetters = false;
+                    break;
                 }
             }
             isOnlyLetters ? console.log(word) : null;
