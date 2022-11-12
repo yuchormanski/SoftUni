@@ -37,7 +37,6 @@ function lettersChangeNumbers(input) {
         let first = gameEl[0];
         let last = gameEl.slice(-1);
         let num = Number(gameEl.slice(1, -1));
-
         //taking number from first letter by arguments
         if (first === first.toLowerCase()) {
             first = first.charCodeAt() - 96;
@@ -47,7 +46,6 @@ function lettersChangeNumbers(input) {
             first = first.charCodeAt() - 64;
             num /= first;
         }
-
         //taking number from last letter by arguments
         if (last === last.toLowerCase()) {
             last = last.charCodeAt() - 96;
