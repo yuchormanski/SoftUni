@@ -84,8 +84,8 @@ function arenaTier(data) {
                     warriors[gladiator] = {};
                     warriors[gladiator][tech] = skill;
                 } else {
-                    if (warriors[gladiator][tech] < skill) { //IF exist ,but the skill owned is lower than new one
-                        warriors[gladiator][tech] = skill;
+                    if (warriors[gladiator][tech] > skill) { //IF exist ,but the skill owned is lower than new one
+                        // warriors[gladiator][tech] = skill;   // corrected
                     } else {
                         warriors[gladiator][tech] = skill; // IF new skill
                     }
