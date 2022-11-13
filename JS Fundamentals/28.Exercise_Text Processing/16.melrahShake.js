@@ -23,19 +23,36 @@ The two strings may contain ANY ASCII character  */
 function melrahShake(data) {
     let line = data.shift();
     let pattern = data.join('');
-    let firstIndex;
-    let lastIndex;
-    if (line.includes(pattern)) {
-        firstIndex = line.indexOf(pattern);
-        lastIndex = line.lastIndexOf(pattern);
-        line.split('');
-        console.log(line);
-        line.splice(lastIndex, pattern.length).join('');
+
+    let count = 0;
+    while (pattern.length > 0) {
+        let firstIndex = line.indexOf(pattern);
+        let lastIndex = line.lastIndexOf(pattern);
+        if (firstIndex !== -1 || lastIndex !== -1) {
+            if (firstIndex !== lastIndex) {
+                line = line.split('');
+                line.splice(lastIndex, pattern.length)
+                count++;
+                line = line.join('');
+
+                line = line.split('');
+                line.splice(firstIndex, pattern.length)
+                count++;
+                line = line.join('');
+            }
+
+        }
+        if (count === 2) {
+            console.log('Shaked it.');
+            count = 0;
+        } else {
+            console.log('No shake.');
+            return console.log(line);
+        }
+        pattern = pattern.split('');
+        pattern.splice(Math.floor(pattern.length / 2), 1);
+        pattern = pattern.join('');
     }
-    console.log(line);
-
-
 }
-melrahShake(
-    ['astalavista baby', 'sta']
-);
+// melrahShake(['astalavista baby', 'sta']);
+melrahShake(['##mtm!!mm.mm*mtm.#', 'mtm'])
