@@ -33,9 +33,6 @@ function melrahShake(data) {
                 line = line.split('');
                 line.splice(lastIndex, pattern.length)
                 count++;
-                line = line.join('');
-
-                line = line.split('');
                 line.splice(firstIndex, pattern.length)
                 count++;
                 line = line.join('');
