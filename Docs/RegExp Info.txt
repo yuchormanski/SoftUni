@@ -1,58 +1,59 @@
 REGEX BASICS    	DESCRIPTION
-^   	            The start of a string
-$   	            The end of a string
-.   	            Wildcard which matches any character, except newline (\n).
-|   	            Matches a specific character or group of characters on either side (e.g. a|b corresponds to a or b)
-\   	            Used to escape a special character
-a   	            The character "a"
-ab  	            The string "ab"
+^   	               The start of a string
+$   	               The end of a string
+.   	               Wildcard which matches any character, except newline (\n).
+|   	               Matches a specific character or group of characters on either side (e.g. a|b corresponds to a or b)
+\   	               Used to escape a special character
+a   	               The character "a"
+ab  	               The string "ab"
 
-QUANTIFIERS	        DESCRIPTION
-*	                Used to match 0 or more of the previous (e.g. xy*z could correspond to "xz", "xyz", "xyyz", etc.)
-?	                Matches 0 or 1 of the previous
-+	                Matches 1 or more of the previous
-{5}	                Matches exactly 5
-{5, 10}	            Matches everything between 5-10
+QUANTIFIERS	     DESCRIPTION
+*	               Used to match 0 or more of the previous (e.g. xy*z could correspond to "xz", "xyz", "xyyz", etc.)
+?	               Matches 0 or 1 of the previous
++	               Matches 1 or more of the previous
+{5}	               Matches exactly 5
+{5, 10}	          Matches everything between 5-10
 
 CHARACTER CLASSES	DESCRIPTION
-\s	                Matches a whitespace character
+\s	               Matches a whitespace character
 \S              	Matches a non-whitespace character
-\w	                Matches a word character
-\W	                Matches a non-word character
+\w	               Matches a word character
+\W	               Matches a non-word character
 \d              	Matches one digit
 \D              	Matches one non-digit
 [\b]            	A backspace character
-\c	                A control character
+\c	               A control character
 
 SPECIAL CHARACTERS	DESCRIPTION
 \n              	Matches a newline
-\t	                Matches a tab
-\r	                Matches a carriage return
+\t	               Matches a tab
+\r	               Matches a carriage return
 \ZZZ            	Matches octal character ZZZ
 \xZZ            	Matches hex character ZZ
-\0	                A null character
-\v	                A vertical tab
+\0	               A null character
+\v	               A vertical tab
+
 GROUPS          	DESCRIPTION
 (xyz)           	Grouping of characters
-(?:xyz)	            Non-capturing group of characters
-[xyz]	            Matches a range of characters (e.g. x or y or z)
+(?:xyz)	          Non-capturing group of characters
+[xyz]	          Matches a range of characters (e.g. x or y or z)
 [^xyz]          	Matches a character other than x or y or z
-[a-q]	            Matches a character from within a specified range
-[0-7]	            Matches a digit from within a specified range
+[a-q]	          Matches a character from within a specified range
+[0-7]	          Matches a digit from within a specified range
 
 STRING REPLACEMENTS	DESCRIPTION
-$`	                Insert before matched string
-$'	                Insert after matched string
+$`	               Insert before matched string
+$'	               Insert after matched string
 $+                  Insert last matched
-$&	                Insert entire match
-$n	                Insert nth captured group
+$&	               Insert entire match
+$n	               Insert nth captured group
 
 ASSERTIONS      	DESCRIPTION
-(?=xyz)	            Positive lookahead
+(?=xyz)	          Positive lookahead
 (?!xyz)             Negative lookahead
-?!= or ?<!	        Negative lookbehind
-\b	                Word Boundary (usually a position between /w and /W)
-?#	                Comment
+?!= or ?<!	     Negative lookbehind
+\b	               Word Boundary (usually a position between /w and /W)
+?#	               Comment
 
 
 Regular Expressions
