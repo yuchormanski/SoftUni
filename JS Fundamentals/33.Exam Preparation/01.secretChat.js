@@ -36,11 +36,9 @@ function secretChat(message) {
                   let argLength = arg1.length;
                   firstPart = hidden.slice(0, start) + arg2 + hidden.slice((start + argLength)); 
                   hidden = firstPart;
-                }
-                
+                }    
             }
             console.log(hidden);
-
 
         } else if (current === 'Reverse') {
             if (hidden.includes(arg1)) {
@@ -58,7 +56,6 @@ function secretChat(message) {
             } else {
                 console.log('error');
             }
-
 
         } else if (current === 'InsertSpace') {
             let indexToInsert = Number(arg1);
