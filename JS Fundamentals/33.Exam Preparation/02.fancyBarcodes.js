@@ -13,7 +13,6 @@ function fancyBarcodes(line) {
             let currentBarcode = groupExtract.groups.code;
             let numCollector = '';
             for (let char of currentBarcode) {
-
                 !isNaN(char) ? numCollector += char : null;
             }
             numCollector.length === 0 ? console.log('Product group: 00') : console.log(`Product group: ${numCollector}`);
