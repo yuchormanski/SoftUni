@@ -34,11 +34,7 @@ function worldTour(tourList) {
             }
         } else if (command === 'Switch') {
             if(tour.includes(arg1)){
-                let indexOfArg = tour.indexOf(arg1);
-                let lgth = arg1.length;
-                let fPart = arg2;
-                let sPart = tour.slice((indexOfArg + lgth))
-                tour = `${fPart}${sPart}`;
+                tour = tour.split(arg1).join(arg2);
                 console.log(tour);
             }
             else{
