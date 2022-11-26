@@ -1,39 +1,34 @@
+function fancyBarcodes(data) {
+    let pattern = /@#+([A-Z][A-Za-z0-9]{4,}[A-Z])@#+/g;
+    let count = Number(data.shift());
 
-function fancyBarcodes(line) {
-
-    let count = Number(line.shift());
-    let pattern = /([@][#]{1,})(?<code>[A-Z][A-Za-z0-9]{4,}[A-Z])\1/gm;
-    let i = 0;
-
-    while (count) {
-
-        let current = line.shift().match(pattern);
-        if (current) {
-            let groupExtract = pattern.exec(current);
-            let currentBarcode = groupExtract.groups.code;
-            let numCollector = '';
-            for (let char of currentBarcode) {
-                !isNaN(char) ? numCollector += char : null;
+    while (count > 0) {
+        let current = data.shift();
+        let check = current.match(pattern);
+        if (check) {
+            let groupNum = (check[0].match(/(\d)/g));
+            if(groupNum !== null){
+                groupNum = groupNum.join('')
+            }else{
+                groupNum = '00';
             }
-            numCollector.length === 0 ? console.log('Product group: 00') : console.log(`Product group: ${numCollector}`);
-        }
-        else {
-            console.log("Invalid barcode");
+            console.log(`Product group: ${groupNum}`);
+        } else {
+            console.log(`Invalid barcode`);
         }
         count--;
     }
 }
-// fancyBarcodes([
-//     "3",
-//     "@#FreshFisH@#",
-//     "@###Brea0D@###",
-//     "@##Che4s6E@##"]);
+fancyBarcodes(["3",
+"@#FreshFisH@#",
+"@###Brea0D@###",
+"@##Che4s6E@##"])
 
-fancyBarcodes(["6",
-    "@###Val1d1teM@###",
-    "@#ValidIteM@#",
-    "##InvaliDiteM##",
-    "@InvalidIteM@",
-    "@#Invalid_IteM@#",
-    "@#ValiditeM@#"])
 
+
+    // let groupNum = Number((check[0].match(/(\d)/g)).join(''));
+    // if (groupNum > 0) {
+    //     console.log(`Product group: ${groupNum}`);
+    // } else if (groupNum === 0) {
+    //     console.log(`Product group: 0`);
+    // }
