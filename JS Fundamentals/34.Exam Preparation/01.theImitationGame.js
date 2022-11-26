@@ -21,35 +21,47 @@ function theImitationGame(line) {
     let message = line.shift();
     let currentCommand = line.shift();
 
-    while (currentCommand) {
+    while (currentCommand !== 'Decode') {
         let [command, arg1, arg2] = currentCommand.split('|');
         if (command === 'ChangeAll') {
             message = message.split(arg1).join(arg2);
+            // while(message.includes(arg1)){
+            //     let temp = message.replace(arg1, arg2);
+            //     message = temp;
+            // }
         } else if (command === 'Insert') {
             arg1 = Number(arg1);
             message = message.slice(0, arg1) + arg2 + message.slice(arg1);
+            //let temp = message.split('');
+            // temp = message.splice(arg1,0,arg2);
+            //message = temp.join('');
+            messa
         } else if (command === 'Move') {
             arg1 = Number(arg1);
             let cut = message.slice(0, arg1);
             message = message.slice(arg1) + cut;
+            // let temp = message.replace(cut, '');
+            //temp += cut;
+            //message = temp
         }
         currentCommand = line.shift();
     }
     console.log(`The decrypted message is: ${message}`);
 }
-// theImitationGame([
-//     'zzHe',
-//     'ChangeAll|z|l',
-//     'Insert|2|o',
-//     'Move|3',
-//     'Decode'
-// ]);
 theImitationGame([
-    'owyouh',
-    'Move|2',
+    'zzHe',
+    'ChangeAll|z|l',
+    'Insert|2|o',
     'Move|3',
-    'Insert|3|are',
-    'Insert|9|?',
-    'Decode']);
+    'Decode'
+]);
+
+// theImitationGame([
+//     'owyouh',
+//     'Move|2',
+//     'Move|3',
+//     'Insert|3|are',
+//     'Insert|9|?',
+//     'Decode']);
 
     

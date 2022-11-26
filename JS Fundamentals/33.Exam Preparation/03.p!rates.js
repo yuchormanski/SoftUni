@@ -41,7 +41,7 @@ function pirates(piratesList) {
                 //IF Plunger
                 if (command === 'Plunder') {
 
-                    // IF gold or/and population is lower than command kills and stolen
+                    // IF gold or/and population is lower than command kills and stol 
                     if (gold > cities[town].gold && people > cities[town].population) {
                         gold = cities[town].gold
                         people = cities[town].population
@@ -96,8 +96,8 @@ function pirates(piratesList) {
 }
 pirates([
     "Tortuga||345000||1250",
-    // "Santo Domingo||240000||630",
-    // "Havana||410000||1100",
+    "Santo Domingo||240000||630",
+    "Havana||410000||1100",
     "Sail",
     "Plunder=>Tortuga=>400000=>1380",
     "Prosper=>Santo Domingo=>180",
