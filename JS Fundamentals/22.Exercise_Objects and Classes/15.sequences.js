@@ -9,9 +9,10 @@ The output should be printed on the console - each array printed on a new line i
 following the above-mentioned ordering.
  */
 
-function sequences(){
+function sequences() {
 
 }
-sequences(["[-3, -2, -1, 0, 1, 2, 3, 4]",
-"[10, 1, -17, 0, 2, 13]",
-"[4, -3, 3, -2, 2, -1, 1, 0]"])
+sequences([
+    "[-3, -2, -1, 0, 1, 2, 3, 4]",
+    "[10, 1, -17, 0, 2, 13]",
+    "[4, -3, 3, -2, 2, -1, 1, 0]"])
