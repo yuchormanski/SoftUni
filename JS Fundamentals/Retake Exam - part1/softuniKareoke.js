@@ -1,4 +1,4 @@
-SoftUni Karaoke
+/* SoftUni Karaoke
 SoftUni cultivates talent whether it's coding talent or something else and in this case, something else is singing. 
 Since you love music you want to take part in the event but as a programmer you simply lack the "something else" 
 so your job is to make the software to track participants' awards.
@@ -30,7 +30,7 @@ If there are no awards, print "No awards"
 Constrains
 The number of total participants will be in range [1 … 100]
 The number of total songs will be in range [1 … 100]
-The input will always end with the "dawn" command
+The input will always end with the "dawn" command */
 
 function softuniKaraoke(input) {
     let dataList = input.slice();
