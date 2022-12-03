@@ -12,7 +12,7 @@ function furniture(input) {
 
         while (valid !== null) {
             const productName = valid.groups['name'];
-console.log(productName);
+            console.log(productName);
             const productPrice = valid.groups['price'];
             const productQty = valid.groups['quantity'];
 
