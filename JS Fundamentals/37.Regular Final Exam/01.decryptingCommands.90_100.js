@@ -114,12 +114,25 @@ decryptingCommands([
     "Finish"
 ]);
 
+// WeLikeSoftUni
+// WELIKESOFTUNI
+// Message doesn't contain SoftUni
+// 293
+// WESOFTUNI
+
+
 // decryptingCommands(["HappyNameDay",
 //     "Replace p r",
 //     "Make Lower",
 //     "Cut 2 23",
 //     "Sum -2 2",
 //     "Finish"]);
+
+// HarryNameDay
+// harrynameday
+// Invalid indices!
+// Invalid indices!
+
 
 // DinnerIsServed
 // Make Upper
