@@ -99,4 +99,4 @@ heroRecruit([
     "Learn Stefan Spell",
     "Learn Peter Dispel",
     "End"
-])
+]);
