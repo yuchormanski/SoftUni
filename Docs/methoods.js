@@ -25,7 +25,7 @@ x.charCodeAt(); //
 [1, 2, 3, 4, 5, 6].forEach((x) => console.log(x + 1)); // 2,3,4,5,6,7 every on new line
 [7, 8, 9, 7, 2, 3, 4, 1, 2] -> let unique = new Set(array); console.log(...unique);
 xyz.replace('y', 'Y'); // xYz
-xyzxyzxyzxyz.replaceAll('y', 'Y'); // xYzxYzxYzxYz
+xyzxyzxyzxyz.replaceAll('y', 'Y'); // xYzxYzxYzxYz    better use RegExp replace
 xyz.split(','); // [x, y, z]
 x.repeat(3); // xxx
 xyz.includes('y'); // true
@@ -33,7 +33,8 @@ xyz.length; // 3
 xyz.search('y'); // 1 // .search(element) -> return index
 xyz.search('y', 2); // .search(element, startIndex) -> return index
 '  xyz '.trim() -> 'xyz' // trimStart(); trimEnd()
-'xyz'.startsWith('x'); // true endsWith()
+'xyz'.startsWith('x'); // true
+'xyz'.endsWith('x'); // true
 'xyz'.padStart(7, 'x'); // -> xxxxxyz; adds string at the beginning until reached the length; padStart(length,string);
 'xyz'.padEnd(7, 'z'); // ->xyzzzzz;
 'abcdefghij'.substring(3, 6); //-> def; substring(startIndex - included , endIndex - excluded);
