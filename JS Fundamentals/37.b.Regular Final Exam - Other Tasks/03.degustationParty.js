@@ -75,3 +75,9 @@ degustationParty([
 //     "Dislike-Krisi-salad",
 //     "Stop"
 // ]);
+
+// degustationParty([
+//     "Like-Vili-carp",
+//     "Dislike-Vili-carp",
+//     "Stop"
+// ]);
