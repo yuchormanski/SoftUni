@@ -43,8 +43,8 @@ function rosettaStone(input) {
     }
 
     let output = '';
-    for (const el of matrix) {
-        output += el.join('')
+    for (const row of matrix) {
+        output += row.join('')
     }
     console.log(output.trim());
 }
