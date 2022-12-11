@@ -1,13 +1,6 @@
 function spyMaster(input) {
     let key = input.shift()
-    let allPattern = new RegExp(`${key}(?:\s+)(?<message>[A-Z%#\$!]{8,})`, 'mi');
-    let matched = [];
-    let element = allPattern.exec(input);
-    while(element !== null){
-        matched.push(element.groups['message'])
-        element = allPattern.exec(input);
-    }
-    console.log(...matched)
+
 
 }
 spyMaster([
