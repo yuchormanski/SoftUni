@@ -3,7 +3,6 @@ function employees(data) {
     let secondary = /^([A-Z][a-z]+[&]?[^&]{2,}[A-Z]?[a-z]{0,}[&]?[A-Z]?[a-z]{0,})$/;
     let count = Number(data.shift());
 
-    //      {employee name} is {job position} at {company name}
 
     while (count > 0) {
         let line = data.shift();
