@@ -12,7 +12,7 @@ function lastK_NumbersSequence(n, k) {
         }
         numArray[i + 1] = tempSum;
     }
-    console.log(numArray);
+    return numArray;
 }
-lastK_NumbersSequence(6, 3);
+console.log(lastK_NumbersSequence(6, 3));
 // lastK_NumbersSequence(8, 2);

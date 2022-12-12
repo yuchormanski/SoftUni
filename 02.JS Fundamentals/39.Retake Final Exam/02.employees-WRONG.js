@@ -1,5 +1,6 @@
 function employees(data) {
     let mainRegex = /(?<name>[A-Z][a-z]{2,} [A-Z][a-z]+)#+(?<job>[\w].+[^\d])\d+(?<company>[\w]+ [JSC|Ltd.]+)/;
+    ///(?<name>[A-Z][a-z]{2,} [A-Z][a-z]{2,})\#+(?<job>[A-Z][A-Za-z\&]+)\d{2}(?<company>[A-Z][a-z]+ (Ltd)*(JSC)*)/g
     let secondary = /^([A-Z][a-z]+[&]?[^&]{2,}[A-Z]?[a-z]{0,}[&]?[A-Z]?[a-z]{0,})$/;
     let count = Number(data.shift());
 
