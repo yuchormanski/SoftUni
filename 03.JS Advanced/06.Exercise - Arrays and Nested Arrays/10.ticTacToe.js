@@ -9,7 +9,7 @@ function ticTacToe(moves) {
     for (let i = 0; i < length; i++) {
         let temp = [];
         for (let j = 0; j < length; j++) {
-            temp.push(false);
+            temp.push('false');
         }
         board.push(temp);
     }
@@ -22,9 +22,9 @@ function ticTacToe(moves) {
             return printBoard();
         }
         //IF board is full
-        if (!board[0].includes(false) &&
-            !board[1].includes(false) &&
-            !board[2].includes(false)) {
+        if (!board[0].includes('false') &&
+            !board[1].includes('false') &&
+            !board[2].includes('false')) {
             console.log('The game ended! Nobody wins :(');
             return printBoard();
         }
@@ -45,7 +45,7 @@ function ticTacToe(moves) {
     function currentMove(row, col) {
         let turn = board[row][col];
         // IF field is empty 
-        if (turn === false) {
+        if (turn === 'false') {
             board[row][col] = onTurn;
             count++;
 
