@@ -6,10 +6,15 @@ function lowestPricesInCities(input) {
         Qty = Number(Qty);
 
 
-        if (!cities[name]) {
-            cities[name] = {};
+        if (!cities[product]) {
+            cities[product] = {
+                Qty: Qty,
+                name: name
+            };
+        } else {
+            cities[product][Qty] += Qty;
         }
-        cities[name][product] = Qty;
+
     }
 
     let cityName = Object.keys(cities);
@@ -21,11 +26,11 @@ function lowestPricesInCities(input) {
 
         for (let product of products) {
             for (let j = 1; j < cityName.length; j++) {
-                if (cities[cityName[j]][product]){
+                if (cities[cityName[j]][product]) {
 
-                    if(cities[cityName[j]][product] < cities[currentCity][product]){
+                    if (cities[cityName[j]][product] < cities[currentCity][product]) {
                         delete cities[currentCity][product];
-                    } else if(cities[currentCity][product] <= cities[cityName[j]][product]){
+                    } else if (cities[currentCity][product] <= cities[cityName[j]][product]) {
                         delete cities[cityName[j]][product];
                     }
                 }
