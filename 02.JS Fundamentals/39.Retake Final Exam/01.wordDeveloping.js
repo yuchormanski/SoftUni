@@ -2,7 +2,7 @@
 // The possible commands are: 
 // "End" - end
 // "Add {substring}" - add given substring to end on string
-// "Upgrade {char}" - replace all occurrence with ASCII + 1
+// "Upgrade {char}" - replace all occurrences with ASCII + 1
 // "Print" - print result
 // "Index {char}" find all indexes on given char
 // "Remove {substring}" - remove substring from string
@@ -17,7 +17,7 @@ function wordDeveloping(input) {
         Upgrade(char) { return text = text.replace(new RegExp(char, 'g'), String.fromCharCode(char.charCodeAt() + 1)) },
         Print() { console.log(text) },
         Index(x) { let z = text.split('').map((a, i) => a === x ? i : '').filter(a => a).join(' '); z.length > 0 ? console.log(z) : console.log('None'); },
-        Remove(ocu) { text = text.split(ocu).join('') },
+        Remove(occurrences) { text = text.split(occurrences).join('') },
     }
     data.forEach(line => {
         let [command, arg] = line.split(' ')
