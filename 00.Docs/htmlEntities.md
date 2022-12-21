@@ -1,6 +1,6 @@
 | Result   | Description	                     | Entity Name	| Entity Number	 | 
 | -------- | ----------------------------------- | ------------ | -------------- |
-|          | non-breaking space	                 |    &nbsp;	|   <code>&#160;</code>	     |
+|          | non-breaking space	                 |    &&nbsp;	|   &#160;	     |
 | <	       | less than	                         |    &lt;	    |   &#60;	     |
 | >	       | greater than	                     |    &gt;	    |   &#62;	     |
 | 	       | ampersand	                         |    &amp;	    |   &#38;	     |
