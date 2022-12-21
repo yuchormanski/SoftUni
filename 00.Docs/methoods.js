@@ -21,6 +21,7 @@ x.charCodeAt(); //
 [3, 5, 6, 8].some((n) => n > 6); // true
 [3, 5, 6, 8].reverse(); //[8, 6, 5, 3]
 [3, 5, 6, 8].at(-2); // 7
+[1, 1, 1, 1].fill(4); // [4, 4, 4, 4]
 [3, 6, 5, 8].sort((a, b) => b - a); // [8,6,5,3]
 [1, 2, 3, 4, 5, 6].forEach((x) => console.log(x + 1)); // 2,3,4,5,6,7 every on new line
 [7, 8, 9, 7, 2, 3, 4, 1, 2] -> let unique = new Set(array); console.log(...unique);
