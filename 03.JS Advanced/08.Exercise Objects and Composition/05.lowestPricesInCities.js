@@ -1,50 +1,45 @@
 function lowestPricesInCities(input) {
     let data = input.slice();
-    let cities = {};
+
+    const storage = {};
+
     for (let line of data) {
-        let [name, product, Qty] = line.split(' | ');
-        Qty = Number(Qty);
+        let [city, item, qty] = line.split(' | ');
+        qty = Number(qty);
 
-
-        if (!cities[product]) {
-            cities[product] = {
-                Qty: Qty,
-                name: name
-            };
+        if (!storage[item]) {
+            storage[item] = { qty, city };
         } else {
-            cities[product][Qty] += Qty;
-        }
-
-    }
-
-    let cityName = Object.keys(cities);
-    console.log(cityName);
-
-    for (let i = 0; i < cityName.length; i++) {
-        let currentCity = cityName[i];
-        let products = Object.keys(cities[currentCity]);
-
-        for (let product of products) {
-            for (let j = 1; j < cityName.length; j++) {
-                if (cities[cityName[j]][product]) {
-
-                    if (cities[cityName[j]][product] < cities[currentCity][product]) {
-                        delete cities[currentCity][product];
-                    } else if (cities[currentCity][product] <= cities[cityName[j]][product]) {
-                        delete cities[cityName[j]][product];
-                    }
-                }
+            if (storage[item].qty > qty) {
+                storage[item] = { qty, city };
             }
-
         }
     }
 
+    let products = Object.keys(storage);
+    products.forEach(product => {
+        console.log(`${product} -> ${storage[product].qty} (${storage[product].city})`);
+    });
 }
+// lowestPricesInCities([
+//     "Sample Town | Sample Product | 1000",
+//     "Sample Town | Orange | 2",
+//     "Sample Town | Peach | 1",
+//     "Sofia | Orange | 3",
+//     "Sofia | Peach | 2",
+//     "New York | Sample Product | 1000.1",
+//     "New York | Burger | 10",
+// ]);
+
 lowestPricesInCities([
-    'Sample Town | Sample Product | 1000',
-    'Sample Town | Orange | 2',
-    'Sample Town | Peach | 1',
-    'Sofia | Orange | 3',
-    'Sofia | Peach | 2',
-    'New York | Sample Product | 1000.1',
-    'New York | Burger | 10']);
+    'Sofia City | Audi | 100000',
+    'Sofia City | BMW | 100000',
+    'Sofia City | Mitsubishi | 10000',
+    'Sofia City | Mercedes | 10000',
+    'Sofia City | NoOffenseToCarLovers | 0',
+    'Mexico City | Audi | 1000',
+    'Mexico City | BMW | 99999',
+    'Mexico City | Mitsubishi | 10000',
+    'New York City | Mitsubishi | 1000',
+    'Washington City | Mercedes | 1000'
+]);
