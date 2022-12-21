@@ -20,8 +20,8 @@ function wordDeveloping(input) {
         Remove(occurrences) { text = text.split(occurrences).join('') },
     }
     data.forEach(line => {
-        let [command, arg] = line.split(' ')
-        if (command === 'End') return;
+        let [command, arg] = line.split(' ');
+        if (command === 'End') {return};
         func[command](arg);
     });
 }
@@ -36,7 +36,7 @@ function wordDeveloping(input) {
 //     "End"]);
 
 wordDeveloping([
-    "Add HelloWorld",
+    "Add HelrlloWorld",
     "Upgrade e",
     "Print",
     "Index b",
