@@ -65,49 +65,47 @@ the explosion kills them and they are no longer valid targets for Snowball. So i
  */
 
 function bunnyKill(input) {
-    let coordinates = input.pop().split(',').map(Number);
-    let top, middle, bottom = '';
-    let [rowTop, rowMiddle, rowBottom] = [[], [], []];
+    let data = input.slice();
+    const coordinates = data.pop().split(' '); //: row1,column1 
+    const matrix = [];
+    data.forEach(line => matrix.push(line.split(' ').map(Number)));
 
+    for (let line of coordinates) {
+        let [i, j] = line.split(',').map(Number);
+        //main kill
+        let mainValue = matrix[i][j]
+        matrix[i][j] = 0;
 
-    for (let i = 0; i < input.length; i++) {
-        if (i === 0) {
-            rowTop = input[i].split(',').join('').split(' ');
-            rowMiddle = input[i + 1].split(',').join('').split(' ');
-        } else {
-            rowTop = input[i - 1].split(',').join('').split(' ');
-            rowMiddle = input[i].split(',').join('').split(' ');
-            rowBottom = input[i + 1].split(',').join('').split(' ');
+        //on same row
+        for (let k = j - 1; k <= j + 1; k++) {
+            if (matrix[i][k]) {
+                (matrix[i][k] - mainValue) > 0 ? matrix[i][k] -= mainValue : matrix[i][k] = 0;
+            }
         }
-
-        for(let j = 0)
-
-        if(coordinates[0] === i){
-
+        //above 
+        let x = i - 1;
+        if (matrix[x]) {
+            for (let k = j - 1; k <= j + 1; k++) {
+                if (matrix[x][k]) {
+                    (matrix[x][k] - mainValue) > 0 ? matrix[x][k] -= mainValue : matrix[x][k] = 0;
+                };
+            }
         }
-
-
-
-
-        console.log(rowTop);
-        console.log(rowMiddle);
-        console.log(rowBottom);
-        // for (let j = 0; j < row.length; j++) {
-        //     let current = row[j];
-        //     if (coordinates[0] === i) {
-        //         if (coordinates[1] === j) {
-
-
-        //             console.log(coordinates); // debug
-        //         }
-        //     }
-        // }
+        //bottom
+        let y = i + 1;
+        if (matrix[y]) {
+            for (let k = j - 1; k <= j + 1; k++) {
+                if (matrix[y][k]) {
+                    (matrix[y][k] - mainValue) > 0 ? matrix[y][k] -= mainValue : matrix[y][k] = 0;
+                };
+            }
+        }
     }
 
 
-
 }
-bunnyKill(['10 10 10',//'10 10 10', '10 10 10',
+bunnyKill([
+    '10 10 10',
     '10 20 10',
     '10 30 10',
     '0,0'])
