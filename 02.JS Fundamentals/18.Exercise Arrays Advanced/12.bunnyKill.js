@@ -68,44 +68,52 @@ function bunnyKill(input) {
     let data = input.slice();
     const coordinates = data.pop().split(' '); //: row1,column1 
     const matrix = [];
+    let headShot = 0;
     data.forEach(line => matrix.push(line.split(' ').map(Number)));
 
     for (let line of coordinates) {
         let [i, j] = line.split(',').map(Number);
-        //main kill
-        let mainValue = matrix[i][j]
-        matrix[i][j] = 0;
-
-        //on same row
-        for (let k = j - 1; k <= j + 1; k++) {
-            if (matrix[i][k]) {
-                (matrix[i][k] - mainValue) > 0 ? matrix[i][k] -= mainValue : matrix[i][k] = 0;
-            }
-        }
-        //above 
-        let x = i - 1;
-        if (matrix[x]) {
-            for (let k = j - 1; k <= j + 1; k++) {
-                if (matrix[x][k]) {
-                    (matrix[x][k] - mainValue) > 0 ? matrix[x][k] -= mainValue : matrix[x][k] = 0;
-                };
-            }
-        }
-        //bottom
-        let y = i + 1;
-        if (matrix[y]) {
-            for (let k = j - 1; k <= j + 1; k++) {
-                if (matrix[y][k]) {
-                    (matrix[y][k] - mainValue) > 0 ? matrix[y][k] -= mainValue : matrix[y][k] = 0;
-                };
-            }
+        //main kill index
+        let mainValue = matrix[i][j];
+        headShot += mainValue;
+        //iterate for vertical radius
+        for (let row = i - 1; row <= i + 1; row++) {
+            killRange(row, j, mainValue);
         }
     }
+    function killRange(i, j, mainValue) {
+        //iterate for horizontal radius
+        //IF row exist
+        if (matrix[i]) {
+            for (let k = j - 1; k <= j + 1; k++) {
+                //IF column exist
+                if (matrix[i][k]) {
+                    (matrix[i][k] - mainValue) > 0 ? matrix[i][k] -= mainValue : matrix[i][k] = 0;
+                };
+            }
+        }
+        return matrix[i];
+    }
 
+    //TODO!
+    //missing kills count
+    let killPoints = 0;
+    for (let line of matrix) {
+        killPoints += line.reduce((a, b) => a + b);
+    }
+    killPoints += headShot;
+    console.log(killPoints);
 
 }
+// bunnyKill([
+//     '10 10 10',
+//     '10 20 10',
+//     '10 30 10',
+//     '0,0']);
+
 bunnyKill([
-    '10 10 10',
-    '10 20 10',
-    '10 30 10',
-    '0,0'])
+    '5 10 15 20',
+    '10 10 10 10',
+    '10 15 10 10',
+    '10 10 10 10',
+    '2,2 0,1']);
