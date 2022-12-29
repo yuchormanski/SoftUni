@@ -32,55 +32,31 @@ Constraints
 •	The size of the matrix will be between [0…1000].
 •	 The coordinates to the bomb bunnies will always be in the matrix.
 •	The integers of the matrix will be in the range [0…10000].
-•	Allowed time/memory: 250ms/16MB
 
-Examples
-Input	                Output	
-
-['5 10 15 20',
-'10 10 10 10',
-'10 15 10 10',
-'10 10 10 10',
-'2,2 0,1']	            70
-                        7
-Comments
-Here the purple bunnies are caught in the explosion, but since their values are bigger than the exploding 
-bunny’s value – they don’t die and are left for Snowball to kill.
-The damage Snowball deals here is 10 + 10 + 5 + 20 + 10 + 5 + 10 = 70. The values for the bunnies who 
-survived the explosion are 5 because the explosion reduced their initial values
-15 (initial) – 10 (exploding bunny) = 5
-
-
-Input	                Output
-['10 10 10',
-'10 10 10', 
-'10 10 10',
-'0,0']	                60
-                        6
-Comments
-The blue number represents a bunny which is a bomb. The red numbers are bunnies that have been hit by the exploding bunny. 
-Since the exploding bunny has a value of 10, all the damaged bunnies suffer 10 damage. Since their values are also 10, 
-the explosion kills them and they are no longer valid targets for Snowball. So in total Snowball deals 60 dmg 
-(the 5 untargeted bunnies + the exploding one) and kills 6 units.
  */
 
 function bunnyKill(input) {
     let data = input.slice();
     const coordinates = data.pop().split(' '); //: row1,column1 
     const matrix = [];
-    let headShot = 0;
+    let headShot = 0, kills = 0, killPoints = 0;
     data.forEach(line => matrix.push(line.split(' ').map(Number)));
 
     for (let line of coordinates) {
         let [i, j] = line.split(',').map(Number);
         //main kill index
         let mainValue = matrix[i][j];
-        headShot += mainValue;
+        //IF bomb index is not already exploded
+        if (matrix[i][j] > 0) {
+            headShot += mainValue;
+            kills++;
+        }
         //iterate for vertical radius
         for (let row = i - 1; row <= i + 1; row++) {
             killRange(row, j, mainValue);
         }
     }
+
     function killRange(i, j, mainValue) {
         //iterate for horizontal radius
         //IF row exist
@@ -95,25 +71,34 @@ function bunnyKill(input) {
         return matrix[i];
     }
 
-    //TODO!
-    //missing kills count
-    let killPoints = 0;
-    for (let line of matrix) {
-        killPoints += line.reduce((a, b) => a + b);
-    }
+    matrix.forEach(line => { killPoints += line.reduce((a, b) => a + b); line.forEach(x => x > 0 ? kills++ : null); });
     killPoints += headShot;
-    console.log(killPoints);
-
+    console.log(`${killPoints}\n${kills}`);
 }
+
 // bunnyKill([
 //     '10 10 10',
 //     '10 20 10',
 //     '10 30 10',
 //     '0,0']);
 
+// bunnyKill([
+//     '5 10 15 20',
+//     '10 10 10 10',
+//     '10 15 10 10',
+//     '10 10 10 10',
+//     '2,2 0,1']);
+
 bunnyKill([
     '5 10 15 20',
     '10 10 10 10',
     '10 15 10 10',
     '10 10 10 10',
-    '2,2 0,1']);
+    '2,2 0,1'
+]);
+
+bunnyKill([
+    '10 10 10',
+    '10 10 10',
+    '10 10 10',
+    '0,0']);
