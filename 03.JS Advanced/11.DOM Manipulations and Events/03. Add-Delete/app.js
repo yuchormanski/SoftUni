@@ -13,7 +13,7 @@ function addItem() {
     deleteElement.addEventListener('click', (e) => {  // create event listener and add functionality
         deleteElement.parentNode.remove(); // remove parent element when clicked
     });
-
+    // newInputElement.appendChild(deleteElement);
     newInputElement.append(deleteElement); // append delete element
     itemsElement.appendChild(newInputElement); // append element to DOM tree
 }
