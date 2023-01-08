@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Movie List</h1>
+    <ul id="movie-list">
+        <li>The Matrix</li>
+    </ul>
+    <input type="text" name="input" id="inputField" onfocus="onFocus(this)">
+    <button onclick="onAddClick()">Add</button>
+
+    <script>
+
+        let ulElement = document.getElementById('movie-list')
+        let movieLiElement = document.createElement('li');
+
+        movieLiElement.textContent = 'Man of Steel';
+
+        let copyLiElement = movieLiElement.cloneNode(true);
+
+        copyLiElement.textContent += ' II';
+
+
+        ulElement.prepend(movieLiElement);
+        ulElement.appendChild(copyLiElement);
+
+        function onAddClick() {
+            let userElement = document.querySelector('input[name="input"]');
+            let currentElement = document.createElement('li');
+            if (userElement.value) {
+                currentElement.textContent = userElement.value;
+                ulElement.appendChild(currentElement);
+                userElement.value = '';
+            }
+
+        }
+        function onFocus(inputField) {
+            inputField.style.backgroundColor = '#dedede';
+        }
+
+    </script>
+</body>
+
+</html>
