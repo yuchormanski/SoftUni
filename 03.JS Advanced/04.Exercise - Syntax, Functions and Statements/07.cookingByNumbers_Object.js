@@ -1,8 +1,10 @@
-function cookingByNumbers(num, ...data) {
-    num = Number(num);
+// function cookingByNumbers(num, ...data) {
+//     num = Number(num);
 
+function cookingByNumbers(...data) {
+    num = Number(data.shift());
+    
     const funcShelf = {
-        //  chop: function chop() { num /= 2 }, // OR
         chop() { num /= 2 }, 
         dice() { num = Math.sqrt(num); },
         spice() { num += 1; },
@@ -11,5 +13,5 @@ function cookingByNumbers(num, ...data) {
     }
     data.forEach(command => { funcShelf[command](), console.log(num) });
 }
-cookingByNumbers('32', 'chop', 'chop', 'chop', 'chop', 'chop');
-// cookingByNumbers('9', 'dice', 'spice', 'chop', 'bake', 'fillet');
+// cookingByNumbers('32', 'chop', 'chop', 'chop', 'chop', 'chop');
+cookingByNumbers('9', 'dice', 'spice', 'chop', 'bake', 'fillet');

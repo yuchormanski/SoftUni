@@ -1,6 +1,9 @@
-function cookingByNumbers(num, a, b, c, d, e) {
-    num = Number(num);
-    let data = [a, b, c, d, e];
+// function cookingByNumbers(num, a, b, c, d, e) {
+//     num = Number(num);
+//     let data = [a, b, c, d, e];
+
+function cookingByNumbers(...data) {
+    num = Number(data.shift());
 
     data.forEach(command => {
         switch (command) {
@@ -18,5 +21,5 @@ function cookingByNumbers(num, a, b, c, d, e) {
         console.log(num);
     });
 }
-// cookingByNumbers('32', 'chop', 'chop', 'chop', 'chop', 'chop');
-cookingByNumbers('9', 'dice', 'spice', 'chop', 'bake', 'fillet');
+cookingByNumbers('32', 'chop', 'chop', 'chop', 'chop', 'chop');
+// cookingByNumbers('9', 'dice', 'spice', 'chop', 'bake', 'fillet');

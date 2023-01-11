@@ -7,7 +7,7 @@ function timeToWalk(steps, footprint, speed){
     let hours = Math.floor((time / 3600) % 24);
     let minutes = Math.floor((time / 60) % 60)
 
-    //next two lines do the same but my opinion better way is with ath.ceil
+    //next two lines do the same but my opinion better way is with Math.ceil
     // it will round every STARTED interval to higher value
     //also Math.ceil don't change the value type
     // example: 0.1 => 1
