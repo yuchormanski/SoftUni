@@ -1,11 +1,12 @@
 function attachEventsListeners() {
     let daysInput = document.getElementById('days');
-    let daysBtn = document.getElementById('daysBtn')
     let hoursInput = document.getElementById('hours');
-    let hoursBtn = document.getElementById('hoursBtn');
     let minutesInput = document.getElementById('minutes');
-    let minutesBtn = document.getElementById('minutesBtn');
     let secondsInput = document.getElementById('seconds');
+
+    let daysBtn = document.getElementById('daysBtn');
+    let hoursBtn = document.getElementById('hoursBtn');
+    let minutesBtn = document.getElementById('minutesBtn');
     let secondsBtn = document.getElementById('secondsBtn');
 
     let input;
@@ -14,6 +15,8 @@ function attachEventsListeners() {
     minutesInput.addEventListener('change', ()=>{input = minutesInput.value});
     secondsInput.addEventListener('change', ()=>{input = secondsInput.value});
     input = Number(input);
+    
+    
 
     daysBtn.addEventListener('click', () => {
         daysInput.value = input;
