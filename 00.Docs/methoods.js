@@ -41,4 +41,5 @@ xyz.search('y', 2); // .search(element, startIndex) -> return index
 'abcdefghij'.substring(3, 6); //-> def; substring(startIndex - included , endIndex - excluded);
 n = '00001001'; parseInt(n, 2); // -> 9
 n = 9; n.toString(2); // -> 1001
+parseFloat(5.001.toFixed(5)) => 5.001 // remove trailing zeros from string;
 
