@@ -1,0 +1,17 @@
+body{
+    margin:0;
+    overflow-y:scroll;
+}
+li{
+    list-style: none;
+margin: 5px;
+}
+a{
+    width: 100px;
+    height: 20px;
+    display:block;
+    border: 1px solid gray;
+    color: gray;
+    text-decoration: none;
+    text-align: center;
+}
