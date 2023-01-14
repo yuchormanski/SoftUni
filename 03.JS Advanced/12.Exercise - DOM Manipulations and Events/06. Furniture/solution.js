@@ -15,7 +15,6 @@ function solve() {
   const tableBody = document.querySelector('tbody');
 
   function generate() {
-
     let dataJSON = JSON.parse(inputElement.value)
 
     for (let el of dataJSON) {
@@ -49,23 +48,27 @@ function solve() {
       addDataCheckbox.appendChild(dataCheckBox);
 
       addTableRow.append(addDataImg, addDataItem, addDataPrice, addDataDecFac, addDataCheckbox);
-
       tableBody.appendChild(addTableRow);
-
     }
   }
 
   function buy() {
+    let totalPrice = 0;
+    let dFactor = [];
+    const outputArray = [];
+    let rows = Array.from(tableBody.querySelectorAll('tr'));
 
-    let rows = tableBody.querySelectorAll('tr')
-    for (let row of rows) {
-      for(let i = 0; i < row.length; i++ ){
-        if(row[i].checked){
-          console.log('ok');
-        }
+    for (let currentRow of rows) {
+      const inputCheck = currentRow.querySelector('input');
+      if (inputCheck.checked) {
+        let item = currentRow.children[1].textContent;
+        outputArray.push(item);
+        totalPrice += Number(currentRow.children[2].textContent);
+        dFactor.push(Number(currentRow.children[3].textContent) * 100 / 100);
       }
     }
-
+    let averageDecFactor = dFactor.reduce((a, b) => (a + b) / dFactor.length);
+    outputElement.textContent = `Bought furniture: ${outputArray.join(', ')}\nTotal price: ${totalPrice}\nAverage decoration factor: ${averageDecFactor}`;
   }
 }
 
