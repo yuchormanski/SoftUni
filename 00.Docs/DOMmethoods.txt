@@ -1,3 +1,0 @@
-element.createElement('tag-name');
-element.appendChild('created-element');
-copy = element.cloneNode(true/false);  // deep copy / just tag
