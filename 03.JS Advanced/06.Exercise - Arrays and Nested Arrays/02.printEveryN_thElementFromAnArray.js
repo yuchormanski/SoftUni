@@ -1,5 +1,6 @@
 function printEveryN_thElementFromAnArray(input, n) {
     let result = input.filter((x, i) => i % n === 0);
+    // let result = input.filter((_, i) => i % n === 0);
     return result;
 
     //by task demand
