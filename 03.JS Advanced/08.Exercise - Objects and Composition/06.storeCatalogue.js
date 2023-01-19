@@ -9,10 +9,12 @@ function storeCatalogue(input) {
             products[item] = price;
         }
     });
+    
     let sorted = Object.keys(products).sort((a, b) => a.localeCompare(b));
     let firstLetter;
+    
     sorted.forEach(item => {
-        let firstL = item.slice(0, 1);
+        let firstL = item[0];
         firstLetter === undefined ? (firstLetter = firstL, console.log(firstL)) : null;
         firstLetter !== firstL ? (firstLetter = firstL, console.log(firstL)) : null;
         console.log(`  ${item}: ${products[item]}`);

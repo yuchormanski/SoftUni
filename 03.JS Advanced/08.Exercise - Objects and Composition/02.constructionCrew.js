@@ -7,6 +7,8 @@ function constructionCrew(worker) {
     worker.dizziness ? (worker.levelOfHydrated += worker.weight * 0.1 * worker.experience, worker.dizziness = false) : null;
     return worker;
 }
+
+
 constructionCrew({
     weight: 80,
     experience: 1,

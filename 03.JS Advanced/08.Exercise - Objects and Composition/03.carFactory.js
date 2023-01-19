@@ -30,7 +30,8 @@ function carFactory(order) {
     };
     return car;
 }
-carFactory(
+
+let res = carFactory(
     {
         model: 'VW Golf II',
         power: 90,
@@ -46,3 +47,5 @@ carFactory({
     wheelsize: 17
 }
 )
+
+console.log(res);
