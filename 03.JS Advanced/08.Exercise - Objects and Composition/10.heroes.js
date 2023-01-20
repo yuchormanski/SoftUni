@@ -34,7 +34,6 @@ function solve() {
 
     return { mage, fighter };
 }
-
 let create = solve();
 const scorcher = create.mage("Scorcher");
 scorcher.cast("fireball");
