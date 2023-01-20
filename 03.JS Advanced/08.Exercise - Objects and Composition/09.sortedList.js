@@ -52,7 +52,9 @@ function createSortedList() {
         }
     }
     function get(i) {
-        return this.element[i];
+        if (i >= 0 && i <= this.element.length) {
+            return this.element[i];
+        }
     }
 }
 
