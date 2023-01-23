@@ -2,8 +2,6 @@ function solve() {
     const inputElement = document.getElementById('inputs');
     const textArea = inputElement.children[1];
     const button = document.getElementById('btnSend');
-    const bestRestaurant = document.getElementById('bestRestaurant').children[2];
-    const workersElement = document.getElementById('workers').children[2];
 
     button.addEventListener('click', getData);
 
@@ -33,6 +31,7 @@ function solve() {
                 }
                 restaurants[eatery][name] += salary;
             }
+            
             let allSums = Object.values(restaurants[eatery]);
             let totalAverage = allSums.reduce((acc, x) => acc + x, 0) / allSums.length;
 
@@ -42,18 +41,15 @@ function solve() {
             }
         }
         // end creating objects
-        let restBestSalary = Object.values(restaurants[bestName]);
-        
+
         let workers = Object.entries(restaurants[bestName]).sort((a, b) => b[1] - a[1]);
-        let best = workers[0][1];
         let resultText = '';
 
-        for (let worker of workers) {
-            resultText += `Name: ${worker[0]} With Salary: ${worker[1]} `;
+        for (let [worker,salary] of workers) {
+            resultText += `Name: ${worker} With Salary: ${salary} `;
         }
-        let restaurantOutput = `Name: ${bestName} Average Salary: ${bestAvg.toFixed(2)} Best Salary: ${best.toFixed(2)}`;
-        
-        bestRestaurant.textContent = restaurantOutput;
-        workersElement.textContent = resultText;
+
+        document.querySelector('#bestRestaurant p').textContent = `Name: ${bestName} Average Salary: ${bestAvg.toFixed(2)} Best Salary: ${(workers[0][1]).toFixed(2)}`;
+        document.querySelector('#workers p').textContent = resultText;
     }
 }
