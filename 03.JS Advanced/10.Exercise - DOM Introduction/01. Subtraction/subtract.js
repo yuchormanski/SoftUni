@@ -4,5 +4,4 @@ function subtract() {
     let subtract = first - second;
     let result = document.getElementById('result');
     result.textContent = subtract;
-    console.log(subtract);
 }
