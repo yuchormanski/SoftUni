@@ -7,7 +7,7 @@ function solve() {
    let totalPrice = 0;
    const shoppingBag = [];
 
-   let print = () => {
+   function print(){
       outputElement.textContent += `You bought ${shoppingBag.join(', ')} for ${totalPrice.toFixed(2)}.`;
       buttonsEl.forEach(e => e.setAttribute('disabled', ''));
       checkoutEl.setAttribute('disabled', '');
@@ -20,7 +20,9 @@ function solve() {
          price = Number(price);
          outputElement.textContent += `Added ${item} for ${price.toFixed(2)} to the cart.\n`;
          totalPrice += price;
-         shoppingBag.push(item);
+         if (!shoppingBag.includes(item)) {
+            shoppingBag.push(item);
+         }
       });
    }
 
