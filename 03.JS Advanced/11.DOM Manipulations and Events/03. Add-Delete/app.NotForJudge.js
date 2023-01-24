@@ -1,4 +1,4 @@
-//това решение няма да работи в Judge, защото той не приема повече от една глобал функции
+//това решение няма да работи в Judge, защото той не приема повече от една global функции
 const ulElement = document.querySelector('#items')
 ulElement.addEventListener('click', deleteEntry);
 
@@ -12,6 +12,10 @@ function deleteEntry(event) {
 function addItem() {
 
     const inputElement = document.querySelector('#newItemText');
+    if (inputElement.value === '' || inputElement.value === ' ') {
+        return;
+    }
+
     const newLi = document.createElement('li');
     newLi.textContent = inputElement.value;
 
@@ -23,4 +27,4 @@ function addItem() {
     ulElement.append(newLi);
 
     inputElement.value = '';
-};
+}
