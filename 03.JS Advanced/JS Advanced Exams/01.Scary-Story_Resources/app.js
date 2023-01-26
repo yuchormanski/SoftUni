@@ -8,102 +8,121 @@ function solve() {
   const genre = document.getElementById('genre');
   const userStory = document.getElementById('story');
   const btn = document.getElementById('form-btn');
-
-  const previewList = document.getElementById('preview-list');
-
+  const previewList = document.getElementById('preview-list'); //ul
+  btn.addEventListener('click', getInfo);
 
   //creating elements
-  const newLi = document.createElement('li');
-  newLi.className = "story-info";
-  const newArticle = document.createElement('article');
-  const headerName = document.createElement('h4');
-  const agePar = document.createElement('p')
+
+  const liElement = document.createElement('li');
+  liElement.className = 'story-info';
+
+  const article = document.createElement('article');
+  const headerH4 = document.createElement('h4');
+  headerH4.textContent = `Name: `
+  const agePar = document.createElement('p');
+  agePar.textContent = `Age: `
   const titlePar = document.createElement('p');
+  titlePar.textContent = `Title: `
   const genrePar = document.createElement('p');
+  genrePar.textContent = `Genre: `;
   const storyPar = document.createElement('p');
-  
-  //redaction buttons
+
+  // article.append(headerH4, agePar, titlePar, genrePar, storyPar)
+  article.appendChild(headerH4);
+  article.appendChild(agePar)
+  article.appendChild(titlePar)
+  article.appendChild(genrePar)
+  article.appendChild(storyPar)
+
+  //create buttons
 
   const saveBtn = document.createElement('button');
   saveBtn.className = 'save-btn';
-  saveBtn.textContent = 'Save story';
-  saveBtn.setAttribute('disabled', '');
+  saveBtn.textContent = 'Save story'
 
   const editBtn = document.createElement('button');
   editBtn.className = 'edit-btn';
-  editBtn.textContent = 'Edit story';
-  
-  const delBtn = document.createElement('button');
-  delBtn.className = 'delete-btn';
-  delBtn.textContent = 'Delete story';
-  
-  
+  editBtn.textContent = 'Edit story'
+
+  const deleteBtn = document.createElement('button');
+  deleteBtn.className = 'delete-btn';
+  deleteBtn.textContent = 'delete story'
+
+  // liElement.append(article, saveBtn, editBtn, deleteBtn);
+  liElement.appendChild(article);
+  liElement.appendChild(saveBtn);
+  liElement.appendChild(editBtn);
+  liElement.appendChild(deleteBtn);
 
 
-  btn.addEventListener('click', preview);
 
-  function preview(event) {
+  function getInfo() {
+    headerH4.textContent = `Name: ${firstName.value} ${lastName.value}`
+    agePar.textContent = `Age: ${age.value}`
+    titlePar.textContent = `Title: ${storyTitle.value}`
+    genrePar.textContent = `Genre: ${genre.value}`;
+    storyPar.textContent = userStory.textContent;
+
+
 
     if (firstName.value !== '' && firstName.value !== ' ' &&
       lastName.value !== '' && lastName.value !== ' ' &&
       age.value !== '' && age.value !== ' ' &&
       storyTitle.value !== '' && storyTitle.value !== ' ' &&
-      userStory.value !== '' && userStory.value !== ' ') {
+      userStory.textContent !== '' && userStory.textContent !== ' ') {
 
-      // creating user object
-      const obj = {
-        userFirstName: firstName.value,
-        userLastName: lastName.value,
-        age: age.value,
-        storyTitle: storyTitle.value,
-        genre: genre.value,
-        story: userStory.textContent
-      }
+      previewList.appendChild(liElement);
+      btn.setAttribute('disabled', '');
 
-      //clear input fields
+      //clearing inputs
+
       firstName.value = '';
       lastName.value = '';
       age.value = '';
       storyTitle.value = '';
-      userStory.value = '';
+      userStory.textContent = '';
 
-      headerName.textContent = `Name: ${obj.userFirstName} ${obj.userLastName}`;
-      agePar.textContent = `Age: ${obj.age}`;
-      titlePar.textContent = `Title: ${obj.storyTitle}`;
-      genrePar.textContent = `Genre: ${obj.genre}`;
-      storyPar.textContent = `${obj.story}`;
-      newArticle.append(headerName, agePar, titlePar, genrePar, storyPar);
+      liElement.addEventListener('click', saveEditDel);
 
 
-      //disabling publish btn
-      btn.setAttribute('disabled', '');
-    }
-    newLi.append(newArticle, saveBtn, editBtn, delBtn);
-    previewList.append(newLi);
 
-        
-    liElement = document.querySelector('li.story-info');
 
-    liElement.addEventListener('click', (e) =>{
-      const liName =  liElement.querySelector('h4');
-      const info =  liElement.querySelectorAll('p');
-      let butArray = Array.from(liElement.querySelectorAll('button'));
-      console.log(liElement);
-      if (e.target.tagName === 'BUTTON') {
+      function saveEditDel(event) {
+        const buttonArray = Array.from(liElement.querySelectorAll('button'));
+
+        if (event.target === buttonArray[0]) {
+          const main = document.getElementById('main');
+          const formWrap = document.querySelector('.form-wrapper');
+          const sideWrap = document.getElementById('side-wrapper');
+          main.removeChild(formWrap);
+          main.removeChild(sideWrap);
+
+          const lastText = document.createElement('h1');
+          lastText.textContent = 'Your scary story is saved!';
+
+          main.appendChild(lastText);
+
+        }
+        else if (event.target === buttonArray[1]) {
+
+          let [, firstLast] = headerH4.textContent.split('Name: ')
+          firstName.value = firstLast.split(' ')[0];
+          lastName.value = firstLast.split(' ')[1];
+          age.value = agePar.textContent.split('Age: ')[1];
+          storyTitle.value = titlePar.textContent.split('Title: ')[1];
+          userStory.textContent = storyPar.textContent;
+          liElement.remove();
+        }
+        else if (event.target === buttonArray[2]) {
+          liElement.remove();
+        }
         btn.removeAttribute('disabled', '');
       }
-    
-    
-      if (e.target === butArray[1]) {
-        // let [firstN, lastN] = headerName.textContent.split('Name: ');
-        firstName.value = liName.textContent.split('Name: ');
-        
-        // lastName.value = obj.userLastName;
-        // age.value = obj.age;
-        // storyTitle.value = obj.storyTitle;
-        // userStory.value = obj.story;
-        e.target.setAttribute('disabled', '')
-      }
-    });
+    }
   }
 }
+
+
+
+
+
