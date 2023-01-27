@@ -6,7 +6,7 @@ function sorting(...input) {
     } else {
         numArray.sort((a, b) => b - a);
     }
-    console.log(numArray);
+    return numArray;
 }
 sorting([14, 7, 17, 6, 8], 'asc')
 sorting([14, 7, 17, 6, 8], 'desc')
