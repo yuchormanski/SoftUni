@@ -8,6 +8,8 @@ function argumentInfo(...input){
         obj[typeof el]++;                                                   //add count to type
         console.log(`${typeof el}: ${el}`);                                 //print current type and element
     }
-    Object.keys(obj).forEach(key => console.log(`${key} = ${obj[key]}`));   //iterate  object and print types and counts
+    //sort object descending. Iterate result and print types and counts
+    Object.keys(obj).sort((a,b) => obj[b]-obj[a]).forEach(key => console.log(`${key} = ${obj[key]}`));   
 }
-argumentInfo('cat', 42, function () { console.log('Hello world!'); })
+// argumentInfo('cat', 42, function () { console.log('Hello world!'); })
+argumentInfo({ name: 'bob'}, 3.333, 9.999)
