@@ -1,35 +1,46 @@
 function attachEventsListeners() {
-    let daysInput = document.getElementById('days');
-    let hoursInput = document.getElementById('hours');
-    let minutesInput = document.getElementById('minutes');
-    let secondsInput = document.getElementById('seconds');
 
-    let daysBtn = document.getElementById('daysBtn');
-    let hoursBtn = document.getElementById('hoursBtn');
-    let minutesBtn = document.getElementById('minutesBtn');
-    let secondsBtn = document.getElementById('secondsBtn');
+    // input fields
+    const days = document.getElementById('days');
+    const hours = document.getElementById('hours')
+    const minutes = document.getElementById('minutes');
+    const seconds = document.getElementById('seconds');
 
-    let input;
-    daysInput.addEventListener('change', ()=>{input = daysInput.value});
-    hoursInput.addEventListener('change', ()=>{input = hoursInput.value});
-    minutesInput.addEventListener('change', ()=>{input = minutesInput.value});
-    secondsInput.addEventListener('change', ()=>{input = secondsInput.value});
-    input = Number(input);
-    
-    
 
-    daysBtn.addEventListener('click', () => {
-        daysInput.value = input;
-        hoursInput.value = input * 24;
-        minutesInput.value = input * 1440;
-        secondsInput.value = input * 86400;
-    });
-    hoursBtn.addEventListener('click', () => {
+    const obj = {
+        days: 1,
+        hours: 24,
+        minutes: 1440,
+        seconds: 86400
+    }
 
-        daysInput.value = input / 24;
-        hoursInput.value = input;
-        minutesInput.value = input * 60;
-        secondsInput.value = input * 3600;
-    });
+    // buttons
+    const dayBtn = document.getElementById('daysBtn').addEventListener('click', calculate);
+    const minutesBtn = document.getElementById('minutesBtn').addEventListener('click', calculate);
+    const hoursBtn = document.getElementById('hoursBtn').addEventListener('click', calculate);
+    const secondsBtn = document.getElementById('secondsBtn').addEventListener('click', calculate);
 
+    function converts(value, id) {
+        let days = value / obj[id];
+
+        return {
+            days: days,
+            hours: days * obj.hours,
+            minutes: days * obj.minutes,
+            seconds: days * obj.seconds
+        }
+
+    }
+
+
+    function calculate(event) {
+        let input = event.target.parentElement.querySelector('input[type="text"]')
+
+        let time = converts(Number(input.value), input.id);
+        
+        days.value = time.days;
+        hours.value = time.hours;
+        minutes.value = time.minutes;
+        seconds.value = time.seconds
+    }
 }

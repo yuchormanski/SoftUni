@@ -1,4 +1,4 @@
-function create(words) {
+/* function create(words) {
    let contentElements = document.getElementById('content'); // get divs holder
 
    for (let el of words) { // for every string of input ...
@@ -17,4 +17,24 @@ function create(words) {
    }
 
    contentElements.addEventListener('click', reveal);
+} */
+
+//create(['Section 1', 'Section 2', 'Section 3', 'Section 4'])
+function create(words) {
+
+   const content = document.getElementById('content');
+   words.forEach(x => {
+      const divEl = document.createElement('div');
+      const pEl = document.createElement('p');
+      pEl.textContent = x;
+      pEl.style.display = 'none';
+      divEl.appendChild(pEl);
+      content.appendChild(divEl);
+   });
+
+   content.addEventListener('click', showText);
+
+   function showText(event){
+      event.target.querySelector('p').style.display ='block';
+   }
 }
