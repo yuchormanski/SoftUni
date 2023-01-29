@@ -1,5 +1,8 @@
 window.addEventListener('load', solve);
 
 function solve() {
-    //TO DO
+    // input fields
+    const modelInput = document.getElementById('model');
+    const yearInput = document.getElementById('year');
+    const descriptionInput = document.getElementById('description');
 }
