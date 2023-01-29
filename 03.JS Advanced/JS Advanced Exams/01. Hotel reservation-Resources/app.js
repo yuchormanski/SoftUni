@@ -10,62 +10,114 @@ function solve() {
     const nextButton = document.getElementById('next-btn');
     nextButton.addEventListener('click', makeReservation);
 
+    const resContent = document.querySelector('ul.info-list');
+    const confirmContent = document.querySelector('ul.confirm-list');
+
     function makeReservation() {
-        // if (firstNameInput.value === '' &&
-        //     lastNameInput.value === '' &&
-        //     dateInInput.value === '' &&
-        //     dateOutInput.value === '' &&
-        //     guestsInput.value === '') {
-        //     return;
-        // }
+        if (!firstNameInput.value == '' && !lastNameInput.value == '' && !dateInInput.value == '' && !dateOutInput.value == '' && !guestsInput.value == '' && guestsInput.value > 0) {
 
-        //check if date1 is before date2
-        // const d1 = new Date(`${dateInInput.value}`);
-        // const d2 = new Date(`${dateOutInput.value}`);
-        // if (d1 > d2) return;
+            // check if date1 is before date2
+            const d1 = new Date(`${dateInInput.value}`);
+            const d2 = new Date(`${dateOutInput.value}`);
+            if (d1 <= d2) {
 
-        const resContent = document.querySelector('ul.info-list');
+                const res = {
+                    firstName: firstNameInput.value,
+                    lastName: lastNameInput.value,
+                    inDate: dateInInput.value,
+                    outDate: dateOutInput.value,
+                    guests: Number(guestsInput.value),
+                }
 
-        const liElement = document.createElement('li');
-        liElement.className = 'reservation-content';
 
-        const article = document.createElement('article');
+                const liElement = document.createElement('li');
+                liElement.className = 'reservation-content';
 
-        const h3Name = document.createElement('h3');
-        h3Name.textContent = `Name: ${firstNameInput.value} ${lastNameInput.value}`;
+                const article = document.createElement('article');
 
-        const pFrom = document.createElement('p');
-        pFrom.textContent = `From date: ${dateInInput.value}`;
+                const h3Name = document.createElement('h3');
+                h3Name.textContent = `Name: ${res.firstName} ${res.lastName}`;
 
-        const pTo = document.createElement('p');
-        pTo.textContent = `From date: ${dateOutInput.value}`;
+                const pFrom = document.createElement('p');
+                pFrom.textContent = `From date: ${res.inDate}`;
 
-        const guests = document.createElement('p');
-        guests.textContent = `For ${guestsInput.value} people`;
+                const pTo = document.createElement('p');
+                pTo.textContent = `From date: ${res.outDate}`;
 
-        const editBtn = document.createElement('button');
-        editBtn.className = 'edit-btn';
-        editBtn.textContent = 'Edit';
+                const guests = document.createElement('p');
+                guests.textContent = `For ${res.guests} people`;
 
-        const continueBtn = document.createElement('button');
-        continueBtn.className = 'continue-btn';
-        continueBtn.textContent = 'Continue';
+                const editBtn = document.createElement('button');
+                editBtn.className = 'edit-btn';
+                editBtn.textContent = 'Edit';
+                editBtn.addEventListener('click', edit);
 
-        article.appendChild(h3Name);
-        article.appendChild(pFrom);
-        article.appendChild(pTo);
-        article.appendChild(guests);
+                const continueBtn = document.createElement('button');
+                continueBtn.className = 'continue-btn';
+                continueBtn.textContent = 'Continue';
+                continueBtn.addEventListener('click', continueFunc);
 
-        liElement.appendChild(article);
-        liElement.appendChild(editBtn);
-        liElement.appendChild(continueBtn);
+                article.appendChild(h3Name);
+                article.appendChild(pFrom);
+                article.appendChild(pTo);
+                article.appendChild(guests);
 
-        resContent.appendChild(liElement);
+                liElement.appendChild(article);
+                liElement.appendChild(editBtn);
+                liElement.appendChild(continueBtn);
 
-        nextButton.disabled = true;
+                resContent.appendChild(liElement);
+
+                firstNameInput.value = '';
+                lastNameInput.value = '';
+                dateInInput.value = '';
+                dateOutInput.value = '';
+                guestsInput.value = '';
+
+                nextButton.disabled = true;
+
+                function edit(e) {
+                    firstNameInput.value = res.firstName;
+                    lastNameInput.value = res.lastName;
+                    dateInInput.value = res.inDate;
+                    dateOutInput.value = res.outDate;
+                    guestsInput.value = res.guests;
+
+                    nextButton.disabled = false;
+                    liElement.remove();
+                }
+
+                function continueFunc() {
+                    confirmContent.appendChild(liElement);
+                    editBtn.remove();
+                    continueBtn.remove();
+                    const output = document.getElementById('verification');
+
+                    const confirmBtn = document.createElement('button');
+                    confirmBtn.className = 'confirm-btn'
+                    confirmBtn.textContent = 'Confirm'
+                    confirmBtn.addEventListener('click', () => {
+                        liElement.remove();
+                        nextButton.disabled = false;
+                        output.className = 'reservation-confirmed';
+                        output.textContent = 'Confirmed.'
+                    });
+
+                    const cancelBtn = document.createElement('button');
+                    cancelBtn.classList.add('cancel-btn');
+                    cancelBtn.textContent = 'Cancel';
+                    cancelBtn.addEventListener('click', () => {
+                        liElement.remove();
+                        nextButton.disabled = false;
+                        output.className = 'reservation-cancelled';
+                        output.textContent = 'Cancelled.'
+                    });
+                    liElement.appendChild(confirmBtn);
+                    liElement.appendChild(cancelBtn);
+                }
+            }
+        }
     }
-
-
 }
 
 
