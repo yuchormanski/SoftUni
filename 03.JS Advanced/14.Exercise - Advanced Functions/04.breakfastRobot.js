@@ -27,8 +27,7 @@ function solution() {
                 if (order[microEL][el] * qty <= store[el]) {
                     store[el] -= (order[microEL][el] * qty);
                 } else {
-                    result = `Error: not enough ${el} in stock`
-                    return result;
+                    return `Error: not enough ${el} in stock`;
                 }
             }
             result = 'Success';
