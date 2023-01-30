@@ -14,108 +14,114 @@ function solve() {
     const confirmContent = document.querySelector('ul.confirm-list');
 
     function makeReservation() {
-        if (!firstNameInput.value == '' && !lastNameInput.value == '' && !dateInInput.value == '' && !dateOutInput.value == '' && !guestsInput.value == '' && guestsInput.value > 0) {
+        // fields validation
+        if (firstNameInput.value == ''
+            || lastNameInput.value == ''
+            || dateInInput.value == ''
+            || dateOutInput.value == ''
+            || guestsInput.value == ''
+            || guestsInput.value <= 0
+            || new Date(dateInInput.value) >= new Date(dateOutInput.value)) {
+            return;
+        }
 
-            // check if date1 is before date2
-            const d1 = new Date(`${dateInInput.value}`);
-            const d2 = new Date(`${dateOutInput.value}`);
-            if (d1 <= d2) {
-
-                const res = {
-                    firstName: firstNameInput.value,
-                    lastName: lastNameInput.value,
-                    inDate: dateInInput.value,
-                    outDate: dateOutInput.value,
-                    guests: Number(guestsInput.value),
-                }
+        const res = {
+            firstName: firstNameInput.value,
+            lastName: lastNameInput.value,
+            inDate: dateInInput.value,
+            outDate: dateOutInput.value,
+            guests: Number(guestsInput.value),
+        }
 
 
-                const liElement = document.createElement('li');
-                liElement.className = 'reservation-content';
+        //creating elements
+        const liElement = document.createElement('li');
+        liElement.className = 'reservation-content';
+        const article = document.createElement('article');
+        const h3Name = document.createElement('h3');
+        h3Name.textContent = `Name: ${res.firstName} ${res.lastName}`;
+        const pFrom = document.createElement('p');
+        pFrom.textContent = `From date: ${res.inDate}`;
+        const pTo = document.createElement('p');
+        pTo.textContent = `From date: ${res.outDate}`;
+        const guests = document.createElement('p');
+        guests.textContent = `For ${res.guests} people`;
+        const editBtn = document.createElement('button');
+        editBtn.className = 'edit-btn';
+        editBtn.textContent = 'Edit';
+        editBtn.addEventListener('click', edit);
+        const continueBtn = document.createElement('button');
+        continueBtn.className = 'continue-btn';
+        continueBtn.textContent = 'Continue';
+        continueBtn.addEventListener('click', continueFunc);
 
-                const article = document.createElement('article');
+        //append elements
+        article.appendChild(h3Name);
+        article.appendChild(pFrom);
+        article.appendChild(pTo);
+        article.appendChild(guests);
 
-                const h3Name = document.createElement('h3');
-                h3Name.textContent = `Name: ${res.firstName} ${res.lastName}`;
+        liElement.appendChild(article);
 
-                const pFrom = document.createElement('p');
-                pFrom.textContent = `From date: ${res.inDate}`;
+        liElement.appendChild(editBtn);
+        liElement.appendChild(continueBtn);
 
-                const pTo = document.createElement('p');
-                pTo.textContent = `From date: ${res.outDate}`;
+        resContent.appendChild(liElement);
 
-                const guests = document.createElement('p');
-                guests.textContent = `For ${res.guests} people`;
+        //emptying fields
+        firstNameInput.value = '';
+        lastNameInput.value = '';
+        dateInInput.value = '';
+        dateOutInput.value = '';
+        guestsInput.value = '';
 
-                const editBtn = document.createElement('button');
-                editBtn.className = 'edit-btn';
-                editBtn.textContent = 'Edit';
-                editBtn.addEventListener('click', edit);
+        //disable button
+        nextButton.disabled = true;
 
-                const continueBtn = document.createElement('button');
-                continueBtn.className = 'continue-btn';
-                continueBtn.textContent = 'Continue';
-                continueBtn.addEventListener('click', continueFunc);
+        //IF edit fill inputs with saved data
+        function edit() {
+            firstNameInput.value = res.firstName;
+            lastNameInput.value = res.lastName;
+            dateInInput.value = res.inDate;
+            dateOutInput.value = res.outDate;
+            guestsInput.value = res.guests;
 
-                article.appendChild(h3Name);
-                article.appendChild(pFrom);
-                article.appendChild(pTo);
-                article.appendChild(guests);
+            nextButton.disabled = false;
+            liElement.remove();
+        }
 
-                liElement.appendChild(article);
-                liElement.appendChild(editBtn);
-                liElement.appendChild(continueBtn);
+        function continueFunc() {
+            confirmContent.appendChild(liElement);
+            //remove old elements
+            editBtn.remove();
+            continueBtn.remove();
 
-                resContent.appendChild(liElement);
+            const output = document.getElementById('verification');
 
-                firstNameInput.value = '';
-                lastNameInput.value = '';
-                dateInInput.value = '';
-                dateOutInput.value = '';
-                guestsInput.value = '';
+            //create new buttons with functionality depending on cases
+            //CONFIRM
+            const confirmBtn = document.createElement('button');
+            confirmBtn.className = 'confirm-btn'
+            confirmBtn.textContent = 'Confirm'
+            confirmBtn.addEventListener('click', () => {
+                liElement.remove();
+                nextButton.disabled = false;
+                output.className = 'reservation-confirmed';
+                output.textContent = 'Confirmed.'
+            });
+            liElement.appendChild(confirmBtn);
 
-                nextButton.disabled = true;
-
-                function edit(e) {
-                    firstNameInput.value = res.firstName;
-                    lastNameInput.value = res.lastName;
-                    dateInInput.value = res.inDate;
-                    dateOutInput.value = res.outDate;
-                    guestsInput.value = res.guests;
-
-                    nextButton.disabled = false;
-                    liElement.remove();
-                }
-
-                function continueFunc() {
-                    confirmContent.appendChild(liElement);
-                    editBtn.remove();
-                    continueBtn.remove();
-                    const output = document.getElementById('verification');
-
-                    const confirmBtn = document.createElement('button');
-                    confirmBtn.className = 'confirm-btn'
-                    confirmBtn.textContent = 'Confirm'
-                    confirmBtn.addEventListener('click', () => {
-                        liElement.remove();
-                        nextButton.disabled = false;
-                        output.className = 'reservation-confirmed';
-                        output.textContent = 'Confirmed.'
-                    });
-
-                    const cancelBtn = document.createElement('button');
-                    cancelBtn.classList.add('cancel-btn');
-                    cancelBtn.textContent = 'Cancel';
-                    cancelBtn.addEventListener('click', () => {
-                        liElement.remove();
-                        nextButton.disabled = false;
-                        output.className = 'reservation-cancelled';
-                        output.textContent = 'Cancelled.'
-                    });
-                    liElement.appendChild(confirmBtn);
-                    liElement.appendChild(cancelBtn);
-                }
-            }
+            //CANCEl case
+            const cancelBtn = document.createElement('button');
+            cancelBtn.classList.add('cancel-btn');
+            cancelBtn.textContent = 'Cancel';
+            cancelBtn.addEventListener('click', () => {
+                liElement.remove();
+                nextButton.disabled = false;
+                output.className = 'reservation-cancelled';
+                output.textContent = 'Cancelled.'
+            });
+            liElement.appendChild(cancelBtn);
         }
     }
 }
