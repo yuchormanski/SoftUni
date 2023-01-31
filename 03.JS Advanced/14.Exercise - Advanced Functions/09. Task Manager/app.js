@@ -1,71 +1,73 @@
 function solve() {
-    const taskInput = document.getElementById('task');
-    const descriptionInput = document.getElementById('description');
-    const dateInput = document.getElementById('date')
-    const addInput = document.getElementById('add');
-    addInput.addEventListener('click', toOpen);
 
-    const sections = Array.from(document.querySelectorAll('section'));
-    const addTask = sections[0];
-    const openDiv = sections[1];
-    const inProgress = sections[2];
-    const complete = sections[3];
-
+    //create object from inputs
+    const inputs = {
+        task: document.getElementById('task'),
+        description: document.getElementById('description'),
+        date: document.getElementById('date')
+    }
+    
+    //get relation to sections
+    const [addTask, openSection, inProgress, completeSection] = Array.from(document.querySelectorAll('section')).map(el => el.children[1]);
+    const addBtn = document.getElementById('add');  //get button
+    addBtn.addEventListener('click', toOpen); //attach listener
+    
     function toOpen(e) {
-        e.preventDefault();
-
-        if (taskInput.value === '' ||
-            descriptionInput.value === '' ||
-            dateInput.value === '') {
+        e.preventDefault(); // button is in form element , prevent submit action
+        
+        //validatin of the inputs
+        if (inputs.task.value === '' ||
+            inputs.description.value === '' ||
+            inputs.date.value === '') {
             return;
         }
 
-        const h3 = document.createElement('h3');
-        h3.innerText = taskInput.value;
+        const article = document.createElement('article');   //create article element
+        //create element from function with given params and append it to article
+        // if some of parameters is unneeded add '' as param
+        article.appendChild(createElement('h3', `${inputs.task.value}`));
+        article.appendChild(createElement('p', `Description: ${inputs.description.value}`));
+        article.appendChild(createElement('p', `Due Date: ${inputs.date.value}`));
+        const div = createElement('div', '', 'flex');
+        //create buttons as variables for easy reuse later
+        const startButton = createElement('button', 'Start', 'green');
+        const deleteButton = createElement('button', 'Delete', 'red');
+        const finishButton = createElement('button', 'Finish', 'orange');
+        startButton.addEventListener('click', progress);
+        deleteButton.addEventListener('click', deletePanel);
+        finishButton.addEventListener('click', toComplete);
+        div.appendChild(startButton);
+        div.appendChild(deleteButton);
+        article.appendChild(div);
+        openSection.appendChild(article);
 
-        const pDesc = document.createElement('p');
-        pDesc.innerText = `Description: ${descriptionInput.value}`;
+        //clear input fields
+        Object.values(inputs).forEach(el => el.value = '');
 
-        const pDate = document.createElement('p');
-        pDate.innerText = `Due Date: ${dateInput.value}`;
+        //click delete
+        function deletePanel() {
+            article.remove();
+        }
 
-        const article = document.createElement('article');
+        //click start
+        function progress() {
+            inProgress.appendChild(article);
+            startButton.remove();  //remove start button
+            div.appendChild(finishButton);  //add finish button
+        }
 
-        article.appendChild(h3);
-        article.appendChild(pDesc);
-        article.appendChild(pDate);
-
-        const buttonDiv = document.createElement('div');
-        buttonDiv.className = 'flex';
-        const leftButton = document.createElement('button');
-        const rightButton = document.createElement('button');
-
-        leftButton.className = 'green';
-        leftButton.innerText = 'Start';
-        leftButton.addEventListener('click', toProgress);
-        rightButton.className = 'red';
-        rightButton.innerText = 'Delete';
-        rightButton.addEventListener('click', (e) => {
-            e.target.parentElement.parentElement.remove();
-        });
-
-        buttonDiv.appendChild(leftButton);
-        buttonDiv.appendChild(rightButton);
-
-        article.appendChild(buttonDiv);
-
-        openDiv.appendChild(article);
+        // click finish
+        function toComplete() {
+            completeSection.appendChild(article);  //change parent
+            div.remove();  //remove div with buttons
+        }
     }
 
-    function toProgress(e) {
-        const currentH3 = e.target.parentElement.parentElement;
-        inProgress.appendChild(currentH3)
-        const leftButton = document.querySelector('.green');
-        leftButton.className = 'red'
-        leftButton.innerText = 'Delete';
-        const rightButton = document.querySelector('.red');
-        rightButton.className = 'orange';
-        rightButton.innerText = 'Finish';
+    // creating element function
+    function createElement(type, text, className) {
+        const element = document.createElement(type);
+        element.className = className;
+        element.innerText = text;
+        return element;
     }
-
 }
