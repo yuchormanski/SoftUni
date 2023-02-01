@@ -6,11 +6,9 @@ function solve() {
     const salarySum = document.getElementById('sum');
     let totalSalary = 0;
 
-
     function workProcess(e) {
 
         e.preventDefault();
-
 
         const worker = {
             firstName: document.getElementById('fname'),
@@ -29,8 +27,6 @@ function solve() {
             return;
         }
 
-
-        //(type, className, text)
         const tr = createElement('tr', '', '');
         tr.appendChild(createElement('td', '', `${worker.firstName.value}`))
         tr.appendChild(createElement('td', '', `${worker.lastName.value}`))
