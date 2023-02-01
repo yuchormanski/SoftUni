@@ -84,9 +84,6 @@ function solve() {
 
       liElement.addEventListener('click', saveEditDel);
 
-
-
-
       function saveEditDel(event) {
         const buttonArray = Array.from(liElement.querySelectorAll('button'));
 
