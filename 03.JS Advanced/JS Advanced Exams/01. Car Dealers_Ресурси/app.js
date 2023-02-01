@@ -2,90 +2,96 @@ window.addEventListener("load", solve);
 
 function solve() {
 
-  const brand = document.getElementById('make');
-  const model = document.getElementById('model');
-  const year = document.getElementById('year');
-  const fuel = document.getElementById('fuel');
-  const oldPrice = document.getElementById('original-cost');
-  const newPrice = document.getElementById('selling-price');
   const publishButton = document.getElementById('publish');
-  publishButton.type = 'button'; //change type for task writing
+  const tableBody = document.getElementById('table-body');
+  const profitTotal = document.getElementById('profit');
+  const sellElementUl = document.getElementById('cars-list');
 
-  publishButton.addEventListener('click', preview)
 
-  const table = document.getElementById('table-body');
+  publishButton.addEventListener('click', toTable);
 
-  function preview() {
-    //field validation
 
-    // if (brand.value === ''
-    //   || model.value === ''
-    //   || year.value === ''
-    //   || oldPrice.value === ''
-    //   || newPrice.value === ''
-    //   || oldPrice.value >= newPrice.value) {
-    //   return;
-    // };
+  function toTable(e) {
+    e.preventDefault();
 
-    let carBrand = brand.value;
-    let carModel = model.value;
-    let carYear = year.value;
-    let carOldPrice = oldPrice.value;
-    let carNewPrice = newPrice.value;
-    let carFuel = fuel.value;
-
-    const data = [carBrand, carModel, carYear, carFuel, carOldPrice, carNewPrice]
-
-    //create elements
-    const tRow = document.createElement('tr');
-    tRow.className = 'row'
-
-    for (let el of data) {
-      const td = document.createElement('td');
-      td.textContent = el;
-      tRow.appendChild(td);
+    const car = {
+      make: document.getElementById('make'),
+      model: document.getElementById('model'),
+      year: document.getElementById('year'),
+      fuel: document.getElementById('fuel'),
+      originalCost: document.getElementById('original-cost'),
+      sellingPrice: document.getElementById('selling-price')
+    }
+    if (car.make.value === '' ||
+      car.model.value === '' ||
+      car.year.value === '' ||
+      car.fuel.value === '' ||
+      car.originalCost.value === '' ||
+      car.sellingPrice.value === '' ||
+      car.originalCost.value > car.sellingPrice.value) {
+      return;
     }
 
-    //create buttons
-    const td = document.createElement('td');
-    const editBtn = document.createElement('button');
-    editBtn.className = 'action-btn edit';
-    editBtn.textContent = 'Edit';
+    let currentProfit = 0;
 
-    const sellBtn = document.createElement('button');
-    sellBtn.className = 'action-btn sell';
-    sellBtn.textContent = 'Sell';
-    td.appendChild(editBtn);
-    td.appendChild(sellBtn);
-    tRow.appendChild(td);
+    const tr = factory('tr', ['row'], '');
+    tr.appendChild(factory('td', '', `${car.make.value}`));
+    tr.appendChild(factory('td', '', `${car.model.value}`));
+    tr.appendChild(factory('td', '', `${car.year.value}`));
+    tr.appendChild(factory('td', '', `${car.fuel.value}`));
+    tr.appendChild(factory('td', '', `${car.originalCost.value}`));
+    tr.appendChild(factory('td', '', `${car.sellingPrice.value}`));
 
-    table.appendChild(tRow);
+    const tdBtn = factory('td', '', '');
+    const editBtn = factory('button', ['action-btn', 'edit'], 'Edit');
+    const sellBtn = factory('button', ['action-btn', 'sell'], 'Sell');
+    tdBtn.appendChild(editBtn);
+    tdBtn.appendChild(sellBtn);
+    tr.appendChild(tdBtn);
+    tableBody.appendChild(tr);
 
-    brand.value = '';
-    model.value = '';
-    year.value = '';
-    fuel.value = '';
-    oldPrice.value = '';
-    newPrice.value = '';
-    publishButton.disabled = true;
+    editBtn.addEventListener('click', editOffer);
+    sellBtn.addEventListener('click', sellCar);
 
-    editBtn.addEventListener('click', edit);
-    sellBtn.addEventListener('click', sell);
-  
+    Object.values(car).forEach(el => el.value = '');
 
-  function edit(){
-    brand.value = carBrand;
-    model.value = carModel;
-    year.value = carYear;
-    fuel.value = carFuel;
-    oldPrice.value = carOldPrice;
-    newPrice.value = carNewPrice;
-    publishButton.disabled = false;
-    tRow.remove()
+    function editOffer(e) {
+      const currentParent = e.target.parentElement.parentElement;
+      const tdData = Array.from(currentParent.querySelectorAll('td'));
+      car.make.value = tdData[0].innerText;
+      car.model.value = tdData[1].innerText;
+      car.year.value = tdData[2].innerText;
+      car.fuel.value = tdData[3].innerText;
+      car.originalCost.value = tdData[4].innerText;
+      car.sellingPrice.value = tdData[5].innerText;
+      tr.remove();
+    }
 
-  }
-  function sell(){
-    console.log('sell');
-  }
+    function sellCar(e) {
+      const currentParent = e.target.parentElement.parentElement;
+      const tdData = Array.from(currentParent.querySelectorAll('td'));
+      tr.remove();
+
+      currentProfit = (tdData[5].innerText * 1) - (tdData[4].innerText * 1);
+      console.log(currentProfit);
+      const li = factory('li', ['each-list'], '');
+      li.appendChild(factory('span', '', `${tdData[0].innerText} ${tdData[1].innerText}`))
+      li.appendChild(factory('span', '', `${tdData[2].innerText}`))
+      li.appendChild(factory('span', '', currentProfit))
+      sellElementUl.appendChild(li);
+      let currentTotal = Number(profitTotal.innerText) + currentProfit;
+      profitTotal.innerText = currentTotal.toFixed(2);
+    }
+
+    function factory(type, className, text) {
+      const element = document.createElement(type);
+      if (className) {
+        element.classList.add(...className);
+      }
+      if (text) {
+        element.innerText = text;
+      }
+      return element;
+    }
   }
 }
