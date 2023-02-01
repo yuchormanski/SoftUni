@@ -11,7 +11,6 @@ function solve() {
 
         e.preventDefault();
 
-        //TODO : validation
 
         const worker = {
             firstName: document.getElementById('fname'),
@@ -21,6 +20,16 @@ function solve() {
             position: document.getElementById('position'),
             salary: document.getElementById('salary')
         }
+        if (worker.firstName.value === '' ||
+            worker.lastName.value === '' ||
+            worker.email.value === '' ||
+            worker.birthDate.value === '' ||
+            worker.position.value === '' ||
+            worker.salary.value === '') {
+            return;
+        }
+
+
         //(type, className, text)
         const tr = createElement('tr', '', '');
         tr.appendChild(createElement('td', '', `${worker.firstName.value}`))
@@ -47,12 +56,15 @@ function solve() {
 
         function workerEdit(e) {
             const data = Array.from(e.target.parentElement.parentElement.children);
-            worker.firstName = data[0].innerText;
-            worker.lastName = data[1].innerText;
-            worker.email = data[1].innerText;
-            worker.birthDate = data[1].innerText;
-            worker.position = data[1].innerText;
-            worker.salary = data[5].innerText;
+            worker.firstName.value = data[0].innerText;
+            worker.lastName.value = data[1].innerText;
+            worker.email.value = data[2].innerText;
+            worker.birthDate.value = data[3].innerText;
+            worker.position.value = data[4].innerText;
+            worker.salary.value = data[5].innerText;
+            totalSalary -= Number(data[5].innerText);
+            salarySum.innerText = totalSalary.toFixed(2);
+            tr.remove();
         }
 
         function workerFired(e) {
