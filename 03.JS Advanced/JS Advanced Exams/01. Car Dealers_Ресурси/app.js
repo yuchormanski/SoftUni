@@ -3,13 +3,10 @@ window.addEventListener("load", solve);
 function solve() {
 
   const publishButton = document.getElementById('publish');
-  const tableBody = document.getElementById('table-body');
-  const profitTotal = document.getElementById('profit');
-  const sellElementUl = document.getElementById('cars-list');
-
-
   publishButton.addEventListener('click', toTable);
-
+  const tableBody = document.getElementById('table-body');
+  const sellElementUl = document.getElementById('cars-list');
+  const profitTotal = document.getElementById('profit');
 
   function toTable(e) {
     e.preventDefault();
@@ -32,8 +29,6 @@ function solve() {
       return;
     }
 
-    let currentProfit = 0;
-
     const tr = factory('tr', ['row'], '');
     tr.appendChild(factory('td', '', `${car.make.value}`));
     tr.appendChild(factory('td', '', `${car.model.value}`));
@@ -49,10 +44,10 @@ function solve() {
     tdBtn.appendChild(sellBtn);
     tr.appendChild(tdBtn);
     tableBody.appendChild(tr);
-
+    
     editBtn.addEventListener('click', editOffer);
     sellBtn.addEventListener('click', sellCar);
-
+    
     Object.values(car).forEach(el => el.value = '');
 
     function editOffer(e) {
@@ -70,10 +65,8 @@ function solve() {
     function sellCar(e) {
       const currentParent = e.target.parentElement.parentElement;
       const tdData = Array.from(currentParent.querySelectorAll('td'));
-      tr.remove();
-
-      currentProfit = (tdData[5].innerText * 1) - (tdData[4].innerText * 1);
-      console.log(currentProfit);
+      
+      let currentProfit = (tdData[5].innerText * 1) - (tdData[4].innerText * 1);
       const li = factory('li', ['each-list'], '');
       li.appendChild(factory('span', '', `${tdData[0].innerText} ${tdData[1].innerText}`))
       li.appendChild(factory('span', '', `${tdData[2].innerText}`))
@@ -81,12 +74,13 @@ function solve() {
       sellElementUl.appendChild(li);
       let currentTotal = Number(profitTotal.innerText) + currentProfit;
       profitTotal.innerText = currentTotal.toFixed(2);
+      tr.remove();
     }
 
-    function factory(type, className, text) {
+    function factory(type, className, text) { // className came as array with all classes. 
       const element = document.createElement(type);
       if (className) {
-        element.classList.add(...className);
+        element.classList.add(...className); // spreed array
       }
       if (text) {
         element.innerText = text;
