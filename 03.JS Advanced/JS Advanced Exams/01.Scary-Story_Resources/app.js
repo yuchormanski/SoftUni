@@ -50,7 +50,6 @@ function solve() {
     li.appendChild(saveBtn);
     li.appendChild(editBtn);
     li.appendChild(deleteBtn);
-
     previewList.appendChild(li);
     publishBtn.disabled = true;
 
