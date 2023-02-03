@@ -1,5 +1,5 @@
 const cinema = require('./cinema.js');
-const { assert } = require('chai');
+const { assert, expect } = require('chai');
 
 describe('cinema function tests', () => {
     describe('function that accepts an array', () => {
@@ -17,8 +17,11 @@ describe('cinema function tests', () => {
         it('receive string as projection type', () => {
             assert.equal(cinema.ticketPrice('Premiere'), 12);
         });
-        it('receive invalid projection type', () => {
-            assert.equal(cinema.ticketPrice('something'),'Invalid projection type.');
+        // it('receive invalid projection type', () => {
+        //     assert.equal(cinema.ticketPrice('something'),'Invalid projection type.');
+        // });
+        it('if there is no such a projection type ', () => {
+            expect(cinema.ticketPrice('somethingDifferent').to.throw(Error));
         });
     });
     describe('swapSeatsInHall(firstPlace, secondPlace)', () => {
