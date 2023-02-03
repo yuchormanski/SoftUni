@@ -1,4 +1,5 @@
 function validate() {
+
     const checkbox = document.getElementById('company');
     const companyInfo = document.getElementById('companyInfo');
     const validDiv = document.getElementById('valid');
@@ -34,21 +35,24 @@ function validate() {
 
         if (!obj.username.value.match(userRegex) || obj.username.value.match(userRegex) === '') {
             obj.username.style.borderColor = 'red'
-        } else {
+        }
+         else {
             obj.username.style.borderColor = ''
             isUser = true;
         }
 
         if (!obj.pass.value.match(passRegex) || obj.pass.value.match(passRegex) === '') {
             obj.pass.style.borderColor = 'red';
-        } else {
+        }
+         else {
             obj.pass.style.borderColor = ''
             isPass = true;
         }
 
         if (!obj.confPass.value.match(passRegex) || obj.confPass.value.match(passRegex) === '') {
             obj.confPass.style.borderColor = 'red';
-        } else {
+        }
+         else {
             obj.confPass.style.borderColor = ''
             isConfPass = true;
         }
@@ -57,7 +61,8 @@ function validate() {
             obj.pass.style.borderColor = 'red';
             obj.confPass.style.borderColor = 'red';
 
-        } else {
+        }
+         else {
             obj.pass.style.borderColor = '';
             obj.confPass.style.borderColor = '';
             passConf = true;
@@ -65,29 +70,26 @@ function validate() {
 
         if (!obj.email.value.match(emailRegex) || obj.email.value.match(emailRegex) === '') {
             obj.email.style.borderColor = 'red';
-        } else {
+        }
+         else {
             obj.email.style.borderColor = '';
             isEmail = true;
         }
 
         if (checkbox.checked) {
-            if (obj.companyNumber.value < 1000 || obj.companyNumber.value > 9999) {
+            let num = obj.companyNumber.value;
+            num = Number(num);
+            console.log(typeof num);
+            if (num < 1000 || num > 9999 ) {
                 obj.companyNumber.style.borderColor = 'red';
-            } else {
+            }
+             else {
                 obj.companyNumber.style.borderColor = '';
                 isCompNum = true;
             }
         }
-        console.log(isUser);
-        console.log(isPass);
-        console.log(isCompNum);
-        console.log(isConfPass);
-        console.log(passConf);
-        console.log(isEmail);
-        if (isUser || isPass || isCompNum || isConfPass || passConf || isEmail) {
+        if (isUser && isEmail && isPass && isConfPass && passConf && isCompNum) { // || isCompNum  || passConf || 
             validDiv.style.display = 'block';
-        } else {
-            validDiv.style.display = 'none';
-        }
+        } 
     }
 }
