@@ -18,7 +18,7 @@ describe('cinema function tests', () => {
             assert.equal(cinema.ticketPrice('Premiere'), 12);
         });
         it('receive invalid projection type', () => {
-            assert.equal(cinema.ticketPrice('something'),);
+            assert.equal(cinema.ticketPrice('something'),'Invalid projection type.');
         });
     });
     describe('swapSeatsInHall(firstPlace, secondPlace)', () => {

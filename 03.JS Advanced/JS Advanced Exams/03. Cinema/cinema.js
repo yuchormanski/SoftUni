@@ -37,4 +37,3 @@ const cinema = {
 };
 
 module.exports = cinema;
-console.log(cinema.ticketPrice('Premiere'));
