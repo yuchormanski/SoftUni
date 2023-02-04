@@ -10,6 +10,7 @@ function solution() {
     giftButton.addEventListener('click', addToList);
 
     function addToList(e) {
+        e.preventDefault();
         if (giftInput.value === '') return;
         const giftsList = Array.from(sections[1].querySelectorAll('ul li'));
         let current = giftInput.value;
