@@ -1,0 +1,19 @@
+# Steps:
+	create file index.js
+	in terminal : npm init -y (for automatic creation of the package.json file)
+				: npm init (for manual creation of the package.json file)
+				: npm install (creation of the package-lock.json file)
+				
+	create file index.test.js
+	in terminal	: npm install chai
+				: npm install mocha
+
+# index.js			
+	function for test
+	at the end put : modules.sports = 'name of the func/class/'
+	
+# index.test.js
+	const 'name of the func/class/' = require('./index.js');
+	const { expect, assert } = require('chai');
+	
+	command for test: mocha .\'name of the file\
