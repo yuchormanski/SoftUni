@@ -17,16 +17,12 @@ Object.defineProperty(result, 'fullName' , {
     return result;
 }
 
-const person = createPerson('John', 'Smith');
-
-console.log(person.fullName);
-
-console.log(person.lastName);
-
-person.firstName = 'Pesho';
-
-console.log(person.fullName);
-
-person.fullName = 'Elitsa Yuchormanska';
-
-console.log(person.firstName);
+let person = createPerson("Peter", "Ivanov");
+console.log(person.fullName); //Peter Ivanov
+person.firstName = "George";
+console.log(person.fullName); //George Ivanov
+person.lastName = "Peterson";
+console.log(person.fullName); //George Peterson
+person.fullName = "Nikola Tesla";
+console.log(person.firstName); //Nikola
+console.log(person.lastName); //Tesla
