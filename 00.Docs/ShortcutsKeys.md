@@ -26,3 +26,5 @@
 |      Ctrl + X      |  Cut                        |
 |      Ctrl + Y      |  Redo / Repeat              |
 |      Ctrl + Z      |  Undo                       |
+|      Alt + 251     |  SquareRoot √ (num keyboard)|
+|      Alt + 0178    |  Power on two (num keyboard)|

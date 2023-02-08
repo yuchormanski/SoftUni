@@ -1,5 +1,5 @@
 function getPersons(input) {
-    const personArray = [];
+    
     class Person {
         constructor(firstName, lastName, age, email) {
             this.firstName = firstName;
@@ -11,15 +11,10 @@ function getPersons(input) {
             return `${this.firstName} ${this.lastName} (age: ${this.age}, email: ${this.email})`
         }
     }
-
-    for (let el of input) {
-        let [fName, lName, age, email] = el.split(', ');
-        let person = new Person(fName, lName, age, email);
-        personArray.push(person);
-    }
-
-    return personArray;
+    return [
+        new Person('Anna', 'Simpson', 22, 'anna@yahoo.com'),
+        new Person('SoftUni'),
+        new Person('Stephan', 'Johnson', 25),
+        new Person('Gabriel', 'Peterson', 24, 'g.p@gmail.com'),
+    ]
 }
-
-
-console.log(getPersons(['Anna, Simpson, 22, anna@yahoo.com', 'Stephan, Johnson, 25']));
