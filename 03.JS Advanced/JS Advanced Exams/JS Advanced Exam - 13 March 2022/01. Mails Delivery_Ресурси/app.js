@@ -1,5 +1,7 @@
 function solve() {
 
+    const ulElement = document.getElementById('list');
+    const ulSentMail = document.querySelector('.sent-list');
     const recipientInput = document.getElementById('recipientName');
     const titleInput = document.getElementById('title');
     const textInput = document.getElementById('message');
@@ -18,7 +20,6 @@ function solve() {
 
     function listOfMails(e) {
         e.preventDefault();
-        const ulElement = document.getElementById('list');
         const recipient = recipientInput.value;
         const title = titleInput.value;
         const text = textInput.value;
@@ -59,7 +60,6 @@ function solve() {
 
         function sentMails() {
             Array.from(ulElement.childNodes).forEach(el => el.remove());
-            const ulSentMail = document.querySelector('.sent-list');
             const li = creator('li', '', '', '');
             li.appendChild(creator('span', '', '', `To: ${recipient}`));
             li.appendChild(creator('span', '', '', `Title: ${title}`));

@@ -8,7 +8,7 @@ class CarDealership {
     }
 
     addCar(model, horsepower, price, mileage) {
-        if (model === '' || horsepower < 0 || !Number.isInteger(horsepower) || price < 0 || mileage < 0) {
+        if (typeof model !== 'string' || horsepower < 0 || !Number.isInteger(horsepower) || price < 0 || mileage < 0) {
             throw new Error('Invalid input!')
         }
         this.availableCars.push({ model, horsepower, price, mileage });
@@ -26,6 +26,7 @@ class CarDealership {
         if (!theCar) {
             throw new Error(`${model} was not found!`)
         }
+
         let { _, horsepower, price, mileage } = theCar;
 
         let currentPrice = 0;
@@ -43,16 +44,16 @@ class CarDealership {
 
 
     currentCar() {
-        let response = '';
+        let response = [];
         if (this.availableCars.length > 0) {
-            response += `-Available cars:\n`
+            response.push(`-Available cars:`);
             this.availableCars.forEach(car => {
-                response += `---${car.model} - ${car.horsepower} HP - ${car.mileage.toFixed(2)} km - ${car.price.toFixed(2)}$\n`
+                response.push(`---${car.model} - ${car.horsepower} HP - ${car.mileage.toFixed(2)} km - ${car.price.toFixed(2)}$`);
             })
         } else {
             response = "There are no available cars"
         }
-        return response;
+        return response.join(`\n`);
     }
 
     salesReport(criteria) {
