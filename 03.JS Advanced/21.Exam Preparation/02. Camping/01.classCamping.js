@@ -3,26 +3,22 @@ class SummerCamp {
         this.organizer = organizer;
         this.location = location;
         this.priceForTheCamp = { 'child': 150, 'student': 300, 'collegian': 500 };
-        this.listOfParticipants = [{name:'Petar Petarson'}];
+        this.listOfParticipants = ["Petar Petarson","Leila Wolfe"];
     }
 
     registerParticipant(name, condition, money) {
-        if(typeof name !== 'string' || typeof condition !== 'string' || typeof money !== 'number') return;
-        if (!this.priceForTheCamp.hasOwnProperty(condition)) {
+        if(!this.priceForTheCamp[condition]){
             throw new Error('Unsuccessful registration at the camp.');
         }
-        let find = this.listOfParticipants.filter(obj => obj.name === name);
-        console.log(find);
-        // if(){
-        // }else{
-        //     console.log('noy');
-        // }
+
+        let found = this.listOfParticipants.find(({name}) => name === name);
+        console.log(found);
 
     }
 
 }
 const summerCamp = new SummerCamp("Jane Austen", "Pancharevo Sofia 1137, Bulgaria");
-console.log(summerCamp.registerParticipant("Petar Petarson", "student", 200));
+console.log(summerCamp.registerParticipant("Leila Wolfe", "student", 200));
 console.log(summerCamp.registerParticipant("Petar Petarson", "student", 300));
 console.log(summerCamp.registerParticipant("Petar Petarson", "student", 300));
 console.log(summerCamp.registerParticipant("Leila Wolfe", "childd", 200));
