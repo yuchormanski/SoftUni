@@ -1,62 +1,57 @@
 function solution() {
-    const giftsArray = [];
+
     const sections = Array.from(document.querySelectorAll('section.card'));
-    const giftButton = sections[0].querySelector('button');
+    const listSection = sections[1].querySelector('ul');
+    const sentSection = sections[2].querySelector('ul');
+    const discardSection = sections[3].querySelector('ul');
     const giftInput = sections[0].querySelector('input');
-    const giftsPanel = sections[1].querySelector('ul');
-    const sentGifts = sections[2].querySelector('ul');
-    const discardedGifts = sections[3].querySelector('ul');
+    const addGiftBtn = sections[0].querySelector('button');
+    const giftArray = [];
+    addGiftBtn.addEventListener('click', listGifts);
 
-    giftButton.addEventListener('click', addToList);
+    function listGifts() {
+        const gift = giftInput.value;
 
-    function addToList(e) {
-        e.preventDefault();
-        if (giftInput.value === '') return;
-        const giftsList = Array.from(sections[1].querySelectorAll('ul li'));
-        let current = giftInput.value;
-        giftsArray.push(current);
-        giftsArray.sort((a, b) => a.localeCompare(b));
+        const li = creator('li', 'class', 'gift', gift);
+        li.addEventListener('click', distributor);
+        li.appendChild(creator('button', 'id', 'sendButton', 'Send'));
+        li.appendChild(creator('button', 'id', 'discardButton', 'Discard'));
+        giftArray.push(li);
+        giftArray.sort((a, b) => a.innerText.localeCompare(b.innerText))
+            .forEach(li => listSection.appendChild(li));
 
-        const sendBtn = creator('button', '', 'Send');
-        sendBtn.id = 'sendButton';
-        const discardBtn = creator('button', '', 'Discard');
-        discardBtn.id = 'discardButton'
-
-        if (giftsList.length > 0) {
-            giftsList.forEach(li => li.remove());
-        }
-
-        for (let gift of giftsArray) {
-            const element = creator('li', 'gift', gift);
-            let cloneSendBtn = sendBtn.cloneNode(true);
-            cloneSendBtn.addEventListener('click', sent);
-            element.appendChild(cloneSendBtn);
-            let cloneDiscardBtn = discardBtn.cloneNode(true);
-            cloneDiscardBtn.addEventListener('click', discard);
-            element.appendChild(cloneDiscardBtn);
-            giftsPanel.appendChild(element);
-        }
         giftInput.value = '';
 
-        function sent(e) {
-            let el = e.target.parentElement;
-            const buttons = Array.from(el.querySelectorAll('button'));
-            buttons.forEach(b => b.remove());
-            sentGifts.appendChild(el);
-        }
-        function discard(e) {
-            let el = e.target.parentElement;
-            const buttons = Array.from(el.querySelectorAll('button'));
-            buttons.forEach(b => b.remove());
-            discardedGifts.appendChild(el);
+        function distributor(e) {
+            if (e.target.tagName = 'BUTTON') {
+                const index = giftArray.indexOf(li);
+                giftArray.splice(index, 1);
+                li.remove()
+                if (e.target.id == 'sendButton') {
+                    sentGift(gift);
+                } else if (e.target.id == 'discardButton') {
+                    discardGift(gift);
+                }
+            }
         }
 
+        function sentGift(gift) {
+            sentSection.appendChild(creator('li', 'class', 'gift', gift))
+        }
+
+        function discardGift(gift) {
+            discardSection.appendChild(creator('li', 'class', 'gift', gift))
+        }
     }
 
-    function creator(type, hasClass, text) {
+    function creator(type, attribute, attrValue, textCont) {
         const element = document.createElement(type);
-        if (hasClass) { element.className = hasClass; };
-        if (text) { element.innerText = text; };
+        if (attribute != '') {
+            element[attribute] = attrValue;
+        }
+        if (textCont != '') {
+            element.innerText = textCont;
+        }
         return element;
     }
 }
