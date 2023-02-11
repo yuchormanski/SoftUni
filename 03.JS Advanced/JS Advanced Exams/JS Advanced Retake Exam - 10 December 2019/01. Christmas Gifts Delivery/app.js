@@ -17,7 +17,7 @@ function solution() {
         li.appendChild(creator('button', 'id', 'sendButton', 'Send'));
         li.appendChild(creator('button', 'id', 'discardButton', 'Discard'));
         giftArray.push(li);
-        giftArray.sort((a, b) => a.innerText.localeCompare(b.innerText));
+        giftArray.sort((a, b) => a.innerText.localeCompare(b.innerText))
             .forEach(li => listSection.appendChild(li));
 
         giftInput.value = '';
