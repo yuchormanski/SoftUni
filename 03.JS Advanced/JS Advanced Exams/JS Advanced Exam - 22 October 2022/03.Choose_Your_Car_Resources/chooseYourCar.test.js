@@ -95,4 +95,3 @@ describe('test {chooseYourCar}', () => {
 
     });
 });
-
