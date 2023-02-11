@@ -93,6 +93,6 @@ function solve() {
                 pricePanel.textContent = totalPrice.toFixed(2);
             }
         }// end validation
-    }// end addProduct
+    }
 }
 
