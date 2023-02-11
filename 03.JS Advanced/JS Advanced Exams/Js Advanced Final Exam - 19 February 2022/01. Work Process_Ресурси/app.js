@@ -76,10 +76,10 @@ function solve() {
         const element = document.createElement(type);
         if (className) {
             element.className = className;
-        }
+        };
         if (text) {
             element.innerText = text;
-        }
+        };
         return element;
     }
 }
