@@ -17,7 +17,7 @@ function solution() {
         li.appendChild(creator('button', 'id', 'sendButton', 'Send'));
         li.appendChild(creator('button', 'id', 'discardButton', 'Discard'));
         giftArray.push(li);
-        giftArray.sort((a, b) => a.innerText.localeCompare(b.innerText))
+        giftArray.sort((a, b) => a.innerText.localeCompare(b.innerText));
             .forEach(li => listSection.appendChild(li));
 
         giftInput.value = '';
@@ -26,7 +26,7 @@ function solution() {
             if (e.target.tagName = 'BUTTON') {
                 const index = giftArray.indexOf(li);
                 giftArray.splice(index, 1);
-                li.remove()
+                li.remove();
                 if (e.target.id == 'sendButton') {
                     sentGift(gift);
                 } else if (e.target.id == 'discardButton') {
@@ -36,11 +36,11 @@ function solution() {
         }
 
         function sentGift(gift) {
-            sentSection.appendChild(creator('li', 'class', 'gift', gift))
+            sentSection.appendChild(creator('li', 'class', 'gift', gift));
         }
 
         function discardGift(gift) {
-            discardSection.appendChild(creator('li', 'class', 'gift', gift))
+            discardSection.appendChild(creator('li', 'class', 'gift', gift));
         }
     }
 
