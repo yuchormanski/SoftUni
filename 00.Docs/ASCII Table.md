@@ -33,9 +33,8 @@
 | 30  | RS   | (record separator)        |  62   | >      |  94   |  ^   |  126 |    ~
 | 31  | US   | (unit separator)          |  63   | ?      |  95   |  _   |  127 |    DEL
 
-string.charCodeAt()
-String.fromCharCode(97)
-power symbol  - Alt + 0178 (numeric keyboard)
-square root symbol - Alt + 251 
+|  string.charCodeAt()                            |
+|  String.fromCharCode(97)                        |
+|  power symbol  - Alt + 0178 (numeric keyboard)  |
+|  square root symbol - Alt + 251                 |              
 
- | 
