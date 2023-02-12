@@ -2,11 +2,11 @@
 
 ### Table of Contents
 
-| No. | Questions |
+| No. | Method |
 |---- | ---------
 |  1  | [String.fromCharCode(107)](#String-from-char-code) |
 |  2  | [array.push();](#array-push-method) | 
-|  3  |           |
+|  3  | [array.pop();(#array-pop-method)]          |
 |  4  |           |
 |  5  |           |
 |  6  |           |
