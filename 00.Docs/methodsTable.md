@@ -2,9 +2,10 @@
 
 ### Table of Contents
 
-
-|1  | [String.fromCharCode(107)](#String-from-char-code) |
-|2  | [array.push();](#array-push-method) | 
+| No. | Questions |
+|---- | ---------
+|1    | [String.fromCharCode(107)](#String-from-char-code) |
+|2    | [array.push();](#array-push-method) | 
 
 
 1. ### String from char code
