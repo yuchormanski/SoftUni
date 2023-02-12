@@ -1,5 +1,5 @@
-String.fromCharCode(107); //
-x.charCodeAt(); //
+String.fromCharCode(107); //k
+x.charCodeAt(); // x
 [1, 2, 3].push(4); // [1, 2, 3, 4]
 [1, 2, 3].pop(); // [1, 2]
 [1, 2, 3].shift(); // [2, 3]
