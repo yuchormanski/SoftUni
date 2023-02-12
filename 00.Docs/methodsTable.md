@@ -6,8 +6,8 @@
 |---- | ---------
 |  1  | [String.fromCharCode(107)](#String-from-char-code) |
 |  2  | [array.push();](#array-push-method) | 
-|  3  | [array.pop();(#array-pop-method)]          |
-|  4  |           |
+|  3  | [array.pop();](#array-pop-method)          |
+|  4  | [array.shift();](#array-shift-method)          |
 |  5  |           |
 |  6  |           |
 |  7  |           |
