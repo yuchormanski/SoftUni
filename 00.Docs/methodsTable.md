@@ -4,8 +4,16 @@
 
 | No. | Questions |
 |---- | ---------
-|1    | [String.fromCharCode(107)](#String-from-char-code) |
-|2    | [array.push();](#array-push-method) | 
+|  1  | [String.fromCharCode(107)](#String-from-char-code) |
+|  2  | [array.push();](#array-push-method) | 
+|  3  |           |
+|  4  |           |
+|  5  |           |
+|  6  |           |
+|  7  |           |
+|  8  |           |
+|  9  |           |
+|  10 |           |
 
 
 1. ### String from char code
