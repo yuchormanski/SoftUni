@@ -82,4 +82,3 @@ function solve() {
         return element;
     }
 }
-
