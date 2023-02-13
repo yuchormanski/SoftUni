@@ -4,17 +4,18 @@
 
 | No. | Method |
 |---- | ---------
-|  1  | [array.at()](#array-at-method)
+|  1  | [.at()](#array-at-method)
+|  2  | [.charAt()](#string-charat-method)
 |  5  |           
 |  6  |           
 |  7  |           
 |  8  |           
 |  9  |           
 |  10 |           
-|  24 | [array.push();](#array-push-method)
-|  23 | [array.pop();](#array-pop-method)        
-|  34 | [array.shift();](#array-shift-method)
-|  39  | [String.fromCharCode()](#String-from-char-code) 
+|  24 | [.push();](#array-push-method)
+|  23 | [.pop();](#array-pop-method)        
+|  34 | [.shift();](#array-shift-method)
+|  39 | [String.fromCharCode()](#String-from-char-code) 
 
 1. ### Array at() method
 
@@ -40,6 +41,23 @@ Negative integers count back from the last item in the array.
    }
 
    // expect num = 2;
+```
+**[⬆ Back to Top](#table-of-contents)**
+
+2. ### String charAt() method
+
+Returns element in given index from string.
+
+```javascript
+
+   function solve(){
+      const str = 'sample'; 
+      const index = 2;
+      let letter = str.charAt(index);
+      return letter;
+   }
+
+   // expect arr = m
 ```
 **[⬆ Back to Top](#table-of-contents)**
 
