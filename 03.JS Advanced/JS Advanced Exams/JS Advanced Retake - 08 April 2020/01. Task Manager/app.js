@@ -18,7 +18,7 @@ function solve() {
         const description = descInput.value;
         const date = dateInput.value;
 
-        // if(task === '' || description === '' | date === '') return;
+        if(task === '' || description === '' | date === '') return;
 
         const article = creator('article', '', '', '');
         article.appendChild(creator('h3', '', '', task));
