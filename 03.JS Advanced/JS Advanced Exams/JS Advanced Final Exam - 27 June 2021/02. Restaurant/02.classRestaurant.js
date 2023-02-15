@@ -33,7 +33,12 @@ class Restaurant {
             return `The ${meal} is already in the our menu, try something different.`
         }
         price = Number(price);
-        this.menu[meal] = { products: neededProducts, price };
+        this.menu[meal] = { recept: [], price };
+        neededProducts.forEach(line => {
+            let [product, qty] = line.split(' ');
+            qty = Number(qty);
+            this.menu[meal].recept.push({ product, qty });
+        })
         let count = Object.keys(this.menu).length;
         if (count === 1) {
             return `Great idea! Now with the ${meal} we have 1 meal in the menu, other ideas?`;
@@ -58,16 +63,12 @@ class Restaurant {
         if (!this.menu[meal]) {
             return `There is not ${meal} yet in our menu, do you want to order something else?`
         }
-        for (let line of this.menu[meal].products) {
-            let [product, qty] = line.split(' ');
-            qty = Number(qty);
+        for (let {product,qty} of this.menu[meal].recept) {
             if (this.stockProducts[product].quantity < qty) {
                 return `For the time being, we cannot complete your order (${meal}), we are very sorry...`;
             }
         }
-        for (let line of this.menu[meal].products) {
-            let [product, qty] = line.split(' ');
-            qty = Number(qty);
+        for (let {product,qty} of this.menu[meal].recept) {
             this.stockProducts[product].quantity -= qty;
         }
         return `Your order (${meal}) will be completed in the next 30 minutes and will cost you ${this.menu[meal].price}.`
@@ -86,6 +87,7 @@ class Restaurant {
 
 let kitchen = new Restaurant(1000);
 kitchen.loadProducts(['Yogurt 30 3', 'Honey 50 4', 'Strawberries 20 10', 'Banana 5 1']);
-kitchen.addToMenu('frozenYogurt', ['Yogurt 1', 'Honey 1', 'Banana 1', 'Strawberries 21'], 9.99);
+kitchen.addToMenu('frozenYogurt', ['Yogurt 1', 'Honey 1', 'Banana 1', 'Strawberries 10'], 9.99);
 console.log(kitchen.makeTheOrder('frozenYogurt'));
+console.log(kitchen.makeTheOrder('steck'));
 
