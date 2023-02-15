@@ -26,7 +26,6 @@ class Restaurant {
             }
         });
         return this.history.join('\n');
-
     }
 
     addToMenu(meal, neededProducts, price) {
