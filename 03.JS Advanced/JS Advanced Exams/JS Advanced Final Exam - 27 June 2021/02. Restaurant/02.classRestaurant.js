@@ -75,6 +75,7 @@ class Restaurant {
     }
 }
 
+
 // let kitchen = new Restaurant(1000);
 // console.log(kitchen.loadProducts(['Banana 10 5', 'Banana 20 10', 'Strawberries 50 30', 'Yogurt 10 10', 'Yogurt 500 1500', 'Honey 5 50']));
 
