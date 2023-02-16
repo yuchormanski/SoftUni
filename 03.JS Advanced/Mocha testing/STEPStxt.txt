@@ -18,3 +18,8 @@
 	const { expect, assert } = require('chai');
 	
 	command for test: mocha .\'name of the file\
+
+
+	при сравняване и очаква return -> expect(mainTested.function(properties)).to.equal('expected output');
+	при сравняване и очаква error -> expect(() => mainTested.function(properties)).to.throw();
+	при сравняване на обект ->  expect(mainTested.function(properties)).to.deep.equal('expected output');
