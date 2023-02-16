@@ -55,7 +55,6 @@ class Garden {
             
         }
         return report.join('\n');
-
     }
 }
 
