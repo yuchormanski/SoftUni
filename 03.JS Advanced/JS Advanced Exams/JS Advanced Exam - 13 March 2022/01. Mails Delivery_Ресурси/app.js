@@ -97,6 +97,5 @@ function solve() {
         textCont ? element.innerText = textCont : null;
         return element;
     }
-
 }
 solve()
