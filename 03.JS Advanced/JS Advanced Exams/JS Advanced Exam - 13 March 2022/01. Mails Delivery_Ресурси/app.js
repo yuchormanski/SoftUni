@@ -1,101 +1,84 @@
+window.onload = solve();
+
 function solve() {
 
-    const ulElement = document.getElementById('list');
-    const ulSentMail = document.querySelector('.sent-list');
     const recipientInput = document.getElementById('recipientName');
     const titleInput = document.getElementById('title');
-    const textInput = document.getElementById('message');
-    const addToListBtn = document.getElementById('add');
-    const trash = document.querySelector('.delete-list');
+    const messageInput = document.getElementById('message');
+    const listOfMails = document.getElementById('list');
+    const sentMailsUl = document.querySelector('ul.sent-list');
+    const deletedMailsUl = document.querySelector('ul.delete-list');
+
+    const addBtn = document.getElementById('add');
     const resetBtn = document.getElementById('reset');
-    addToListBtn.addEventListener('click', listOfMails);
-    resetBtn.addEventListener('click', reset);
 
-    function reset(e) {
-        e.preventDefault();
-        recipientInput.value = '';
-        titleInput.value = '';
-        textInput.value = '';
-    }
+    addBtn.addEventListener('click', addNewMail);
+    resetBtn.addEventListener('click', resetInputs);
 
-    function listOfMails(e) {
-        e.preventDefault();
+    function addNewMail(e) {
+        e.preventDefault()
+
         const recipient = recipientInput.value;
         const title = titleInput.value;
-        const text = textInput.value;
+        const message = messageInput.value;
 
-        if (recipient === '' || title === '' || text === '') return;
+        if (recipient === '' || title === '' || message === '') return;
 
         const li = creator('li', '', '', '');
         li.appendChild(creator('h4', '', '', `Title: ${title}`));
         li.appendChild(creator('h4', '', '', `Recipient Name: ${recipient}`));
-        li.appendChild(creator('span', '', '', text));
+        li.appendChild(creator('span', '', '', message));
         const div = creator('div', 'id', 'list-action', '');
-        const sendBtn = document.createElement('button');
-        sendBtn.type = 'submit';
-        sendBtn.id = 'send'
-        sendBtn.innerText = 'Send';
-        const deleteBtn = document.createElement('button');
-        deleteBtn.type = 'submit';
-        deleteBtn.id = 'delete'
-        deleteBtn.innerText = 'Delete';
+        const sendBtn = creator('button', 'type', 'submit', 'Send');
+        const deleteBtn = creator('button', 'type', 'submit', 'Delete');
         div.appendChild(sendBtn);
         div.appendChild(deleteBtn);
         li.appendChild(div);
-        ulElement.appendChild(li);
+        listOfMails.appendChild(li);
+
+        sendBtn.id = 'send';
+        deleteBtn.id = 'delete';
+
+        sendBtn.addEventListener('click', sent);
+        deleteBtn.addEventListener('click', deleted);
+
+        const sentLi = creator('li', '', '', '');
+        sentLi.appendChild(creator('span', '', '', `To: ${recipient}`));
+        sentLi.appendChild(creator('span', '', '', `Title: ${title}`));
+        const sentDiv = creator('div', 'className', 'btn', '');
+        const sentBtnDelete = creator('button', 'type', 'submit', 'Delete');
+        sentBtnDelete.className = 'delete';
+        sentBtnDelete.addEventListener('click', deleted);
+        sentDiv.appendChild(sentBtnDelete);
+        sentLi.appendChild(sentDiv);
 
         recipientInput.value = '';
         titleInput.value = '';
-        textInput.value = '';
+        messageInput.value = '';
 
-        sendBtn.addEventListener('click', sentMails);
-        deleteBtn.addEventListener('click', (e) => {
-            Array.from(ulElement.childNodes).forEach(ch => ch.remove());
-            const li = creator('li', '', '', '');
-            li.appendChild(creator('span', '', '', `To: ${recipient}`));
-            li.appendChild(creator('span', '', '', `Title: ${title}`));
-            trash.appendChild(li);
-        });
-
-
-        function sentMails() {
-            Array.from(ulElement.childNodes).forEach(el => el.remove());
-            const li = creator('li', '', '', '');
-            li.appendChild(creator('span', '', '', `To: ${recipient}`));
-            li.appendChild(creator('span', '', '', `Title: ${title}`));
-            const div = creator('div', 'class', 'btn', '');
-            const deleteBtn = document.createElement('button');
-            deleteBtn.type = 'submit';
-            deleteBtn.class = 'delete'
-            deleteBtn.innerText = 'Delete';
-            div.appendChild(deleteBtn);
-            li.appendChild(div);
-            ulSentMail.appendChild(li);
-            deleteBtn.addEventListener('click', deletedMails);
-
-
-            function deletedMails(e) {
-                trash.appendChild(li);
-                e.target.parentElement.remove();
-            }
+        function sent() {
+            li.remove();
+            sentMailsUl.appendChild(sentLi);
         }
 
-        function earlyDelete(e) {
+        function deleted() {
             li.remove();
-            const trash = document.querySelector('.delete-list');
-            const li = creator('li', '', '', '');
-            li.appendChild(creator('span', '', '', `To: ${recipient}`));
-            li.appendChild(creator('span', '', '', `Title: ${title}`));
-            trash.appendChild(li);
+            deletedMailsUl.appendChild(sentLi)
+            sentBtnDelete.remove();
         }
 
     }
-
-    function creator(type, attribute, attrValue, textCont) {
-        const element = document.createElement(type);
-        attribute ? element[attribute] = attrValue : null;
-        textCont ? element.innerText = textCont : null;
+    function resetInputs(e) {
+        e.preventDefault()
+        recipientInput.value = '';
+        titleInput.value = '';
+        messageInput.value = '';
+    }
+    function creator(elType, elAttribute, attrValue, elementText) {
+        const element = document.createElement(elType);
+        elAttribute ? element[elAttribute] = attrValue : null;
+        elementText ? element.innerText = elementText : null;
         return element;
     }
 }
-solve()
+// solve()
