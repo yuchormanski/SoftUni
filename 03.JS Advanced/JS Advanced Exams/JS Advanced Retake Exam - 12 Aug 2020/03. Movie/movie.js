@@ -51,6 +51,3 @@ console.log(m.toString());
 // m.newScreening('October 3, 2020', '235', `regular`);
 // m.newScreening('October 4, 2020', 'Main', `regular`);
 // console.log(m.toString());
-
-
-
