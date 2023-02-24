@@ -14,7 +14,6 @@ function getInfo() {
             });
         })
         .catch(error => stopNameResult.innerText = 'Error');
-
     busses.innerHTML = '';
 }
 
