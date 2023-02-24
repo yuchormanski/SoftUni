@@ -1,0 +1,16 @@
+input{
+    width: 180px;
+    margin: 2px 0 5px 0;
+    border-radius: 3px;
+    border: 1px solid gray;
+}
+.divBlock{
+    width: 200px;
+    border: 1px solid rgb(44, 43, 52);
+    padding: 10px;
+}
+#send-btn {
+    display: block;
+    width: 190px;
+    margin: 10px 0 0 0;
+}
