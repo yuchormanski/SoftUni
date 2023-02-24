@@ -62,7 +62,8 @@ function menu() {
                         });
                 }
             })
-        });
+        })
+        .catch(err => console.error(err));
 }
 
 
