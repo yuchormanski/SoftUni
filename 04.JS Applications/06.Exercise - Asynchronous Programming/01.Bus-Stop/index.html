@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bus Stop</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <!-- The next line is added for simplicity -->
+    <p style="font-size: 10px; color: rgb(37, 42, 57);">Note: The service will respond with valid data to IDs 1287, 1308, 1327 and 2334.</p> 
+    
+    <div id="stopInfo" style="width:20em">
+        <div>
+            <label for="stopId">Stop ID: </label>
+            <input id="stopId" type="text">
+            <input id="submit" type="button" value="Check" onclick="getInfo()"></div>
+        <div id="result">
+            <div id="stopName"></div>
+            <ul id="buses"></ul>
+        </div>
+    </div>
+    <script src="./app.js"></script>
+</body>
+
+</html>
