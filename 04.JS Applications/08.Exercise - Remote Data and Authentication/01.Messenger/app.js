@@ -59,18 +59,3 @@ async function sendMessage() {
         console.log(err);
     }
 }
-
-
-
-/* expected 
-
-
-' to equal 
-'Spami: Hello, are you there?\n
-'Spami: Hello, are you there?\n
-Garry: Yep, whats up :?\n
-Garry: Yep, whats up :?\n
-George: Hello, guys! :))\n
-George: Hello, guys! :))
-
-' */
