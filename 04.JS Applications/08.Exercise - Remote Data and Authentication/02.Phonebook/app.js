@@ -30,7 +30,7 @@ async function createContact() {
         const create = await fetch(URL, options)
         const result = await create.json();
 
-        const li = creator('li', 'data-id', result._id, `${result.person}: ${result.phone} `);
+        const li = creator('li', 'data-id', result._id, `${result.person}: ${result.phone}`);
         const deleteBtn = creator('button', '', '', 'Delete');
         li.appendChild(deleteBtn);
         phonebook.appendChild(li);
@@ -56,7 +56,7 @@ async function viewContacts() {
 
     Object.entries(loadedData).forEach(line => {
         const currentKey = line[0];
-        const li = creator('li', 'data-id', currentKey, `${line[1].person}: ${line[1].phone} `);
+        const li = creator('li', 'data-id', currentKey, `${line[1].person}: ${line[1].phone}`);
         const deleteBtn = creator('button', '', '', 'Delete');
         li.appendChild(deleteBtn);
         phonebook.appendChild(li);
