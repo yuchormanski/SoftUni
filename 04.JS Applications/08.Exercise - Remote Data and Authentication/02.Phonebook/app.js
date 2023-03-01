@@ -41,6 +41,7 @@ async function createContact() {
     catch (error) {
         console.log(await create.json());
     }
+    viewContacts()
     person.value = '';
     phone.value = '';
 
@@ -56,7 +57,7 @@ async function viewContacts() {
 
     Object.entries(loadedData).forEach(line => {
         const currentKey = line[0];
-        const li = creator('li', 'data-id', currentKey, `${line[1].person}: ${line[1].phone}`);
+        const li = creator('li', 'id', currentKey, `${line[1].person}: ${line[1].phone}`);
         const deleteBtn = creator('button', '', '', 'Delete');
         li.appendChild(deleteBtn);
         phonebook.appendChild(li);
@@ -66,7 +67,9 @@ async function viewContacts() {
 
 async function deleteContact(e) {
     const URL = 'http://localhost:3030/jsonstore/phonebook';
-    const key = e.target.parentElement['data-id'];
+    // const key = e.target.parentElement['data-id'];
+    const key = e.target.parentElement.getAttribute('id');
+
     const deleteURL = `${URL}/${key}`;
     const options = {
         method: 'DELETE',
