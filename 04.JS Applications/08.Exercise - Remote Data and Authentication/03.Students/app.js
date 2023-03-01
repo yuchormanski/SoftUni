@@ -20,7 +20,6 @@ async function getStudents() {
         tr.appendChild(creator('td', '', '', grade.toFixed(2)));
         tableBody.appendChild(tr);
     });
-
 }
 
 function addStudent() {
