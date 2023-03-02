@@ -14,14 +14,14 @@ function getElements() {
 getElements()
 
 async function loadBooks() {
-
+    tableBody.innerHTML = '';
     const respond = await fetch(URL);
     const data = await respond.json();
-
+    
     Object.entries(data).forEach(book => {
         const id = book[0];
         const { author, title } = book[1];
-
+        
         tableBody.appendChild(createRow(title, author, id));
     });
 
@@ -34,8 +34,8 @@ async function addBook(e) {
         return alert(error);
     }
     const newBook = {
-        author: titleInput.value,
-        title: authorInput.value
+        title: titleInput.value,
+        author: authorInput.value
     }
 
     const options = {
@@ -49,15 +49,50 @@ async function addBook(e) {
 
     formInput.forEach(input => input.value = '');
 
-    tableBody.appendChild(createRow(newBook.title, newBook.author, newBook.id));
+    tableBody.appendChild(createRow(data.title, data.author, data._id));
 }
 
-//TODO:
+
 async function editBook(e) {
     e.preventDefault();
-    submitBtn.textContent = 'Save';
 
-    submitBtn.addEventListener('click', () =>{submitBtn.textContent = 'Submit'})
+    const formH3 = document.querySelector('form h3');
+    const form = document.querySelector('form');
+    const saveBtn = submitBtn.cloneNode(false);
+    const element = e.target.parentElement.parentElement;
+    const [title, author, _] = element.querySelectorAll('td');
+    saveBtn.textContent = 'Save';
+    form.replaceChild(saveBtn, submitBtn);
+    formH3.textContent = 'Edit FORM';
+    
+    titleInput.value = title.textContent;
+    authorInput.value = author.textContent;
+
+    saveBtn.addEventListener('click', edit)
+
+    async function edit(e) {
+        e.preventDefault();
+     
+        const edited = {
+            title: titleInput.value,
+            author: authorInput.value,
+        }
+        
+        const options = {
+            method: 'PUT',
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify(edited)
+        }
+
+        const response = await fetch(`${URL}/${element.id}`, options);
+        const data = await response.json();
+        
+        element.remove()
+        formInput.forEach(input => input.value = '');
+        formH3.textContent = 'FORM';
+        form.replaceChild(submitBtn, saveBtn);
+        loadBooks()
+    }
 }
 
 
@@ -69,8 +104,6 @@ async function deleteBook(e) {
 
     const options = {
         method: 'DELETE',
-        // headers : {'Content-type': 'application/json'},
-        // body: JSON.stringify(data)
     }
     const respond = await fetch(`${URL}/${element.id}`, options);
     const data = await respond.json();
@@ -94,7 +127,7 @@ function createRow(title, author, id) {
     actionCell.appendChild(editBtn);
     actionCell.appendChild(deleteBtn);
 
-    
+
 
     editBtn.addEventListener('click', editBook);
     deleteBtn.addEventListener('click', deleteBook);
