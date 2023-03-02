@@ -96,8 +96,6 @@ async function editBook(e) {
 }
 
 
-
-
 async function deleteBook(e) {
     const element = e.target.parentElement.parentElement;
     element.remove();
@@ -126,8 +124,6 @@ function createRow(title, author, id) {
     deleteBtn.textContent = 'Delete';
     actionCell.appendChild(editBtn);
     actionCell.appendChild(deleteBtn);
-
-
 
     editBtn.addEventListener('click', editBook);
     deleteBtn.addEventListener('click', deleteBook);
