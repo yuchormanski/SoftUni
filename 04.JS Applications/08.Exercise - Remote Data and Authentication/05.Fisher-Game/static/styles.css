@@ -216,3 +216,6 @@ main {
     color: white;
     cursor: pointer;
 }
+#views {
+    display: none;
+}
