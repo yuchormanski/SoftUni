@@ -9,7 +9,6 @@ export function homeView() {
     main.replaceChildren(yearsView);
     yearsView.addEventListener('click', select);
 
-
     function select(e) {
         const currentYear = e.target.children[0].innerText;
         thisYear(currentYear)

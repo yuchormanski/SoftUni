@@ -1,12 +1,8 @@
-
 import { monthIndex } from './months.js';
-
 
 const main = document.getElementById('main');
 
 let captionYear = null;
-
-
 
 export const backBtn = document.createElement('button');
 backBtn.textContent = 'Back';
@@ -15,14 +11,12 @@ backBtn.addEventListener('click', () => {
     window.location.reload();
 })
 
-
 export function thisYear(year) {
 
     const showThisYear = document.querySelector(`#calendars #year-${year}`);
     main.replaceChildren(showThisYear);
     arch()
     main.appendChild(backBtn);
-
 }
 
 function arch() {
