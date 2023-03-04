@@ -1,0 +1,17 @@
+.custom {
+    background-color: #8e352e;
+    color: white;
+
+}
+
+tr.custom {
+    grid-template-columns: none;
+    height: 40px;
+    text-align: right;
+}
+
+.inputText {
+    width: 400%;
+    border:none; 
+    border-bottom: 1px solid gray;
+}
