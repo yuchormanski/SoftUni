@@ -11,7 +11,7 @@ const cancelBtn = document.querySelector('form .cancel');
 export const url = 'http://localhost:3030/jsonstore/collections/myboard/posts';
 postBtn.addEventListener('click', newPost);
 
-detail()
+// detail()
 postCreate()
 
 export async function newPost(e) {
@@ -26,7 +26,6 @@ export async function newPost(e) {
         username,
         postText,
         time: dateTime,
-        comments: []
     }
     try {
         if (topicName == '' || username == '' || postText == '') {
@@ -44,7 +43,7 @@ export async function newPost(e) {
         postCreate();
 
     } catch (error) {
-        console.log(error.message);
+        console.log(error);
     }
 
     form.reset()

@@ -1,11 +1,15 @@
-import { postCreate } from "./postCreate.js";
+// import { postCreate } from "./postCreate.js";
 import { addComment } from "./comment.js";
 import { url } from "./app.js";
+import { urlComments } from "./comment.js";
 import { creator } from "./createElement.js";
+// import {detail} from './detailView.js';
+
 const homeBtn = document.querySelector('nav a');
 homeBtn.addEventListener('click', () => {
     document.getElementById('detailView').style.display = 'none';
     document.getElementById('homeView').style.display = 'block';
+    document.location.reload();
 });
 
 export async function detail(e) {
@@ -19,7 +23,6 @@ export async function detail(e) {
 
     const category = e.target.innerText;
     const id = e.target.id
-    console.log(id);
 
 
     const response = await fetch(url);
@@ -44,40 +47,30 @@ export async function detail(e) {
     divHeader.appendChild(pName)
     divHeader.appendChild(pContent);
 
+    const comments = await fetch(urlComments);
+    const dataComments = await comments.json();
+    const found = Object.values(dataComments).filter(c => c.commentFor == id);
+
+    if (found) {
+        found.forEach(comment => {
+            console.log(comment);
+            const userComment = creator('div', 'id', 'user-comment', '');
+            const topicNameWrapper = creator('div', 'className', 'topic-name-wrapper', '');
+            const topicName = creator('div', 'className', 'topic-name', '');
+            const pCurrentUserTime = creator('p', '', '', '');
+            pCurrentUserTime.innerHTML = `<strong>${comment.username}</strong> commented on <time>${comment.time}</time>`
+            const postContent = creator('div', 'className', 'post-content', '');
+            const pContent = creator('p', '', '', comment.postText);
+            postContent.appendChild(pContent);
+            topicName.appendChild(pCurrentUserTime);
+            topicName.appendChild(postContent);
+            topicNameWrapper.appendChild(topicName);
+            userComment.appendChild(topicNameWrapper);
+            
+            divComment.appendChild(userComment);
+        });
+    }
+    
     content.appendChild(divComment);
     content.appendChild(answerComment);
-
 }
-
-/* 
-                    <!-- comment  -->
-
-                    <div class="comment">
-                        <div class="header">
-                            <img src="./static/profile.png" alt="avatar">
-                            <p><span>David</span> posted on <time>2020-10-10 12:08:28</time></p>
-                    
-                            <p class="post-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure facere sint
-                                dolorem quam,
-                                accusantium ipsa veniam laudantium inventore aut, tenetur quibusdam doloribus. Incidunt odio
-                                nostrum facilis ipsum dolorem deserunt illum?</p>
-                        </div>
-                    </div>
-
-*/
-/*                  // currentUser comment:
-                    <div class="answer-comment">
-                        <p><span>currentUser</span> comment:</p>
-                        <div class="answer">
-                            <form>
-                                <textarea name="postText" id="comment" cols="30" rows="10"></textarea>
-                                <div>
-                                    <label for="username">Username <span class="red">*</span></label>
-                                    <input type="text" name="username" id="username">
-                                </div>
-                                <button>Post</button>
-                            </form>
-                        </div>
-                    </div>
-
-*/
