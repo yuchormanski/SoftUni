@@ -1,8 +1,5 @@
 import { postCreate } from "./postCreate.js";
 import { now } from "./time.js";
-import {detail} from './detailView.js';   ////   debug
-
-
 
 document.getElementById('detailView').style.display = 'none';
 const form = document.querySelector('form');
@@ -10,6 +7,10 @@ const postBtn = document.querySelector('form .public');
 const cancelBtn = document.querySelector('form .cancel');
 export const url = 'http://localhost:3030/jsonstore/collections/myboard/posts';
 postBtn.addEventListener('click', newPost);
+cancelBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    form.reset();
+})
 
 // detail()
 postCreate()

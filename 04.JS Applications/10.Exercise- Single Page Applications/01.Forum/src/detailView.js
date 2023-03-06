@@ -1,9 +1,7 @@
 // import { postCreate } from "./postCreate.js";
-import { addComment } from "./comment.js";
+import { addComment, urlComments} from "./comment.js";
 import { url } from "./app.js";
-import { urlComments } from "./comment.js";
 import { creator } from "./createElement.js";
-// import {detail} from './detailView.js';
 
 const homeBtn = document.querySelector('nav a');
 homeBtn.addEventListener('click', () => {

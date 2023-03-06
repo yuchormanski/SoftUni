@@ -45,3 +45,9 @@ function seconds() {
         return new Date().getSeconds();
     }
 }
+ 
+
+// -----------------
+
+const timeLine =  new Date();
+console.log(timeLine);

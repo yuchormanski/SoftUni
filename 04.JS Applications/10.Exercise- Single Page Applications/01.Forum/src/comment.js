@@ -1,13 +1,10 @@
 import { creator } from "./createElement.js";
-import { detail } from "./detailView.js";
 
 import { now } from "./time.js";
 export const urlComments = 'http://localhost:3030/jsonstore/collections/myboard/comments'
 const form = document.querySelector('#detailView .answer-comment form');
 
 let dateTime = `${now.year}-${now.month}-${now.day} ${now.hours}:${now.minutes}:${now.seconds}`;
-
-
 
 export async function addComment(e) {
     e.preventDefault();

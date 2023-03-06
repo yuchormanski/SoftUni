@@ -1,10 +1,8 @@
 import {detail} from './detailView.js';
 import { url } from './app.js';
 import {creator} from './createElement.js';
+
 const topicTitle = document.querySelector('.topic-title');
-
-
-
 
 export async function postCreate() {
 
