@@ -1,7 +1,8 @@
 import {detail} from './detailView.js';
 import { url } from './app.js';
+import {creator} from './createElement.js';
 const topicTitle = document.querySelector('.topic-title');
-// const url = 'http://localhost:3030/jsonstore/collections/myboard/posts';
+
 
 
 
@@ -20,7 +21,7 @@ export async function postCreate() {
         const aNormal = creator('a', 'className', 'normal', ``);
         aNormal.href = '#';
         aNormal.setAttribute('data-topicName', post.topicName);
-        const h2 = creator('h2', '', '', post.topicName);
+        const h2 = creator('h2', 'id', post._id, post.topicName);
         aNormal.appendChild(h2)
         const columns = creator('div', 'className', 'columns', '');
 
@@ -45,9 +46,3 @@ export async function postCreate() {
 }
 
 
-function creator(elType, elAttribute, attrValue, elementText) {
-    const element = document.createElement(elType);
-    elAttribute ? element[elAttribute] = attrValue : null;
-    elementText ? element.innerText = elementText : null;
-    return element;
-}

@@ -1,5 +1,7 @@
 import { postCreate } from "./postCreate.js";
 import { now } from "./time.js";
+import {detail} from './detailView.js';   ////   debug
+
 
 
 document.getElementById('detailView').style.display = 'none';
@@ -9,6 +11,7 @@ const cancelBtn = document.querySelector('form .cancel');
 export const url = 'http://localhost:3030/jsonstore/collections/myboard/posts';
 postBtn.addEventListener('click', newPost);
 
+detail()
 postCreate()
 
 export async function newPost(e) {
@@ -22,7 +25,8 @@ export async function newPost(e) {
         topicName,
         username,
         postText,
-        time: dateTime
+        time: dateTime,
+        comments: []
     }
     try {
         if (topicName == '' || username == '' || postText == '') {
