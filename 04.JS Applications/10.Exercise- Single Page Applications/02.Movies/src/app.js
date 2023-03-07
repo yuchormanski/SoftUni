@@ -1,37 +1,55 @@
+
+
 import { createElement } from "./elements.js";
+import { addMovie } from "./addMovie.js";
+import { url } from "./routing.js";
+import { register } from "./register.js";
 
-const allMoviesURL = 'http://localhost:3030/data/movies';
-homeView()
 
+export const home = document.querySelector('nav a');
+home.addEventListener('click', homeView);
+home.href = '#';
 const navLi = Array.from(document.querySelectorAll('nav li'));
-const welcome = navLi[0]; const logout = navLi[1];
-const login = navLi[2]; const register = navLi[3];
-logout.style.display = 'none'; welcome.style.display = 'none';
+const welcome = navLi[0]; 
+const logOut = navLi[1];
+const login = navLi[2]; 
+const reg = navLi[3];
+reg.addEventListener('click', register)
+logOut.style.display = 'none'; 
+welcome.style.display = 'none';
 
 //sections
-const addMovie = document.getElementById('add-movie');
-const movieExample = document.getElementById('movie-example');
-const editMovie = document.getElementById('edit-movie');
-const formLogin = document.getElementById('form-login');
-const formSignUp = document.getElementById('form-sign-up');
+export const homePageSection = document.getElementById('home-page');
+export const addMovieSection = document.getElementById('add-movie');
+export const movieExampleSection = document.getElementById('movie-example');
+export const editMovieSection = document.getElementById('edit-movie');
+export const formLoginSection = document.getElementById('form-login');
+export const formSignUpSection = document.getElementById('form-sign-up');
 
-const homeViewMovies = document.getElementById('movies-list');
-
-// addMovie.style.display = 'none';
-// movieExample.style.display = 'none';
-// editMovie.style.display = 'none';
-// formLogin.style.display = 'none';
-// formSignUp.style.display = 'none';
-addMovie.remove();
-movieExample.remove();
-editMovie.remove();
-formLogin.remove();
-formSignUp.remove();
+homeView()
 
 async function homeView() {
 
-    const response = await fetch(allMoviesURL);
+    const movieList = document.getElementById('movie');
+    const homeViewMovies = document.getElementById('movies-list');
+    const addMovieBtn = document.querySelector('#add-movie-button a');
+
+    
+    addMovieBtn.addEventListener('click', addMovie)
+    
+    
+    homePageSection.style.display = 'block';
+    addMovieSection.style.display = 'none';
+    movieExampleSection.style.display = 'none';
+    editMovieSection.style.display = 'none';
+    formLoginSection.style.display = 'none';
+    formSignUpSection.style.display = 'none';
+    
+    
+    const response = await fetch(url.get);
     const data = await response.json();
+    
+    homeViewMovies.innerHTML = '';
 
     data.forEach(movie => {
 
@@ -46,7 +64,7 @@ async function homeView() {
                                         <button data-id="${movie._id}" type="button" class="btn btn-info">Details</button>
                                     </a>
                                 </div>`;
-                                
+
         homeViewMovies.appendChild(element)
     });
 
