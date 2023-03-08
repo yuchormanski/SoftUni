@@ -1,0 +1,13 @@
+npm init -y
+npm install -save-dev mocha
+npm instal -save-dev chai
+npm install --save-dev playwright-chromium
+
+set live server port to 3000/run
+start local server
+
+in e2e.test.js - 
+could change port from 3000(default ) to actual ( look at taskbar Port:****);
+
+slowMo (default 500) - awaiting time for response could be raised or lowered
+// --- run tests in test folder - mocha 'file.js'

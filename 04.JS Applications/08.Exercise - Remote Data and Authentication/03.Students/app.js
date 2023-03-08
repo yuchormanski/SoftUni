@@ -1,5 +1,6 @@
 getStudents()
-addStudent()
+document.querySelector('#submit').addEventListener('click', addToDB);
+// addStudent()
 async function getStudents() {
     const tableBody = document.getElementById('results');
     const url = 'http://localhost:3030/jsonstore/collections/students';
@@ -17,14 +18,13 @@ async function getStudents() {
         tr.appendChild(creator('td', '', '', firstName));
         tr.appendChild(creator('td', '', '', lastName));
         tr.appendChild(creator('td', '', '', facultyNumber));
-        tr.appendChild(creator('td', '', '', grade.toFixed(2)));
+        tr.appendChild(creator('td', '', '', Number(grade).toFixed(2)));
         tableBody.appendChild(tr);
     });
 }
 
-function addStudent() {
-    document.querySelector('#submit').addEventListener('click', addToDB);
-}
+// function addStudent() {
+// }
 
 async function addToDB(e) {
     e.preventDefault();
@@ -36,7 +36,8 @@ async function addToDB(e) {
         firstName: form[0].value,
         lastName: form[1].value,
         facultyNumber: form[2].value,
-        grade: Number(form[3].value)
+        // grade: Number(form[3].value)
+        grade: form[3].value
     }
     try {
         if (student.firstName == ''
@@ -59,13 +60,13 @@ async function addToDB(e) {
         }
         const response = await fetch(url, options);
         const data = await response.json();
+        formForm.reset();
+        tableBody.innerHTML = '';
+        getStudents()
     }
     catch (error) {
         console.log(error);
     }
-    formForm.reset();
-    tableBody.innerHTML = '';
-    getStudents()
 }
 
 
