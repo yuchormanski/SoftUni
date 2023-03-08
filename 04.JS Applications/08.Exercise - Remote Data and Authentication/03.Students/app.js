@@ -1,6 +1,6 @@
 getStudents()
 document.querySelector('#submit').addEventListener('click', addToDB);
-// addStudent()
+
 async function getStudents() {
     const tableBody = document.getElementById('results');
     const url = 'http://localhost:3030/jsonstore/collections/students';
@@ -23,8 +23,6 @@ async function getStudents() {
     });
 }
 
-// function addStudent() {
-// }
 
 async function addToDB(e) {
     e.preventDefault();
