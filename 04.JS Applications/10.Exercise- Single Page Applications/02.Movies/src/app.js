@@ -1,9 +1,9 @@
 
-
 import { createElement } from "./elements.js";
 import { addMovie } from "./addMovie.js";
 import { url } from "./routing.js";
 import { register } from "./register.js";
+import { login } from "./login.js";
 
 
 export const home = document.querySelector('nav a');
@@ -12,9 +12,10 @@ home.href = '#';
 const navLi = Array.from(document.querySelectorAll('nav li'));
 const welcome = navLi[0]; 
 const logOut = navLi[1];
-const login = navLi[2]; 
+const logIn = navLi[2]; 
 const reg = navLi[3];
-reg.addEventListener('click', register)
+reg.addEventListener('click', register);
+logIn.addEventListener('click', login);
 logOut.style.display = 'none'; 
 welcome.style.display = 'none';
 
@@ -27,6 +28,8 @@ export const formLoginSection = document.getElementById('form-login');
 export const formSignUpSection = document.getElementById('form-sign-up');
 
 homeView()
+
+
 
 async function homeView() {
 
