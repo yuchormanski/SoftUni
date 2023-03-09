@@ -1,3 +1,6 @@
+
+
+
 import { homePageSection, movieExampleSection, editMovieSection, formLoginSection, formSignUpSection, addMovieSection, home } from "./app.js";
 import { url } from "./routing.js";
 

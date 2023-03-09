@@ -1,23 +1,25 @@
-
 import { createElement } from "./elements.js";
 import { addMovie } from "./addMovie.js";
 import { url } from "./routing.js";
 import { register } from "./register.js";
 import { login } from "./login.js";
+import { goodBye } from "./logout.js";
 
+export const userData = JSON.parse(localStorage.getItem("userData"));
 
 export const home = document.querySelector('nav a');
-home.addEventListener('click', homeView);
 home.href = '#';
 const navLi = Array.from(document.querySelectorAll('nav li'));
-const welcome = navLi[0]; 
+const welcome = navLi[0].querySelector('a'); 
 const logOut = navLi[1];
 const logIn = navLi[2]; 
 const reg = navLi[3];
-reg.addEventListener('click', register);
-logIn.addEventListener('click', login);
-logOut.style.display = 'none'; 
-welcome.style.display = 'none';
+const movieList = document.getElementById('movie');
+const homeViewMovies = document.getElementById('movies-list');
+const addMovieBtn = document.querySelector('#add-movie-button');
+console.log(userData);
+
+
 
 //sections
 export const homePageSection = document.getElementById('home-page');
@@ -31,11 +33,26 @@ homeView()
 
 
 
-async function homeView() {
+export async function homeView() {
 
-    const movieList = document.getElementById('movie');
-    const homeViewMovies = document.getElementById('movies-list');
-    const addMovieBtn = document.querySelector('#add-movie-button a');
+    if(!userData){
+        logOut.style.display = 'none'; 
+        welcome.style.display = 'none';
+        addMovieBtn.style.display = 'none';
+        
+    }else {
+        logOut.style.display = 'block'; 
+        welcome.style.display = 'block';
+        logIn.style.display = 'none'; 
+        reg.style.display = 'none'; 
+        welcome.textContent = `Welcome, ${userData.email}`;
+        addMovieBtn.style.display = 'block';
+        
+    }
+    reg.addEventListener('click', register);
+    logIn.addEventListener('click', login);
+    home.addEventListener('click', homeView);
+    logOut.addEventListener('click', goodBye)
 
     
     addMovieBtn.addEventListener('click', addMovie)

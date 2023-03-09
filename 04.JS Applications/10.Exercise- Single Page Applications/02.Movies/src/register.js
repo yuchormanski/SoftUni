@@ -1,15 +1,22 @@
 
-import { homePageSection, formSignUpSection } from "./app.js";
+import { homePageSection, formSignUpSection, formLoginSection, addMovieSection, movieExampleSection, editMovieSection } from "./app.js";
 import { url } from "./routing.js";
+import { homeView } from "./app.js";
 
 export async function register(e) {
     e.preventDefault();
+
+
     formSignUpSection.style.display = 'block';
     homePageSection.style.display = 'none';
+    addMovieSection.style.display = 'none';
+    movieExampleSection.style.display = 'none';
+    editMovieSection.style.display = 'none';
+    formLoginSection.style.display = 'none';
 
     const registerForm = document.getElementById('register-form');
     const regBtn = registerForm.querySelector('button');
-    regBtn.addEventListener('click', submitReg);
+    regBtn.addEventListener('submit', submitReg);
 
     async function submitReg(e) {
         e.preventDefault();
@@ -23,17 +30,23 @@ export async function register(e) {
             if (password !== repeatPassword) {
                 throw new Error('The password don\'t match')
             }
-
-            const response = await fetch(url.post, {
+            
+            
+            const response = await fetch(url.register, {
                 method: 'post',
                 headers: { 'Content-Type': 'application/json' },
-
+                body: JSON.stringify({ email, password })
             })
-
+            const data = response.json();
+            console.log(data);
+            if(!response.ok || response.status !== 200){
+                throw new Error('Registration failed! PLease try again later');
+            }
+            
+            homeView()
 
         } catch (error) {
             alert(error)
         }
-
     }
 }
