@@ -9,7 +9,6 @@ function createList(e) {
     const formData = new FormData(form);
     const data = Object.values(Object.fromEntries(formData))[0].split(', ');
 
-
     const townTemplate = (town) => html`
     <ul>
         <li>${town}</li>
