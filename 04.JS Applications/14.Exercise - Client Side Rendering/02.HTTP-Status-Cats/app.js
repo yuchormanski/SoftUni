@@ -1,9 +1,12 @@
-import { html, render } from './node_modules/lit-html/lit-html.js';
+// import { html, render } from './node_modules/lit-html/lit-html.js';
+import { html, render } from 'https://unpkg.com/lit-html?module';
 import { cats } from './catSeeder.js';
 const allCats = document.getElementById('allCats');
 
-const ul = () => html`<ul id="catHolder"></ul>`
-render(ul(), allCats);
+// const ul = () => html`<ul id="catHolder"></ul>`
+// render(ul(), allCats);
+const ul = document.createElement('ul');
+allCats.appendChild(ul);
 
 const catTemplate = (cat) => html`
             <li>
@@ -17,7 +20,9 @@ const catTemplate = (cat) => html`
                 </div>
             </li>
             `
-render(cats.map(catTemplate), allCats.querySelector('#catHolder'));
+// render(cats.map(catTemplate), allCats.querySelector('#catHolder'));
+render(cats.map(catTemplate), ul);
+
 
 function showStatus(cat) {
     const id = cat.id
