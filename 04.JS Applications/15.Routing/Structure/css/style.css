@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 20px;
+}
+#nav{
+    float:right;
+}
+#nav a {
+    display: inline-block;
+    width: 50px;
+
+}
+.formDiv{
+    width: 300px;
+}
+label {
+    display: block;
+}
