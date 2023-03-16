@@ -1,22 +1,18 @@
 {
-  "name": "01.furniture",
+  "name": "01.furniture---copy",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "directories": {
-    "test": "tests"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "lite-server"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chai": "^4.3.7",
     "lit-html": "^2.6.1",
     "lite-server": "^2.6.1",
-    "mocha": "^10.2.0",
     "page": "^1.11.6"
   }
 }
