@@ -1,6 +1,7 @@
 import page from '../../node_modules/page/page.mjs';
-import { post } from './api.js';
+import { post, put } from './api.js';
 import { url } from './requestURL.js';
+
 
 export function setUserData(userData) {
     localStorage.setItem('userData', JSON.stringify(userData)); //or sessionStorage
@@ -83,6 +84,42 @@ export async function createItem(form){
         let {description, img, make, material, model, price, year} = data;
 
         const result = await post(url.post, {description, img, make, material, model, price, year})
+        return result;
+
+
+    } catch (err) {
+        alert(err.message)
+    }
+
+}
+
+export async function editItem(form,id ){
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+        if (data.description == ''
+        || data.img == ''
+        || data.make == ''
+        || data.model == ''
+        || data.price == ''
+        || data.year == '') {
+            const err = 'All fields are required!'
+            throw new Error(err)
+        }
+        if(data.make.length < 4 || data.model.length < 4){
+            throw new Error('Make and Model must be at least 4 letters long')
+        }
+        if(data.description.length < 10){
+            throw new Error('Need longer description')
+        }
+        if(data.price < 0){
+            throw new Error('Price must be positive number!')
+        }
+
+        let {description, img, make, material, model, price, year} = data;
+
+        const result = await put(`${url.post}/${id}`, {description, img, make, material, model, price, year})
         return result;
 
 

@@ -30,7 +30,7 @@ export async function detailPage(ctx) {
                 <p>Price: <span>${data.price}</span></p>
                 <p>Material: <span>${data.material}</span></p>
                 <div class="logged">
-                    <a href="/edit/${data._id}" class="btn btn-info">Edit</a>
+                    <a href="/edit/${data._id}" class="btn btn-info" @click=${editItem}>Edit</a>
                     <a href="" class="btn btn-red">Delete</a>
                 </div>
             </div>
@@ -40,11 +40,19 @@ export async function detailPage(ctx) {
     ctx.render(detailTemplate(), ctx.container)
 
     const userData = isUserLogged();
-    if(!userData){
+    if (!userData) {
         document.querySelectorAll('.btn').forEach(btn => btn.style.display = 'none');
     } else {
         document.querySelectorAll('.btn').forEach(btn => btn.style.display = '');
+        // document.querySelector('div.btn a[class="btn-info"]').addEventListener('click', editItem)
     }
-    
+
+    function editItem() {
+        // console.log(id);
+        if (userData !== undefined) {
+            ctx.page.redirect('/editPage/' + ctx.params.id)
+        }
+
+    }
 
 }
