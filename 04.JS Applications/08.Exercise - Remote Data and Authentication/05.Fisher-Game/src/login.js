@@ -1,49 +1,37 @@
-const loginForm = document.querySelector('form#login');
-const logout = document.querySelector('nav #user').style.display = 'none';
-const url = 'http://localhost:3030/users/login';
-const loginBtn =  document.querySelector('form#login button')
-loginBtn.addEventListener('click', logIn);
+const loginForm = document.querySelector("form");
+loginForm.addEventListener("submit", userLogin);
+document.getElementById("user").style.display = "none";
 
-async function logIn(e) {
-    e.preventDefault();
+async function userLogin(e) {
+  e.preventDefault();
+  const formData = new FormData(e.target);
 
-    const form = new FormData(loginForm);
-    // const { email, password } = Object.fromEntries(form);
+  const email = formData.get("email");
+  const password = formData.get("password");
 
-    const email = form.get('email');
-    const password = form.get('password');
-    
-    try {
-
-        // const response = await fetch(url);
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            // body: JSON.stringify({ email, password })
-        });
-
-        if (!response.ok) {
-            const err = await response.json()
-            throw new Error(err.message)
-        }
-
-        const data = await response.json();
-
-        const user = {
-            email: data.email,
-            id: data._id,
-            token: data.accessToken
-        }
-        localStorage.setItem('userData', JSON.stringify(user));
-        
-        // пренасочваме към началната страница
-        window.location = './index.html';
-
-
-    } catch (error) {
-        alert(error.message);
-        // loginForm.reset()
+  try {
+    const res = await fetch("http://localhost:3030/users/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+    if (!res.ok) {
+      const error = await res.json();
+      throw new Error(error.message);
     }
-
-
+    const data = await res.json();
+    const userData = {
+      email: data.email,
+      id: data._id,
+      token: data.accessToken,
+    };
+    localStorage.setItem('userData', JSON.stringify(userData))
+    window.location = ('./index.html')
+  } catch (error) {
+    document.querySelector('form').reset();
+    alert(error.message);
+  }
 }

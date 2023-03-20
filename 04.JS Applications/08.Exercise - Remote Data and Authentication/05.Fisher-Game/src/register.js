@@ -1,56 +1,46 @@
-const url = `http://localhost:3030/users/register`;
-const form = document.querySelector('section #register');
-document.querySelector('nav #user').style.display = 'none'; // logout button
-document.querySelector('nav #guest #register').style.display = 'none'; // login & reg button
+const registerForm = document.querySelector('form');
+document.getElementById("user").style.display = "none";
 
+registerForm.addEventListener('submit', onUserRegistger)
 
-form.addEventListener('submit', regUser);
-
-
-async function regUser(e) {
+const url = 'http://localhost:3030/users/register'
+async function onUserRegistger(e) {
     e.preventDefault();
-
-    const formData = new FormData(form);
-    // const {email, password, rePass} = Object.fromEntries(formData.entries());
-    const { email, password, rePass } = Object.fromEntries(formData);
-
+    const formData = new FormData(e.currentTarget)
+    const {email, password, rePass} = Object.fromEntries(formData);
     try {
-        // спредваме formData-та и проверяваме за празни полета
-        if (![...formData.values()].every(x => x != '')) {
-            throw new Error('All fields are required!'); // ако има празни полета
-        }
-        if (password != rePass) {
-            throw new Error('Passwords didn\'t match!'); // ако не съвпадат паролите
+        if ([...formData.values()].some(el => el === '')) {
+            throw new Error('Input is not correct!')
+        } else if (password != rePass) {
+            throw new Error('The passwords do not match')
         }
 
-        // API
-        const response = await fetch(url, {
+        const res = await fetch(url, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password })
-        });
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                email,
+                password,
+                rePass
+            })
+        })
 
-        if (!response.ok) { //ако е неуспешна регистрацията
-            const err = await response.json();
-            throw new Error(err.message);
+        if (!res.ok) {
+            const error = await res.json();
+            throw new Error(error.message);
         }
-
-        const data = await response.json();
-
+        const data = await res.json()
+        console.log(data);
         const user = {
             email: data.email,
             id: data._id,
             token: data.accessToken
         }
-
-        // записваме регистрацията на потребителя в localStorage (перманентно), или в sessionStorage (докато сесията на браузъра е отворена)
-        localStorage.setItem('userData', JSON.stringify(user));
-
-        // пренасочваме към началната страница
-        window.location = './index.html';
-
+        localStorage.setItem('userData', JSON.stringify(user))
+        window.location = './index.html'
     } catch (error) {
-        alert(error.message);  // съобщение за грешката
-        form.reset();  // чистим полетата
+        document.querySelector('form').reset();
+        alert(error.message)
     }
+
 }

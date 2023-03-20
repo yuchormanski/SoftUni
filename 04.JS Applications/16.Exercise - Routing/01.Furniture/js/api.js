@@ -16,7 +16,7 @@ async function request(method, url, data) {
     //Authorization
 
     const userData = getUserData();
-    if(userData !== null){
+    if(userData != null){
         options.headers['X-Authorization'] = userData.accessToken;
     }
     
@@ -28,14 +28,14 @@ async function request(method, url, data) {
         let result;
 
         //ако резултата от заявката не е празна
-        if (response.status !== 204) {
+        if (response.status != 204) {
             // при успешна заявка
-            result = await response.json()
+            result = await response.json();
         }
         //ако заявката не е преминала успешно
-        if (response.ok !== true) {
+        if (response.ok != true) {
             // ако имаме невалиден токен
-            if (response.status === 403) {
+            if (response.status == 403) {
                 clearUserData();
             }
             throw result;
@@ -43,9 +43,9 @@ async function request(method, url, data) {
         //връщаме резултата от заявката
         return result;
 
-    } catch (error) {
-        alert(error.message);
-        throw error;
+    } catch (err) {
+        alert(err.message);
+        throw err;
     }
 }
 
