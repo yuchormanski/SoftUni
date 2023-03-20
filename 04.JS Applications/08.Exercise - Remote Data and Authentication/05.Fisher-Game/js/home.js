@@ -1,6 +1,6 @@
 import { html } from '../node_modules/lit-html/lit-html.js';
-import { newCatch } from './addCatch.js';
-import { get, post } from './api.js';
+// import { newCatch } from './addCatch.js';
+import { get, post, del, put } from './api.js';
 import { navLoad } from './app.js';
 import { url } from './requestURL.js';
 import { getUserData } from './util.js';
@@ -34,7 +34,7 @@ export async function homePage(ctx) {
                         <input type="text" name="bait" class="bait" />
                         <label>Capture Time</label>
                         <input type="number" name="captureTime" class="captureTime" />
-                        <button class="add" ?disabled=${userData === null}>Add</button>
+                        <button class="add" ?disabled=${userData===null}>Add</button>
                 </form>
             </aside>
     `
@@ -50,14 +50,12 @@ export async function homePageLoad() {
     if (userData !== null) {
         userId = userData._id;
     }
-    // console.log(userData);
-    // console.log(data);
 
     const catchTemplate = () => html`
     <legend>Catches</legend>
     <div id="catches">
         ${data.map(x => html`
-        <div class="catch">
+        <div class="catch" @click=${userAction}>
             <label>Angler</label>
             <input type="text" class="angler" value="${x.angler}">
             <label>Weight</label>
@@ -70,30 +68,69 @@ export async function homePageLoad() {
             <input type="text" class="bait" value="${x.bait}">
             <label>Capture Time</label>
             <input type="number" class="captureTime" value="${x.captureTime}">
-            <button class="update" data-id="${x._ownerId}" ?disabled=${userId !== x.ownerId}>Update</button>
-            <button class="delete" data-id="${x._ownerId}" ?disabled=${userId !== x.ownerId}>Delete</button>
+            <button class="delete" data-id="${x._id}" ?disabled=${userId !==x._ownerId} }>Delete</button>
+            <button class="update" data-id="${x._id}" ?disabled=${userId !==x._ownerId} }>Update</button>
         </div>
         `)}
     </div>
     `
     ctxx.render(catchTemplate(), fieldset);
+
+    async function userAction(e) {
+        if (e.target.tagName === 'BUTTON') {
+            const id = e.target.dataset.id;
+
+            if (e.target.className === 'delete') {
+                await del(`${url.delete}/${id}`);
+                homePageLoad()
+                
+            } else if (e.target.className === 'update') {
+                const inputs = e.target.parentElement.querySelectorAll('input');
+                const edited = {
+                    angler: inputs[0].value,
+                    weight: Number(inputs[1].value),
+                    species: inputs[2].value,
+                    location: inputs[3].value,
+                    bait: inputs[4].value,
+                    captureTime: Number(inputs[5].value)
+                }
+                
+                const response = await put(`${url.put}/${id}`, edited);
+                homePageLoad()
+
+            }
+        }
+
+    }
 }
 
 
 export async function toSubmit(data, form) {
-    console.log(data);
 
     try {
         const { angler, weight, species, location, bait, captureTime } = data;
+
         if (angler == '' || weight == '' || species == '' || location == '' || bait == '' || captureTime == '') {
             throw new Error('All fields are required!')
         }
-        const response = await post(url.post, data);
-        console.log(response);
+
+        const currentCatch = {
+            angler,
+            weight: Number(weight),
+            species,
+            location,
+            bait,
+            captureTime: Number(captureTime)
+        }
+
+        const response = await post(url.post, currentCatch);
+        form.reset();
 
     } catch (error) {
         alert(error)
     }
 }
+
+
 
 

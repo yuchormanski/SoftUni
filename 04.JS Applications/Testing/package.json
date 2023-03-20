@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "lite-server"
   },
   "keywords": [],
   "author": "",
@@ -61,6 +62,7 @@
     "is-unicode-supported": "^0.1.0",
     "js-yaml": "^4.1.0",
     "lit-html": "^2.6.1",
+    "lite-server": "^2.6.1",
     "locate-path": "^6.0.0",
     "log-symbols": "^4.1.0",
     "loupe": "^2.3.6",

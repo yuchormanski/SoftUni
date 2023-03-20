@@ -1,5 +1,6 @@
 import { html } from '../node_modules/lit-html/lit-html.js';
 import { post } from './api.js';
+import { navLoad } from './app.js';
 import { url } from './requestURL.js';
 import { createSubmitHandler } from './util.js';
 
@@ -7,11 +8,8 @@ let context;
 
 export function registerPage(ctx) {
     context = ctx
-    ctx.render(regTemplate(), ctx.main);
-}
 
-function regTemplate() {
-    const template = html`
+    const regTemplate = () => html`
             <section id="register-view">
                 <h2>Register</h2>
                 <form @submit=${createSubmitHandler(toSubmit)} id="register">
@@ -23,8 +21,9 @@ function regTemplate() {
                 </form>
             </section>
     `
-    return template;
+    ctx.render(regTemplate(), ctx.section);
 }
+
 
 export async function toSubmit(data, form) {
     const { email, password, rePass } = data;
@@ -36,7 +35,7 @@ export async function toSubmit(data, form) {
 
         await post(url.register, data)
         form.reset();
-        context.navLoad();
+        context.navLoad()
         context.page.redirect('/');
 
     } catch (error) {
