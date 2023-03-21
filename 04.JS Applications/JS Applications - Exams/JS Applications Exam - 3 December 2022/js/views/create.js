@@ -42,7 +42,7 @@ async function toSubmit(data, form) {
       throw new Error('All fields are required!');
     }
 
-    const newAlbum = { singer, album, imageUrl, release: Number(release), label, sales }
+    const newAlbum = { singer, album, imageUrl, release, label, sales }
 
     const response = post(url.post, newAlbum);
     context.page.redirect('/dashboard');

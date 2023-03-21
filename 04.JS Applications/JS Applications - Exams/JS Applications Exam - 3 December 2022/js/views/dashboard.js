@@ -6,6 +6,7 @@ import { url } from '../requestURL.js';
 export async function dashboardPage(ctx) {
 
   const data = await getData(url.get)
+  console.log(data);
 
   const dashTemplate = () => html`
   <section id="dashboard">
@@ -36,34 +37,10 @@ export async function dashboardPage(ctx) {
               </ul>
             </section>
   `;
-  if(data !== null){
+  if(data.length > 0){
     ctx.render(dashTemplate());
   } else {
     ctx.render(empty());
   }
 
 }
-
-
-/* <li class="card">
-<img src="./images/beatles-1.jpg" alt="travis" />
-<p>
-  <strong>Singer/Band: </strong><span class="singer">The Beatles</span>
-</p>
-<p>
-  <strong>Album name: </strong><span class="album">1</span>
-</p>
-<p><strong>Sales:</strong><span class="sales">26 million (31 million claimed)</span></p>
-<a class="details-btn" href="">Details</a>
-</li>
-<li class="card">
-<img src="./images/pink-floyd-the-wall.jpeg" alt="travis" />
-<p>
-  <strong>Singer/Band: </strong><span class="singer">Pink Floyd</span>
-</p>
-<p>
-  <strong>Album name: </strong><span class="album">The Wall</span>
-</p>
-<p><strong>Sales:</strong><span class="sales">18 million (30 million claimed)</span></p>
-<a class="details-btn" href="">Details</a>
-</li> */

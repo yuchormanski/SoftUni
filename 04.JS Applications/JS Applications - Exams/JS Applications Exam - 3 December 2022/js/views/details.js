@@ -1,7 +1,6 @@
 import { html } from '../../node_modules/lit-html/lit-html.js'
 import { deleteById, getData, getDataById, postData } from '../data.js';
 import { url } from '../requestURL.js';
-import { deleteAlbum } from './deleteAction.js';
 
 
 export async function detailsPage(ctx) {
@@ -11,7 +10,7 @@ export async function detailsPage(ctx) {
   const { album, imageUrl, label, release, sales, singer, _createdOn, _id, _ownerId } = data;
   const likesUrl = `/data/likes?where=albumId%3D%22${id}%22&distinct=_ownerId&count`
   const likes = await getData(`${url.getLikes}${likesUrl}`)
-  // console.log(`likes: ${likes}`);
+  console.log(`likes: ${likes}`);
   const detailsTemplate = (data) => html`
   
   <section id="details">
@@ -51,7 +50,7 @@ export async function detailsPage(ctx) {
     } else if (ctx.userData != null) {
       res = html`
     <div id="action-buttons">
-      <a href="javascript:void(0)" id="like-btn" @click=${() => likeAlbum(id)}>Like</a>
+      <a href="javascript:void(0)" id="like-btn" @click=${()=> likeAlbum(id)}>Like</a>
     </div>
   `
     }
@@ -63,12 +62,13 @@ export async function detailsPage(ctx) {
     ctx.page.redirect('/dashboard')
   }
 
+  async function likeAlbum(id) {
+    const albumId = id;
+    const likeBtn = document.getElementById('like-btn')
+    const likeIt = postData('http://localhost:3030' + '/data/likes', { albumId });
+    likeBtn.style.display = 'none'
+    ctx.page.redirect(`/details/${id}`)
+  }
 }
 
-async function likeAlbum(id) {
-  const albumId = id;
-  const likeBtn = document.getElementById('like-btn')
-  const likeIt = postData('http://localhost:3030' + '/data/likes', { albumId });
-  likeBtn.style.display = 'none'
-}
 
