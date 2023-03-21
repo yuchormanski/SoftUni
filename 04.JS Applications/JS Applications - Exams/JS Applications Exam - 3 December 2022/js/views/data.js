@@ -1,5 +1,5 @@
-import { get, del } from ''
-import { url } from './requestURL.js'
+import { get, post, put, del } from "../api.js"
+// import { url } from './requestURL.js'
 
 
 export async function getData(url) {

@@ -1,39 +1,69 @@
 import { html } from '../../node_modules/lit-html/lit-html.js'
+import { getData, getDataById, postData } from '../data.js';
+import { url } from '../requestURL.js';
 
 
-export function detailsPage(ctx) {
+export async function detailsPage(ctx) {
 
-  const detailsTemplate = () => html`
+  const id = ctx.params.id;
+  const data = await getDataById('http://localhost:3030/data/albums', id)
+  const { album, imageUrl, label, release, sales, singer, _createdOn, _id, _ownerId } = data;
+  const likesUrl = `/data/likes?where=albumId%3D%22${id}%22&distinct=_ownerId&count`
+  const likes = await getData(`${url.getLikes}${likesUrl}`)
+  console.log(likes);
+  // console.log(ctx.userData);
+  const detailsTemplate = (data) => html`
+  
   
   <section id="details">
     <div id="details-wrapper">
       <p id="details-title">Album Details</p>
       <div id="img-wrapper">
-        <img src="./images/BackinBlack.jpeg" alt="example1" />
+        <img src="${imageUrl}" alt="example1" />
       </div>
       <div id="info-wrapper">
-        <p><strong>Band:</strong><span id="details-singer">AC/DC</span></p>
+        <p><strong>Band:</strong><span id="details-singer">${singer}</span></p>
         <p>
-          <strong>Album name:</strong><span id="details-album">Back in Black</span>
+          <strong>Album name:</strong><span id="details-album">${album}</span>
         </p>
-        <p><strong>Release date:</strong><span id="details-release">1980</span></p>
-        <p><strong>Label:</strong><span id="details-label">Epic</span></p>
-        <p><strong>Sales:</strong><span id="details-sales">26 million (50 million claimed)</span></p>
+        <p><strong>Release date:</strong><span id="details-release">${release}</span></p>
+        <p><strong>Label:</strong><span id="details-label">${label}</span></p>
+        <p><strong>Sales:</strong><span id="details-sales">${sales}</span></p>
       </div>
-      <div id="likes">Likes: <span id="likes-count">0</span></div>
+      <div id="likes">Likes: <span id="likes-count">${likes}</span></div>
   
       <!--Edit and Delete are only for creator-->
-      <div id="action-buttons">
-        <a href="" id="like-btn">Like</a>
-        <a href="" id="edit-btn">Edit</a>
-        <a href="" id="delete-btn">Delete</a>
-      </div>
+      ${ctx.userData != null ? navVisibility() : null}
+  
     </div>
   </section>
   `
   ctx.render(detailsTemplate());
 
+  function navVisibility() {
+    let res;
+    if (ctx.userData._id === _ownerId) {
+      res = html`
+              <div id="action-buttons">
+                <a href="" id="edit-btn">Edit</a>
+                <a href="" id="delete-btn">Delete</a>
+              </div>
+            `
+    } else if (ctx.userData != null) {
+      res = html`
+    <div id="action-buttons">
+      <a href="javascript:void(0)" id="like-btn" @click=${() => likeAlbum(id)}>Like</a>
+    </div>
+  `
+    }
+    return res;
+  }
 }
 
-
-
+async function likeAlbum(id){
+  const albumId = id;
+  const likeBtn = document.getElementById('like-btn')
+  const likeIt = postData('http://localhost:3030' + '/data/likes', {albumId});
+  likeBtn.style.display = 'none'
+  // detailsPage();
+}

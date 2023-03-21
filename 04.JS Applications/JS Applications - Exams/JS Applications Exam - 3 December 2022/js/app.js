@@ -33,6 +33,7 @@ function middleware(ctx, next) {
     ctx.render = (content) => render(content, main);
     ctx.updateNav = updateNav();
     context = ctx;
+    ctx.userData = getUserData();
     next()
 }
 

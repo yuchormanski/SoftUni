@@ -2,7 +2,8 @@
 const base = 'http://localhost:3030';
 export const url = {
     get: `${base}/data/albums?sortBy=_createdOn%20desc`,       //get
-    post: `${base}/...`,       //post
+    getLikes: `${base}`,       //get
+    post: `${base}/data/albums`,       //post
     put: `${base}/...`,        //post  
     register: `${base}/users/register`,     //post
     login: `${base}/users/login`,       //post
