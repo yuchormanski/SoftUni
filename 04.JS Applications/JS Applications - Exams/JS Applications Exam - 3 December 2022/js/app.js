@@ -10,7 +10,6 @@ import { detailsPage } from './views/details.js';
 import { logout } from './views/logoutAction.js';
 import { editPage } from './views/edit.js';
 
-
 const main = document.querySelector('main');
 const userNav = document.querySelector('.user');
 const guestNav = document.querySelector('.guest');
