@@ -1,6 +1,7 @@
 import { html } from '../../node_modules/lit-html/lit-html.js'
 import { getData, getDataById, postData } from '../data.js';
 import { url } from '../requestURL.js';
+import { deleteAlbum } from './deleteAction.js';
 
 
 export async function detailsPage(ctx) {
@@ -45,8 +46,8 @@ export async function detailsPage(ctx) {
     if (ctx.userData._id === _ownerId) {
       res = html`
               <div id="action-buttons">
-                <a href="" id="edit-btn">Edit</a>
-                <a href="" id="delete-btn">Delete</a>
+                <a href="/edit" id="edit-btn">Edit</a>
+                <a href="javascript:void(0)" id="delete-btn" @click=${deleteAlbum}>Delete</a>
               </div>
             `
     } else if (ctx.userData != null) {
