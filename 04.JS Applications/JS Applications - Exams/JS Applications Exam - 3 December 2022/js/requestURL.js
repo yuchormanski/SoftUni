@@ -2,12 +2,14 @@
 const base = 'http://localhost:3030';
 export const url = {
     get: `${base}/data/albums?sortBy=_createdOn%20desc`,       //get
+    getById: `${base}/data/albums`,       //get
     getLikes: `${base}`,       //get
     post: `${base}/data/albums`,       //post
-    put: `${base}/...`,        //post  
+    put: `${base}/data/albums`,        //post  
     register: `${base}/users/register`,     //post
     login: `${base}/users/login`,       //post
     logout: `${base}/users/logout`,     //get
+    delete:`${base}/data/albums`
 }
 
 

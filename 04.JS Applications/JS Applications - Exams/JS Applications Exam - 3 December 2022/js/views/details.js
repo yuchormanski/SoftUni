@@ -1,5 +1,5 @@
 import { html } from '../../node_modules/lit-html/lit-html.js'
-import { getData, getDataById, postData } from '../data.js';
+import { deleteById, getData, getDataById, postData } from '../data.js';
 import { url } from '../requestURL.js';
 import { deleteAlbum } from './deleteAction.js';
 
@@ -11,10 +11,8 @@ export async function detailsPage(ctx) {
   const { album, imageUrl, label, release, sales, singer, _createdOn, _id, _ownerId } = data;
   const likesUrl = `/data/likes?where=albumId%3D%22${id}%22&distinct=_ownerId&count`
   const likes = await getData(`${url.getLikes}${likesUrl}`)
-  console.log(likes);
-  // console.log(ctx.userData);
+  // console.log(`likes: ${likes}`);
   const detailsTemplate = (data) => html`
-  
   
   <section id="details">
     <div id="details-wrapper">
@@ -46,8 +44,8 @@ export async function detailsPage(ctx) {
     if (ctx.userData._id === _ownerId) {
       res = html`
               <div id="action-buttons">
-                <a href="/edit" id="edit-btn">Edit</a>
-                <a href="javascript:void(0)" id="delete-btn" @click=${deleteAlbum}>Delete</a>
+                <a href="/edit/${id}" data-id=${id} id="edit-btn">Edit</a>
+                <a href="javascript:void(0)" data-id=${id} id="delete-btn" @click=${deleteAlbum}>Delete</a>
               </div>
             `
     } else if (ctx.userData != null) {
@@ -59,12 +57,18 @@ export async function detailsPage(ctx) {
     }
     return res;
   }
+
+  async function deleteAlbum() {
+    await deleteById(url.delete, id);
+    ctx.page.redirect('/dashboard')
+  }
+
 }
 
-async function likeAlbum(id){
+async function likeAlbum(id) {
   const albumId = id;
   const likeBtn = document.getElementById('like-btn')
-  const likeIt = postData('http://localhost:3030' + '/data/likes', {albumId});
+  const likeIt = postData('http://localhost:3030' + '/data/likes', { albumId });
   likeBtn.style.display = 'none'
-  // detailsPage();
 }
+

@@ -4,11 +4,11 @@ import { getUserData } from './util.js';
 import { homePage } from './views/home.js';
 import { loginPage } from './views/login.js';
 import { registerPage } from './views/register.js';
-import { editData } from './data.js';
 import { dashboardPage } from './views/dashboard.js';
 import { createPage } from './views/create.js';
 import { detailsPage } from './views/details.js';
 import { logout } from './views/logoutAction.js';
+import { editPage } from './views/edit.js';
 
 
 const main = document.querySelector('main');
@@ -24,7 +24,7 @@ page('/dashboard', dashboardPage)
 page('/create-page', createPage);
 page('/login', loginPage);
 page('/register', registerPage);
-page('/edit', editData);
+page('/edit/:id', editPage);
 page('/details/:id', detailsPage);
 updateNav();
 page.start();
