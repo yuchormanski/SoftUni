@@ -28,7 +28,7 @@ function renderView(content) {
     render(layoutTemplate(userData, content), root)
 }
 
-async function logoutAction(ctx) {
+function logoutAction(ctx) {
     logout();
     ctx.page.redirect('/ redirect to target view')
 }
