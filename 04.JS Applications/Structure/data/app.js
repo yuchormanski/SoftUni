@@ -20,15 +20,16 @@ page.start();
 
 function middleware(ctx, next) {
     ctx.render = renderView;
-    next()
+    next();
 }
 
 function renderView(content) {
     const userData = getUserData();
-    render(layoutTemplate(userData, content), root)
+    render(layoutTemplate(userData, content), root);
 }
 
 function logoutAction(ctx) {
     logout();
-    ctx.page.redirect('/ redirect to target view')
+    //redirect to target view
+    ctx.page.redirect('/');
 }

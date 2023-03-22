@@ -4,7 +4,7 @@ import { createSubmitHandler } from '../data/util.js';
 
 
 //TODO: Replace with actual content
-export const registerTemplate = (onLogin) => html`
+export const registerTemplate = (onRegister) => html`
 
     <!-- put content here -->
     <form @submit={onRegister}>
@@ -29,6 +29,7 @@ export function registerPage(ctx) {
         }
         await register(email, password);
         form.reset();
-        ctx.page.redirect('/ redirect to target view')
+        // redirect to target view
+        ctx.page.redirect('/')
     }
 }

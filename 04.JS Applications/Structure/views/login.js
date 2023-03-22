@@ -18,10 +18,13 @@ export const loginTemplate = (onLogin) => html`
 export function loginPage(ctx) {
     ctx.render(loginTemplate(createSubmitHandler(onLogin)));
 
-    async function onLogin({email, password}, form){
-        //TODO: validation
+    async function onLogin({ email, password }, form) {
+        if (Object.values({ email, password }).some(x => x == '')) {
+            return alert('All fields are required!');
+        }
         await login(email, password);
-        form.reset()
-        ctx.page.redirect('/ redirect to target view')
+        form.reset();
+        // redirect to target view
+        ctx.page.redirect('/')
     }
 }
