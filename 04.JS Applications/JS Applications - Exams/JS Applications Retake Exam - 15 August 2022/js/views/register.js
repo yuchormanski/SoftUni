@@ -4,12 +4,12 @@ import { createSubmitHandler } from '../data/util.js';
 
 
 //TODO: Replace with actual content
-export const registerTemplate = (onLogin) => html`
+export const registerTemplate = (onRegister) => html`
 
     <section id="register">
         <div class="form">
             <h2>Register</h2>
-            <form class="login-form" @submit={onRegister}>
+            <form class="login-form" @submit=${onRegister}>
                 <input type="text" name="email" id="register-email" placeholder="email" />
                 <input type="password" name="password" id="register-password" placeholder="password" />
                 <input type="password" name="re-password" id="repeat-password" placeholder="repeat password" />

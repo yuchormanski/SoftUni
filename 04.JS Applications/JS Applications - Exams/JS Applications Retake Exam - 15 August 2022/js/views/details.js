@@ -8,7 +8,7 @@ const detailsTemplate = (data, userData) => html`
                 <div id="details-wrapper">
                     <p id="details-title">Shoe Details</p>
                     <div id="img-wrapper">
-                        <img src="../..${data.imageUrl}" />
+                        <img src="${data.imageUrl}" />
                     </div>
                     <div id="info-wrapper">
                         <p>Brand: <span id="details-brand">${data.brand}</span></p>
@@ -25,12 +25,10 @@ const detailsTemplate = (data, userData) => html`
             
                     ${userData && userData._id == data._ownerId ? html`
                     <div id="action-buttons">
-                        <a href="#" id="edit-btn">Edit</a>
-                        <a href="#" id="delete-btn">Delete</a>
+                        <a href="/edit/${data._id}" id="edit-btn">Edit</a>
+                        <a href="/delete/${data._id}" id="delete-btn">Delete</a>
                     </div>
-                    `: html`
-            <h1>no user data</h1>
-                    `}
+                    `: null}
                 </div>
             </section>
 `;
@@ -39,7 +37,6 @@ export async function detailsPage(ctx) {
     const id = ctx.params.id;
     const userData = getUserData();
     const data = await get('/data/shoes/' + id);
-    console.log(userData);
     ctx.render(detailsTemplate(data, userData));
 }
 

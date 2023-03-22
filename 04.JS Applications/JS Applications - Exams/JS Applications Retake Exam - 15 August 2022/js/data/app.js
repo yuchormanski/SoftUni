@@ -8,6 +8,10 @@ import { logout } from './auth.js';
 import { homePage } from '../views/home.js';
 import { dashboardPage } from '../views/dashboard.js';
 import { detailsPage } from '../views/details.js';
+import { addItemPage } from '../views/addItem.js';
+import { del } from './api.js';
+import { editPage } from '../views/edit.js';
+import { searchPage } from '../views/search.js';
 
 //TODO: change render root to project HTML structure
 const root = document.getElementById('wrapper');
@@ -20,8 +24,10 @@ page('/register', registerPage);
 page('/dashboard', dashboardPage);
 page('/details/:id', detailsPage);
 page('/logout', logoutAction);
-// page('/addItem', addItemPage);
-// page('/search', searchPage);
+page('/addItem', addItemPage);
+page('/edit/:id', editPage);
+page('/delete/:id', deleteAction);
+page('/search', searchPage);
 
 page.start();
 
@@ -37,5 +43,13 @@ function renderView(content) {
 
 function logoutAction(ctx) {
     logout();
-    ctx.page.redirect('/ redirect to target view')
+    ctx.page.redirect('/dashboard')
+}
+
+async function deleteAction(ctx) {
+    const id = ctx.params.id;
+    if (confirm(`You are about to delete this item!\Are you sure?`)) {
+        await del('/data/shoes/' + id)
+        ctx.page.redirect('/dashboard')
+    }
 }
