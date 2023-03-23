@@ -9,6 +9,7 @@ import { homePage } from '../views/home.js';
 import { dashboardPage } from '../views/dashboard.js';
 import { createPage } from '../views/create.js';
 import { detailsPage } from '../views/details.js';
+import { editPage } from '../views/edit.js';
 
 //TODO: change render root to project HTML structure
 const root = document.getElementById('wrapper');
@@ -19,6 +20,7 @@ page('/', homePage);
 page('/dashboard', dashboardPage);
 page('/create', createPage);
 page('/details/:id', detailsPage);
+page('/edit/:id', editPage)
 page('/login', loginPage);
 page('/register', registerPage);
 page('/logout', logoutAction);

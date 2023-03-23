@@ -4,6 +4,7 @@ import { get } from '../data/api.js';
 const dashTemplate = (data) => html`
         <section id="dashboard">
             <h2>Job Offers</h2>
+            
             ${data.length > 0 ? data.map(x => html`
             <div class="offer">
                 <img src=${x.imageUrl} alt="example1" />

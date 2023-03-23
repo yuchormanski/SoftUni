@@ -26,7 +26,6 @@ export function createPage(ctx){
     ctx.render(createTemplate(createSubmitHandler(onCreate)));
 
     async function onCreate(data,form){
-        console.log(data);
         if(Object.values(data).some(x=>x=='')) return alert('All fields are required!');
         const response = await post('/data/offers', data);
         console.log(response);
