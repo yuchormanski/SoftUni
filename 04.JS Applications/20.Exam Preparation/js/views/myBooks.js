@@ -27,6 +27,5 @@ export async function myBooksPage(ctx) {
     const id = ctx.params.id;
     const userData = getUserData();
     const data = await get(`/data/books?where=_ownerId%3D%22${userData._id}%22&sortBy=_createdOn%20desc`);
-    console.log(data);
     ctx.render(myBooksTemplate(data))
 }

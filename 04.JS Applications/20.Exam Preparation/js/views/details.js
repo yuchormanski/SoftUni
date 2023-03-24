@@ -1,9 +1,9 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
-import { get } from '../data/api.js';
+import { get, post } from '../data/api.js';
 import { getUserData } from '../data/util.js';
 
 
-const detailsTemplate = (data, userData) => html`
+const detailsTemplate = (data, userData, likes, likeAction, currentBookLike) => html`
         <section id="details-page" class="details">
             <div class="book-information">
                 <h3>${data.title}</h3>
@@ -18,15 +18,15 @@ const detailsTemplate = (data, userData) => html`
                             <a class="button" href="/edit/${data._id}">Edit</a>
                             <a class="button" href="/delete/${data._id}">Delete</a>`
                         : html `
-                            <!-- Like button ( Only for logged-in users, which is not creators of the current book ) -->
-                            <a class="button" href="#">Like</a>`
+                            ${currentBookLike === 0 ? html`<a class="button" href="javascript:void(0)" @click=${likeAction}>Like</a>`:null}
+                            `
                         }`
                             
                     : null}
                     
                     <div class="likes">
                         <img class="hearts" src="/images/heart.png">
-                        <span id="total-likes">Likes: ?0</span>
+                        <span id="total-likes">Likes: ${likes}</span>
                     </div>
   
                 </div>
@@ -42,5 +42,16 @@ export async function detailsPage(ctx) {
     const userData = getUserData();
     const id = ctx.params.id;
     const data = await get('/data/books/' + id);
-    ctx.render(detailsTemplate(data, userData))
+    const likes = await get(`/data/likes?where=bookId%3D%22${id}%22&distinct=_ownerId&count`);
+    let currentBookLike = 1
+    if(userData){
+        currentBookLike = await get(`/data/likes?where=bookId%3D%22${id}%22%20and%20_ownerId%3D%22${userData._id}%22&count`);
+    }
+    ctx.render(detailsTemplate(data, userData, likes, likeAction, currentBookLike));
+
+    async function likeAction(){
+        const bookId = id;
+        const likeBook = await post('/data/likes', { bookId })
+        ctx.page.redirect(`/details/${id}`);
+    }
 }
