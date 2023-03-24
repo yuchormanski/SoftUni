@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/styles/styles.css">
+    <title>Online Books Library</title>
+</head>
+
+<body>
+    <div id="container">
+
+
+        <!-- Dashboard Page ( for Guests and Users ) -->
+
+
+        <!-- Login Page ( Only for Guest users ) -->
+
+
+        <!-- Register Page ( Only for Guest users ) -->
+
+
+
+        <!-- Details Page ( for Guests and Users ) -->
+
+
+        <!-- Create Page ( Only for logged-in users ) -->
+        <section id="create-page" class="create">
+            <form id="create-form" action="" method="">
+                <fieldset>
+                    <legend>Add new Book</legend>
+                    <p class="field">
+                        <label for="title">Title</label>
+                        <span class="input">
+                            <input type="text" name="title" id="title" placeholder="Title">
+                        </span>
+                    </p>
+                    <p class="field">
+                        <label for="description">Description</label>
+                        <span class="input">
+                            <textarea name="description" id="description" placeholder="Description"></textarea>
+                        </span>
+                    </p>
+                    <p class="field">
+                        <label for="image">Image</label>
+                        <span class="input">
+                            <input type="text" name="imageUrl" id="image" placeholder="Image">
+                        </span>
+                    </p>
+                    <p class="field">
+                        <label for="type">Type</label>
+                        <span class="input">
+                            <select id="type" name="type">
+                                <option value="Fiction">Fiction</option>
+                                <option value="Romance">Romance</option>
+                                <option value="Mistery">Mistery</option>
+                                <option value="Classic">Clasic</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </span>
+                    </p>
+                    <input class="button submit" type="submit" value="Add Book">
+                </fieldset>
+            </form>
+        </section>
+
+        <!-- Edit Page ( Only for the creator )-->
+
+
+        <!-- My Books Page ( Only for logged-in users ) -->
+        <section id="my-books-page" class="my-books">
+            <h1>My Books</h1>
+            <!-- Display ul: with list-items for every user's books (if any) -->
+            <ul class="my-books-list">
+                <li class="otherBooks">
+                    <h3>Outlander</h3>
+                    <p>Type: Other</p>
+                    <p class="img"><img src="/images/book2.png"></p>
+                    <a class="button" href="#">Details</a>
+                </li>
+                <li class="otherBooks">
+                    <h3>A Court of Thorns and Roses</h3>
+                    <p>Type: Fiction</p>
+                    <p class="img"><img src="/images/book1.png"></p>
+                    <a class="button" href="#">Details</a>
+                </li>
+            </ul>
+
+            <!-- Display paragraph: If the user doesn't have his own books  -->
+            <p class="no-books">No books in database!</p>
+        </section>
+
+        <footer id="site-footer">
+            <p>@OnlineBooksLibrary</p>
+        </footer>
+    </div>
+</body>
+
+</html>
