@@ -5,7 +5,7 @@ import { getUserData } from '../data/util.js';
 const myBooksTemplate = (data) => html`
         <section id="my-books-page" class="my-books">
             <h1>My Books</h1>
-            <!-- Display ul: with list-items for every user's books (if any) -->
+
             ${data.length > 0 ?
         html`
             <ul class="my-books-list">
@@ -28,5 +28,5 @@ export async function myBooksPage(ctx) {
     const userData = getUserData();
     const data = await get(`/data/books?where=_ownerId%3D%22${userData._id}%22&sortBy=_createdOn%20desc`);
     console.log(data);
-    ctx.render(data)
+    ctx.render(myBooksTemplate(data))
 }
