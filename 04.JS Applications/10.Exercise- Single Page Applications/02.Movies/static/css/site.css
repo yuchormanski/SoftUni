@@ -39,3 +39,10 @@
     text-decoration: underline;
     box-shadow: 0 5px 10px #cccccc;
 }
+
+.loader {
+    display:block;
+    width: 200px;
+    height: 200px;
+    margin: 20% auto;
+}

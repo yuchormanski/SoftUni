@@ -5,16 +5,25 @@ import { layoutTemplate } from '../views/layout.js';
 import { loginPage } from '../views/login.js';
 import { registerPage } from '../views/register.js';
 import { logout } from './auth.js';
+import { homePage } from '../views/home.js';
+import { detailsPage } from '../views/details.js';
+import { addPage } from '../views/add.js';
+import { del } from './api.js';
+import { editPage } from '../views/edit.js';
 
 //TODO: change render root to project HTML structure
-const root = document.// correct element
-
+const root = document.getElementById('body');
 page(middleware)
 page('index.html', '/'); // system tool
 page('/', homePage);
+page('/add', addPage);
+page('/details/:id', detailsPage);
+page('/delete/:id', deleteAction);
+page('/edit/:id', editPage);
 page('/login', loginPage);
 page('/register', registerPage);
 page('/logout', logoutAction);
+// page('/like/:id', likeAction);
 
 page.start();
 
@@ -33,3 +42,12 @@ function logoutAction(ctx) {
     //redirect to target view
     ctx.page.redirect('/');
 }
+
+function deleteAction(ctx) {
+    const id = ctx.params.id;
+    if (confirm('Are you sure?')) {
+        del('/data/movies/' + id);
+        ctx.page.redirect('/');
+    }
+}
+
