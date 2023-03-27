@@ -9,7 +9,10 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "lit-html": "^2.7.0",
+    "page": "^1.11.6"
+  },
   "devDependencies": {
     "chai": "4.3.3",
     "http-server": "0.12.3",
