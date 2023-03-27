@@ -6,14 +6,25 @@ import { loginPage } from '../views/login.js';
 import { registerPage } from '../views/register.js';
 import { logout } from './auth.js';
 import { homePage } from '../views/home.js';
-
+import { createPage } from '../views/create.js';
+import { allListingsPage } from '../views/all.js';
+import { detailsPage } from '../views/details.js';
+import { myListingsPage } from '../views/myListnings.js';
+import { editPage } from '../views/edit.js';
+import { searchPage } from '../views/search.js';
 
 //TODO: change render root to project HTML structure
-const root = document.// correct element
+const root = document.getElementById('container');
 
 page(middleware)
 page('index.html', '/'); // system tool
 page('/', homePage);
+page('/create', createPage);
+page('/all', allListingsPage);
+page('/myListings', myListingsPage);
+page('/search', searchPage);
+page('/details/:id', detailsPage);
+page('/edit/:id', editPage);
 page('/login', loginPage);
 page('/register', registerPage);
 page('/logout', logoutAction);
