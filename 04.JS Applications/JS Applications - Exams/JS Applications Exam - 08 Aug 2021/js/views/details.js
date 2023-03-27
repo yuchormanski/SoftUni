@@ -18,9 +18,10 @@ const detailsTemplate = (data, userData, likes, likeAction, currentBookLike) => 
                             <a class="button" href="/edit/${data._id}">Edit</a>
                             <a class="button" href="/delete/${data._id}">Delete</a>`
                         : html `
-                            ${currentBookLike === 0 ? html`<a class="button" href="javascript:void(0)" @click=${likeAction}>Like</a>`:null}
-                            `
-                        }`
+                            ${currentBookLike === 0 ? html`<a class="button" href="javascript:void(0)" @click=${likeAction}>Like</a>`:null}`
+                            
+                        }
+                    `
                             
                     : null}
                     
