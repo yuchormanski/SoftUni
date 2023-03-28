@@ -2,7 +2,7 @@ import { html } from '../../node_modules/lit-html/lit-html.js';
 import { del, get, post } from '../data/api.js';
 import { getUserData } from '../data/util.js';
 
-const detailsTemplate = (item, userData, deleteItem, dCount, donate, isDonated) => html`
+const detailsTemplate = (item, userData, deleteItem, dCount, donate) => html`
         <section id="details-page">
             <h1 class="title">Post Details</h1>
         
@@ -22,17 +22,13 @@ const detailsTemplate = (item, userData, deleteItem, dCount, donate, isDonated) 
                         html`
                         <div class="btns">
                             ${userData._id === item._ownerId ?
-                            html`
+                        html`
                             <a href="/edit/${item._id}" class="edit-btn btn">Edit</a>
-                            <a href="javascript:void(0)" class="delete-btn btn" @click=${deleteItem}>Delete</a>
-                            `:
-                                html`
-                                    ${isDonated === 0 ? html`<a href="javascript:void(0)" class="donate-btn btn" @click=${donate}>Donate</a>`:null}
-                                `
-                        }
-                        </div>
-        
-                        `: null}
+                            <a href="javascript:void(0)" class="delete-btn btn" @click=${deleteItem}>Delete</a> ` : html`
+                            ${userData.donated === 0 ? html`
+                            <a href="javascript:void(0)" class="donate-btn btn" @click=${donate}>Donate</a>` : null}
+                            `}
+                        </div>`: null}
                     </div>
                 </div>
             </div>
@@ -40,18 +36,14 @@ const detailsTemplate = (item, userData, deleteItem, dCount, donate, isDonated) 
 `;
 
 export async function detailsPage(ctx) {
-
     const id = ctx.params.id;
     const userData = getUserData();
     const item = await get('/data/posts/' + id);
     const dCount = await get(`/data/donations?where=postId%3D%22${id}%22&distinct=_ownerId&count`);
-    if(userData){
-        const isDonated = await get(`/data/donations?where=postId%3D%22${id}%22%20and%20_ownerId%3D%22${userData._id}%22&count`)
-        ctx.render(detailsTemplate(item, userData, deleteItem, dCount, donate, isDonated));
-    }else {
-        ctx.render(detailsTemplate(item, userData, deleteItem, dCount, donate));
-
+    if (userData) {
+        userData.donated = await get(`/data/donations?where=postId%3D%22${id}%22%20and%20_ownerId%3D%22${userData._id}%22&count`)
     }
+    ctx.render(detailsTemplate(item, userData, deleteItem, dCount, donate));
 
 
     async function deleteItem() {
