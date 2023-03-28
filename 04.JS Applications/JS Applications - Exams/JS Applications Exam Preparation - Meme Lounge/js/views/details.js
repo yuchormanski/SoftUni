@@ -13,14 +13,10 @@ const detailsTemplate = (data, deleteAction, userData) => html`
                 <div class="meme-description">
                     <h2>Meme Description</h2>
                     <p>${data.description}</p>
-        
-                    <!-- Buttons Edit/Delete should be displayed only for creator of this meme  -->
                     ${userData._id === data._ownerId ? 
                     html`
                         <a class="button warning" href="/edit/${data._id}">Edit</a>
                         <button class="button danger" @click=${deleteAction}>Delete</button>`:null}
-
-        
                 </div>
             </div>
         </section>
@@ -29,8 +25,7 @@ const detailsTemplate = (data, deleteAction, userData) => html`
 export async function detailsPage(ctx) {
     const id = ctx.params.id;
     const userData = getUserData();
-    const data = await get('/data/memes/' + id)
-    console.log(data);
+    const data = await get('/data/memes/' + id);
     ctx.render(detailsTemplate(data, deleteAction, userData));
 
 

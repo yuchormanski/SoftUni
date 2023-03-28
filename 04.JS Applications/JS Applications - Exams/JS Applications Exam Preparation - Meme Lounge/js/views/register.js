@@ -46,7 +46,7 @@ export function registerPage(ctx) {
             return alert('Password don\'t match!');
         }
 
-       const reg = await register( email, password);
+       const reg = await register( email, gender, password, username );
 
         form.reset();
         //redirect to target view

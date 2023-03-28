@@ -8,6 +8,10 @@ import { logout } from './auth.js';
 import { homePage } from '../views/home.js';
 import { allMemesPage } from '../views/allMemes.js';
 import { detailsPage } from '../views/details.js';
+import { createPage } from '../views/create.js';
+import { editPage } from '../views/edit.js';
+import { ProfilePage } from '../views/prifile.js';
+import { notificationAction } from '../views/notification.js';
 
 
 //TODO: change render root to project HTML structure
@@ -17,6 +21,10 @@ page('index.html', '/'); // system tool
 page('/', homePage);
 page('/all', allMemesPage);
 page('/details/:id', detailsPage);
+page('/edit/:id', editPage);
+page('/create', createPage);
+page('/profile', ProfilePage);
+page('/notification', notificationAction);
 page('/login', loginPage);
 page('/register', registerPage);
 page('/logout', logoutAction);
@@ -36,5 +44,5 @@ function renderView(content) {
 function logoutAction(ctx) {
     logout();
     //redirect to target view
-    ctx.page.redirect('/');
+    ctx.page.redirect('/all');
 }

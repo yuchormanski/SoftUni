@@ -14,7 +14,7 @@ export const layoutTemplate = (userData, content) => html`
                 <div class="user">
                     <a href="/create">Create Meme</a>
                     <div class="profile">
-                        <span>Welcome, ${userData.email}</span>
+                        <span>Welcome, ${userData.username}</span>
                         <a href="/profile">My Profile</a>
                         <a href="logout">Logout</a>
                     </div>
