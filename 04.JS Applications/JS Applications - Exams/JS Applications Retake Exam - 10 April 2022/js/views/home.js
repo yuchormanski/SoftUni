@@ -1,13 +1,12 @@
-import { html } from '../../node_modules/lit-html/lit-html.js'
+import { html } from '../../node_modules/lit-html/lit-html.js';
 import { get } from '../data/api.js';
 
 const homeTemplate = (data) => html`
         <section id="dashboard-page">
             <h1 class="title">All Posts</h1>
-            <div class="all-posts"></div>
-            <!-- Display a div with information about every post (if any)-->
         
-            ${data.length > 0 ? html`
+            ${data.length > 0 ?
+            html`
             <div class="all-posts">
                 ${data.map(x => html`
                 <div class="post">
@@ -18,15 +17,17 @@ const homeTemplate = (data) => html`
                     </div>
                 </div>
                 `)}
-            </div>`:
-        html`<h1 class="title no-posts-title">No posts yet!</h1>`}
             </div>
+            `:
+            html`
+            <!-- Display an h1 if there are no posts -->
+            <h1 class="title no-posts-title">No posts yet!</h1>
+            `}
         </section>
 `;
 
 export async function homePage(ctx) {
-    const data = await get('/data/posts?sortBy=_createdOn%20desc');
-    // let data = []
+
+    const data = await get('/data/posts?sortBy=_createdOn%20desc')
     ctx.render(homeTemplate(data));
 }
-

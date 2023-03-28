@@ -35,11 +35,11 @@ export const registerTemplate = (onRegister) => html`
 export function registerPage(ctx) {
     ctx.render(registerTemplate(createSubmitHandler(onRegister)));
 
-    async function onRegister({email, password, repeatPassword: repass}, form){
+    async function onRegister({email, password, repeatPassword}, form){
         if(email ==''|| password == ''){
             return alert('All fields are required!');
         }
-        if(password != repass){
+        if(password != repeatPassword){
             return alert('Password don\'t match!');
 
         }

@@ -6,27 +6,24 @@ import { loginPage } from '../views/login.js';
 import { registerPage } from '../views/register.js';
 import { logout } from './auth.js';
 import { homePage } from '../views/home.js';
-import { detailsPage } from '../views/details.js';
-import { del, post } from './api.js';
-import { editPage } from '../views/edit.js';
 import { createPage } from '../views/create.js';
-import { myPostsPage } from '../views/myPost.js';
+import { detailsPage } from '../views/details.js';
+import { myPostsPage } from '../views/myPosts.js';
+import { editPage } from '../views/edit.js';
+
 
 //TODO: change render root to project HTML structure
 const root = document.getElementById('box');
-
 page(middleware)
 page('index.html', '/'); // system tool
 page('/', homePage);
-page('/my-posts', myPostsPage);
 page('/create', createPage);
+page('/myPosts', myPostsPage);
 page('/details/:id', detailsPage);
-page('/edit/:id', editPage)
-page('/delete/:id', deleteAction);
+page('/edit/:id', editPage);
 page('/login', loginPage);
 page('/register', registerPage);
 page('/logout', logoutAction);
-// page('/donate/:id', donateAction)
 
 page.start();
 
@@ -45,13 +42,3 @@ function logoutAction(ctx) {
     //redirect to target view
     ctx.page.redirect('/');
 }
-
-async function deleteAction(ctx) {
-    const id = ctx.params.id;
-    if (confirm(`You are about to delete this item!
-    Are you sure?`)) {
-        await del('/data/posts/' + id);
-        ctx.page.redirect('/');
-    }
-}
-
