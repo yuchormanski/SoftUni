@@ -1,0 +1,366 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@500&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Red-Hat Text', sans-serif;
+}
+
+:root {
+    --main-blue: #234465;
+    --main-orange: #FFA000;
+}
+
+header {
+    width: 100%;
+    border-bottom: 2px solid var(--main-blue);
+    font-size: 20px;
+}
+
+header nav {
+    display: flex;
+    padding: 0.5%;
+    background-color: var(--main-blue);
+    border-bottom: 2px solid var(--main-orange);
+}
+
+header nav ul {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    color: white;
+}
+
+.site-logo {
+    font-size: 42px;
+}
+
+header nav ul li a img {
+    max-width: 100px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+header nav ul li a:hover {
+    border-bottom: 2px solid white;
+}
+
+header nav ul li {
+    list-style-type: none;
+    margin: 2%;
+}
+
+header nav ul li:nth-child(odd) {
+    padding-top: 2%;
+}
+
+footer {
+    width: 100%;
+    background-color: var(--main-blue);
+    color: white;
+}
+
+footer p {
+    padding: 3%;
+    border-top: 2px solid var(--main-blue);
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    font-style: italic;
+    border-top: 2px solid var(--main-orange);
+}
+
+footer p a {
+    color: var(--main-orange);
+    text-decoration: none;
+}
+
+footer p a:hover {
+    text-decoration: underline var(--main-blue);
+}
+
+h1 {
+    text-align: center;
+    color: var(--main-orange);
+}
+
+form {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+form div input, label {
+    margin: 0 auto;
+    color: var(--main-blue);
+    text-align: center;
+}
+
+form div label {
+    font-weight: bold;
+}
+
+form div input {
+    padding: 1%;
+    width: 50%;
+    text-align: center;
+    font-size: 18px;
+    border: none;
+    border-bottom: 1px solid var(--main-blue);
+}
+
+form div {
+    padding: 1%;
+    margin-bottom: 2%;
+}
+
+form textarea {
+    color: var(--main-blue);
+    width: 50%;
+    padding: 2%;
+    border: 1px solid var(--main-blue);
+    resize: none;
+    height: 15vh;
+    overflow: hidden;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.offer-details {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.offer-details img {
+    /* border:1px solid purple; */
+    max-width: 500px;
+}
+
+.offer-details div.info div.description {
+    border-radius: 15px;
+    /* border: 1px solid var(--main-blue); */
+    color: var(--main-blue);
+    padding: 2%;
+    font-size: 20px;
+    text-align: justify;
+}
+
+.offer-details div.actions {
+    color: var(--main-blue);
+    width: 100%;
+    padding: 2%;
+}
+
+.offer-details div.actions a {
+    padding: 1%;
+    border: 1px solid var(--main-blue);
+    background: var(--main-blue);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+p.price {
+    color: var(--main-blue);
+    font-weight: bold;
+}
+
+.offer-details div.actions button:hover {
+    color: var(--main-orange);
+}
+
+.offer-details img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 15px;
+    /* border: 1px solid var(--main-blue); */
+}
+
+form select {
+    width: 30%;
+    border: 1px solid var(--main-blue);
+    color: var(--main-blue);
+    padding: 0.5%;
+    font-weight: bold;
+    border-radius: 15px;
+    text-align: center;
+}
+
+form select option {
+    text-align: center;
+    border-radius: 15px;
+    color: var(--main-blue);
+}
+
+main {
+    width: 100%;
+    color: var(--main-blue);
+}
+
+main h1 {
+    padding: 2%;
+}
+
+main .about-us {
+    padding: 1%;
+    width: 100%;
+}
+
+main .about-us div {
+    display: flex;
+}
+
+main .about-us div img {
+    width: 200px;
+    border-radius: 15px;
+    flex: 1;
+    vertical-align: top;
+}
+
+main .about-us h1 {
+    text-align: left;
+    color: var(--main-blue);
+}
+
+main .about-us p {
+    padding: 2%;
+    font-size: 18px;
+}
+
+main .container {
+    padding: 1%;
+    display: flex;
+    color: var(--main-blue);
+    background-color: white;
+}
+
+main .container p, .form-info {
+    text-align: center;
+    color: var(--main-blue);
+}
+
+main .container p a, .form-info a {
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+    color: var(--main-orange);
+}
+
+main .container p a:hover, .form-info a {
+    text-decoration: none;
+}
+
+main p.message {
+    width: 100%;
+    text-align: center;
+    color: darkred;
+    font-style: italic;
+    margin: 1%;
+}
+
+form div button {
+    padding: 2%;
+    width: 20%;
+    border: 1px solid var(--main-blue);
+    background-color: white;
+    color: var(--main-orange);
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.user-info>div:nth-child(1) {
+    text-align: center;
+    margin: 2%;
+}
+
+.user-info p a {
+    color: darkred;
+    text-decoration: none;
+}
+
+.user-info p a:hover {
+    text-decoration: underline;
+}
+
+.user-info .total-profit {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 32px;
+}
+
+span{
+    color: var(--main-orange);
+}
+
+.user-info div:nth-child(1) p {
+    display: inline-block;
+    color: var(--main-blue);
+    font-weight: bold;
+}
+
+.user-info div:nth-child(1) p span {
+    color: var(--main-orange);
+}
+
+form div button:hover {
+    border: 1px solid white;
+    border-bottom: 1px solid var(--main-orange);
+    color: var(--main-blue);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.shoes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.shoe {
+    vertical-align: top;
+    height: 25vh;
+    padding: 1%;
+    margin: 0.5%;
+    border-radius: 6px;
+}
+
+.shoe:hover {
+    border: 2px solid var(--main-blue);
+}
+
+.shoe a {
+    border: 1px solid var(--main-blue);
+    padding: 2%;
+    margin: 0 auto;
+    font-weight: bold;
+    display: block;
+    background-color: white;
+    color: var(--main-orange);
+    border-radius: 15px;
+    bottom: 0;
+    text-decoration: none;
+    text-align: center;
+}
+
+.shoe h3 {
+    text-align: center;
+    width: 100%;
+    color: var(--main-blue);
+    margin-bottom: 5%;
+}
+
+.shoe img {
+    /* border: 1px solid var(--main-blue); */
+    max-width: 250px;
+    display: block;
+    margin: 0 auto;
+}
+
+.shoe a:hover {
+    text-decoration: underline var(--main-orange);
+    cursor: pointer;
+}
