@@ -7,11 +7,21 @@ import { createSubmitHandler } from '../data/util.js';
 export const loginTemplate = (onLogin) => html`
 
     <!-- put content here -->
-    <form @submit={onLogin}>
-        <label>Email: <input type="text" name="email"></label>
-        <label>Password: <input type="password" name="password"></label>
-        <button>Login</button>
-    </form>
+    <section id="login">
+            <form id="login-form" @submit=${onLogin}>
+                <div class="container">
+                    <h1>Login</h1>
+                    <label for="email">Email</label>
+                    <input id="email" placeholder="Enter Email" name="email" type="text">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" placeholder="Enter Password" name="password">
+                    <input type="submit" class="registerbtn button" value="Login">
+                    <div class="container signin">
+                        <p>Dont have an account?<a href="/register">Sign up</a>.</p>
+                    </div>
+                </div>
+            </form>
+        </section>
     
 `;
 

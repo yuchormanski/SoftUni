@@ -6,14 +6,17 @@ import { loginPage } from '../views/login.js';
 import { registerPage } from '../views/register.js';
 import { logout } from './auth.js';
 import { homePage } from '../views/home.js';
+import { allMemesPage } from '../views/allMemes.js';
+import { detailsPage } from '../views/details.js';
 
 
 //TODO: change render root to project HTML structure
-const root = document.// correct element
-
+const root = document.getElementById('container');
 page(middleware)
 page('index.html', '/'); // system tool
 page('/', homePage);
+page('/all', allMemesPage);
+page('/details/:id', detailsPage);
 page('/login', loginPage);
 page('/register', registerPage);
 page('/logout', logoutAction);
