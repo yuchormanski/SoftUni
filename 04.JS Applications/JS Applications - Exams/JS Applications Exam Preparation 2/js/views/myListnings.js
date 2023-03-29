@@ -22,7 +22,7 @@ const myListTemplate = (data) => html`
                                     <h3>Price: ${x.price} $</h3>
                                 </div>
                                 <div class="data-buttons">
-                                    <a href="/detail?${x._id}" class="button-carDetails">Details</a>
+                                    <a href="/details/${x._id}" class="button-carDetails">Details</a>
                                 </div>
                             </div>
                         </div>

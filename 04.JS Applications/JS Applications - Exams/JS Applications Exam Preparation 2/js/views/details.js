@@ -17,7 +17,7 @@ const detailsTemplate = (data, deleteAction, user) => html`
         
                 <p class="description-para">${data.description}</p>
         
-                ${user ? html`
+                ${user && user._id === data._ownerId ? html`
                     <div class="listings-buttons">
                         <a href="/edit/${data._id}" class="button-list">Edit</a>
                         <a href="javascript:void(0)" class="button-list" @click=${deleteAction}>Delete</a>

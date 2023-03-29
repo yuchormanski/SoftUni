@@ -13,7 +13,7 @@ export const layoutTemplate = (userData, content) => html`
             <a href="/search">By Year</a>
             ${userData ? html`
                 <div id="profile">
-                    <a>Welcome username</a>
+                    <a>Welcome ${userData.username}</a>
                     <a href="/myListings">My Listings</a>
                     <a href="/create">Create Listing</a>
                     <a href="/logout">Logout</a>

@@ -40,6 +40,8 @@ export function createPage(ctx) {
 
     async function onCreate(data, form) {
         if (Object.values(data).some(x => x == '')) return alert("Fill all fields!");
+        data.price = Number(data.price);
+        data.year = Number(data.year);
         await post('/data/cars', data);
         ctx.page.redirect('/all');
     }

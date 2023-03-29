@@ -44,8 +44,10 @@ export async function editPage(ctx) {
 
     async function onEdit(data, form) {
         if (Object.values(data).some(x => x == '')) return alert('Fill all fields!');
-         await put('/data/cars/' + id);
-         ctx.page.redirect('/detail/' + id);
-
+        data.price = Number(data.price);
+        data.year = Number(data.year);
+        if(data.year <= 0 || data.price <= 0) return alert('Must be a positive number!');
+        await put('/data/cars/' + id, data);
+         ctx.page.redirect('/details/' + id);
     }
 }
