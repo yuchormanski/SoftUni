@@ -16,7 +16,6 @@ const guestNav = document.querySelector('.guest');
 document.getElementById('logout').addEventListener('click', logout)
 export let context;
 
-
 page(middleware)
 page('/', homePage);
 page('/dashboard', dashboardPage)
