@@ -1,0 +1,16 @@
+{
+  "name": "js-applications-retake-exam---21-december-2018",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lit-html": "^2.7.0",
+    "page": "^1.11.6"
+  }
+}
