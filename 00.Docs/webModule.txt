@@ -1,7 +1,7 @@
-// lit-html
+// lit-html CDN
 import {html, render } from https://unpkg.com/lit-html?module";
 
-//page
+//page CDN
 import page from "//unpkg.com/page/page.mjs";
 
 
