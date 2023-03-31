@@ -7,13 +7,13 @@ export const layoutTemplate = (userData, content) => html`
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
+                    ${userData ? html`
                     <li class="nav-item active">
                         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/allSongs">All Songs</a>
                     </li>
-                    ${userData ? html`
                     <li class="nav-item">
                         <a class="nav-link " href="/mySongs">My Songs</a>
                     </li>`:null}
@@ -24,7 +24,7 @@ export const layoutTemplate = (userData, content) => html`
                 html`
                 <ul class="navbar-nav justify-content-end">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Welcome, ${userData.email}!</a>
+                        <a class="nav-link" href="#">Welcome, ${userData.username}!</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/logout">Logout</a>

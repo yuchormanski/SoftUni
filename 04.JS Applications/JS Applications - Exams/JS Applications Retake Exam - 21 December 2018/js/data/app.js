@@ -9,6 +9,7 @@ import { homePage } from '../views/home.js';
 import { mySongsPage } from '../views/mySongs.js';
 import { allSongsPage } from '../views/allSongs.js';
 import { addSongPage } from '../views/addSong.js';
+import { del } from './api.js';
 
 
 //TODO: change render root to project HTML structure
@@ -23,6 +24,7 @@ page('/addSong', addSongPage);
 page('/login', loginPage);
 page('/register', registerPage);
 page('/logout', logoutAction);
+page('/delete/:id', deleteAction)
 
 page.start();
 
@@ -40,4 +42,11 @@ function logoutAction(ctx) {
     logout();
     //redirect to target view
     ctx.page.redirect('/');
+}
+
+async function deleteAction(ctx){
+    if(confirm('Are U sure?')){
+        await del('/data/songs/'+ ctx.params.id);
+        ctx.page.redirect('/allSongs')
+    }
 }

@@ -1741,15 +1741,11 @@
     			_updatedOn: 1616236792930
             }
         },
-        sogns: {
-            {
-                "_ownerId": "de2dcb43-5936-43be-9567-a99951da1f6c",
-                "title": "72 Seasons",
-                "artist": "Metallica",
-                "imageURL": "https://upload.wikimedia.org/wikipedia/en/0/08/72_Seasons.jpg",
-                "_createdOn": 1680068706054,
-                "_id": "3c2f3478-e7d3-413b-ad45-7dc1cc950d75"
-              }
+        songs: {
+            
+        },
+        likes: {
+                
         }
     };
     var rules$1 = {

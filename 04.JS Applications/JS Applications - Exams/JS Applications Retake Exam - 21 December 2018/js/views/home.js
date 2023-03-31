@@ -10,4 +10,5 @@ const homeTemplate = () => html`
 export function homePage(ctx){
 
     ctx.render(homeTemplate());
+    console.log();
 }
