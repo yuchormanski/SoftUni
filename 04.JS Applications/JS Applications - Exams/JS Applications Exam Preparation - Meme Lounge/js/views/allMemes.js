@@ -19,8 +19,7 @@ const allTemplate = (memes) => html`
                         </div>
                     </div>
                 </div>
-                `)}
-        
+                `)}  
                 `:
             html`
                 <!-- Display : If there are no memes in database -->
