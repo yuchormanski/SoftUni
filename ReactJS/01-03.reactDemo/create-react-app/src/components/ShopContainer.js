@@ -68,7 +68,7 @@ export function ShopContainer() {
                             <img src="img/l7.jpg" alt="Shop Seats" />
                             <div className="overlay">
                                 <a href="#/" className="expand">shop seats</a>
-                                <a className="close-overlay hidden">x</a>
+                                <a href="#/" className="close-overlay hidden">x</a>
                             </div>
                         </div>
                     </div>
@@ -77,7 +77,7 @@ export function ShopContainer() {
                             <img src="img/l8.jpg" alt="Shop Accessories" />
                             <div className="overlay">
                                 <a href="#/" className="expand">shop accessories</a>
-                                <a className="close-overlay hidden">x</a>
+                                <a href="#/" className="close-overlay hidden">XXX</a>
                             </div>
                         </div>
                     </div>
