@@ -432,7 +432,7 @@
 |426| [How do you group and nest console output?](#how-do-you-group-and-nest-console-output)|
 |427| [What is the difference between dense and sparse arrays?](#what-is-the-difference-between-dense-and-sparse-arrays)|
 |428| [What are the different ways to create sparse arrays?](#what-are-the-different-ways-to-create-sparse-arrays)|
-|429| [What is the difference between setTimeout and setImmediate and process.nextTick?](#what-is-the difference-between-setTimeout-and-setImmediate-and-processnextTick)|
+|429| [What is the difference between setTimeout and setImmediate and process.nextTick?](#what-is-the-difference-between-setTimeout-and-setImmediate-and-processnextTick)|
 
 1. ### What are the possible ways to create objects in JavaScript
 
