@@ -3,19 +3,17 @@ const express = require('express');
 const config = require('./config'); // ако файла се казва index, ще бъде автоматично импортнат иначе трябва да се обяви.
 // const config = require('./config/index.js'); // read above
 
+const routes = require('./routes')
 const app = express();
 
-// const setupViewEngine = require('./config/viewEngine.js');
-// setupViewEngine(app)
-
+// require('./config/viewEngine.js')(app);
 //same as above
-require('./config/viewEngine.js')(app);
 
+const setupViewEngine = require('./config/viewEngine.js');
+setupViewEngine(app)
 
-
-app.get('/', (req, res) => {
-    res.render('home');
-});
+app.use(express.static('src/public'));  // setup static assets
+app.use(routes);
 
 app.listen(config.PORT, () => { console.log(`Server is running on port ${config.PORT}...`) });
 
