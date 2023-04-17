@@ -1,6 +1,5 @@
 const cubeController = require('./controllers/cubeController.js');
 
-
 // --- MODULAR ROUTE ---
 // const express = require('express');
 // const Router = express.Router;
