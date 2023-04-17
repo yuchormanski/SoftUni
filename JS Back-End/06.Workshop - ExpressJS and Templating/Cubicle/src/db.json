@@ -23,17 +23,24 @@
     },
     {
       "id": 4,
-      "name": "All-White Rubik’s Cube",
-      "description": "There are two kinds of people in the world: people who understand how to solve Rubik’s Cubes, and people like me. I’ve actually had the same Rubik’s Cube since I was six, and it’s spent its entire life outside of the packaging unsolved. Every once in a while I’ll pick it up and have a go at it, and every time I disappoint myself. A couple of months ago I tried following a guide to solve it, but even that was over my head. Threatening it with a hammer didn’t work either.",
+      "name": "All-White Rubik's Cube",
+      "description": "There are two kinds of people in the world: people who understand how to solve Rubik's Cubes, and people like me. I've actually had the same Rubik's Cube since I was six, and it's spent its entire life outside of the packaging unsolved. Every once in a while I'll pick it up and have a go at it, and every time I disappoint myself. A couple of months ago I tried following a guide to solve it, but even that was over my head. Threatening it with a hammer didn't work either.",
       "imageUrl": "https://technabob.com/blog/wp-content/uploads/2021/03/all_white_rubiks_cube_1a.jpg",
       "difficultyLevel": "5"
     },
     {
-      "name": "Roulette Wheel IQ Rubik’s Cube",
-      "description": "Are you ready to exercise both your left and right brain? This Rubik’s cube with the Roulette Wheel will be the most difficult challenge you face on your journey to solve cubes. There is a surface with six different colors, and there are six roulette wheels with numbers on them. To solve this cube, you may need to start by matching the colors and sequence numbers on each roulette and then move on to matching the colors on each surface.",
+      "name": "Roulette Wheel IQ Rubik's Cube",
+      "description": "Are you ready to exercise both your left and right brain? This Rubik's cube with the Roulette Wheel will be the most difficult challenge you face on your journey to solve cubes. There is a surface with six different colors, and there are six roulette wheels with numbers on them. To solve this cube, you may need to start by matching the colors and sequence numbers on each roulette and then move on to matching the colors on each surface.",
       "imageUrl": "https://engineerine.com/wp-content/webp-express/webp-images/uploads/2022/12/image-264.png.webp",
       "difficultyLevel": "6",
       "id": 5
+    },
+    {
+      "name": "Megaminx",
+      "description": "GREAT PUZZLE GAME: Dreampark 3x3 Megaminx Speed Cube can foster your kid's sense of space and activate your imagination and creativity. Perfect for testing both your patience and mental skill, brings more challenging and provides hours of fun time.",
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/61HpQqVQ37L._SY355_.jpg",
+      "difficultyLevel": "3",
+      "id": 6
     }
   ]
 }

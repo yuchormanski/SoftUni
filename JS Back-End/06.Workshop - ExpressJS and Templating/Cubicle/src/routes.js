@@ -27,5 +27,7 @@ const cubeController = require('./controllers/cubeController.js');
 router.get('/', homeController.getHomePage);
 router.get('/about', homeController.getAboutPage);
 router.get('/create', cubeController.getCreateCube);
+router.get('/details/:cubeId', cubeController.getCubeDetails);
+router.get('/404', homeController.getErrorPage);
 router.post('/create', cubeController.postCreateCube);
 module.exports = router;
