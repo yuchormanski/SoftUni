@@ -10,9 +10,9 @@ class Cube {
         this.difficultyLevel = difficultyLevel;
     }
 
-    static save(cube) {
-        cube.id = db.cubes[db.cubes.length - 1].id + 1; //генерираме ID, като с взима за база последното записано и се увеличава с 1
-        db.cubes.push(cube);
+    save() {
+        this.id = db.cubes[db.cubes.length - 1].id + 1; //генерираме ID, като с взима за база последното записано и се увеличава с 1
+        db.cubes.push(this);
         const jasonData = JSON.stringify(db, null, 2)  // за да е подреден json обекта се добавят (.. , null, 2)
         fs.writeFileSync(path.resolve(__dirname, '../db.json'), jasonData);
     }

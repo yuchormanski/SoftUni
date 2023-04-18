@@ -9,7 +9,7 @@ exports.postCreateCube = (req, res) => {
     const { name, description, imageUrl, difficultyLevel } = req.body; // деструктурираме обекта от заявката
     const cube = new Cube(name, description, imageUrl, difficultyLevel);  // създаваме нова инстанция на класа
 
-    Cube.save(cube); //запаметяваме новия обект
+    cube.save(); //запаметяваме новия обект
     res.redirect('/');
 };
 
