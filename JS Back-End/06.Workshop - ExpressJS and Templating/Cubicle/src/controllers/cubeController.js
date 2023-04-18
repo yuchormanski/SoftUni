@@ -6,26 +6,25 @@ exports.getCreateCube = (req, res) => {
 };
 
 exports.postCreateCube = (req, res) => {
-    const { name, description, imageUrl, difficultyLevel } = req.body;
-    const cube = new Cube(name, description, imageUrl, difficultyLevel);
-    // console.log(cube.name);
-    Cube.save(cube);
+    const { name, description, imageUrl, difficultyLevel } = req.body; // деструктурираме обекта от заявката
+    const cube = new Cube(name, description, imageUrl, difficultyLevel);  // създаваме нова инстанция на класа
+
+    Cube.save(cube); //запаметяваме новия обект
     res.redirect('/');
 };
 
 exports.getCubeDetails = (req, res) => {
-    const cubeId = Number(req.params.cubeId);
+    const cubeId = Number(req.params.cubeId); // ще върне NaN, ако не е число
 
-    if(!cubeId){
+    if(!cubeId){  //ако ID-то не е цифров формат -> препращане към 404
         return res.redirect('/404');
     }
 
     const found = db.cubes.find(x => x.id === cubeId);
 
-    if(!found){
+    if(!found){  //ако няма намерено ID -> rредирект към 404
         return res.redirect('/404');
     }
 
-    console.log(found);
     res.render(`details`, { found })
 };
