@@ -1,0 +1,10 @@
+1. create init project 
+2. install express
+3. install nodemon
+4. install express-handlebars
+5. create src 
+            public
+            views
+                layout
+                    main.handlebars
+                partials
