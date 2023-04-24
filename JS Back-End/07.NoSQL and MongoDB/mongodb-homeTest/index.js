@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const findEntryById = require('./crud.js');
 
-// създаваме схема на модела
+/* // създаваме схема на модела
 const dogSchema = new mongoose.Schema({
     //описват се типа на полетата
     name: String,
@@ -9,7 +10,7 @@ const dogSchema = new mongoose.Schema({
     color: String,
     weight: Number,
 });
-const Dog = mongoose.model('Dog', dogSchema);
+const Dog = mongoose.model('Dog', dogSchema); */
 
 // connecting to database
 async function main() { 
@@ -77,7 +78,7 @@ async function findAllByCriteria(criteria){
     console.log(allDogs);
 }
 
-async function findEntryById(id){
-    const dog = await Dog.findById(id);
-    console.log(dog);
-}
+// async function findEntryById(id){
+//     const dog = await Dog.findById(id);
+//     console.log(dog);
+// }
