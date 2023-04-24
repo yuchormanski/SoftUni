@@ -12,7 +12,7 @@ const dogSchema = new mongoose.Schema({
 const Dog = mongoose.model('Dog', dogSchema);
 
 // connecting to database
-async function main() {
+async function main() { 
     mongoose.set('strictQuery', false);
     await mongoose.connect('mongodb://127.0.0.1:27017/dogBreed');
     console.log('Database Connected');
@@ -20,10 +20,23 @@ async function main() {
     //четене на цялата база данни
     // await readDog();
 
+    //търсене в базата на запис по подаден критерий
+    // await readOne({weight: 10}); //задаване на критерий за търсене под формата на обект
+
+    // търсене на всички пълни съвпадения
+    // await findAllByCriteria({color:'brown'});
+
+    await findEntryById('6443963f2176a2e5d645e710');
+
     // създаване на запис в базата данни
-    await saveDog('Getsby', 6, 'Labrador Retriever', 'brown', 35)
+    // await saveDog('Getsby', 6, 'Labrador Retriever', 'brown', 35)
 }
 main()
+
+
+
+
+
 
 //четене на цялата база данни
 async function readDog() {
@@ -54,3 +67,17 @@ async function saveDog(name, age, breed, color, weight) {
     })
 }
 
+async function readOne(criteria){
+    const dog = await Dog.findOne(criteria);
+    console.log(dog);
+}
+
+async function findAllByCriteria(criteria){
+    const allDogs = await Dog.find(criteria);
+    console.log(allDogs);
+}
+
+async function findEntryById(id){
+    const dog = await Dog.findById(id);
+    console.log(dog);
+}
