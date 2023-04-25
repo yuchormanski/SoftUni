@@ -1,11 +1,16 @@
-const db = require('../db.json');
+const Cube = require('../models/Cube.js');
 
-exports.getHomePage = (req, res) => {
+exports.getHomePage = async (req, res) => {
     const { search, from: difficultyFrom, to: difficultyTo } = req.query;
-    let cubes = db.cubes;
+    let cubes = await Cube.find().lean(); //mongoose забранява промяната на прототипа - документ-обект.lean го обръща в чист обект  
 
+    console.log(cubes);
+
+
+    //TODO: Use DB filter
     if (search) {
         cubes = cubes.filter(cube => cube.name.toLowerCase().includes(search.toLowerCase()));
+        // cubes = await Cube.find(search)
     }
 
     if (difficultyFrom) {
