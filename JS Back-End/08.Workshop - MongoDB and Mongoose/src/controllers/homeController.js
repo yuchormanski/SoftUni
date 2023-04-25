@@ -5,6 +5,7 @@ exports.getHomePage = async (req, res) => {
     let cubes = await Cube.find().lean(); //mongoose забранява промяната на прототипа - документ-обект.lean го обръща в чист обект  
 
 
+
     //TODO: Use DB filter
     if (search) {
         cubes = cubes.filter(cube => cube.name.toLowerCase().includes(search.toLowerCase()));
