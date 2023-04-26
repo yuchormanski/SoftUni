@@ -34,11 +34,11 @@ exports.getAttachAccessory = async (req, res) => {
 
 
 exports.postAttachAccessory = async (req, res) => {
-    const cube = await Cube.findById(req.params.cubeId);
+    const cube = await Cube.findById(req.params.cubeId); //не се слага lean(), за да може да се добавят стойности, използва се като документ
     const accessoryId = req.body.accessory;
     
-    cube.accessories.push(accessoryId)
-    cube.save();
+    cube.accessories.push(accessoryId);
+    await cube.save();
 
-    res.redirect(`/cubes/${cube._id}/details`)
+    res.redirect(`/cubes/${cube._id}/details`);
 };
