@@ -16,13 +16,13 @@ exports.postCreateCube = async (req, res) => {
 
 exports.getCubeDetails = async (req, res) => {
 
-    const cube = await Cube.findById(req.params.cubeId).lean();
+    const cube = await Cube.findById(req.params.cubeId).populate('accessories').lean();
 
     if (!cube) {  //ако ID-то не е цифров формат -> препращане към 404
         return res.redirect('/404');
     }
 
-    res.render(`details`, { cube })
+    res.render(`cube/details`, { cube })
 };
 
 
