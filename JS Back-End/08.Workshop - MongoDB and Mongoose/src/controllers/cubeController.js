@@ -28,7 +28,7 @@ exports.getCubeDetails = async (req, res) => {
 
 exports.getAttachAccessory = async (req, res) => {
     const cube = await Cube.findById(req.params.cubeId).lean();
-    const accessories = await Accessory.find().lean();
+    const accessories = await Accessory.find({ _id: { $nin: cube.accessories } }).lean();
     res.render('cube/attach', { cube, accessories })
 };
 
@@ -36,7 +36,7 @@ exports.getAttachAccessory = async (req, res) => {
 exports.postAttachAccessory = async (req, res) => {
     const cube = await Cube.findById(req.params.cubeId); //не се слага lean(), за да може да се добавят стойности, използва се като документ
     const accessoryId = req.body.accessory;
-    
+
     cube.accessories.push(accessoryId);
     await cube.save();
 

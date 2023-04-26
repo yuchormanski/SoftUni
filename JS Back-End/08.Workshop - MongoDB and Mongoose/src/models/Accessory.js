@@ -9,7 +9,9 @@ const accessorySchema = new mongoose.Schema({
         type: String,
         required: true,
         // validation
-        match: "/^https?:\/\//",
+        //v.1   v.2 is in Cube.js
+        match: [/^https?:\/\//, 'Invalid URL!'],
+
     },
     description: {
         type: String,
