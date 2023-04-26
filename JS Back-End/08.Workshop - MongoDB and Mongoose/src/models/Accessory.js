@@ -9,6 +9,7 @@ const accessorySchema = new mongoose.Schema({
         type: String,
         required: true,
         // validation
+        match: "/^https?:\/\//",
     },
     description: {
         type: String,

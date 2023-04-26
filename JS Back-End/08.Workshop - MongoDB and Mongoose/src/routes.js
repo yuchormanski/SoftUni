@@ -27,10 +27,12 @@ const accessoryController = require('./controllers/accessoryController.js');
 
 router.get('/', homeController.getHomePage);
 router.get('/about', homeController.getAboutPage);
+router.get('/404', homeController.getErrorPage);
+
 router.get('/create', cubeController.getCreateCube);
 router.get('/details/:cubeId', cubeController.getCubeDetails);
-router.get('/404', homeController.getErrorPage);
 router.post('/create', cubeController.postCreateCube);
+router.get('/cubes/:cubeId/attach', cubeController.getAttachAccessory);
 
 // all requests starting with /accessory
 router.use('/accessory', accessoryController);

@@ -1,4 +1,5 @@
 const Cube = require('../models/Cube.js');
+const Accessory = require('../models/Accessory.js');
 
 exports.getCreateCube = (req, res) => {
     res.render('create');
@@ -20,6 +21,13 @@ exports.getCubeDetails = async (req, res) => {
     if (!cube) {  //ако ID-то не е цифров формат -> препращане към 404
         return res.redirect('/404');
     }
-    
+
     res.render(`details`, { cube })
+};
+
+
+exports.getAttachAccessory = async (req, res) => {
+    const cube = await Cube.findById(req.params.cubeId).lean();
+    const accessories = await Accessory.find().lean();
+    res.render('cube/attach', { cube, accessories })
 };
