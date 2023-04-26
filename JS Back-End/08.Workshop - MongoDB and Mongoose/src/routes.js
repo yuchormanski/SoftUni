@@ -32,6 +32,7 @@ router.get('/details/:cubeId', cubeController.getCubeDetails);
 router.get('/404', homeController.getErrorPage);
 router.post('/create', cubeController.postCreateCube);
 
+// all requests starting with /accessory
 router.use('/accessory', accessoryController);
 
 module.exports = router;

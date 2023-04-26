@@ -2,6 +2,8 @@ const router = require('express').Router();
 
 const Accessory = require('../models/Accessory.js');
 
+
+// URL: /accessory/create    /accessory is striped from  .use() method
 router.get('/create', (req, res) => {
     res.render('createAccessory');
 });
