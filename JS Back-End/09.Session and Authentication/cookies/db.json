@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "username": "Ivan",
+      "password": "$2b$10$qJmtEe0cNWPiTjAcvvrkI.ZJr.bhosr2LFQZCQfzroOFL.IOIahLu"
+    },
+    {
+      "username": "Николай",
+      "password": "$2b$10$vH.k7/larsh7cdjzwlsupufrwvjHT87y1F7Qgzkb8cK9.Te27uZbu"
+    },
+    {
+      "username": "yuchormanski@gmail.com",
+      "password": "$2b$10$35JnO8sI90jiVCKWqtXJk.Q/oeuluY8fEPp7PSr/8DmFf6AbRkbCK"
+    }
+  ]
+}
