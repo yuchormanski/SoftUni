@@ -1,8 +1,9 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const mongoose = require('mongoose');//not needed at this project
 const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
 const dataService = require('./dataService.js');
+
 
 
 
@@ -16,7 +17,7 @@ app.use(expressSession({
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false }
-  }))
+}))
 
 app.get('/', (req, res) => {
     res.send(`
@@ -24,6 +25,7 @@ app.get('/', (req, res) => {
         <p><a href="/login">Login</a></p>
         <p><a href="/profile">Profile</a></p>
         <p><a href="/register">Register</a></p>
+        <p><a href="/logout">Logout</a></p>
     `)
 })
 
@@ -50,35 +52,28 @@ app.get('/login', (req, res) => {
     `)
 });
 
-app.post('/register', async (req, res) => {
-    const {username, password} = req.body;
-    await dataService.registerUser(username, password);
-    res.redirect('/login')
-
-});
-
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
     try {
-    const user = await dataService.loginUser(username, password);
+        const user = await dataService.loginUser(username, password);
 
-    const authData = {
-        username: user.username,
-    }
-    
-    res.cookie('auth', JSON.stringify(authData));
-    req.session.username = user.username;
-    req.session.privateInfo = user.password;
+        const authData = {
+            username: user.username,
+        }
 
-    return res.redirect('/');
+        res.cookie('auth', JSON.stringify(authData));
+        req.session.username = user.username;
+        req.session.privateInfo = user.password;
+
+        return res.redirect('/');
 
     } catch (error) {
-        console.log(error);
-        res.status(401).end();
-    }
-    
+        // console.log(error);
+        // res.status(401).end();
+        res.redirect('/404');
 
+    }
 });
 
 app.get('/register', (req, res) => {
@@ -94,7 +89,6 @@ app.get('/register', (req, res) => {
             <label for="username">Username:</label>
             <input type="text" name="username" id="username">
 
-
             <label for="password">Password:</label>  
             <input type="password" name="password" id="password">
 
@@ -104,12 +98,23 @@ app.get('/register', (req, res) => {
     `)
 });
 
+app.post('/register', async (req, res) => {
+    const { username, password } = req.body;
+    await dataService.registerUser(username, password);
+    res.redirect('/login')
+
+});
+
 app.get('/profile', (req, res) => {
     // const authData = req.cookies['auth'];
     const authData = req.cookies.auth;
 
     if (!authData) {
-        return res.status(401).end();
+        // return res.status(401).end();
+        return res.send(`
+            <h2>You must <a href="/login" >Login</a> first!</h2>
+            <p>If ou don't have an account, <a href="/register">Sing up</a> from here!</p>
+        `)
     }
     const { username } = JSON.parse(authData);
 
@@ -118,6 +123,20 @@ app.get('/profile', (req, res) => {
     res.send(`
         <h2>Hello, ${username}</h2>
     `)
+});
+
+app.get('/404', (req, res) => {
+        res.send(`
+        <h1>This page isn’t working</h1>
+        <h3>If the problem continues, contact the site owner.</h3>
+        <li><a href="/">Back to Home</a></li>
+        `)
+});
+
+app.get('/logout', (req, res)=>{
+    res.clearCookie('auth').redirect('/');
+    // res.clearCookie('auth');
+    //res.redirect('/');
 });
 
 
