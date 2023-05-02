@@ -3,6 +3,7 @@ const mongoose = require('mongoose');//not needed at this project
 const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
 const dataService = require('./dataService.js');
+const jwt = require('jsonwebtoken');
 
 
 
@@ -56,15 +57,15 @@ app.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
     try {
-        const user = await dataService.loginUser(username, password);
+        const token = await dataService.loginUser(username, password);
 
-        const authData = {
-            username: user.username,
-        }
+        // const authData = {
+        //     username: user.username,
+        // }
 
-        res.cookie('auth', JSON.stringify(authData));
-        req.session.username = user.username;
-        req.session.privateInfo = user.password;
+        res.cookie('token', token, { httpOnly: true });  // httpOnly  е за да може да се чете само с http
+        // req.session.username = user.username;
+        // req.session.privateInfo = user.password;
 
         return res.redirect('/');
 
@@ -107,34 +108,43 @@ app.post('/register', async (req, res) => {
 
 app.get('/profile', (req, res) => {
     // const authData = req.cookies['auth'];
-    const authData = req.cookies.auth;
 
-    if (!authData) {
-        // return res.status(401).end();
+    const token = req.cookies.token;
+
+    if (!token) {
+        res.status(401);
         return res.send(`
             <h2>You must <a href="/login" >Login</a> first!</h2>
             <p>If ou don't have an account, <a href="/register">Sing up</a> from here!</p>
         `)
     }
-    const { username } = JSON.parse(authData);
+    // const { username } = JSON.parse(authData);
 
-    console.log(req.session);
+    try {
+            const decodedToken = jwt.verify(token, 'thisisthesecret'); //secret in this case is hardcoded
+
+    console.log(decodedToken);
 
     res.send(`
-        <h2>Hello, ${username}</h2>
+        <h2>Hello, ${decodedToken.username}</h2>
     `)
+    } catch (error) {
+        res.redirect('/404')
+    }
+
 });
 
 app.get('/404', (req, res) => {
-        res.send(`
+    res.send(`
         <h1>This page isn’t working</h1>
         <h3>If the problem continues, contact the site owner.</h3>
         <li><a href="/">Back to Home</a></li>
         `)
 });
 
-app.get('/logout', (req, res)=>{
-    res.clearCookie('auth').redirect('/');
+app.get('/logout', (req, res) => {
+    // res.clearCookie('auth').redirect('/');
+    res.clearCookie('token').redirect('/');
     // res.clearCookie('auth');
     //res.redirect('/');
 });

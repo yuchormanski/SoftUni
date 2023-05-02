@@ -1,6 +1,10 @@
 const db = require('./db.json');
 const fs = require('fs/promises');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+
+const secret = 'thisisthesecret';
 
 async function saveDB() {
     const newData = JSON.stringify(db, null, 2)
@@ -38,5 +42,15 @@ exports.loginUser = async (username, password) => {
         throw `Username or password don\'t match`;
     }
 
-    return user;
+
+    const payload = {
+        username: user.username
+    }
+    const options = {
+        expiresIn: '1h'
+    }
+    const token = jwt.sign(payload, secret, options);
+    console.log(token);
+
+    return token;
 }
