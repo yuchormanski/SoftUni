@@ -1,0 +1,2 @@
+Authorization - Client recognition; Who are you? How do you prove it?
+Authentication - Rights in site; What are you allowed to do? Can you see this page?
