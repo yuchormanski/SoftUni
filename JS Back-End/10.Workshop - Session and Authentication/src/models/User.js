@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -9,7 +10,22 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
+        minLength: [6, 'Password is too short!'],
     }
+});
+
+// userSchema.pre('save', function (next) {
+//     bcrypt.hash(this.password, 10)
+//         .then(hash => {
+//             this.password = hash;
+//             next();
+//         })
+// });
+
+
+//same as above , but wit async await
+userSchema.pre('save', async function () {
+    this.password = await bcrypt.hash(this.password, 10);
 });
 
 const User = mongoose.model('User', userSchema);
