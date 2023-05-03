@@ -1,4 +1,5 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 
 const config = require('./config'); // ако файла се казва index, ще бъде автоматично импортнат иначе трябва да се обяви.
 // const config = require('./config/index.js'); // read above
@@ -15,6 +16,7 @@ const initDatabase = require('./config/databaseInit.js'); // създаване 
 setupViewEngine(app);
 
 app.use(express.static('src/public'));  // setup static assets
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 app.use(routes);
 
