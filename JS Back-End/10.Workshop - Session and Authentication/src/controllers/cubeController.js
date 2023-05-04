@@ -45,3 +45,11 @@ exports.postAttachAccessory = async (req, res) => {
 
     res.redirect(`/cubes/${cube._id}/details`);
 };
+
+exports.getEditCube = (req, res) => {
+    res.render(`cube/edit`);
+}
+
+exports.getDeleteCube = (req, res) => {
+    res.render(`cube/delete`);
+}
