@@ -1,19 +1,36 @@
-exports.authentication = (req, res, next) => {
-    
-}
+const jwt = require('../lib/jsonwebtoken.js');
+const config = require('../config/index.js');
 
-const token = req.cookies('auth');
+exports.authentication = async (req, res, next) => {
 
-if (!token) {
-    res.redirect('/404');
-}
+    const token = req.cookies.auth;
 
-try {
+    if (token) {
+        try {
+            const decodeToken = await jwt.verify(token, config.SECRET);
 
-    const decodeToken = await jwt.verify(token, config.SECRET);
-    console.log(decodeToken);
-}
-catch (err) {
-    console.log(err);
-    return res.redirect('/404');
+            req.user = decodeToken;  // добавяме пропърти към рикуеста за да може да се преизползва
+
+            req.isAuthenticated = true;
+
+
+        } catch (err) {
+            console.log(err.message);
+            res.clearCookie('auth');
+            return res.redirect('/404');
+        }
+
+    } else {
+
+    }
+
+    next();
+
+};
+
+exports.isAuthenticated = (req, res, next) => {  //ще се използва в routes
+    if (!req.isAuthenticated) {
+        return res.redirect('/login');
+    }
+    next();
 }

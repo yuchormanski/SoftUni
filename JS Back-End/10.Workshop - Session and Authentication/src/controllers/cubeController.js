@@ -2,10 +2,13 @@ const Cube = require('../models/Cube.js');
 const Accessory = require('../models/Accessory.js');
 
 exports.getCreateCube = (req, res) => {
+
+    console.log(req.user);
     res.render('create');
 };
 
 exports.postCreateCube = async (req, res) => {
+
     const { name, description, imageUrl, difficultyLevel } = req.body; // деструктурираме обекта от заявката
 
     const cube = new Cube({ name, description, imageUrl, difficultyLevel });  // създаваме нова инстанция на класа

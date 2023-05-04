@@ -12,11 +12,10 @@ router.post('/login', async (req, res) => {
 
     try {
         const token = await authService.login(username, password);
-    console.log(token);
-        
+        res.cookie('auth', token, { httpOnly: true })
+
     } catch (error) {
         console.log(error);
-        return res.redirect('/');
     }
     res.redirect('/');
 });
@@ -42,6 +41,13 @@ router.post('/register', async (req, res) => {
     const user = await authService.register(username, password); // ако няма такова потребителско име го подаваме на функцията за регистриране
 
     res.redirect('/login');
+});
+
+//LOGOUT
+
+router.get('/logout', (req,res) => {
+    res.clearCookie('auth');
+    res.redirect('/');
 });
 
 
