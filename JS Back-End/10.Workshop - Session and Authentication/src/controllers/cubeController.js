@@ -1,5 +1,6 @@
 const Cube = require('../models/Cube.js');
 const Accessory = require('../models/Accessory.js');
+const cubeService = require('../services/cubeService.js');
 
 exports.getCreateCube = (req, res) => {
 
@@ -46,10 +47,20 @@ exports.postAttachAccessory = async (req, res) => {
     res.redirect(`/cubes/${cube._id}/details`);
 };
 
-exports.getEditCube = (req, res) => {
-    res.render(`cube/edit`);
+
+//EDIT
+exports.getEditCube = async (req, res) => {
+
+    const cube = await cubeService.getOne(req.params.cubeId);
+
+    res.render(`cube/edit`, { cube });
 }
 
-exports.getDeleteCube = (req, res) => {
-    res.render(`cube/delete`);
+
+//DELETE
+exports.getDeleteCube = async (req, res) => {
+    
+    const cube = await cubeService.getOne(req.params.cubeId);
+
+    res.render(`cube/delete`, { cube });
 }

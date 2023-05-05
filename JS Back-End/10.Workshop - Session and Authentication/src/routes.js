@@ -34,9 +34,9 @@ router.get('/404', homeController.getErrorPage);
 
 router.get('/cubes/create', isAuthenticated, cubeController.getCreateCube);  // достъп само за регистрирани
 router.post('/cubes/create', isAuthenticated, cubeController.postCreateCube);
-router.get('/cubes/:cubeId/details/', cubeController.getCubeDetails);
-router.get('/cube/:cubeId/edit', cubeController.getEditCube);
-router.get('/cube/:cubeId/delete', cubeController.getDeleteCube);
+router.get('/cubes/:cubeId/details', cubeController.getCubeDetails);
+router.get('/cubes/:cubeId/edit', cubeController.getEditCube);
+router.get('/cubes/:cubeId/delete', cubeController.getDeleteCube);
 router.get('/cubes/:cubeId/attach', isAuthenticated, cubeController.getAttachAccessory);  // достъп само за регистрирани
 router.post('/cubes/:cubeId/attach', isAuthenticated, cubeController.postAttachAccessory);
 

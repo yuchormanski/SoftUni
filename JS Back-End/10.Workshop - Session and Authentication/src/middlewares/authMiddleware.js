@@ -13,14 +13,11 @@ exports.authentication = async (req, res, next) => {
 
             req.isAuthenticated = true;
 
-
         } catch (err) {
             console.log(err.message);
             res.clearCookie('auth');
             return res.redirect('/404');
         }
-
-    } else {
 
     }
 
