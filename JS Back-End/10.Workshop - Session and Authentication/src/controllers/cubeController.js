@@ -1,6 +1,7 @@
 const Cube = require('../models/Cube.js');
 const Accessory = require('../models/Accessory.js');
 const cubeService = require('../services/cubeService.js');
+const difficultyLevels = require('../utils/cubeUtils.js');
 
 exports.getCreateCube = (req, res) => {
 
@@ -52,8 +53,9 @@ exports.postAttachAccessory = async (req, res) => {
 exports.getEditCube = async (req, res) => {
 
     const cube = await cubeService.getOne(req.params.cubeId);
+    const cubeLevels = difficultyLevels.generateDifficultyLevels(cube.difficultyLevel);
 
-    res.render(`cube/edit`, { cube });
+    res.render(`cube/edit`, { cube, cubeLevels });
 }
 
 
