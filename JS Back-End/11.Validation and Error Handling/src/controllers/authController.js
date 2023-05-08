@@ -2,7 +2,7 @@ const router = require('express').Router();
 const errorHandler = require('../middlewares/errorHandlerMiddleware.js');
 const authService = require('../services/authService.js');
 const AppError = require('../utils/AppError.js');
-const parseMongooseError = require('../utils/errorUtils.js')
+const parseMongooseError = require('../utils/errorUtils.js');
 
 
 //LOGIN
