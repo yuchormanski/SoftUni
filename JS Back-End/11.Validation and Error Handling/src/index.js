@@ -4,6 +4,8 @@ const authMiddleware = require('./middlewares/authMiddleware.js');
 const config = require('./config'); // ако файла се казва index, ще бъде автоматично импортнат иначе трябва да се обяви.
 // const config = require('./config/index.js'); // read above
 
+const errorHandler = require('./middlewares/errorHandlerMiddleware.js');
+
 const routes = require('./routes')
 const app = express();
 
@@ -19,6 +21,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));  // декодиране на адреса на заявката 
 app.use(authMiddleware.authentication);
 app.use(routes);
+app.use(errorHandler);
 
 initDatabase() // стартиране на приложението само ако има връзка с базата
     .then(() => app.listen(config.PORT, () => { console.log(`Server is running on port ${config.PORT}...`) }))

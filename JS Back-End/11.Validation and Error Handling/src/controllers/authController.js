@@ -1,5 +1,7 @@
 const router = require('express').Router();
+const errorHandler = require('../middlewares/errorHandlerMiddleware.js');
 const authService = require('../services/authService.js');
+const AppError = require('../utils/AppError.js');
 
 
 //LOGIN
@@ -32,13 +34,20 @@ router.get('/register', (req, res) => {
     res.render(`auth/register`)
 });
 
-router.post('/register', async (req, res) => {
+router.post('/register', async (req, res, next) => {
     const { username, password, repeatPassword } = req.body;
 
-    if (password !== repeatPassword) return res.redirect('/404'); //проверяваме дали паролата съвпада с повторението
+    if (password !== repeatPassword) {  //проверяваме дали паролата съвпада с повторението
+        // return res.redirect('/404');
+        // next(new Error('Password mismatch!')); // за да не ни редиректва до 404, а да останем на същата страница..
+        return res.render('auth/register', { error: 'Password mismatch!' });
+    }
 
     const existingUser = await authService.getUserByUsername(username);// проверяваме дали има потребител със същото име
-    if (existingUser) return res.redirect('/404');  //ако има такъв - грешка
+
+    if (existingUser) { //ако има такъв - грешка
+        return res.redirect('/404');
+    }
 
     const user = await authService.register(username, password); // ако няма такова потребителско име го подаваме на функцията за регистриране
 

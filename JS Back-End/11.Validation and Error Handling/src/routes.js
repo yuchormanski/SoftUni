@@ -13,6 +13,7 @@ const accessoryController = require('./controllers/accessoryController.js');
 const authController = require('./controllers/authController.js');
 
 const { isAuthenticated } = require('./middlewares/authMiddleware.js'); // ще се зарежда като middleware на страниците, които изискват регистриран потребител
+const { handleRequest } = require('./utils/requestUtils.js');
 
 
 // router.get('/', (req, res) => {
