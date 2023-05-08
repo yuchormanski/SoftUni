@@ -2,6 +2,7 @@ const router = require('express').Router();
 const errorHandler = require('../middlewares/errorHandlerMiddleware.js');
 const authService = require('../services/authService.js');
 const AppError = require('../utils/AppError.js');
+const parseMongooseError = require('../utils/errorUtils.js')
 
 
 //LOGIN
@@ -46,10 +47,18 @@ router.post('/register', async (req, res, next) => {
     const existingUser = await authService.getUserByUsername(username);// проверяваме дали има потребител със същото име
 
     if (existingUser) { //ако има такъв - грешка
-        return res.redirect('/404');
+        // return res.redirect('/404');
+        return res.render('auth/register', { error: 'This user already exist!' });
     }
 
-    const user = await authService.register(username, password); // ако няма такова потребителско име го подаваме на функцията за регистриране
+    try {
+        const user = await authService.register(username, password); // ако няма такова потребителско име го подаваме на функцията за регистриране
+    } catch (err) {
+        const messages = parseMongooseError(err);
+
+        return res.render('auth/register', { error: messages[0] })
+    }
+
 
     res.redirect('/login');
 });
