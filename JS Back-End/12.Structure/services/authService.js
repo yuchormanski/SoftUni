@@ -1,25 +1,35 @@
 const User = require('../models/User.js');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-exports.isRegistered = (email) => User.exists({ email });
+const jwt = require('../lib/jsonwebtoken.js');
+const {SECRET} = require('../constants.js');
+exports.isRegistered = (email) => User.findOne({ email });
 
 
 //LOGIN
 exports.login = async (email, password) => {
 
-    const registeredUser = await this.isRegistered(email);
+    const user = await this.isRegistered(email);
 
-    if (!registeredUser) {       
+    if (!user) {
         throw new Error('Must register first');
     };
 
-    const isValid = await bcrypt.compare(registeredUser.password, password);
+    const isValid = await bcrypt.compare(password, user.password);
 
-    if(!isValid){
+    if (!isValid) {
         throw new Error('Invalid email or password!');
     }
 
     // generate token
+    const payload = {
+        _id: user._id,
+        email,
+        username: user.username
+    }
+
+    const token = await jwt.sign(payload, SECRET);
+
+    return token;
 
 };
 

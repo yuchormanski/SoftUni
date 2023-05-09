@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 const authService = require('../services/authService.js');
-
+const {isAuth} = require('../middlewares/authMiddleware.js');
 const cookieParser = require('cookie-parser');
 
 
@@ -9,12 +9,14 @@ const cookieParser = require('cookie-parser');
 router.get('/login', (req, res) => {
     res.render('auth/login');
 });
+
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
-    await authService.login(email, password)
+    const token = await authService.login(email, password);
 
-    res.redirect('/');
+    res.cookie('auth', token)
+    res.redirect('/'); // redirect to correct page
 });
 
 
@@ -37,8 +39,8 @@ router.post('/register', async (req, res) => {
 
 
 //LOGOUT
-router.get('/logout', (req, res) => {
-    res.clearCookie('');
+router.get('/logout', isAuth, (req, res) => {
+    res.clearCookie('auth');
     res.redirect('/');
 });
 
