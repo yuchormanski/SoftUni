@@ -1,11 +1,15 @@
 const express = require('express');
-
+const handleBars = require('express-handlebars');
+const routes = require('./routes.js');
 const app = express();
+app.engine('hbs', handleBars.engine({
+    extname: 'hbs',
+}));
+app.set('view engine', 'hbs');
 
-const router = require('./routes.js');
-
-
-
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: false }));
+app.use(routes);
 
 
 
