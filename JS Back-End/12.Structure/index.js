@@ -1,5 +1,6 @@
 const express = require('express');
 const handleBars = require('express-handlebars');
+const mongoose = require('mongoose');
 const routes = require('./routes.js');
 const app = express();
 app.engine('hbs', handleBars.engine({
@@ -10,6 +11,9 @@ app.set('view engine', 'hbs');
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 app.use(routes);
+
+ // change to db name
+mongoose.connect('mongodb://localhost:27017/crypto'); //mongodb://127.0.0.1:27017/
 
 
 
