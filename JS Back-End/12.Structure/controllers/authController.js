@@ -1,4 +1,7 @@
 const router = require('express').Router();
+
+const authService = require('../services/authService.js');
+
 const cookieParser = require('cookie-parser');
 
 
@@ -6,8 +9,8 @@ const cookieParser = require('cookie-parser');
 router.get('/login', (req, res) => {
     res.render('auth/login');
 });
-router.post('/login', (req,res) => {
-    const {email, password } = req.body;
+router.post('/login', (req, res) => {
+    const { email, password } = req.body;
     console.log(email, password);
 
     res.redirect('/');
@@ -22,14 +25,12 @@ router.post('/login', (req,res) => {
 router.get('/register', (req, res) => {
     res.render('auth/register');
 });
-router.post('/register', (req,res) => {
-    const {username, email, password, repeatPassword } = req.body;
+router.post('/register', async (req, res) => {
+    const { username, email, password, repeatPassword } = req.body;
 
+    await authService.register(username, email, password, repeatPassword);
 
-
-    console.log(username, email, password, repeatPassword);
-
-    res.redirect('/login');
+    res.redirect('/login'); // redirect to correct page
 });
 
 
