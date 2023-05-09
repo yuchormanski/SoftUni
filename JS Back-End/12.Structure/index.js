@@ -12,8 +12,9 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 app.use(routes);
 
+mongoose.set('strictQuery', false);
  // change to db name
-mongoose.connect('mongodb://localhost:27017/crypto'); //mongodb://127.0.0.1:27017/
+mongoose.connect('mongodb://127.0.0.1:27017/crypto'); //mongodb://localhost:27017/
 
 
 
