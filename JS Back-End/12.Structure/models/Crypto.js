@@ -16,6 +16,8 @@ const cryptoSchema = new mongoose.Schema({
     description: {
         type: String,
         required: true,
+        minLength: 5,
+        maxLength:150
     },
     paymentMethod: {
         type: String,
