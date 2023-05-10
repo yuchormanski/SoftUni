@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 const authService = require('../services/authService.js');
-const {isAuth} = require('../middlewares/authMiddleware.js');
+const { isAuth } = require('../middlewares/authMiddleware.js');
 const cookieParser = require('cookie-parser');
 
 
@@ -13,10 +13,14 @@ router.get('/login', (req, res) => {
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
-    const token = await authService.login(email, password);
+    try {
+        const token = await authService.login(email, password);        
+        res.cookie('auth', token)
+        res.redirect('/'); // redirect to correct page
 
-    res.cookie('auth', token)
-    res.redirect('/'); // redirect to correct page
+    } catch (error) {
+        return res.status(404).render('auth/login', { error }); // действие при грешка
+    }
 });
 
 
@@ -31,9 +35,13 @@ router.get('/register', (req, res) => {
 router.post('/register', async (req, res) => {
     const { username, email, password, repeatPassword } = req.body;
 
-    await authService.register(username, email, password, repeatPassword);
+    try {
+        await authService.register(username, email, password, repeatPassword);
+        res.redirect('/login'); // redirect to correct page
 
-    res.redirect('/login'); // redirect to correct page
+    } catch (error) {
+        return res.status(401).render('auth/register', { error: error.message }); // действие при грешка
+    }
 });
 
 
@@ -41,7 +49,7 @@ router.post('/register', async (req, res) => {
 //LOGOUT
 router.get('/logout', isAuth, (req, res) => {
     res.clearCookie('auth');
-    res.redirect('/');
+    res.redirect('/');  // redirect to correct page
 });
 
 module.exports = router;

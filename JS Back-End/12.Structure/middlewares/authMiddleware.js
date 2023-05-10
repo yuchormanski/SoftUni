@@ -16,9 +16,7 @@ exports.authentication = async (req, res, next) => {
             res.clearCookie('auth');
             res.status(401).render('home/404');
         }
-
     }
-
     next()
 };
 

@@ -3,7 +3,8 @@ const handleBars = require('express-handlebars');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const routes = require('./routes.js');
-const { authentication, isAuth } = require('./middlewares/authMiddleware.js');
+const { authentication } = require('./middlewares/authMiddleware.js');
+
 const app = express();
 app.engine('hbs', handleBars.engine({
     extname: 'hbs',
