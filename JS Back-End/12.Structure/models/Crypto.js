@@ -4,6 +4,7 @@ const cryptoSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+        minLength: 2
     },
     imageUrl: {
         type: String,
@@ -12,16 +13,20 @@ const cryptoSchema = new mongoose.Schema({
     price: {
         type: Number,
         required: true,
+        min: 0
     },
     description: {
         type: String,
         required: true,
-        minLength: 5,
-        maxLength:150
+        minLength: 10,
     },
     paymentMethod: {
         type: String,
         required: true,
+    },
+    ownerId: {
+        type: String,
+        required: true
     }
 });
 

@@ -19,7 +19,6 @@ router.post('/create', async (req, res) => {
     try {
         const ownerId = req.user._id;
         const { name, imageUrl, description, price, paymentMethod } = req.body;
-        // console.log(name, imageUrl, description, price, paymentMethod, ownerId);
 
         await cryptoService.create(name, imageUrl, description, price, paymentMethod, ownerId);
         res.redirect('/catalog');
@@ -32,22 +31,29 @@ router.post('/create', async (req, res) => {
 
 
 router.get('/details/:coinId', async (req, res) => {
+    const coin = await Crypto.findById(req.params.coinId).lean();
 
     try {
-        const coin = await Crypto.findById(req.params.coinId).lean();
         const user = req.user;
+        let isOwner = false;
 
         if (user) {
             const userId = res.locals.user._id;
             const userCoins = await User.findById(userId).populate('cryptos').lean();
+            const bought = userCoins.cryptos.some(coin => coin == req.params.coinId);
+            if(coin.ownerId == userId){
+                isOwner = true;
+            }
 
-            owner = userCoins.cryptos.some(coin => coin == req.params.coinId);
+            return res.render('catalog/details', { coin, user, isOwner, bought });
+        }
 
-            res.render('catalog/details', { coin, user, owner });
-        };
-    } catch (error) {
-       return res.status(404).render('home/404')
+        res.render('catalog/details', { coin });
     }
+    catch (error) {
+        return res.status(404).render('home/404')
+    }
+
 });
 
 module.exports = router;

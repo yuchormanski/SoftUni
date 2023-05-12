@@ -23,14 +23,12 @@ router.post('/edit/:coinId', async (req, res) => {
 
 router.get('/delete/:coinId', async (req, res) => {
     const coin = await Crypto.findById(req.params.coinId);
-    console.log(coin._id);
 
     if (!coin) {
         console.log('not found');
     }
     await Crypto.deleteOne({ _id: coin._id })
     res.redirect('/');
-    res.render('edit/edit', { coin });
 
 });
 
