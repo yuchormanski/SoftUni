@@ -1,0 +1,15 @@
+[X] Use of templates
+[X] Use of a database
+[X] Use of express plugin libraries
+[X] User registration
+ [X]   - cookies and session
+ [X]   - hashing of passwords
+ [X]   -JSON Web Token
+[X] Error handling
+[X] User role guards
+Full CRUD (application specific)
+    - catalog
+    - details
+    - create
+    - edit
+    - delete
