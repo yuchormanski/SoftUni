@@ -57,5 +57,6 @@ function createSession({ _id, email, username }) {
 module.exports = {
     register,
     login,
-    verifyToken
+    verifyToken,
+    JWT_SECRET
 }

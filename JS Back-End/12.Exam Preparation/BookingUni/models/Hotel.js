@@ -15,7 +15,7 @@ const hotelSchema = new Schema({
         unique: true,
         minLength: [3, 'Hotel name should be at least 3 character long'],
     },
-    imageUrl: {
+    imgUrl: {
         type: String,
         required: true,
         validate: {
@@ -27,22 +27,24 @@ const hotelSchema = new Schema({
         type: Number,
         min: [1, 'Rooms number must be between 1 and 100'],
         max: [100, 'Rooms number must be between 1 and 100'],
+        required: true,
+
     },
     bookings: {
-        type:[Types.ObjectId],
+        type: [Types.ObjectId],
         ref: 'User',
         default: [],
     },
     owner: {
-        type:Types.ObjectId,
+        type: Types.ObjectId,
         ref: 'User',
         required: true,
     }
 });
 
-hotelSchema.index({name:1}, {
+hotelSchema.index({ name: 1 }, {
     collation: {
-        locale:'en',
+        locale: 'en',
         strength: 2
     }
 })
