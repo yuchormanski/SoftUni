@@ -1,13 +1,23 @@
 <section id="viewCatalog" class="background-img">
     {{#if hotels}}
     <div class="added-hotels">
-        {{#each hotels}}
-        <a href="/details/{{_id}}" class="added-hotel">
-            <img src="{{imgUrl}}" alt="{{name}}" class="picture-added-hotel">
-            <h3>{{name}}</h3>
-            <span>Free rooms: {{rooms}}</span>
-        </a>
-        {{/each}}
+        {{#if user}}
+            {{#each hotels}}
+                <a href="/details/{{_id}}" class="added-hotel">
+                    <img src="{{imgUrl}}" alt="{{name}}" class="picture-added-hotel">
+                    <h3>{{name}}</h3>
+                    <span>Free rooms: {{rooms}}</span>
+                </a>
+            {{/each}}
+        {{else}}
+            {{#each hotels}}
+                <a href="/auth/login" class="added-hotel">
+                    <img src="{{imgUrl}}" alt="{{name}}" class="picture-added-hotel">
+                    <h3>{{name}}</h3>
+                    <span>Free rooms: {{rooms}}</span>
+                </a>
+            {{/each}}
+        {{/if}}
     </div>
     {{else}}
     <div class="guest">

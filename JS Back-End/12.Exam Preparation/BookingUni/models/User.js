@@ -15,7 +15,13 @@ const userSchema = new Schema({
     hashedPassword: { 
         type: String, 
         required: true 
-    }
+    },
+    bookings: {
+        // type: [Types.ObjectId],
+        type: Array,
+        // ref: 'Hotel',
+        default: [],
+    },
 });
 
 userSchema.index({email:1}, {

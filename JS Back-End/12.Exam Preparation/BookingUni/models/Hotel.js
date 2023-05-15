@@ -30,11 +30,6 @@ const hotelSchema = new Schema({
         required: true,
 
     },
-    bookings: {
-        type: [Types.ObjectId],
-        ref: 'User',
-        default: [],
-    },
     owner: {
         type: Types.ObjectId,
         ref: 'User',
