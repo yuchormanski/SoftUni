@@ -13,8 +13,8 @@
             </div>
             <p><span>Free rooms: {{hotel.rooms}}</span> </p>
             {{#if isOwner}}
-                <a href="/details/edit" class="edit">Edit</a>
-                <a href="/details/delete" class="remove">Delete</a>
+                <a href="/details/edit/{{hotel._id}}" class="edit">Edit</a>
+                <a href="/details/delete/{{hotel._id}}" class="remove">Delete</a>
             {{else}}
             {{#if isBooked}}
                 <p><span class="green">You already have booked a room</span> </p>

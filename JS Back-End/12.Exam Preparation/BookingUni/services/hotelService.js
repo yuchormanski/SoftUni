@@ -1,7 +1,7 @@
 const Hotel = require('../models/Hotel.js');
 const User = require('../models/User.js');
 
-async function create(hotel){
+async function create(hotel) {
     return Hotel.create(hotel);
 }
 
@@ -11,7 +11,7 @@ async function getAll() {
 }
 
 async function getById(id) {
-    const hotel = await Hotel.findById(id).lean();;
+    const hotel = await Hotel.findById(id).lean();
     return hotel;
 }
 
@@ -22,10 +22,21 @@ async function bookHotel(id, hotel) {
     return;
 }
 
-// module.exports = create;
+async function editHotel(id, editedHotel) {
+    const { name, city, rooms, imgUrl } = editedHotel;
+    await Hotel.updateOne({ _id: id }, { $set: { name, city, rooms, imgUrl } })
+    return;
+}
+
+async function deleteHotel(id) {
+    return await Hotel.deleteOne({ _id: id })
+}
+
 module.exports = {
     getAll,
     getById,
     create,
     bookHotel,
+    deleteHotel,
+    editHotel
 }
