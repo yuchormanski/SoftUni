@@ -16,7 +16,7 @@ createController.get('/create', (req, res) => {
 });
 
 createController.post('/create', async (req, res) => {
-console.log(req.user._id);
+
     const hotel = {
         name: req.body.hotel,
         city: req.body.city,

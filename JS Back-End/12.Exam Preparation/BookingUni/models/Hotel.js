@@ -38,7 +38,6 @@ const hotelSchema = new Schema({
     owner: {
         type: Types.ObjectId,
         ref: 'User',
-        required: true,
     }
 });
 

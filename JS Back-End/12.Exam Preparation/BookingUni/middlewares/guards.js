@@ -18,6 +18,8 @@ function isGuest() {
     };
 }
 
+function isOwner( )
+
 module.exports = {
     hasUser,
     isGuest,

@@ -10,7 +10,7 @@ async function getAll() {
 }
 
 async function getById(id) {
-    const hotel = await Hotel.findById(id);
+    const hotel = await Hotel.findById(id).populate('bookings').lean();;
     return hotel;
 }
 
