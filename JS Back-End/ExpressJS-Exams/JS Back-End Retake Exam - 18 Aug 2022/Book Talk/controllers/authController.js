@@ -1,42 +1,46 @@
 const { register, login } = require('../services/userService.js');
 const { parseError } = require('../util/parser.js');
+const validator = require('validator');
+
 
 const authController = require('express').Router();
 
 
 //REGISTER
 authController.get('/register', (req, res) => {
-    //TODO: replace with actual view by assignment 
     res.render('register', {
         title: 'Register page' // if needed
     });
 });
 
 authController.post('/register', async (req, res) => {
-    try{
-        if(req.body.username == '' || req.body.password == ''){
+    try {
+        if (validator.isEmail(req.body.email) == false) {
+            throw new Error('Invalid email!');
+        }
+        if (req.body.username == '' || req.body.password == '') {
             throw new Error('All fields are required!');
         };
-        //TODO: change to assignment requirements for repass name
-        if(req.body.password !== req.body.repass){
+        if (req.body.password.length < 3) {
+            throw new Error('Passwords should be at least 3 characters long!');
+        }
+        if (req.body.password !== req.body.repass) {
             throw new Error('Passwords don\'t match!');
         }
 
-        const token = await register(req.body.username, req.body.password);
-        //TODO: check assignment to see register creates session
+        const token = await register(req.body.email, req.body.username, req.body.password);
         res.cookie('token', token);
 
-        //TODO: check assignment for correct redirect location
-        res.redirect('/'); 
+        res.redirect('/');
     }
-    catch (error){
+    catch (error) {
         const errors = parseError(error);
-
-        //TODO: add error display to actual template from assignment
+        console.log(errors);
         res.render('register', {
             title: 'Register Page',
             errors,
             body: {
+                email: req.body.email,
                 username: req.body.username
             }
         });
@@ -45,8 +49,7 @@ authController.post('/register', async (req, res) => {
 });
 
 //LOGIN
-authController.get('/login', (req,res)=>{
-    //TODO: replace with actual view by assignment 
+authController.get('/login', (req, res) => {
     res.render('login', {
         title: 'Login page',
     })
@@ -54,25 +57,25 @@ authController.get('/login', (req,res)=>{
 
 authController.post('/login', async (req, res) => {
     try {
-        const token = await login(req.body.username, req.body.password);
+        const token = await login(req.body.email, req.body.password);
         res.cookie('token', token);
 
-        //TODO: check assignment for correct redirect location
         res.redirect('/');
     } catch (error) {
         const errors = parseError(error);
-        
-        //TODO: add error display to actual template from assignment
+        console.log(errors);
         res.render('login', {
             title: 'Login Page',
             errors,
             body: {
-                username: req.body.username
+                email: req.body.email
             }
         });
     }
 });
 
+
+//LOGOUT
 authController.get('/logout', (req, res) => {
     res.clearCookie('token');
     res.redirect('/');

@@ -73,8 +73,11 @@ authController.post('/login', async (req, res) => {
     }
 });
 
+
+//LOGOUT
 authController.get('/logout', (req, res) => {
     res.clearCookie('token');
+    //TODO: check assignment for correct redirect location
     res.redirect('/');
 });
 

@@ -1,7 +1,6 @@
 const homeController = require('express').Router();
+const catalogController = require('express').Router();
 
-
-//TODO: replace with real controller by assignment
 homeController.get('/', (req, res) => {
     res.render('home', {
         title: 'Home page',  //if needed
@@ -9,4 +8,14 @@ homeController.get('/', (req, res) => {
     });
 });
 
-module.exports = homeController;
+catalogController.get('/', (req, res) => {
+    res.render('catalog', {
+        title: 'Catalog page',  //if needed
+        user: req.user       //if needed
+    });
+});
+
+module.exports = {
+    homeController,
+    catalogController
+};
