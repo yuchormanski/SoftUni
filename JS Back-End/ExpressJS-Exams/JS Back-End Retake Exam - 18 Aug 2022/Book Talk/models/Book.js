@@ -3,7 +3,8 @@ const { Schema, model, Types } = require('mongoose');
 const URL_PATTERN = /^https?:\/\/.+$/i;
 
 const bookSchema = new Schema({
-    title: {
+    
+    reviewTitle: {
         type: String,
         required: true,
         minLength: [2, 'The Title should be at least 2 characters']

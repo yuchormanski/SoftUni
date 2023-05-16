@@ -1,51 +1,14 @@
 <section class="catalog" id="catalog">
     <h2>Book Reviews</h2>
     <div class="container">
+        {{#if catalog}}
         <!--If there are book reviews-->
-        <div class="book">
-            <div class="info-container">
-                <img src="/static/image/Game-of-thrones.jpg">
-                <div class="info">
-                    <h2>A Game Of Thrones</h2>
-                </div>
-            </div>
-            <div class="details-btn">
-                <a href="#" class="details">Details</a>
-            </div>
-        </div>
-        <div class="book">
-            <div class="info-container"><img src="/static/image/The-gunslinger.jpg">
-                <div class="info">
-                    <h2>The Gunslinger </h2>
-                </div>
-            </div>
-            <div class="details-btn">
-                <a href="#" class="details">Details</a>
-            </div>
-        </div>
-        <div class="book">
-            <div class="info-container">
-                <img src="/static/image/Unsettled-ground.jpeg">
-                <div class="info">
-                    <h2>Unsettled Ground</h2>
-                </div>
-            </div>
-            <div class="details-btn">
-                <a href="#" class="details">Details</a>
-            </div>
-        </div>
-        <div class="book">
-            <div class="info-container">
-                <img src="/static/image/Beautiful-world.jpeg">
-                <div class="info">
-                    <h2>Beautiful World, Where Are You</h2>
-                </div>
-            </div>
-            <div class="details-btn">
-                <a href="#" class="details">Details</a>
-            </div>
-        </div>
+            {{#each catalog}}
+                {{> catalogBook}}
+            {{/each}}
         <!--If there are no book reviews-->
+        {{else}}
         <h2 class="no-record">There are no book reviews found yet...</h2>
+        {{/if}}
     </div>
 </section>
