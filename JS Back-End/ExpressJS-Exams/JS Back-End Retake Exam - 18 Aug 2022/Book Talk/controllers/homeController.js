@@ -21,7 +21,12 @@ catalogController.get('/', async (req, res) => {
 
 catalogController.get('/:_id/details', async (req, res) => {
     const book = await getOneById(req.params._id);
-    console.log(book);
+
+    if (book.owner == req.user._id) {
+        book.isOwner = true;
+    }
+
+console.log(book);
 
     res.render('details', {
         title: 'Details page',
