@@ -14,7 +14,7 @@ createController.post('/add-review', async (req,res) => {
         author: req.body.author,
         genre: req.body.genre,
         stars: req.body.stars,
-        imageUrl: req.body.auimageUrlthor,
+        imageUrl: req.body.imageUrl,
         review: req.body.review,
 
     }
