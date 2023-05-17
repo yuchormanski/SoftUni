@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/site.css">
+    <title>Browse Auctions</title>
+</head>
+
+<body>
+
+    <div id="page-content">
+
+        <header>
+            <a href="/" class="title-logo">
+                <img src="/static/assets/logo.png">
+                <span>Auction House</span>
+            </a>
+            <nav class="main-nav nav-mid">
+                <ul>
+                    <li>
+                        <a href="#">Browse</a>
+                    </li>
+                    <!-- User actions -->
+                    <li class="user">
+                        <a href="#">Publish</a>
+                    </li>
+
+                    <!-- Bonus action -->
+                    <!--
+                    <li class="user">
+                        <a href="#">Closed Auctions</a>
+                    </li>
+                    -->
+
+                    <li class="user">
+                        <a href="#">Logout</a>
+                    </li>
+                    <!-- Guest actions -->
+                    <li class="guest">
+                        <a href="#">Register</a>
+                    </li>
+                    <li class="guest">
+                        <a href="#">Login</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+
+            <!-- In case of error, display the following div-->
+            <!--
+
+            <div class="error-box">
+                <p>Show each error in a separate paragraph</p>
+            </div>
+
+            -->
+
+            <!-- Browse Page -->
+            <section id="catalog-section" class="spaced">
+
+                <h1 class="item">Auctions</h1>
+
+                <!-- List of available auctions -->
+                <ul class="catalog cards">
+                    <li class="item">
+                        <header class="pad-med">
+                            <h2>Fishing Boat</h2>
+                        </header>
+
+                        <div class="align-center">
+                            <img class="img-thumb" src="/static/assets/boat.jpg">
+                        </div>
+
+                        <footer class="align-center pad-med">
+                            <p>Current price: <strong>$5000</strong></p>
+                            <a class="action" href="#">See details</a>
+                        </footer>
+                    </li>
+                    <li class="item">
+                        <header class="pad-med">
+                            <h2>Wardrobe</h2>
+                        </header>
+
+                        <div class="align-center">
+                            <img class="img-thumb" src="/static/assets/wardrobe.jpg">
+                        </div>
+
+                        <footer class="align-center pad-med">
+                            <p>Current price: <strong>$150</strong></p>
+                            <a class="action" href="#">See details</a>
+                        </footer>
+                    </li>
+                    <li class="item">
+                        <header class="pad-med">
+                            <h2>Record Player</h2>
+                        </header>
+
+                        <div class="align-center">
+                            <img class="img-thumb" src="/static/assets/player.jpg">
+                        </div>
+
+                        <footer class="align-center pad-med">
+                            <p>Current price: <strong>$400</strong></p>
+                            <a class="action" href="#">See details</a>
+                        </footer>
+                    </li>
+                </ul>
+
+                <!-- If there are no auctions to display -->
+                <div class="item pad-large align-center">
+                    <p>Nothing has been listed yet. Be the first!</p>
+                    <div>
+                        <a class="action" href="#">Publish Auction</a>
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+
+        <footer>SoftUni &copy; 2022 | Design by Viktor Kostadinov</footer>
+    </div>
+
+</body>
+
+</html>
