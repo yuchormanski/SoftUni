@@ -2,3 +2,16 @@
 
 const EMAIL_PATTERN = /^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]+$/i;
 EMAIL_PATTERN.test(email)  -- boolean
+
+require npm validator
+validator.isEmail(req.body.email) -- boolean
+
+
+//image model
+const URL_PATTERN = /^https?:\/\/.+$/i;
+        validate: {
+            validator(value) {
+                return IMAGE_PATTERN.test(value);
+            },
+            message: 'Image must be of type JPG, JPEG or PNG'
+        }
