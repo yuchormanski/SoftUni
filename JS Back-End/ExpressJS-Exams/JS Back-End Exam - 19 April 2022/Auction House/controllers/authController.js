@@ -1,3 +1,4 @@
+const { isGuest } = require('../middlewares/guards.js');
 const { register, login } = require('../services/userService.js');
 const { parseError } = require('../util/parser.js');
 
@@ -5,13 +6,13 @@ const authController = require('express').Router();
 
 const EMAIL_PATTERN = /^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]+$/i;
 //REGISTER
-authController.get('/register', (req, res) => {
+authController.get('/register', isGuest(), (req, res) => {
     res.render('register', {
         title: 'Register'
     });
 });
 
-authController.post('/register', async (req, res) => {
+authController.post('/register', isGuest(), async (req, res) => {
     try {
         if (Object.values(req.body).some(v => v == '')) {
             throw new Error('All fields are required!');
@@ -51,13 +52,13 @@ authController.post('/register', async (req, res) => {
 });
 
 //LOGIN
-authController.get('/login', (req, res) => {
+authController.get('/login', isGuest(), (req, res) => {
     res.render('login', {
         title: 'Login',
     })
 });
 
-authController.post('/login', async (req, res) => {
+authController.post('/login', isGuest(), async (req, res) => {
     try {
         const token = await login(req.body.email, req.body.password);
         res.cookie('token', token);
