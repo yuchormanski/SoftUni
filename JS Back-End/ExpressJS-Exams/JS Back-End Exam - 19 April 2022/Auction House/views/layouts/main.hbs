@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/site.css">
-    <title>Auction House</title>
+    <title>{{title}}</title>
 </head>
 
 <body>
@@ -20,8 +20,9 @@
             <nav class="main-nav nav-mid">
                 <ul>
                     <li>
-                        <a href="#">Browse</a>
+                        <a href="/catalog">Browse</a>
                     </li>
+                    {{#if user}}
                     <!-- User actions -->
                     <li class="user">
                         <a href="#">Publish</a>
@@ -38,12 +39,14 @@
                         <a href="/auth/logout">Logout</a>
                     </li>
                     <!-- Guest actions -->
+                    {{else}}
                     <li class="guest">
                         <a href="/auth/register">Register</a>
                     </li>
                     <li class="guest">
                         <a href="/auth/login">Login</a>
                     </li>
+                    {{/if}}
                 </ul>
             </nav>
         </header>
@@ -51,13 +54,16 @@
         <main>
 
             <!-- In case of error, display the following div-->
-            <!--
 
+            {{#if errors}}
             <div class="error-box">
-                <p>Show each error in a separate paragraph</p>
+                {{#each errors}}
+                <p>{{this}}</p>
+                {{/each}}
             </div>
+            {{/if}}
 
-            -->
+
 
             <!-- Home Page -->
             {{{body}}}

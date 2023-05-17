@@ -1,0 +1,4 @@
+//email
+
+const EMAIL_PATTERN = /^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]+$/i;
+EMAIL_PATTERN.test(email)  -- boolean

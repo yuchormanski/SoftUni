@@ -1,4 +1,3 @@
-const notFoundController = require("../controllers/404Controller.js");
 const authController = require("../controllers/authController.js");
 const homeController = require("../controllers/homeController.js")
 
@@ -7,5 +6,10 @@ module.exports = (app) => {
     app.use('/auth', authController);
 
 
-    app.use('*', notFoundController);
+    //Always must be last
+    app.use('*', (req, res) => {
+        res.render('404', {
+            title: "Page Not Found!"
+        })
+    });
 }
