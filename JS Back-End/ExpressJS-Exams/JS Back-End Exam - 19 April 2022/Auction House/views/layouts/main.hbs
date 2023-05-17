@@ -17,6 +17,8 @@
                 <img src="/static/assets/logo.png">
                 <span>Auction House</span>
             </a>
+            {{!-- remove --}}
+            <i>{{user.email}}</i>
             <nav class="main-nav nav-mid">
                 <ul>
                     <li>
@@ -25,7 +27,7 @@
                     {{#if user}}
                     <!-- User actions -->
                     <li class="user">
-                        <a href="#">Publish</a>
+                        <a href="/action/create">Publish</a>
                     </li>
 
                     <!-- Bonus action -->

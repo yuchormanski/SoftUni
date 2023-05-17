@@ -42,8 +42,8 @@ function verifyToken(token) {
     return jwt.verify(token, JWT_SECRET);
 }
 
-function createSession({ _id, email }) {
-    const payload = { _id, email };
+function createSession({ _id, email, firstName, lastName }) {
+    const payload = { _id, email, firstName, lastName };
     return jwt.sign(payload, JWT_SECRET);
 }
 
