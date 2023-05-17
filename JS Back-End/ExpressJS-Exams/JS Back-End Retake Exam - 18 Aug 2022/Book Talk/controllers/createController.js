@@ -25,7 +25,7 @@ createController.post('/add-review', async (req, res) => {
         await createReview(bookReview);
         res.redirect('/catalog');
     } catch (error) {
-        res.redirect('/add-review', {
+        res.render('create', {
             title: 'Add review',
             errors: parseError(error),
             user: req.user,
