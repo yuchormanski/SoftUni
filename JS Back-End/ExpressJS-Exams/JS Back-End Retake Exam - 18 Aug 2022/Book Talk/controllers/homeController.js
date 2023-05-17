@@ -1,4 +1,6 @@
-const { getAll, getOneById, wishBook, deleteBook, getAllWishing } = require('../services/bookService.js');
+const { hasUser } = require('../middlewares/guards.js');
+const Book = require('../models/Book.js');
+const { getAll, getOneById, wishBook, deleteBook, getAllWishing, editBook } = require('../services/bookService.js');
 const { parseError } = require('../util/parser.js');
 
 const homeController = require('express').Router();
@@ -52,7 +54,7 @@ catalogController.get('/:_id/details', async (req, res) => {
     }
 });
 
-catalogController.get('/:_id/wish', async (req, res) => {
+catalogController.get('/:_id/wish', hasUser(), async (req, res) => {
     const book = await wishBook(req.params._id, req.user._id);
     try {
         res.redirect(`/catalog/${req.params._id}/details`);
@@ -64,7 +66,7 @@ catalogController.get('/:_id/wish', async (req, res) => {
     }
 });
 
-catalogController.get('/:_id/delete', async (req, res) => {
+catalogController.get('/:_id/delete', hasUser(), async (req, res) => {
     const book = await getOneById(req.params._id);
 
     try {
@@ -84,7 +86,68 @@ catalogController.get('/:_id/delete', async (req, res) => {
     }
 });
 
-catalogController.get('/profile', async (req, res) => {
+catalogController.get('/:_id/edit', hasUser(), async (req, res) => {
+    const bookId = req.params._id;
+    const book = await getOneById(bookId);
+
+    try {
+        if (book.owner != req.user._id) {
+            throw new Error('You are not the owner in this book')
+        }
+
+        res.render('edit', {
+            title: 'Edit Book Page',
+            user: req.user,
+            book
+        });
+
+    } catch (error) {
+        res.render('404', {
+            title: 'Error page',
+            errors: parseError(error)
+
+        });
+    }
+});
+
+catalogController.post('/:_id/edit', hasUser(), async (req, res) => {
+    const bookId = req.params._id;
+    const book = await Book.findById(bookId).lean();
+
+
+    const edited = {
+        reviewTitle: req.body.reviewTitle,
+        author: req.body.author,
+        imageUrl: req.body.imageUrl,
+        review: req.body.review,
+        genre: req.body.genre,
+        stars: Number(req.body.stars)
+    };
+
+
+    try {
+        if(book.owner != req.user._id){
+            res.clearCookie('token');
+            res.redirect('/auth/login')
+        }
+        if (Object.values(edited).some(x => x == '')) {
+            throw new Error('All fields are required!')
+        }
+
+        await editBook(bookId, edited);
+        res.redirect(`/catalog/${bookId}/details`);
+
+    } catch (error) {
+        res.render('edit', {
+            title: 'Edit Book Page',
+            errors: parseError(error),
+            user: req.user,
+            book
+        });
+    }
+});
+
+catalogController.get('/profile', hasUser(), async (req, res) => {
     const userWishes = await getAllWishing(req.user._id);
     try {
 

@@ -1,0 +1,20 @@
+<section class="edit-form-container">
+    {{#with book}}
+    <form method="post">
+        <h3>Edit Book Review</h3>
+        <label>Title</label>
+        <input type="text" name="reviewTitle" class="box" value="{{reviewTitle}}" id="">
+        <label>Author</label>
+        <input type="text" name="author" class="box" value="{{author}}" id="">
+        <label>Genre</label>
+        <input type="text" name="genre" class="box" value="{{genre}}" id="">
+        <label>Stars</label>
+        <input type="number" name="stars" class="box" value="{{stars}}" id="">
+        <label>Image</label>
+        <input type="text" name="imageUrl" class="box" value="{{imageUrl}}" id="">
+        <label>Review</label>
+        <textarea class="box" name="review">{{review}}</textarea>
+        <input type="submit" value="Edit" class="btn">
+    </form>
+    {{/with}}
+</section>

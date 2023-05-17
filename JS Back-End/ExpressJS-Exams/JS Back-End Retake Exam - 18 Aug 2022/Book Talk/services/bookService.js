@@ -27,6 +27,20 @@ async function deleteBook(id) {
     return await Book.findByIdAndDelete(id);
 }
 
+async function editBook(bookId, edited) {
+    const book = await Book.findById(bookId);
+
+    book.reviewTitle = edited.reviewTitle;
+    book.author = edited.author;
+    book.imageUrl = edited.imageUrl;
+    book.review = edited.review;
+    book.genre = edited.genre;
+    book.stars = edited.stars
+
+    await book.save();
+
+}
+
 
 module.exports = {
     getAll,
@@ -35,5 +49,5 @@ module.exports = {
     createReview,
     wishBook,
     deleteBook,
-
+    editBook
 }
