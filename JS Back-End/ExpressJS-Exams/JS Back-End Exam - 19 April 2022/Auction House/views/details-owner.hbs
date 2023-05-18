@@ -27,24 +27,26 @@
                     </div>
 
                     <div>
+                    {{#if element.bidderName}}
                         <!-- If there is a bidder -->
-                        Bid by <strong>John Maclane</strong>
+                        Bid by <strong>{{element.bidderName}}</strong>
 
-                        <!-- # Bonus: If there is a bidder --><!--
+                        <!-- # Bonus: If there is a bidder -->
 
-                                    <a class="action pad-med cta" href="#">Close Auction</a>
+                                    <a class="action pad-med cta" href="/closed/{{element._id}}">Close Auction</a>
                                     
-                                    # End of Bonus -->
-
+                        <!-- # End of Bonus -->
+                        {{else}}
                         <!-- If there are no bids -->
                         No bids
+                    {{/if}}
                     </div>
                 </div>
 
             </div>
         </div>
 
-        <footer>Listed by {{user.firstName}} {{user.lastName}}</footer>
+        <footer>Listed by {{element.authorName}}</footer>
     </div>
 
 </section>

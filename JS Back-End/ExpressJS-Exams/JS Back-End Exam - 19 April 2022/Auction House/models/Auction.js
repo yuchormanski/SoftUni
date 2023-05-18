@@ -36,9 +36,14 @@ const auctionSchema = new Schema({
         ref: 'User'
     },
     bidder: {
-        type: [Types.ObjectId],
+        type: Types.ObjectId,
         ref: 'User'
+    },
+    isClosed: {
+        type: Boolean,
+        default: false,
     }
+
 });
 
 const Auction = model('Auction', auctionSchema);

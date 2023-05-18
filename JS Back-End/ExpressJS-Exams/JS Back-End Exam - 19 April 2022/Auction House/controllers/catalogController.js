@@ -1,12 +1,12 @@
-const { getAll, getOne } = require('../services/auctionService.js');
+const { getAll, getOne, createBid, getName } = require('../services/auctionService.js');
 const { parseError } = require('../util/parser.js');
 
 const catalogController = require('express').Router();
 
 catalogController.get('/', async (req, res) => {
 
-    const catalog = await getAll();
-
+    const catalog = (await getAll()).filter(x => x.isClosed === false);
+    
     try {
         res.render('browse', {
             title: 'Browse Auction',
@@ -37,6 +37,13 @@ catalogController.get('/details/:id', async (req, res) => {
         if (req.user && req.user._id == element.author) {
             target = 'details-owner'
         }
+        if (element.bidder == req.user._id) {
+            element.isBidder = true;
+        }
+        if (element.bidder) {
+            element.bidderName = await getName(element.bidder);
+        }
+        element.authorName = await getName(element.author);
 
         const options = {
             element,
@@ -52,6 +59,43 @@ catalogController.get('/details/:id', async (req, res) => {
         })
     }
 });
+//END DETAILS
 
+
+//BID
+catalogController.post('/details/:id', async (req, res) => {
+    const auctionId = req.params.id;
+    const element = await getOne(auctionId);
+    const userId = req.user._id;
+    const currentBid = Number(req.body.bid);
+
+    try {
+        if (req.user._id == element.author) {
+            throw new Error('Can\'t bid on your own auction!')
+        }
+        if (req.user._id == element.bidder) {
+            throw new Error('You are currently the highest bidder for this auction!')
+        }
+
+        if (element.price >= currentBid) {
+            throw new Error('The bid you place should be bigger than the auction price!')
+        }
+
+
+        const doBid = await createBid(auctionId, userId, currentBid);
+
+        res.redirect(`/catalog/details/${auctionId}`);
+
+    } catch (error) {
+        res.render('details', {
+            errors: parseError(error),
+            title: 'Details',
+            user: req.user,
+            element
+        });
+    }
+
+});
+//END BID
 
 module.exports = catalogController;

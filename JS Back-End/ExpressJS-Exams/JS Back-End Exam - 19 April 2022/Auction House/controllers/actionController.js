@@ -1,7 +1,7 @@
 const Auction = require('../models/Auction.js');
 const { createAuction, deleteEntry, getOne, editAuction } = require('../services/auctionService.js');
 const { parseError } = require('../util/parser.js');
-const {levels, categories} = require('../util/levels.js');
+const { levels, categories } = require('../util/levels.js');
 
 const actionController = require('express').Router();
 
@@ -54,10 +54,12 @@ actionController.get('/edit/:id', async (req, res) => {
     const categoryLevels = levels(item.category);
 
     try {
-        if (item.author != req.user._id) {
-            throw new Error('You are not the owner of this item!')
+        if (req.user && item.author != req.user._id) {
+            // throw new Error('You are not the owner of this item!')
+            res.redirect('/');
         }
-        if (item.bidder.length > 0) {
+
+        if (item.bidder) {
             item.hasBids = true;
         }
 
@@ -124,8 +126,9 @@ actionController.get('/delete/:id', async (req, res) => {
     const item = await getOne(id);
 
     try {
-        if (item.author != req.user._id) {
-            throw new Error('You are not the owner of this item!')
+        if (req.user && item.author != req.user._id) {
+            // throw new Error('You are not the owner of this item!')
+            res.redirect('/');
         }
         await deleteEntry(id);
         res.redirect('/catalog');
@@ -138,7 +141,6 @@ actionController.get('/delete/:id', async (req, res) => {
     }
 });
 //END DELETE
-
 
 
 module.exports = actionController;
