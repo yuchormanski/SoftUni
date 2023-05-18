@@ -1,23 +1,4 @@
-//email
-
-const EMAIL_PATTERN = /^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]+$/i;
-EMAIL_PATTERN.test(email)  -- boolean
-
-require npm validator
-validator.isEmail(req.body.email) -- boolean
-
-
-//image model
-const IMAGE_PATTERN = /^https?:\/\/.+(.png|.jpg|.jpeg)$/i;
-        validate: {
-            validator(value) {
-                return IMAGE_PATTERN.test(value);
-            },
-            message: 'Image must be of type JPG, JPEG or PNG'
-        }
-
-
-        function levels(currentLevel) {
+function levels(currentLevel) {
     const difficultyLevels = [
         { key: 'estate', label: 'Real Estate', selected: false },
         { key: 'vehicles', label: 'Vehicles', selected: false },
@@ -28,3 +9,15 @@ const IMAGE_PATTERN = /^https?:\/\/.+(.png|.jpg|.jpeg)$/i;
     const result = difficultyLevels.map(x => x.label == currentLevel ? { ...x, selected: true } : x);
     return result;
 }
+
+function categories(cat) {
+    let category;
+    if (cat == 'estate') { category = 'Real Estate' }
+    else if (cat == 'vehicles') { category = 'Vehiclese' }
+    else if (cat == 'furniture') { category = 'Furniture' }
+    else if (cat == 'electronics') { category = 'Electronics' }
+    else if (cat == 'other') { category = 'Other' }
+    return category;
+}
+
+module.exports = { levels, categories };

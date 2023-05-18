@@ -24,9 +24,9 @@ catalogController.get('/', async (req, res) => {
         })
     }
 });
-//end catalog
+//END CATALOG
 
-//details
+//DETAILS
 catalogController.get('/details/:id', async (req, res) => {
     const id = req.params.id;
     const element = await getOne(id);
