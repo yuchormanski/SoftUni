@@ -1,9 +1,30 @@
-<h1>Login Page</h1>
+<section id="login-page">
 
+    <article class="login-page-container">
 
+        <form action="/auth/login" method="post" class="login-page-form">
+            <h2>Login</h2>
+            <p>Welcome, see the new ads!</p>
 
-<form action="/auth/login" method="POST">
-    <label for="username">Username: <input type="text" name="username" value="{{body.username}}"></label>
-    <label for="password">Password: <input type="password" name="password"></label>
-    <button>Send</button>
-</form>
+            <label for="email">Email:</label>
+            <input type="text" id="email" placeholder="petar@abv.bg" name="email">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="******" name="password">
+
+            <article class="login-page-button">
+                <button class="btn-login">Login</button>
+            </article>
+
+            <article class="no-account">
+                <p>Don't have an account? <a href="/auth/register">Sign up</a></p>
+            </article>
+        </form>
+
+        <article class="login-page-image">
+            <!-- Do not forget to change the path to the image -->
+            <img src="/static/img/job.png" alt="job-image">
+        </article>
+    </article>
+
+</section>
