@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Home Page</title>
+    <title>{{title}}</title>
 
     <!-- Do not forget to change the path to the css file -->
     <link rel="stylesheet" href="/static/css/style.css">
@@ -41,7 +41,7 @@
                     {{#if user}}
                     <!-- Logged users -->
                     <li class="header-nav-list-item">
-                        <a href="#" class="header-nav-list-item-link">Create Ad</a>
+                        <a href="/ad/create" class="header-nav-list-item-link">Create Ad</a>
                     </li>
                     <li class="header-nav-list-item">
                         <a href="#" class="header-nav-list-item-link">Search</a>

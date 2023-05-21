@@ -1,12 +1,14 @@
 const homeController = require("../controllers/homeController.js");
 const authController = require("../controllers/authController.js");
-const addsController = require("../controllers/addsController.js");
+const adsController = require("../controllers/adsController.js");
+const { hasUser } = require("../middlewares/guards.js");
 
 
 module.exports = (app) => {
     app.use('/', homeController);
     app.use('/auth', authController);
-    app.use('/all-adds', addsController);
+    app.use('/all-adds', adsController);
+    app.use('/ad', hasUser(), adsController);
 
 
     //Always must be last
