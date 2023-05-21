@@ -2,7 +2,7 @@
     <article class="all-ads-title">
         <h1>All ads</h1>
     </article>
-
+{{#if allAdds}}
     <!--If there are job ads in the database, show each one-->
     <article class="all-ads-card">
         <article class="all-ads-card-image">
@@ -47,11 +47,11 @@
             <a href="#" class="btn-details">Details</a>
         </article>
     </article>
-
+{{else}}
     <!--If there are still no job ads in the database display:-->
     <!--<article class="not-available-ads">
                     <h1>No ads created yet.</h1>
                     <h2>Join and find your perfect workers.</h2>
                 </article>-->
-
+{{/if}}
 </section>
