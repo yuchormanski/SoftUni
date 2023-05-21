@@ -26,7 +26,7 @@ authController.post('/register', async (req, res) => {
             throw new Error('Passwords don\'t match!');
         }
 
-        const token = await register(req.body.username, req.body.password);
+        const token = await register(req.body.email, req.body.password, req.body.description);
         res.cookie('token', token);
 
         res.redirect('/');

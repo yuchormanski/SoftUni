@@ -6,7 +6,7 @@ const JWT_SECRET = '89ty54sf9e0rsdfbfs0jkj_jobAdds'
 
 
 //REGISTER
-async function register(email, password) {
+async function register(email, password, description) {
     const existing = await User.findOne({ email }).collation({ locale: 'en', strength: 2 });
     if (existing) {
         throw new Error('Email is already taken!');
@@ -15,7 +15,8 @@ async function register(email, password) {
 
     const user = await User.create({
         email,
-        hashedPassword
+        hashedPassword,
+        description
     });
 
     return createSession(user);
@@ -44,7 +45,8 @@ function verifyToken(token) {
 function createSession({ _id, email, description }) {
     const payload = {
         _id,
-        email, description
+        email, 
+        description
     };
     return jwt.sign(payload, JWT_SECRET);
 }
