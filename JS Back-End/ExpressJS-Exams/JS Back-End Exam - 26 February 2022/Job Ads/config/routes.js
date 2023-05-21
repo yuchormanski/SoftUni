@@ -7,7 +7,7 @@ const { hasUser } = require("../middlewares/guards.js");
 module.exports = (app) => {
     app.use('/', homeController);
     app.use('/auth', authController);
-    app.use('/all-adds', adsController);
+    app.use('/all-ads', adsController);
     app.use('/ad', hasUser(), adsController);
 
 
