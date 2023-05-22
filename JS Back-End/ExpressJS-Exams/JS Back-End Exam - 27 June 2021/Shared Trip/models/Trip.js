@@ -64,4 +64,8 @@ const tripSchema = new Schema({
         type: [Types.ObjectId],
         ref: 'User'
     }
-})
+});
+
+const Trip = model('Trip', tripSchema);
+
+module.exports = Trip;
