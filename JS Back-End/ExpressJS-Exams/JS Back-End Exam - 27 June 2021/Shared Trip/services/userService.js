@@ -2,40 +2,38 @@ const bcrypt = require('bcrypt');
 const User = require('../models/User.js');
 const jwt = require('jsonwebtoken');
 
-const JWT_SECRET = '89ty54sf9e0rsdfbfs0jkj'
+const JWT_SECRET = '89ty5sdhsd43w44sf9e0rsdfbfs0jkj'
 
 
 //REGISTER
-//TODO: check login data - username or email or ...
-async function register(username, password) {
-    const existing = await User.findOne({ username }).collation({ locale: 'en', strength: 2 });
+async function register(email, password, gender) {
+    const existing = await User.findOne({ email }).collation({ locale: 'en', strength: 2 });
     if (existing) {
-        throw new Error('Username is already taken!');//TODO: set correct answer
+        throw new Error('Email is already taken!');
     }
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await User.create({
-        username,
-        hashedPassword
+        email,
+        hashedPassword,
+        gender
     });
 
-    //TODO:  see assignment if registration creates user session
     return createSession(user);
 }
 
 
 //LOGIN
 
-//TODO: check login data - username or email or ...
-async function login(username, password) {
-    const user = await User.findOne({ username }).collation({ locale: 'en', strength: 2 });
+async function login(email, password) {
+    const user = await User.findOne({ email }).collation({ locale: 'en', strength: 2 });
     if(!user){
-        throw new Error('Incorrect username or password!'); //TODO: set correct answer
+        throw new Error('Incorrect email or password!'); 
     }
 
     const hasMatch = await bcrypt.compare(password, user.hashedPassword);
     if(hasMatch == false){
-        throw new Error('Incorrect username or password!'); //TODO: set correct answer
+        throw new Error('Incorrect email or password!'); 
     }
     return createSession(user);
 }
@@ -44,11 +42,11 @@ function verifyToken(token) {
     return jwt.verify(token, JWT_SECRET);
 }
 
-//TODO: check values
-function createSession({ _id, username }) {
+function createSession({ _id, email, gender }) {
     const payload = {
         _id,
-        username
+        email,
+        gender
     };
     return jwt.sign(payload, JWT_SECRET);
 }

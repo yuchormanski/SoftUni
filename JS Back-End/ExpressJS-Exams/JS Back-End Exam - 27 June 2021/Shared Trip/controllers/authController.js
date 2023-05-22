@@ -6,38 +6,39 @@ const authController = require('express').Router();
 
 //REGISTER
 authController.get('/register', (req, res) => {
-    //TODO: replace with actual view by assignment 
     res.render('register', {
-        title: 'Register page' // if needed
+        title: 'Register page'
     });
 });
 
 authController.post('/register', async (req, res) => {
-    try{
-        if(req.body.username == '' || req.body.password == ''){
+    const formData = {
+        email: req.body.email,
+        password: req.body.password,
+        repass: req.body.repass,
+        gender: req.body.gender
+    }
+    try {
+        if (Object.values(formData).some(v => v == '')) {
             throw new Error('All fields are required!');
         };
-        //TODO: change to assignment requirements for repass name
-        if(req.body.password !== req.body.repass){
+        if (formData.password !== formData.repass) {
             throw new Error('Passwords don\'t match!');
         }
 
-        const token = await register(req.body.username, req.body.password);
-        //TODO: check assignment to see register creates session
+        const token = await register(formData.email, formData.password, formData.gender);
         res.cookie('token', token);
-
-        //TODO: check assignment for correct redirect location
         res.redirect('/'); 
     }
-    catch (error){
+    catch (error) {
         const errors = parseError(error);
 
-        //TODO: add error display to actual template from assignment
         res.render('register', {
             title: 'Register Page',
             errors,
             body: {
-                username: req.body.username
+                email: formData.email,
+
             }
         });
     }
@@ -45,29 +46,33 @@ authController.post('/register', async (req, res) => {
 });
 
 //LOGIN
-authController.get('/login', (req,res)=>{
-    //TODO: replace with actual view by assignment 
+authController.get('/login', (req, res) => {
     res.render('login', {
-        title: 'Login page',
+        title: 'Login',
     })
 });
 
 authController.post('/login', async (req, res) => {
+    const formData = {
+        email: req.body.email,
+        password: req.body.password,
+    }
     try {
-        const token = await login(req.body.username, req.body.password);
+        if (Object.values(formData).some(v => v == '')) {
+            throw new Error('All fields are required!');
+        };
+        const token = await login(formData.email, formData.password);
         res.cookie('token', token);
 
-        //TODO: check assignment for correct redirect location
         res.redirect('/');
     } catch (error) {
         const errors = parseError(error);
-        
-        //TODO: add error display to actual template from assignment
+
         res.render('login', {
-            title: 'Login Page',
+            title: 'Login',
             errors,
             body: {
-                username: req.body.username
+                email: formData.email
             }
         });
     }
@@ -77,7 +82,6 @@ authController.post('/login', async (req, res) => {
 //LOGOUT
 authController.get('/logout', (req, res) => {
     res.clearCookie('token');
-    //TODO: check assignment for correct redirect location
     res.redirect('/');
 });
 
