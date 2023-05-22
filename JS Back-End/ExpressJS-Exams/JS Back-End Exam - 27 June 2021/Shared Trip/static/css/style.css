@@ -7,7 +7,8 @@ body {
 
 body::before {
   content: "";
-  background: linear-gradient(rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.5)), url('https://sc.6tupian.com/wp-content/uploads/2021/02/1613417565-f9f677ddb0fab5f.jpg');
+  /* background: linear-gradient(rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.5)), url('https://sc.6tupian.com/wp-content/uploads/2021/02/1613417565-f9f677ddb0fab5f.jpg'); */
+  background: linear-gradient(rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.5)), url('/static/images/background.jpg');
   background-size: cover;
   background-position: center;
   position: absolute;
