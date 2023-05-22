@@ -22,7 +22,7 @@ adsController.get('/', async (req, res) => {
         })
     }
 });
-
+//DETAILS
 adsController.get('/details/:id', async (req, res) => {
     const id = req.params.id;
     try {
@@ -30,10 +30,10 @@ adsController.get('/details/:id', async (req, res) => {
         const author = await getOneUser(theAd.author);
         theAd.authorEmail = author.email;
 
-        if (req.user.email == author.email) {
+        if (req.user && req.user.email == author.email) {
             theAd.isAuthor = true;
         }
-        if (theAd.usersApplied.some(x => x._id == req.user._id)) {
+        if (req.user && theAd.usersApplied.some(x => x._id == req.user._id)) {
             theAd.isApplied = true;
         }
 
@@ -50,7 +50,7 @@ adsController.get('/details/:id', async (req, res) => {
             })
     }
 });
-
+//END DETAILS
 adsController.get('/apply/:id', hasUser(), async (req, res) => {
     const userId = req.user._id
     try {
