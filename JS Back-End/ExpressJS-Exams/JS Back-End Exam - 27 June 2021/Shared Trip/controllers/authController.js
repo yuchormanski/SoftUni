@@ -25,10 +25,13 @@ authController.post('/register', async (req, res) => {
         if (formData.password !== formData.repass) {
             throw new Error('Passwords don\'t match!');
         }
+        if (formData.password.length < 4) {
+            throw new Error('The password should be at least 4 characters long!');
+        }
 
         const token = await register(formData.email, formData.password, formData.gender);
         res.cookie('token', token);
-        res.redirect('/'); 
+        res.redirect('/');
     }
     catch (error) {
         const errors = parseError(error);
