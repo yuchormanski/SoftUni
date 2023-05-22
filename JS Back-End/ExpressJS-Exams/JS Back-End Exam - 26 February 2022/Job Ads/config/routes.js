@@ -8,7 +8,7 @@ module.exports = (app) => {
     app.use('/', homeController);
     app.use('/auth', authController);
     app.use('/all-ads', adsController);
-    app.use('/ad', hasUser(), adsController);
+    app.use('/ad',  adsController);
 
 
     //Always must be last

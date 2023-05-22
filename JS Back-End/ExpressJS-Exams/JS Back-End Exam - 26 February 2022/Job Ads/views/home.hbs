@@ -29,41 +29,14 @@
 
     <article class="intro-right-side">
         <!--If there are job ads in the database, show them (max 3)-->
-        <article class="intro-right-side-content">
-            <!-- Do not forget to change the path to the image -->
-            <img src="/static/img/technology.png" alt="technology">
-            <h5>
-                <!--Put the value of the headline below-->
-                Front End Developer
-                <!--Put the value of the total number of candidates below-->
-                <span>Candidates: 2</span>
-            </h5>
-        </article>
-
-        <article class="intro-right-side-content">
-            <!-- Do not forget to change the path to the image -->
-            <img src="/static/img/technology.png" alt="technology">
-            <h5>
-                <!--Put the value of the headline below-->
-                Teacher
-                <!--Put the value of the total number of candidates below-->
-                <span>Candidates: 1</span>
-            </h5>
-        </article>
-
-        <article class="intro-right-side-content">
-            <!-- Do not forget to change the path to the image -->
-            <img src="/static/img/technology.png" alt="technology">
-            <h5>
-                <!--Put the value of the headline below-->
-                Mathematician
-                <!--Put the value of the total number of candidates below-->
-                <span>Candidates: 0</span>
-            </h5>
-        </article>
-
+        {{#if firstThree}}
+        {{#each firstThree}}
+            {{> homePageThree}}
+        {{/each}}
+        {{else}}
         <!--If not show:-->
-        <!--<p class="no-ads-created">No ads created!</p>-->
+        <p class="no-ads-created">No ads created!</p>
+        {{/if}}
 
     </article>
 </section>

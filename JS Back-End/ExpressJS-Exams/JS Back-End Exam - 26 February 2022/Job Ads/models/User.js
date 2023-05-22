@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 
-const VALIDATE_EMAIL = /^[a-zA-Z]+@[a-zA-Z]\.[a-zA-Z]/;
+const VALIDATE_EMAIL = /^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]+$/;
+
 const userSchema = new Schema({
     email: {
         type: String,

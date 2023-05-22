@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const CONNECTION_STRING = 'mongodb://localhost:27017/job-adds'
+const CONNECTION_STRING = 'mongodb://localhost:27017/job-ads'
 
 module.exports = async (app) => {
     try {

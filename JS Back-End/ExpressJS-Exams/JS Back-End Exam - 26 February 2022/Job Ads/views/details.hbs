@@ -1,0 +1,50 @@
+<section id="details-page">
+    <article class="details-gage-title">
+        <h1>Details Page</h1>
+    </article>
+    <article class="details-page-card">
+
+        <article class="details-page-card-image">
+            <img src="/static/img/man.png" alt="details-image">
+        </article>
+
+        <article class="details-page-card-content">
+            <p>Author: {{theAd.authorEmail}}</p>
+            <h2>Headline: {{theAd.headline}}</h2>
+            <h3>Company name: {{theAd.companyName}}s</h3>
+            <h4>Company description: {{theAd.companyDescription}}</h4>
+            <h5>Location: Location {{theAd.location}}</h5>
+
+            <article class="details-page-card-buttons">
+                {{#if user}}
+                    {{#if theAd.isAuthor}}
+                    <a href="/ad/edit/{{theAd._id}}" class="btn-edit">Edit</a>
+                    <a href="/ad/delete/{{theAd._id}}" class="btn-delete">Delete</a>
+                    {{else}}
+                        {{#if theAd.isApplied}}
+                        <p class="already-applied">You have already applied!</p>
+                        {{else}}
+                        <a href="/ad/apply/{{theAd._id}}" class="btn-apply">Apply now!</a>
+                        <p class="applied-people">Hurry up, {{theAd.usersApplied.length}} people have already applied.</p>
+                        {{/if}}
+                    {{/if}}
+                {{/if}}
+            </article>
+        </article>
+
+    </article>
+</section>
+
+<!--This section should only be visible to the author of the current ad-->
+{{#if theAd.isAuthor}}
+<section id="info-about-candidates">
+    <h2>Candidates for this ad:</h2>
+    <!--If there are people who have applied, show each of them in the following format-->
+    {{#if theAd.usersApplied}}
+        {{#each theAd.usersApplied}}
+            {{> applied}}   
+        {{/each}}
+    {{/if}}
+    <!--If not, you don't need to visualize anything further-->
+</section>
+{{/if}}
