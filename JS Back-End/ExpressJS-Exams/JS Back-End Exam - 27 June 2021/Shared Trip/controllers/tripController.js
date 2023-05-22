@@ -1,17 +1,28 @@
 const { hasUser } = require('../middlewares/guards.js');
-const { createTrip } = require('../services/tripService.js');
+const { createTrip, getAll, getOne, joinRide } = require('../services/tripService.js');
 const { parseError } = require('../util/parser.js');
 
 const tripController = require('express').Router();
 
 // CATALOG
-tripController.get('/catalog', (req, res) => {
-    res.render('shared-trips', {
-        user: req.user
-    });
+tripController.get('/catalog', async (req, res) => {
+    try {
+        const tripData = await getAll();
+
+        res.render('shared-trips', {
+            user: req.user,
+            tripData
+        });
+    } catch (error) {
+        res.render('404', {
+            errors: parseError(error),
+            user: req.user,
+            title: 'Error',
+        })
+    }
+
 });
 //END CATALOG
-
 
 // CREATE TRIP
 tripController.get('/create', (req, res) => {
@@ -52,8 +63,61 @@ tripController.post('/create', hasUser(), async (req, res) => {
         });
     }
 });
-
 //END CREATE TRIP
+
+//DETAILS
+tripController.get('/details/:tripId', async (req, res) => {
+    const tripId = req.params.tripId
+    try {
+        const trip = await getOne(tripId);
+
+        if(req.user && req.user._id == trip.creator._id){
+            trip.isAuthor = true;
+        }
+        if(trip.buddies.length > 0){
+            trip.hasBuddies = true;
+            trip.buddiesNames = trip.buddies.map(e => e.email).join(', ')
+        }
+        if(trip.buddies.some(x => x._id == req.user._id)){
+            trip.alreadyJoined = true;
+        }
+        if(trip.seats > 0){
+            trip.hasSeats = true;
+        }
+
+        res.render('trip-details', {
+            user: req.user,
+            title: 'Details',
+            ...trip
+        })
+
+    } catch (error) {
+        res.render('404', {
+            errors: parseError(error),
+            user: req.user,
+            title: 'Error',
+        })
+    }
+});
+//END DETAILS
+
+//JOIN
+tripController.get('/join/:tripId', async (req, res) => {
+    const userId = req.user._id;
+    const tripId = req.params.tripId;
+    try {
+        await joinRide(userId, tripId);
+        res.redirect('/trips/catalog')
+    } catch (error) {
+        res.render('404', {
+            errors: parseError(error),
+            user: req.user,
+            title: 'Error',
+        })
+    }
+
+});
+//END JOIN
 
 
 
