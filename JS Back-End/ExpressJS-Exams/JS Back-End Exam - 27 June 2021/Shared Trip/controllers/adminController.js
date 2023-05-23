@@ -51,7 +51,7 @@ adminController.get('/edit/:tripId', hasUser(), async (req, res) => {
 adminController.post('/edit/:tripId', hasUser(), async (req, res) => {
     const id = req.params.tripId;
     const userId = req.user._id
-    const edited = await Trip.getOne(id);
+    const edited = await getOne(id);
     if (edited.creator._id != userId) {
         return res.render('404', {
             errors: parseError(error),

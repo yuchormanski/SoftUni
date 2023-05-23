@@ -1,4 +1,5 @@
-const Trip = require("../models/Trip.js")
+const Trip = require("../models/Trip.js");
+const User = require("../models/User.js");
 
 async function createTrip(trip) {
     return await Trip.create(trip);
@@ -40,6 +41,14 @@ async function editTrip(id, trip) {
     return;
 }
 
+async function profileInfo(userId) {
+
+    const all = await Trip.find();
+    const allTrips = all.filter(x => x.buddies.includes(userId));
+    return allTrips;
+
+}
+
 
 module.exports = {
     createTrip,
@@ -48,4 +57,5 @@ module.exports = {
     joinRide,
     deleteRide,
     editTrip,
+    profileInfo
 }
