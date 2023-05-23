@@ -1,17 +1,18 @@
+const { hasUser } = require('../middlewares/guards.js');
 const { getOne, deleteRide, editTrip } = require('../services/tripService.js');
 const { parseError } = require('../util/parser.js');
 
 const adminController = require('express').Router();
 
 //DELETE
-adminController.get('/delete/:tripId', async (req, res) => {
+adminController.get('/delete/:tripId', hasUser(), async (req, res) => {
     const userId = req.user._id;
     const tripId = req.params.tripId;
     try {
         const owner = await getOne(tripId);
 
         if (owner.creator._id != userId) {
-            res.redirect('/error');
+            return res.redirect('/error');
         }
         await deleteRide(tripId);
         res.redirect('/trips/catalog')
@@ -26,10 +27,13 @@ adminController.get('/delete/:tripId', async (req, res) => {
 //END DELETE
 
 //EDIT
-adminController.get('/edit/:tripId', async (req, res) => {
+adminController.get('/edit/:tripId', hasUser(), async (req, res) => {
     const id = req.params.tripId;
     try {
         const trip = await getOne(id);
+        if (trip.creator._id != req.user._id) {
+            return res.redirect('/error');
+        }
         res.render('trip-edit', {
             user: req.user,
             title: 'Edit',
@@ -44,8 +48,17 @@ adminController.get('/edit/:tripId', async (req, res) => {
     }
 });
 
-adminController.post('/edit/:tripId', async (req,res) => {
+adminController.post('/edit/:tripId', hasUser(), async (req, res) => {
     const id = req.params.tripId;
+    const userId = req.user._id
+    const edited = await Trip.getOne(id);
+    if (edited.creator._id != userId) {
+        return res.render('404', {
+            errors: parseError(error),
+            user: req.user,
+            title: 'Error',
+        })
+    }
     const tripForm = {
         startPoint: req.body.startPoint,
         endPoint: req.body.endPoint,

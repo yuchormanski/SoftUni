@@ -26,7 +26,7 @@ async function deleteRide(tripId) {
 
 async function editTrip(id, trip) {
     const edited = await Trip.findById(id);
-    
+
     edited.startPoint = trip.startPoint;
     edited.endPoint = trip.endPoint;
     edited.date = trip.date;
