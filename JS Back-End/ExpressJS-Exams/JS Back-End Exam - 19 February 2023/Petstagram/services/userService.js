@@ -8,11 +8,11 @@ const JWT_SECRET = '89ty54sf9e0rsdfbfs0jkj'
 //REGISTER
 async function register(username, email, password) {
     const existingName = await User.findOne({ username }).collation({ locale: 'en', strength: 2 });
-    if (existing) {
+    if (existingName) {
         throw new Error('Username is already taken!');
     }
     const existingEmail = await User.findOne({ email }).collation({ locale: 'en', strength: 2 });
-    if (existing) {
+    if (existingEmail) {
         throw new Error('Email is already in use!');
     }
     const hashedPassword = await bcrypt.hash(password, 10);
