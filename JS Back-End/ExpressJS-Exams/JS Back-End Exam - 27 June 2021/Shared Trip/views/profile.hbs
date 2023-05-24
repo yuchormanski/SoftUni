@@ -11,14 +11,14 @@
         <p>Email: <span>{{user.email}}</span></p>
     </div>
     <div class="profile-info">
-        <p>Trips History: <span>{{userProfile.counts}}</span> counts</p>
+        <p>Trips History: <span>{{counts}}</span> counts</p>
 
         <div class="trips-info">
             {{#if userProfile}}
             <!-- If there are trips created by the current logged in user display each of them -->
                 {{#each userProfile}}
-                    <p>from <span>{{startPoint}}</span> to <span>{{endPoint}}</span> on <span>{{this.date}}</span> at
-                        <span>{{this.time}}</span>
+                    <p>from <span>{{startPoint}}</span> to <span>{{endPoint}}</span> on <span>{{date}}</span> at
+                        <span>{{time}}</span>
                     </p>
                 {{/each}}
             {{else}}

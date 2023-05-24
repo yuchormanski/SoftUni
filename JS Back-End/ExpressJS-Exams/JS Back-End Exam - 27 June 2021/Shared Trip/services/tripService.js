@@ -42,11 +42,11 @@ async function editTrip(id, trip) {
 }
 
 async function profileInfo(userId) {
-
-    const all = await Trip.find();
-    const allTrips = all.filter(x => x.buddies.includes(userId));
-    return allTrips;
-
+    const result = [];
+    const all = (await Trip.find())
+        .filter(x => x.buddies.includes(userId))
+        .forEach(x => result.push(JSON.parse(JSON.stringify(x))))
+    return result;
 }
 
 
