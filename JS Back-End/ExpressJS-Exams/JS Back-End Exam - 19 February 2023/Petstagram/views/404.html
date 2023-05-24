@@ -11,13 +11,6 @@
 <!-- Starts Body Section -->
 
 <body>
-    <!--Error Container-->
-
-    <!-- <div>
-        <div class="errorContainer">
-            <p>Error</p>
-        </div>
-    </div> -->
 
     <!-- Starts Header Section with Navigation Bar -->
     <header>
@@ -25,11 +18,11 @@
             <div class="container">
                 <div class="logo">
                     <!-- Link to Home Page -->
-                    <a href="/">
+                    <a href="#">
                         <img width="50px" src="/static/images/free-30-instagram-stories-icons23_122570.png" alt="img1">
                     </a>
                     <!-- Link to Home Page -->
-                    <a class="home" href="/">
+                    <a class="home" href="#">
                         <i>Petstagram</i>
                     </a>
                 </div>
@@ -38,11 +31,25 @@
                     <ul class="nav-group">
                         <li class="nav-item">
                             <!-- Link to Catalog Page -->
-                            <a href="/pets/catalog">
+                            <a href="#">
                                 <i>Catalog</i>
                             </a>
                         </li>
-                        {{#if user}}
+
+                        <!--For Guest User-->
+                        <li class="nav-item">
+                            <!-- Link to Login Page -->
+                            <a href="#">
+                                <i>Login</i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- Link to Register Page -->
+                            <a href="#">
+                                <i>Register</i>
+                            </a>
+                        </li>
+
                         <!--For login users-->
                         <li class="nav-item">
                             <!-- Link to Add Photo Page -->
@@ -53,32 +60,17 @@
 
                         <li class="nav-item">
                             <!-- Link to Profile Page -->
-                            <a href="/profile">
+                            <a href="#">
                                 <i>Profile</i>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <!-- Link to Logout Page -->
-                            <a href="/auth/logout">
+                            <a href="#">
                                 <i>Logout</i>
                             </a>
                         </li>
-                        {{else}}
-                        <!--For Guest User-->
-                        <li class="nav-item">
-                            <!-- Link to Login Page -->
-                            <a href="/auth/login">
-                                <i>Login</i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <!-- Link to Register Page -->
-                            <a href="/auth/register">
-                                <i>Register</i>
-                            </a>
-                        </li>
-                        {{/if}}
                     </ul>
                 </div>
             </div>
@@ -87,8 +79,22 @@
 
     <!-- Starts Main Section -->
     <main>
+        <!-- 404 page -->
+        <div class="not-found-img">
+            <img src="/static/images/zillow-404-page-5f3ed6a6abaa5.gif" alt="404 not found gif">
+        </div>
 
-        {{{body}}}
+        <div class="not-found">
+            <h1>
+                Uh oh,<br> something broke.
+            </h1>
+
+            <h3>Error 404 - page not found.</h3>
+            <!-- Link to Home Page -->
+            <a href="#">
+                <button>Return to Petstagram</button>
+            </a>
+        </div>
 
     </main>
 
