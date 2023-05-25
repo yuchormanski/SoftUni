@@ -8,8 +8,13 @@ async function getAll(){
     return await Pet.find().populate('owner').lean();
 }
 
+async function getOne(id){
+    return await Pet.findById(id).lean();
+}
+
 
 module.exports = {
     addPhoto,
     getAll,
+    getOne,
 }

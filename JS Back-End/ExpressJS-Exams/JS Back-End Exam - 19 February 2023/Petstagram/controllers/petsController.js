@@ -1,5 +1,5 @@
 const { hasUser } = require('../middlewares/guards.js');
-const { addPhoto, getAll } = require('../services/petsService.js');
+const { addPhoto, getAll, getOne } = require('../services/petsService.js');
 const { parseError } = require('../util/parser.js');
 
 const petsController = require('express').Router();
@@ -7,9 +7,8 @@ const petsController = require('express').Router();
 //CATALOG
 petsController.get('/catalog', async (req, res) => {
 
+    const data = await getAll();
     try {
-        const data = await getAll();
-        console.log(data);
 
         res.render('catalog', {
             user: req.user,
@@ -88,5 +87,15 @@ petsController.post('/add-photo', async (req, res) => {
     }
 });
 //END ADD-PHOTO
+
+//DETAILS
+petsController.get('/details/:petId', async (req, res) => {
+    const petData = getOne(req.params.petId);
+    console.log(petData);
+    res.render('details', {
+        user: req.user,
+    })
+});
+//END DETAILS
 
 module.exports = petsController;
