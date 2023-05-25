@@ -1,3 +1,5 @@
+const { hasUser } = require('../middlewares/guards.js');
+
 const petsController = require('express').Router();
 
 //CATALOG
@@ -19,7 +21,7 @@ petsController.get('/catalog', async (req, res) => {
 //END CATALOG
 
 //ADD-PHOTO
-petsController.get('/add-photo', async (req, res) => {
+petsController.get('/add-photo', hasUser() ,async (req, res) => {
         try {
             
     
