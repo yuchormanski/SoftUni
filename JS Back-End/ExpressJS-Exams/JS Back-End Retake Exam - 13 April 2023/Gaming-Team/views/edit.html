@@ -30,11 +30,15 @@
         <!-- In case of error, you should display div with class "errorContainer" -->
         <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
 
-        <!-- <div>
+        <div>
             <div class="errorContainer">
-                <p>Error</p>
+                {{#if errors}}
+                    {{#each errors}}
+                        <p>{{this}}</p>
+                    {{/each}}
+                {{/if}}
             </div>
-        </div> -->
+        </div>
         <section id="edit-container">
             <div class="edit-container-info">
                 <h1>Edit Game Code Offer</h1>

@@ -8,10 +8,10 @@ module.exports = (app) => {
 
     //Always must be last
 
-    //TODO: check if needed 404 page and set it if it so
     app.use('*', (req, res) => {
         res.render('404', {
-            title: "Page Not Found!"
-        })
+            title: "404 Page - Gaming Team"
+        });
+        res.status(404);
     });
 }
