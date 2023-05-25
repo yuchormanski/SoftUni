@@ -42,6 +42,9 @@ const petSchema = new Schema({
     owner: {
         type: Types.ObjectId,
         ref: 'User'
+    },
+    comments:{
+        type: Array
     }
 });
 
