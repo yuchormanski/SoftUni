@@ -1,23 +1,26 @@
 const { hasUser } = require('../middlewares/guards.js');
-const { addPhoto } = require('../services/petsService.js');
+const { addPhoto, getAll } = require('../services/petsService.js');
 const { parseError } = require('../util/parser.js');
 
 const petsController = require('express').Router();
 
 //CATALOG
-
 petsController.get('/catalog', async (req, res) => {
-    //TODO:
-    try {
 
+    try {
+        const data = await getAll();
+        console.log(data);
 
         res.render('catalog', {
             user: req.user,
             title: 'Petstagram',
-
+            data
         })
     } catch (error) {
-
+        res.render('404', {
+            title: "Page Not Found!",
+            user: req.user
+        })
     }
 });
 //END CATALOG
@@ -46,28 +49,28 @@ petsController.post('/add-photo', async (req, res) => {
         if (Object.values(photoData).some(v => v == '')) {
             throw new Error('All fields are required!');
         }
-        if(isNaN(photoData.age)){
+        if (isNaN(photoData.age)) {
             throw new Error('The age should be number');
         }
-        if(photoData.age < 1){
+        if (photoData.age < 1) {
             throw new Error('The age should be positive number');
         }
-        if(photoData.age.length > 100){
+        if (photoData.age.length > 100) {
             throw new Error('The age should be no longer than 100 characters');
         }
-        if(photoData.name.length > 100){
+        if (photoData.name.length > 100) {
             throw new Error('The age should be at least 2 characters!');
         }
-        if(photoData.description.length > 50){
+        if (photoData.description.length > 50) {
             throw new Error('The description is should be no longer than 50 characters.');
         }
-        if(photoData.description.length < 5){
+        if (photoData.description.length < 5) {
             throw new Error('The description should be at least 5 characters.');
         }
-        if(photoData.location.length > 50){
+        if (photoData.location.length > 50) {
             throw new Error('The location is should be no longer than 50 characters.');
         }
-        if(photoData.location.length < 5){
+        if (photoData.location.length < 5) {
             throw new Error('The location should be at least 5 characters.');
         }
         photoData.owner = userId;
