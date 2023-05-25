@@ -1,4 +1,4 @@
-const { hasUser } = require('../middlewares/guards.js');
+const { hasUser, isGuest } = require('../middlewares/guards.js');
 const { register, login } = require('../services/userService.js');
 const { parseError } = require('../util/parser.js');
 
@@ -6,7 +6,7 @@ const authController = require('express').Router();
 
 
 //REGISTER
-authController.get('/register', (req, res) => {
+authController.get('/register', isGuest(), (req, res) => {
     res.render('register', {
         title: 'Register'
     });
@@ -47,7 +47,7 @@ authController.post('/register', async (req, res) => {
 });
 
 //LOGIN
-authController.get('/login', (req, res) => {
+authController.get('/login', isGuest(), (req, res) => {
     res.render('login', {
         title: 'Login',
     })
@@ -67,7 +67,6 @@ authController.post('/login', async (req, res) => {
             errors,
             body: {
                 username: req.body.username,
-                email: req.body.email,
             }
         });
     }
