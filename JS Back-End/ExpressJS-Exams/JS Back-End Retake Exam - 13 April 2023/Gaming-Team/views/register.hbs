@@ -16,9 +16,9 @@
         <h4>It's free and only takes a minute</h4>
         <form action="/auth/register" method="post">
             <label>Username</label>
-            <input type="text" name="username" placeholder="Username..">
+            <input type="text" name="username" placeholder="Username.." value="{{body.username}}">
             <label>Email</label>
-            <input type="text" name="email" placeholder="Email..">
+            <input type="text" name="email" placeholder="Email.." value="{{body.email}}">
             <label>Password</label>
             <input type="password" name="password" placeholder="Password..">
             <label>Confirm Password</label>
