@@ -1,6 +1,6 @@
 const { Schema, model, Types } = require('mongoose');
 
-const VALIDATE_IMAGE = /^https?:\/\/$/;
+const VALIDATE_IMAGE = /^https?:\/\/.+$/;
 const age_message = 'The age should be at least 1 and no longer than 100 characters.';
 
 const petSchema = new Schema({

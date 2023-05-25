@@ -6,23 +6,23 @@
         <!-- Start Add Photo Form -->
         <form action="/pets/add-photo" method="post">
             <p>
-                <input type="text" name="name" placeholder="Name" value="">
+                <input type="text" name="name" placeholder="Name" value="{{photoData.name}}">
             </p>
 
             <p>
-                <input type="number" name="age" placeholder="Age" value="">
+                <input type="number" name="age" placeholder="Age" value="{{photoData.age}}">
             </p>
 
             <p>
-                <textarea type="text" name="description" placeholder="Description" value=""></textarea>
+                <textarea type="text" name="description" placeholder="Description">{{photoData.description}}</textarea>
             </p>
 
             <p>
-                <input type="text" name="location" placeholder="Location" value="">
+                <input type="text" name="location" placeholder="Location" value="{{photoData.location}}">
             </p>
 
             <p>
-                <input type="text" name="imageUrl" placeholder="Link to image" value="">
+                <input type="text" name="imageUrl" placeholder="Link to image" value="{{photoData.imageUrl}}">
             </p>
             <!-- Add Photo Button -->
             <button class="add-btn" type="submit">Add Photo</button>
