@@ -64,8 +64,14 @@ gameController.post('/create', async (req, res) => {
 //DETAILS
 gameController.get('/details/:gameId', async (req, res) => {
     const game = await oneGame(req.params.gameId);
-    console.log(game);
+
     try {
+        if(req.user && game.owner == req.user._id){
+            game.isOwner = true;
+        }
+        if(game.boughtBy.find(x => x==req.user._id)){
+            game.hasBought = true;
+        }
         res.render('details', {
             user: req.user,
             title:'Details Page',
