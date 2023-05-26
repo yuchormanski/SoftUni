@@ -12,6 +12,7 @@ module.exports = (app) => {
 
     app.use('*', (req, res) => {
         res.render('404', {
+            user: req.user,
             title: "404 Page - Gaming Team"
         });
         res.status(404);
