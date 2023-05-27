@@ -1,5 +1,5 @@
 const gameController = require('express').Router();
-const { allGames, createGame, oneGame, buyGame, deleteGame, updateGame } = require('../services/gameService.js');
+const { allGames, createGame, oneGame, buyGame, deleteGame, updateGame, searchGames } = require('../services/gameService.js');
 
 const { hasUser } = require('../middlewares/guards.js');
 const { parseError } = require('../util/parser.js');
@@ -161,8 +161,6 @@ gameController.post('/edit/:gameId', async (req, res) => {
         description: req.body.description,
     }
     try {
-        console.log(typeof game.price);
-
         const forEdit = await oneGame(gameId);
         if (Object.values(game).some(v => v == '')) {
             throw new Error('All fields are required!');
@@ -181,6 +179,36 @@ gameController.post('/edit/:gameId', async (req, res) => {
             game
         })
     }
+});
+
+//SEARCH
+gameController.get('/search', async (req, res) => {
+    let all;
+    let search = false;
+    const name = req.query.search;
+    const platform = req.query.platform;
+
+    try {
+        if (name || platform) {
+            all = await searchGames(name, platform);
+            search = true;
+        } else {
+            all = await allGames();
+        }
+
+        res.render('search', {
+            user: req.user,
+            title: 'Search Page - Gamers Team',
+            all,
+            search
+        })
+    } catch (error) {
+        res.render('404', {
+            user: req.user,
+            title: 'Search Page - Gamers Team',
+        })
+    }
+
 });
 
 

@@ -24,4 +24,6 @@ exports.updateGame = async (gameId, game) => await Game.findOneAndUpdate({ _id: 
     }
 });
 
+exports.searchGames = async (name, platform) => await Game.find({name: {$regex : name}, platform: {$regex: platform}}).lean();
+
 exports.createGame = async (game) => await Game.create(game);
