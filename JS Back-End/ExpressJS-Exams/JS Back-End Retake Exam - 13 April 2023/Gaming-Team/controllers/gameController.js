@@ -184,14 +184,12 @@ gameController.post('/edit/:gameId', async (req, res) => {
 //SEARCH
 gameController.get('/search', async (req, res) => {
     let all;
-    let search = false;
     const name = req.query.search;
     const platform = req.query.platform;
 
     try {
         if (name || platform) {
             all = await searchGames(name, platform);
-            search = true;
         } else {
             all = await allGames();
         }
@@ -199,11 +197,11 @@ gameController.get('/search', async (req, res) => {
         res.render('search', {
             user: req.user,
             title: 'Search Page - Gamers Team',
-            all,
-            search
+            all
         })
     } catch (error) {
         res.render('404', {
+            errors: parseError(error),
             user: req.user,
             title: 'Search Page - Gamers Team',
         })
