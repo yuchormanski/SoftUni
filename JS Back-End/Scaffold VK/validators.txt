@@ -42,3 +42,12 @@ function categories(cat) {
 }
 
 module.exports = { levels, categories };
+
+--------------------------------------------------------
+search by criteria(multiple)
+(in this case 2 )
+
+
+async function searchStrings(criteria_1, criteria_2){
+	return await Model.find({Model.prop1: {$regex : criteria_1}, Model.prop2: {$regex: criteria_2}}).lean();
+}
