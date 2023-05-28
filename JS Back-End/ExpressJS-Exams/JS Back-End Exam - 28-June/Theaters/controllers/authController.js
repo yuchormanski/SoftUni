@@ -8,7 +8,7 @@ const authController = require('express').Router();
 //REGISTER
 authController.get('/register', isGuest(), (req, res) => {
     res.render('register', {
-        title: 'Register page' // if needed
+        pageTitle: 'Register page' // if needed
     });
 });
 
@@ -33,7 +33,7 @@ authController.post('/register', async (req, res) => {
         const errors = parseError(error);
 
         res.render('register', {
-            title: 'Register Page',
+            pageTitle: 'Register Page',
             errors,
             body: {
                 username: req.body.username
@@ -46,7 +46,7 @@ authController.post('/register', async (req, res) => {
 //LOGIN
 authController.get('/login', isGuest(), (req, res) => {
     res.render('login', {
-        title: 'Login page',
+        pageTitle: 'Login page',
     })
 });
 
@@ -60,7 +60,7 @@ authController.post('/login', async (req, res) => {
         const errors = parseError(error);
 
         res.render('login', {
-            title: 'Login Page',
+            pageTitle: 'Login Page',
             errors,
             body: {
                 username: req.body.username

@@ -5,7 +5,10 @@ function parseError(error) {
         return error.message.split('\n');
     }
 }
+const IMG_VALIDATOR = /^https?:\/\/.+$/;
+
 
 module.exports = {
-    parseError
+    parseError,
+    IMG_VALIDATOR,
 }

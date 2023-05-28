@@ -8,7 +8,7 @@ homeController.get('/', async (req, res) => {
     const theaters = await getAllTheaters();
     try {
         res.render('home', {
-            title: 'Home page',  //if needed
+            pageTitle: 'Home page',  //if needed
             user: req.user,   //if needed
             theaters
         });

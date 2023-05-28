@@ -1,12 +1,12 @@
 <div>
     <div class="home-image">
-        <img src="https://media.timeout.com/images/103727744/380/285/image.jpg" alt="Card image cap">
+        <img src="{{imageUrl}}" alt="Card image cap">
     </div>
     <div class="info">
-        <h4>Who's Afraid of Virginia Woolf? by Edward Albee</h4>
+        <h4>{{title}}</h4>
         <div class="info-buttons">
-            <a class="btn details" href="">Details</a>
-            <span class="likes">5 likes</span>
+            <a class="btn details" href="/theater/details/{{_id}}">Details</a>
+            <span class="likes">{{likes.length}} likes</span>
         </div>
     </div>
 </div>

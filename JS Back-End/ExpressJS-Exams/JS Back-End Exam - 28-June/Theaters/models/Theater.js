@@ -1,8 +1,8 @@
 const { Schema, model, Types } = require('mongoose');
+const { IMG_VALIDATOR } = require('../util/parser.js');
 
-const IMG_VALIDATOR = /^https?:\/\/.+$/;
 const theaterSchema = new Schema({
-    playTitle: {
+    title: {
         type: String,
         required: true,
         unique: true,
@@ -23,14 +23,18 @@ const theaterSchema = new Schema({
         }
     }, inPublic: {
         type: Boolean,
-        default: false,
+        required: true,
     },
     createdOn: {
-        type: Date,
+        type: String,
         required: true,
     },
     likes: {
         type: [Types.ObjectId],
+        ref: 'User'
+    },
+    owner: {
+        type: Types.ObjectId,
         ref: 'User'
     }
 });
