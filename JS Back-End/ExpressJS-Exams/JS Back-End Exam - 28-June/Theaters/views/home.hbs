@@ -17,18 +17,28 @@
             <div class="home-buttons">
                 {{#if user}}
                 <a class="btn create-play" href="/theater/create">Create Theater</a>
-                <a class="btn create-play" href="/theaters/sort-by-date">Sort by Date</a>
-                <a class="btn create-play" href="/theaters/sort-by-likes">Sort by Likes</a>
+                <a class="btn create-play" href="/sort-by-date">Sort by Date</a>
+                <a class="btn create-play" href="/sort-by-likes">Sort by Likes</a>
                 {{/if}}
             </div>
         </div>
         <div class="theaters-container">
-            {{#if theaters}}
-            {{#each theaters}}
-            {{> homePageTheater}}
-            {{/each}}
+            {{#if user}}
+                {{#if theaters}}
+                    {{#each theaters}}
+                        {{> homePageTheater}}
+                    {{/each}}
+                {{else}}
+                    <h4>No plays yet...</h4>
+                {{/if}}
             {{else}}
-            <h4>No plays yet...</h4>
+                {{#if theaters}}
+                    {{#each theaters}}
+                        {{> homePageTheaterNoUser}}
+                    {{/each}}
+                {{else}}
+                    <h4>No plays yet...</h4>
+                {{/if}}
             {{/if}}
 
         </div>
