@@ -1,13 +1,16 @@
 const homeController = require('express').Router();
-const { getAllTheaters, getAllTheatersSorted, getAllTheatersSortedByLikes } = require('../services/theatersService.js');
+const { getAllTheaters, getAllTheatersSorted, getAllTheatersSortedByLikes, getThreeTheaters } = require('../services/theatersService.js');
 
 
 
 
 homeController.get('/', async (req, res) => {
-    const theaters = await getAllTheaters();
-    if(req.user){
+    let theaters;
+    if (req.user) {
+        theaters = await getAllTheaters();
         theaters.hasUser = true;
+    } else {
+        theaters = await getThreeTheaters();
     }
     try {
         res.render('home', {
@@ -23,7 +26,7 @@ homeController.get('/', async (req, res) => {
 homeController.get('/sort-by-date', async (req, res) => {
 
     const theaters = await getAllTheatersSorted();
-    if(req.user){
+    if (req.user) {
         theaters.hasUser = true;
     }
     try {
@@ -39,7 +42,7 @@ homeController.get('/sort-by-date', async (req, res) => {
 
 homeController.get('/sort-by-likes', async (req, res) => {
     const theaters = await getAllTheatersSortedByLikes();
-    if(req.user){
+    if (req.user) {
         theaters.hasUser = true;
     }
     try {

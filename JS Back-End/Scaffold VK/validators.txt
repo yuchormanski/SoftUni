@@ -47,7 +47,16 @@ module.exports = { levels, categories };
 search by criteria(multiple)
 (in this case 2 )
 
-
 async function searchStrings(criteria_1, criteria_2){
 	return await Model.find({Model.prop1: {$regex : criteria_1}, Model.prop2: {$regex: criteria_2}}).lean();
 }
+
+-------------------------------------------------------
+sort
+    * -1 => b - a
+    * 1 => a - b
+Model.find().sort({ Model.prop: -1 });
+
+-------------------------------------------------------
+limit
+Model.find().limit(3);

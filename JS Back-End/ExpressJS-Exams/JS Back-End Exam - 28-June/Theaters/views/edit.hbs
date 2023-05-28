@@ -1,0 +1,22 @@
+<main>
+    <form class="theater-form" action="/action/edit/{{theater._id}}" method="post">
+        <h1>Edit Theater</h1>
+        <div>
+            <label for="title">Theater Title:</label>
+            <input type="text" placeholder="Theater name" value="{{theater.title}}" name="title">
+        </div>
+        <div>
+            <label for="description">Theater Description:</label>
+            <textarea placeholder="Description" name="description">{{theater.description}}</textarea>
+        </div>
+        <div>
+            <label for="imageUrl">Image url:</label>
+            <input type="text" placeholder="Image Url" value="{{theater.imageUrl}}" name="imageUrl">
+        </div>
+        <div class="check">
+            <input type="checkbox" id="check-box" name="inPublic" {{#if theater.inPublic}}checked{{/if}}>
+            <label for="check-box">Public</label>
+        </div>
+        <button class="btn" type="submit">Submit</button>
+    </form>
+</main>

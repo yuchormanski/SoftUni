@@ -1,5 +1,5 @@
 const { hasUser } = require('../middlewares/guards.js');
-const { createTheater } = require('../services/theatersService.js');
+const { createTheater, getTheater, hasLiked } = require('../services/theatersService.js');
 const { parseError } = require('../util/parser.js');
 const { IMG_VALIDATOR } = require('../util/parser.js');
 
@@ -54,6 +54,31 @@ theaterController.post('/create', hasUser(), async (req, res) => {
             theater,
         })
     }
+});
+
+//DETAILS
+theaterController.get('/details/:id', hasUser(), async (req, res) => {
+    const tId = req.params.id;
+    const userId = req.user._id;
+    const theater = await getTheater(tId);
+    const userLikes = await hasLiked(tId, userId)
+    try {
+        if (theater.owner == userId) {
+            theater.isOwner = true;
+        }
+        if (userLikes.length > 0) {
+            theater.isLiked = true;
+        }
+        res.render('details', {
+            user: req.user,
+            theater,
+
+        })
+    } catch (error) {
+        res.redirect('404');
+        res.status(404);
+    }
+
 });
 
 
