@@ -6,7 +6,6 @@ const authController = require('express').Router();
 
 //REGISTER
 authController.get('/register', (req, res) => {
-    //TODO: replace with actual view by assignment 
     res.render('register', {
         title: 'Register page' // if needed
     });
@@ -17,22 +16,18 @@ authController.post('/register', async (req, res) => {
         if(req.body.username == '' || req.body.password == ''){
             throw new Error('All fields are required!');
         };
-        //TODO: change to assignment requirements for repass name
         if(req.body.password !== req.body.repass){
             throw new Error('Passwords don\'t match!');
         }
 
         const token = await register(req.body.username, req.body.password);
-        //TODO: check assignment to see register creates session
         res.cookie('token', token);
 
-        //TODO: check assignment for correct redirect location
         res.redirect('/'); 
     }
     catch (error){
         const errors = parseError(error);
 
-        //TODO: add error display to actual template from assignment
         res.render('register', {
             title: 'Register Page',
             errors,
