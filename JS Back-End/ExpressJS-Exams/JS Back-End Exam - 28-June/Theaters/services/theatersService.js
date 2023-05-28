@@ -4,7 +4,7 @@ async function getAllTheaters() {
     return Theater.find().lean();
 }
 async function getThreeTheaters() {
-    return Theater.find().limit(3).lean();
+    return Theater.find().sort({ likes: [-1] }).limit(3).lean();
 }
 
 async function getAllTheatersSorted() {
@@ -12,7 +12,7 @@ async function getAllTheatersSorted() {
 }
 
 async function getAllTheatersSortedByLikes() {
-    return Theater.find().sort({ likes: -1 }).lean();
+    return Theater.find().sort({ likes: [-1] }).lean();
 }
 
 async function createTheater(data) {
