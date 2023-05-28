@@ -3,26 +3,41 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
+    <link href="/static/css/style.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
-    <a href="/">Home</a>
-    <a href="/auth/login">Login</a>
-    <a href="/auth/register">Register</a>
-    <a href="/auth/logout">Logout</a>
+    <div class="container">
+        <nav>
+            <a>Theater</a>
+            <ul>
+                <li><a href="/">Home </a></li>
+                {{#if user}}
+                <li><a href="/auth/logout">Logout</a></li>
+                {{else}}
+                <li><a href="/auth/login">Login</a></li>
+                <li><a href="/auth/register">Register</a></li>
+                {{/if}}
+            </ul>
+        </nav>
+        {{#if errors}}
+            {{#each errors}}
+                <section class="notifications error">
+                    <p>{{this}}</p>
+                </section>
+            {{/each}}
+        {{/if}}
 
-    {{#if errors}}
-    <div>
-        {{#each errors}}
-        <p>{{this}}</p>
-        {{/each}}
+        {{{body}}}
+
+        <footer>
+            <div>© 2020
+                <a href="https://softuni.bg/courses/js-back-end">JS Back-End</a>
+            </div>
+        </footer>
+
     </div>
-    {{/if}}
-
-    {{{body}}}
 </body>
 
 </html>
