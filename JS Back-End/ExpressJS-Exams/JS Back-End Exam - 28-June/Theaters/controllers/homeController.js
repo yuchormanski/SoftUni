@@ -1,12 +1,19 @@
 const homeController = require('express').Router();
+const { getAllTheaters } = require('../services/theatersController.js');
 
 
-//TODO: replace with real controller by assignment
-homeController.get('/', (req, res) => {
-    res.render('home', {
-        title: 'Home page',  //if needed
-        user: req.user       //if needed
-    });
+
+homeController.get('/', async (req, res) => {
+    const theaters = await getAllTheaters();
+    try {
+        res.render('home', {
+            title: 'Home page',  //if needed
+            user: req.user,   //if needed
+            theaters
+        });
+    } catch (error) {
+        res.redirect('404');
+    }
 });
 
 module.exports = homeController;
