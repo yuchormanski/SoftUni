@@ -12,6 +12,7 @@ module.exports = (app) => {
     app.use('*', (req, res) => {
         res.render('404', {
             title: "Page Not Found!"
-        })
+        });
+        res.status(404)
     });
 }
