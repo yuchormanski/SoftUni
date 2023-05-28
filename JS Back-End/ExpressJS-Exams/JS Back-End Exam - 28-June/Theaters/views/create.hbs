@@ -1,0 +1,22 @@
+<main>
+    <form class="theater-form" action="/theaters/create" method="post">
+        <h1>Create Theater</h1>
+        <div>
+            <label for="title">Theater Title:</label>
+            <input type="text" placeholder="Theater name" value="" name="playTitle">
+        </div>
+        <div>
+            <label for="description">Theater Description:</label>
+            <textarea placeholder="Description" name="description"></textarea>
+        </div>
+        <div>
+            <label for="imageUrl">Image url:</label>
+            <input type="text" placeholder="Image Url" value="" name="imageUrl">
+        </div>
+        <div class="check">
+            <input type="checkbox" id="check-box">
+            <label for="check-box" name="isPublic">Public</label>
+        </div>
+        <button class="btn" type="submit">Submit</button>
+    </form>
+</main>

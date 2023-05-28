@@ -1,5 +1,6 @@
 const homeController = require('express').Router();
-const { getAllTheaters } = require('../services/theatersController.js');
+const { getAllTheaters } = require('../services/theatersService.js');
+
 
 
 
