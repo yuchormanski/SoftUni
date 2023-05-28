@@ -1,4 +1,4 @@
-const { isGuest } = require('../middlewares/guards.js');
+const { isGuest, hasUser } = require('../middlewares/guards.js');
 const { register, login } = require('../services/userService.js');
 const { parseError } = require('../util/parser.js');
 
@@ -71,7 +71,7 @@ authController.post('/login', async (req, res) => {
 
 
 //LOGOUT
-authController.get('/logout', (req, res) => {
+authController.get('/logout', hasUser(), (req, res) => {
     res.clearCookie('token');
     res.redirect('/');
 });
