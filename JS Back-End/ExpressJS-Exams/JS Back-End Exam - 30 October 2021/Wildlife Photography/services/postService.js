@@ -1,5 +1,16 @@
 const Post = require("../models/Post.js");
 
-exports.createPost = async(post) => await Post.create(post);
+exports.createPost = async (post) => await Post.create(post);
 
-exports.loadPosts = async () => Post.find().lean();
+exports.loadPosts = () => Post.find();
+
+
+exports.getOne = (id) => Post.findById(id).populate('author');
+
+exports.loadUsers = (id) => Post.findById(id).populate('votes')
+
+exports.voteUp = async (id, userId) => Post.findByIdAndUpdate(id, { $push: { votes: userId }, $inc:{rating: 1} });
+
+exports.voteDown = async (id, userId) => Post.findByIdAndUpdate(id, { $push: { votes: userId }, $inc:{rating: -1} });
+
+exports.deletePost = (id) => Post.findByIdAndDelete(id);

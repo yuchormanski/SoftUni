@@ -60,3 +60,13 @@ Model.find().sort({ Model.prop: -1 });
 -------------------------------------------------------
 limit
 Model.find().limit(3);
+
+
+
+-------------------------------------------------------
+
+                                                                                
+exports.voteDown = async (id, userId) => Post.findByIdAndUpdate(id, { $push: { votes: userId }, $inc:{rating: -1} });
+
+votes = Array, добавяме елемент;
+rating e число. -1 -> изваждаме 1 от rating, 1 -> добавяме( съответно -3, 3....)

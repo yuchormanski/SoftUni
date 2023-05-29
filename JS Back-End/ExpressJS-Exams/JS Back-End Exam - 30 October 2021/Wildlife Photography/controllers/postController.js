@@ -1,12 +1,12 @@
 const postController = require('express').Router();
 const { hasUser } = require('../middlewares/guards.js');
-const { createPost, loadPosts } = require('../services/postService.js');
+const { createPost, loadPosts, getOne, voteUp, loadUsers, voteDown } = require('../services/postService.js');
 const { parseError } = require('../util/parser.js');
 
 
 //catalog
 postController.get('/catalog', async (req, res) => {
-    const posts = await loadPosts();
+    const posts = await loadPosts().lean();
     try {
         res.render('catalog', {
             user: req.user,
@@ -68,7 +68,6 @@ postController.post('/create', hasUser(), async (req, res) => {
         if (post.description.length < 8) {
             throw new Error('The Description should be a minimum of 8 characters long')
         }
-        console.log(post);
 
         await createPost(post);
 
@@ -80,6 +79,79 @@ postController.post('/create', hasUser(), async (req, res) => {
             user: req.user,
             pageTitle: 'Create Post',
             post
+        })
+    }
+});
+
+//details
+postController.get('/details/:id', async (req, res) => {
+    const data = await getOne(req.params.id).lean();
+    const votedUsers = await loadUsers(req.params.id).lean();
+
+    try {
+        data.fullName = `${data.author.firstName} ${data.author.lastName}`;
+
+        data.votedUsersList = votedUsers.votes.map(x => x.email).join(', ');
+
+        if (data.author._id == req.user._id) data.isOwner = true;
+
+        const votes = JSON.parse(JSON.stringify(data.votes))
+        if (votes.includes(req.user._id)) data.isVoted = true;
+
+        res.render('details', {
+            user: req.user,
+            data,
+            pageTitle: 'Details Page'
+        })
+    } catch (error) {
+        res.render('404', {
+            errors: parseError(error),
+            user: req.user,
+            data,
+            pageTitle: 'Error Page',
+        });
+        res.status(404)
+    }
+});
+
+//votes
+postController.get('/vote-up/:id', hasUser(), async (req, res) => {
+    const data = await getOne(req.params.id);
+    await voteUp(req.params.id, req.user._id);
+
+    try {
+        if (data.author._id == req.user._id) throw new Error('Can\'t vote on your own post');
+        const votes = JSON.parse(JSON.stringify(data.votes))
+        if (votes.includes(req.user._id)) throw new Error('You can\'t vote twice!');
+
+
+        res.redirect(`/posts/details/${req.params.id}`)
+
+    } catch (error) {
+        res.render('404', {
+            errors: parseError(error),
+            user: req.user,
+        })
+    }
+});
+
+postController.get('/vote-down/:id', hasUser(), async (req, res) => {
+    const data = await getOne(req.params.id);
+
+    try {
+
+        await voteDown(req.params.id, req.user._id);
+        if (data.author._id == req.user._id) throw new Error('Can\'t vote on your own post');
+
+        const votes = JSON.parse(JSON.stringify(data.votes))
+        if (votes.includes(req.user._id)) throw new Error('You can\'t vote twice!');
+
+        res.redirect(`/posts/details/${req.params.id}`)
+
+    } catch (error) {
+        res.render('404', {
+            errors: parseError(error),
+            user: req.user,
         })
     }
 });

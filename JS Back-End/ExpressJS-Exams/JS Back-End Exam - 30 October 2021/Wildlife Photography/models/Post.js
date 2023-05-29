@@ -47,4 +47,9 @@ const postSchema = new Schema({
 
 });
 
+postSchema.virtual('fullName').get(function () {
+    return this.firstName + ' ' + this.lastName
+});
+
+
 module.exports = model('Post', postSchema);
