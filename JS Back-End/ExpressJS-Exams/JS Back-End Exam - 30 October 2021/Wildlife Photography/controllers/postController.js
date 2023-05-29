@@ -1,15 +1,26 @@
 const postController = require('express').Router();
 const { hasUser } = require('../middlewares/guards.js');
-const { createPost } = require('../services/postService.js');
+const { createPost, loadPosts } = require('../services/postService.js');
 const { parseError } = require('../util/parser.js');
 
 
 //catalog
 postController.get('/catalog', async (req, res) => {
-    res.render('catalog', {
-        user: req.user,
-        pageTitle: 'All Posts'
-    })
+    const posts = await loadPosts();
+    try {
+        res.render('catalog', {
+            user: req.user,
+            pageTitle: 'All Posts',
+            posts
+        })
+    } catch (error) {
+        res.render('catalog', {
+            errors: parseError(error),
+            user: req.user,
+            pageTitle: 'All Posts'
+        })
+    }
+
 });
 
 

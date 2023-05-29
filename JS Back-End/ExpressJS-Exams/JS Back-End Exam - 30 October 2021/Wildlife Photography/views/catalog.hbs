@@ -5,41 +5,19 @@
         <div class="band">
 
             <!-- If there are posts for wildlife in the database display each of them -->
-            <div class="flip flip-vertical">
-                <div class="front">
-                    <img src="/static/img/pexels-photo-540518.png" alt="image_nature_1">
-                    <h1 class="text-shadow">Keyword: Mountain</h1>
-                </div>
-                <div class="back">
-                    <h2>Title</h2>
-                    <p>Description: A mountain is an elevated portion of the Earth's crust, generally with steep sides
-                        that show significant exposed bedrock.</p>
-                    <a href="#" class="details">Details</a>
-                </div>
-            </div>
-
-            <div class="flip flip-vertical">
-                <div class="front">
-                    <img src="/static/img/big-waterfall-dario-428.jpg" alt="image_nature_2">
-                    <h1 class="text-shadow">Key word: Waterfall</h1>
-                </div>
-                <div class="back">
-                    <h2>Title</h2>
-                    <p>Description: A waterfall is a point in a river or stream where water flows over a vertical drop
-                        or a series of steep drops.</p>
-                    <a href="#" class="details">Details</a>
-                </div>
-            </div>
-
-
+            {{#if posts}}
+                {{#each posts}}
+                    {{> catalogPart}}
+                {{/each}}
+            {{else}}
             <!-- If there are still no posts for wildlife in the database display: -->
-            <!-- <div class="no-posts">
-                        <div class="no-posts-img">
-                            <!/-- Do not forget to change the path to the image, and remove this comment  --/>
-                            <img src="./static/img/animal.jpg" alt="image_nature_3">
-                        </div>
-                        <p class="no-offer">There are no posts yet...</p>
-                    </div>-->
+            <div class="no-posts">
+                <div class="no-posts-img">
+                    <img src="/static/img/animal.jpg" alt="image_nature_3">
+                </div>
+                <p class="no-offer">There are no posts yet...</p>
+            </div>
+            {{/if}}
         </div>
     </section>
 </main>
