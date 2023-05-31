@@ -94,10 +94,10 @@ postController.get('/details/:id', async (req, res) => {
         data.fullName = userData.fullName;
         data.votedUsersList = votedUsers.votes.map(x => x.email).join(', ');
 
-        if (data.author._id == req.user._id) data.isOwner = true;
+        if (req.user && data.author._id == req.user._id) data.isOwner = true;
 
         const votes = JSON.parse(JSON.stringify(data.votes))
-        if (votes.includes(req.user._id)) data.isVoted = true;
+        if (req.user && votes.includes(req.user._id)) data.isVoted = true;
 
         res.render('details', {
             user: req.user,
