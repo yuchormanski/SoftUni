@@ -13,7 +13,15 @@ userSchema.index({ email: 1 }, {
         locale: 'en',
         strength: 2
     }
-})
+});
+
+userSchema.virtual('fullName').
+    get(function () { return `${this.firstName} ${this.lastName}`; }).
+    set(function (user) {
+        const firstName = user.firstName;
+        const lastName = user.lastName;
+        this.set({ firstName, lastName });
+    });
 
 const User = model('User', userSchema);
 

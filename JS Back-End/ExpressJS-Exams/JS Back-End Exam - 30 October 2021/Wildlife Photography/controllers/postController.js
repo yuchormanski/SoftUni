@@ -1,6 +1,6 @@
 const postController = require('express').Router();
 const { hasUser } = require('../middlewares/guards.js');
-const { createPost, loadPosts, getOne, voteUp, loadUsers, voteDown } = require('../services/postService.js');
+const { createPost, loadPosts, getOne, voteUp, loadUsers, voteDown, getUser } = require('../services/postService.js');
 const { parseError } = require('../util/parser.js');
 
 
@@ -86,11 +86,12 @@ postController.post('/create', hasUser(), async (req, res) => {
 //details
 postController.get('/details/:id', async (req, res) => {
     const data = await getOne(req.params.id).lean();
+    const userData = await getUser(data.author._id);
     const votedUsers = await loadUsers(req.params.id).lean();
 
     try {
-        data.fullName = `${data.author.firstName} ${data.author.lastName}`;
-
+        // data.fullName = `${data.author.firstName} ${data.author.lastName}`;
+        data.fullName = userData.fullName;
         data.votedUsersList = votedUsers.votes.map(x => x.email).join(', ');
 
         if (data.author._id == req.user._id) data.isOwner = true;
