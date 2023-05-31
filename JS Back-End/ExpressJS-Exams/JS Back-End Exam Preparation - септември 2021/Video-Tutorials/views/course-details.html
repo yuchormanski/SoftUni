@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Details Page</title>
+    <link href="./static/css/site.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand">Video Tutorials</a>
+
+            <ul class="navbar-nav ml-auto">
+
+                <!-- Guest users and Logged users -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home </a>
+                </li>
+
+                <!-- Logged users -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Welcome, {{username}}</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Create</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">My Profile</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Logout</a>
+                </li>
+
+                <!-- Guest users -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Register</a>
+                </li>
+
+            </ul>
+        </nav>
+
+
+        <!-- In case of error, you should display section with class "notifications" -->
+        <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
+        <!--
+        <section class="notifications">
+            <p class="notification-message">Message...</p>
+        </section>-->
+
+        <main>
+            <div class="container">
+                <h1 class="my-4">Course title : Angular
+                </h1>
+
+                <div class="row">
+
+                    <div class="col-md-8">
+                        <img class="img-fluid" src="https://colorlib.com/wp/wp-content/uploads/sites/2/angular-logo.png" alt="Express" />
+                    </div>
+
+                    <div class="col-md-4 text-center">
+                        <h3 class="my-3">Course Description</h3>
+                        <p>Angular is a platform for building mobile</p>
+
+
+                        <a class="btn btn-danger" href="#">Delete</a>
+                        <a class="btn btn-warning" href="#">Edit</a>
+                        <span class="enrolled-span">You are already enrolled</span>
+                        <a class="btn btn-primary" href="#">Enroll</a>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="page-footer font-small">
+            <div class="footer-copyright text-center py-3">© 2021
+                <p>Js Back End</p>
+            </div>
+        </footer>
+
+    </div>
+</body>
+
+</html>
