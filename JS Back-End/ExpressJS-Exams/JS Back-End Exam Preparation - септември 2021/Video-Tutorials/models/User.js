@@ -1,15 +1,23 @@
 const { Schema, model } = require('mongoose');
 
 
-//TODO: add User properties and validation according to assignment requirements
+const VALID = /^[a-zA-Z0-9]{5,}$/;
+
 const userSchema = new Schema({
-    username: { type: String, required: true, unique: true , minLength: [3, 'Username should be at least 3 characters long']},
+    username: {
+        type: String, required: true, unique: true, validate: {
+            validator(value) {
+                return VALID.test(value);
+            },
+            message: 'The Username should be at least 5 characters long and should consist only english letters and digits'
+        }
+    },
     hashedPassword: { type: String, required: true }
 });
 
-userSchema.index({username:1}, {
+userSchema.index({ username: 1 }, {
     collation: {
-        locale:'en',
+        locale: 'en',
         strength: 2
     }
 })
