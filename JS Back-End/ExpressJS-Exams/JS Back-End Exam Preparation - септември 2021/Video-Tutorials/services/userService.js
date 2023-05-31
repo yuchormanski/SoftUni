@@ -46,7 +46,10 @@ function createSession({ _id, username }) {
         _id,
         username
     };
-    return jwt.sign(payload, JWT_SECRET);
+    const options = {
+        expiresIn: '2d'
+    }
+    return jwt.sign(payload, JWT_SECRET, options);
 }
 
 module.exports = {
