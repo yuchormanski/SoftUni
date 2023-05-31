@@ -13,13 +13,13 @@ homeController.get('/', (req, res) => {
 
 homeController.get('/profile', hasUser(), async (req, res) => {
     const posts = await loadPersonPosts(req.user._id).lean();
-    // const posts = []
+    console.log(posts);
 
     try {
 
         res.render('my-posts', {
             posts,
-            user: req.user
+            user: req.user,
         })
     } catch (error) {
 
@@ -29,5 +29,5 @@ homeController.get('/profile', hasUser(), async (req, res) => {
 
 module.exports = homeController;
 
-//TODO unfinished profile page; 
+//TODO unfinished profile page;
 // missing user data
