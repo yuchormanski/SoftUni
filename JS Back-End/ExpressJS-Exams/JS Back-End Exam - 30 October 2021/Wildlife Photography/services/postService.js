@@ -4,6 +4,7 @@ const User = require("../models/User.js");
 exports.createPost = async (post) => await Post.create(post);
 
 exports.loadPosts = () => Post.find();
+exports.loadPersonPosts = (id) => Post.find({ author: id });
 
 
 // exports.getOne = (id) => Post.findById(id).populate('author');
