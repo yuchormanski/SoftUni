@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{pageTitle}}</title>
+    <link rel="stylesheet" href="/static/css/site.css">
+</head>
+
+<body>
+    <div>
+        <aside>
+            <div class="center">
+                <img class="logo" src="/static/img/logo.png" alt="logo">
+            </div>
+
+            <nav>
+                <a href="/">Main Page</a>
+                <a href="/articles/all-articles">All Articles</a>
+                <form action="/" method="get">
+                    <input type="text" name="search">
+                    <input type="submit" value="Search">
+                </form>
+
+                {{#if user}}
+                <a href="/articles/create">Create New Article</a>
+                {{/if}}
+            </nav>
+        </aside>
+        <div id="container">
+            <header>
+                {{#if user}}
+                <span>Welcome, {{user.username}}!</span>
+                <a href="/auth/logout">[Logout]</a>
+                {{else}}
+                <a href="/auth/login">Login</a>
+                <a href="/auth/register">Register</a>
+                {{/if}}
+            </header>
+            <main>
+                <h1>Welcome to SoftUni Wiki!</h1>
+                {{#if errors}}
+                <section id="notifications">
+                    {{#each errors}}
+                    <p>{{this}}</p>
+                    {{/each}}
+                </section>
+                {{/if}}
+
+                {{{body}}}
+
+            </main>
+
+            <footer>
+                SoftUni Wiki &copy; 2018 - 2019
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>
