@@ -1,39 +1,10 @@
 <section id="featured">
     <h2>Latests articles</h2>
-    <article>
-        <h3>Astronomy</h3>
-        <p>
-            Astronomy is a natural science that studies celestial objects and phenomena. It applies mathematics,
-            physics, and chemistry,
-            in an effort to explain the origin of those objects and phenomena and their evolution. Objects
-            of interest include planets, moons, stars, galaxies, and comets; the phenomena include supernova
-            explosions, gamma ray bursts,&hellip;
-        </p>
-        <div class="controls">
-            <a href="article.html">Read more</a>
-        </div>
-    </article>
-    <article>
-        <h3>Telescope</h3>
-        <p>
-            A telescope is an optical instrument that aids in the observation of remote objects by collecting
-            electromagnetic radiation (such as visible light). The first known practical telescopes were invented in
-            the Netherlands at the beginning of the 17th century, by using glass lenses. They found use in both
-            terrestrial applications and astronomy,&hellip;
-        </p>
-        <div class="controls">
-            <a href="article.html">Read more</a>
-        </div>
-    </article>
-    <article>
-        <h3>Planet</h3>
-        <p>
-            A planet is an astronomical body orbiting a star or stellar remnant that is massive enough to be rounded
-            by its own gravity, is not massive enough to cause thermonuclear fusion, and has cleared its
-            neighbouring region of planetesimals,&hellip;
-        </p>
-        <div class="controls">
-            <a href="article.html">Read more</a>
-        </div>
-    </article>
+    {{#if homeArticles}}
+    {{#each homeArticles}}
+    {{> homeArticle}}
+    {{/each}}
+    {{else}}
+    <p>There is nothing here...</p>
+    {{/if}}
 </section>
