@@ -12,7 +12,8 @@ module.exports = (app) => {
 
     app.use('*', (req, res) => {
         res.render('404', {
-            title: "Page Not Found!"
+            title: "Page Not Found!",
+            user: req.user,
         })
     });
 }

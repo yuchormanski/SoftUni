@@ -1,0 +1,17 @@
+<div class="spacer">
+    <h2>{{one.title}}
+        <div class="controls">
+            {{#if user}}
+            <a href="/articles/edit/{{one._id}}">[edit]</a>
+            {{#if one.IsOwner}}
+            <a href="/articles/delete/{{one._id}}">[delete]</a>
+            {{/if}}
+            {{/if}}
+        </div>
+    </h2>
+    <article>
+        {{#each one.content}}
+        <p>{{this}}</p>
+        {{/each}}
+    </article>
+</div>

@@ -1,0 +1,13 @@
+<section>
+    <h2>All articles</h2>
+    <div class="spacer">
+        <ul>{{#if all}}
+            {{#each all}}
+                <li>
+                    <a href="/articles/details/{{_id}}">{{title}}</a>
+                </li>
+            {{/each}}
+            <ul>{{/if}}
+            </ul>
+    </div>
+</section>
