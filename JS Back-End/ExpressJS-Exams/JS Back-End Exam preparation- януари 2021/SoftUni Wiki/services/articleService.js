@@ -10,4 +10,6 @@ exports.getOne = (id) => Article.findById(id);
 
 exports.deleteOne = (id) => Article.findByIdAndDelete(id);
 
-exports.editContent = (id, content) => Article.findByIdAndUpdate(id, {content});
+exports.editContent = (id, content) => Article.findByIdAndUpdate(id, { content });
+
+exports.search = (string) => Article.find({ title: { $regex: string } })
