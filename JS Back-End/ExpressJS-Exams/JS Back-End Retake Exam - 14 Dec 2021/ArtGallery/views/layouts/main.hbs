@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+
+    <!-- Do not forget to change the path to the css file -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+    <div id="box">
+
+        <!-- In case of error, you should display div with class "error-box" -->
+        <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
+        {{#if errors}}
+        {{#each errors}}
+        <div class="error-box">
+            <p>{{this}}</p>
+        </div>
+        {{/each}}
+        {{/if}}
+
+        <nav>
+
+            <!-- Do not forget to change the path to the image -->
+            <img src="/static/img/art-logo.png" alt="logo">
+            <a href="/">ArtGallery</a>
+
+            <ul class="menu">
+                <li><a href="/art/catalog">Gallery</a></li>
+                {{#if user}}
+                <!-- Logged users -->
+                <li><a href="/art/create">Create Publication</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+                {{else}}
+                <!-- Guest users -->
+                <li><a href="/auth/login">Login</a></li>
+                <li><a href="/auth/register">Register</a></li>
+                {{/if}}
+            </ul>
+
+        </nav>
+
+        <main>
+
+            {{{body}}}
+
+
+
+        </main>
+
+        <footer>
+            © Js Back-End Retake Exam 2021
+        </footer>
+    </div>
+</body>
+
+</html>
