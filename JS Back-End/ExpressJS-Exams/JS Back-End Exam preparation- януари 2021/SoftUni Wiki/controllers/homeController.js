@@ -2,7 +2,6 @@ const { getHomeArticles, search } = require('../services/articleService.js');
 
 const homeController = require('express').Router();
 
-
 homeController.get('/', async (req, res) => {
 
     const criteria = req.query.search;

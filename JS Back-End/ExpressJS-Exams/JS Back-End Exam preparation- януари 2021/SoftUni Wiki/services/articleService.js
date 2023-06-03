@@ -12,4 +12,4 @@ exports.deleteOne = (id) => Article.findByIdAndDelete(id);
 
 exports.editContent = (id, content) => Article.findByIdAndUpdate(id, { content });
 
-exports.search = (string) => Article.find({ title: { $regex: string } })
+exports.search = (string) => Article.find({ title: { $regex: string } });
