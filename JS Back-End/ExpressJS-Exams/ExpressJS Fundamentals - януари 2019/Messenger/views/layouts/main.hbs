@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>My Cool Blog System</title>
+    <link href="/static/css/site.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="nav">
+        <ul class="menu">
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li class="right">
+                {{#if user}}
+            <li class="right">
+                <a href="/auth/logout">Logout</a>
+            </li>
+            <li class="right">Welcome, {{user.username}}!</li>
+            {{else}}
+            <a href="/auth/register">Register</a>
+            </li>
+            <li class="right">
+                <a href="/auth/login">Login</a>
+            </li>
+
+            {{/if}}
+        </ul>
+    </div>
+    <h1>{{heading}}</h1>
+
+    {{{body}}}
+
+
+</body>
+
+</html>

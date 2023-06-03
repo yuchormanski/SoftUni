@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: 'Raleway',
+    sans-serif;
+  margin: 0;
+  font-weight: bold;
+}
+
+h1,
+h4 {
+  text-align: center;
+}
+
+h4 {
+  font-style: italic;
+}
+
+main {
+  padding: 0 40px;
+  min-height: 80%;
+}
+
+ul.menu {
+  background-color: #2fa4e7;
+  padding: 0;
+  margin: 0;
+  height: 50px;
+}
+
+.nav {
+  width: 100%;
+}
+
+.nav ul {
+  padding-left: 0;
+}
+
+.nav li,
+.right {
+  display: inline-block;
+  border-radius: 3px;
+  padding-top: 13px;
+}
+
+.nav li:first-of-type {
+  padding-left: 0;
+}
+
+.nav li a {
+  text-decoration-line: none;
+  padding: 10px;
+  color: white;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+/**
+Feedback message.
+ */
+.message {
+  margin: 0 40px;
+  border-radius: 5px;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.error {
+  width: 30%;
+  margin: 0 auto;
+  margin-top: 10px;
+  height: 30px;
+  border-radius: 20px;
+  text-align: center;
+  color: white;
+  padding: 5px;
+  background: rgb(194, 53, 53);
+}
+
+footer {
+  text-align: center;
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.head-title {
+  margin-top: 0;
+  text-align: center;
+}
+
+/**
+Default wrapper
+ */
+.container {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper {
+  position: relative;
+  border: 1px solid black;
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 10px;
+}
+
+/**
+Layout
+ */
+.inline {
+  display: inline-block;
+}
+
+.row {
+  display: block;
+}
+
+.small {
+  width: 20%;
+}
+
+.medium {
+  width: 33%;
+}
+
+.large {
+  width: 100%;
+}
+
+.cards {
+  display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.form {
+  display: flex;
+  height: 40px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.center-form {
+  width: 23%;
+  margin: 0 auto;
+}
+
+.form-group label {
+  font-size: 1.2em;
+}
+
+.search {
+  float: left !important;
+  margin-right: 10px !important;
+  margin-left: 30px;
+}
+
+.input-field {
+  float: right;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid lightgrey;
+  font-size: inherit;
+}
+
+
+.input-field:focus {
+  outline: none;
+}
+
+.form-group {
+  width: 100%;
+  height: 50px;
+}
+
+.btn-search {
+  margin-top: 3px !important;
+  height: 36px;
+  padding: 5px 10px 5px 10px !important;
+}
+
+.btn {
+  padding: 10px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  color: inherit;
+  margin-left: 5px;
+  margin: 0 auto;
+  vertical-align: middle;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn-primary {
+  color: #ffffff;
+  background-color: #2fa4e7;
+  border-color: #2fa4e7;
+  margin-left: 50%;
+  margin-top: 10px;
+}
+
+.send {
+  margin-left: 5px !important;
+  margin-top: 0 !important;
+}
+
+.btn-success {
+  color: #ffffff;
+  background-color: #73a839;
+  border-color: #73a839;
+  width: 35% !important;
+  border-radius: 20px;
+  height: 45px;
+}
+
+.btn-warning {
+  color: #ffffff;
+  background-color: #dd5600;
+  border-color: #dd5600;
+}
+
+.btn-danger {
+  color: #ffffff;
+  background-color: #c71c22;
+  border-color: #c71c22;
+  width: 35% !important;
+  border-radius: 20px;
+  height: 45px;
+}
+
+#likes {
+  color: darkgreen;
+}
+
+.wrapper::after {
+  clear: both;
+}
+
+.thread-message {
+  color: #ffffff;
+  border-radius: 10px;
+  max-width: 80%;
+  padding: 10px;
+  margin: 5px;
+  word-break: break-all;
+}
+
+.thread-message::after {
+  clear: both;
+  content: '';
+}
+
+.left {
+  float: left;
+  background-color: dimgray;
+}
+
+.right {
+  float: right;
+  background-color: #2fa4e7;
+}
+
+.message-row {
+  margin: 10px 0;
+}
+
+.clear {
+  clear: both;
+}
+
+.chat-wrapper {
+  width: 80%;
+  margin: auto;
+}
+
+.chat-form {
+  display: flex;
+  height: 50px;
+  margin: 0 auto;
+  width: 49%;
+}
+
+.message-img {
+  width: 100%;
+}
+
+.liked {
+  color: gold;
+}
+
+textarea {
+  width: 90%;
+  border-radius: 10px;
+  resize: none;
+}
+
+#message-wrapper {
+  width: 600px;
+  height: 400px;
+  border: 2px solid rgb(182, 182, 182);
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  overflow-y: auto;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(73, 152, 255);
+  border-radius: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2fa4e7;
+  border-radius: 10px;
+}
+
+.message-row {
+  clear: both;
+}
+
+.threads-list {
+  display: flex;
+}
+
+.thread {
+  display: block;
+  width: 20%;
+  text-align: center;
+  border: 2px solid rgb(182, 182, 182);
+  border-radius: 10px;
+  padding-bottom: 5px;
+  margin: 0 10px 0 10px;
+}

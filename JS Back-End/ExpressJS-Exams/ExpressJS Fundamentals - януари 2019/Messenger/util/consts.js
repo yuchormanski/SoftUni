@@ -1,0 +1,1 @@
+exports.pageTitle = 'My Cool Blog System';

@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>My Cool Blog System</title>
+    <link href="./static/css/site.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="nav">
+        <ul class="menu">
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li></li>
+            <li class="right">
+                <a href="/users/logout">Logout</a>
+            </li>
+            <li class="right">Welcome, pesho!</li>
+        </ul>
+    </div>
+    <h1>Chatroom with gosho</h1>
+<form method="post" class="chat-form" action="/block/gosho">
+    <button class="btn btn-danger">Block</button>
+</form>
+<div class="chat-wrapper">
+    <div id="message-wrapper">
+        <div class="message-row">
+            <span class="thread-message left">hello pesho</span>
+        </div>
+        <div class="message-row">
+            <span class="thread-message right">hello gosho</span>
+        </div>
+        <div class="message-row">
+            <img class="thread-message left" src="https://cdn.japantimes.2xx.jp/wp-content/uploads/2017/03/p9-wellsaid-a-20170321-200x200.jpg">
+        </div>
+        <div class="message-row">
+            <span class="thread-message left">here is my cat</span>
+        </div>
+    </div>
+    <form method="post" class="chat-form">
+        <textarea rows="5" name="message" placeholder="message"></textarea>
+        <input value="5c540d5fac257e190c076fc0" name="threadId" hidden />
+        <button class="btn btn-primary send">Send</button>
+    </form>
+</div>
+</body>
+
+</html>
