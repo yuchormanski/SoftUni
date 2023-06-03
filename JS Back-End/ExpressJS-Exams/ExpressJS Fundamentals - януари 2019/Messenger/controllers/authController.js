@@ -33,7 +33,8 @@ authController.post('/register', async (req, res) => {
         const errors = parseError(error);
 
         res.render('register', {
-            title: 'Register Page',
+            pageTitle,
+            heading: 'Register',
             errors,
             body: {
                 username: req.body.username
@@ -56,14 +57,13 @@ authController.post('/login', async (req, res) => {
         const token = await login(req.body.username, req.body.password);
         res.cookie('token', token);
 
-        //TODO: check assignment for correct redirect location
         res.redirect('/');
     } catch (error) {
         const errors = parseError(error);
 
-        //TODO: add error display to actual template from assignment
         res.render('login', {
-            title: 'Login Page',
+            pageTitle,
+            heading: 'Login',
             errors,
             body: {
                 username: req.body.username
