@@ -1,6 +1,6 @@
 const { Schema, model, Types } = require('mongoose');
 
-const valid_image = /^https?:\/\/.+/i;
+const valid_image = /^https?:\/\/.+$/i;
 
 const publicationSchema = new Schema({
     title: {
