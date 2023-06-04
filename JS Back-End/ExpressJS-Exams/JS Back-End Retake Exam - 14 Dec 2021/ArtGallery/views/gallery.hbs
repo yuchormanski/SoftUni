@@ -3,33 +3,19 @@
     <article class="gallery-container">
 
         <!--If there are art publications in the database, show each of them-->
-        <article class="card-info">
-            <article class="card-info-image">
-                <img src="/static/img/blog-img14.jpg" alt="art-image">
-            </article>
-            <article class="card-info-text">
-                <h2>Title: Painting is everything</h2>
-                <h3>Certificate of authenticity: No</h3>
-                <a href="#" class="details-btn">Details</a>
-            </article>
-        </article>
-
-        <article class="card-info">
-            <article class="card-info-image">
-                <img src="/static/img/img-5.jpg" alt="art-image">
-            </article>
-            <article class="card-info-text">
-                <h2>Title: Spring in the garden</h2>
-                <h3>Certificate of authenticity: Yes</h3>
-                <a href="#" class="details-btn">Details</a>
-            </article>
-        </article>
-
+        {{#if publications}}
+            {{#each publications}}
+               {{> galleryPartial}}
+            {{/each}}
+        {{else}}
         <!--If there are still no art publications in the database display:-->
-        <!-- <article class="no-available-publications">
-                        <h1>No publications created yet.</h1>
-                        <a href="#" class="create-pub">Create publication</a>
-                    </article>-->
+        <article class="no-available-publications">
+            <h1>No publications created yet.</h1>
+            {{#if user}}
+                <a href="/art/create" class="create-pub">Create publication</a>
+            {{/if}}
+        </article>
+        {{/if}}
 
     </article>
 </section>

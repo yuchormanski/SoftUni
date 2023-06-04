@@ -1,4 +1,4 @@
-const { createPublication } = require('../services/publicationService.js');
+const { createPublication, getAll } = require('../services/publicationService.js');
 const { parseError } = require('../util/parser.js');
 
 const publicationController = require('express').Router();
@@ -6,12 +6,17 @@ const publicationController = require('express').Router();
 //gallery
 publicationController.get('/catalog', async (req, res) => {
     try {
+        const publications = await getAll().lean();
         res.render('gallery', {
             user: req.user,
             pageTitle: 'Gallery Page',
+            publications
         })
     } catch (error) {
-
+        res.render('404', {
+            user: req.user,
+            errors: parseError(error),
+        })
     }
 });
 
