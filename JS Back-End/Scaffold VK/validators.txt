@@ -1,3 +1,6 @@
+генериране на custom secret (в терминала): node -e "console.log(require('crypto').randomBytes(32).toString('hex'))" 
+
+
 //email
 
 const EMAIL_PATTERN = /^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]+$/i;
@@ -98,3 +101,9 @@ userSchema.virtual('fullName').
 		
 	v2.
 match: [/^https?:\/\//, 'Invalid URL!'],
+
+v3.
+
+        if (/(http(s?)):\/\//i.test(imageUrl) === false) {
+            throw new Error('Invalid image URL!')
+        }

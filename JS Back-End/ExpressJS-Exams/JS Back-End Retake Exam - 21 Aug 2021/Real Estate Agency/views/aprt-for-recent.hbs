@@ -1,0 +1,17 @@
+<section id="all-listings">
+    <h1>Apartments for recents</h1>
+    <!-- If there are offers for housing in the database display each of them -->
+    {{#if allHouses}}
+        {{#each allHouses}}
+            {{> catalogPartial}}
+        {{/each}}
+    {{else}}
+        <!-- If there are still no offers for housing in the database display: -->
+        <div class="no-data-listing">
+            <p class="no-offer">There are no housing offers found...</p>
+        </div>
+    {{/if}}
+
+
+
+</section>

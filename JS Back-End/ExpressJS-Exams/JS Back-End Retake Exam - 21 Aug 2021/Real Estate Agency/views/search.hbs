@@ -1,0 +1,20 @@
+<form class="search" action="/houses/search" method="get">
+    <input type="search" name="search" placeholder="Search here..." value="{{query}}">
+    <button type="submit">Search</button>
+</form>
+<section id="find-section">
+    {{#if initial}}
+    {{else}}
+    <!-- If there are any matching matches from the search, show each of them -->
+    {{#if result}}
+        {{#each result}}
+            {{> catalogPartial}}
+        {{/each}}
+    {{else}}
+    <!-- If there are no search matches, show: -->
+    <div class="no-data-listing">
+        <p class="no-offer">No match was found for the submitted type...</p>
+    </div>
+    {{/if}}
+    {{/if}}
+</section>

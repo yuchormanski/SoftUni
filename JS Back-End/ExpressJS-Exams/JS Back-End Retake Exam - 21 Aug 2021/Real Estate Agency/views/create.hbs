@@ -1,0 +1,49 @@
+<section id="create-page">
+    <div class="create-container">
+        <div class="box-image"></div>
+
+        <h2 class="box-heading"> Add new home</h2>
+
+
+        <form class="form" action="/houses/create" method="post">
+            <div class="input">
+                <input type="text" class="input-field" id="home-name" placeholder="Real House Luxury Villa..." name="name"
+                    value="{{house.name}}" />
+                <label class="home-name">Name:</label>
+            </div>
+            <div class="input">
+                <input type="text" class="input-field" id="type" placeholder="Villa..." name="type" value="{{house.type}}" />
+                <label class="type">Property Type:</label>
+            </div>
+            <div class="input">
+                <input type="number" class="input-field" id="year" placeholder="2018..." name="year" value="{{house.year}}" />
+                <label class="year">Year Built:</label>
+            </div>
+            <div class="input">
+                <input type="text" class="input-field" id="city" placeholder="Sofia..." name="city" value="{{house.city}}" />
+                <label class="city">City</label>
+            </div>
+
+            <div class="input">
+                <input type="text" class="input-field" id="homeImage" placeholder="Image..." name="imageUrl" value="{{house.imageUrl}}" />
+                <label class="homeImage">Home Image:</label>
+            </div>
+
+            <div class="input">
+                <input type="text" class="input-field" id="description" placeholder="Description..." name="description" value="{{house.description}}" />
+                <label class="description">Property Description:</label>
+            </div>
+
+            <div class="input">
+                <input type="number" class="input-field" id="availablePieces" placeholder="1" name="available" value="{{house.available}}" />
+                <label class="availablePieces">Available pieces:</label>
+            </div>
+
+            <div class="create-action">
+                <button class="create-button">Add</button>
+            </div>
+
+
+        </form>
+    </div>
+</section>
