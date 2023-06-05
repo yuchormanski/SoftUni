@@ -8,7 +8,7 @@ export const layoutTemplate = (userData, content) => html`
     <header>
         <!-- Navigation -->
         <a id="logo" href="/"
-          ><img id="logo-img" src="./images/logo.png" alt=""
+          ><img id="logo-img" src="/images/logo.png" alt=""
         /></a>
 
         <nav>

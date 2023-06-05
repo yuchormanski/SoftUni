@@ -84,3 +84,17 @@ userSchema.virtual('fullName').
     const lastName = v.substring(v.indexOf(' ') + 1);
     this.set({ firstName, lastName });
   });
+  
+  
+  -----------------------------------
+  v1.
+  validate: {
+	validator: function(value){
+		return value.startsWith('http://') || value.startsWith('https://');
+	},
+	message: 'URL is Invalid!'
+}
+		
+		
+	v2.
+match: [/^https?:\/\//, 'Invalid URL!'],
