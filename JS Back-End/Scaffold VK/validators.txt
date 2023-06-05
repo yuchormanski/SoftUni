@@ -107,3 +107,8 @@ v3.
         if (/(http(s?)):\/\//i.test(imageUrl) === false) {
             throw new Error('Invalid image URL!')
         }
+
+---------------------------------------------------
+get last Three entries
+exports.getThree = () => Housing.find().sort({ _id: -1 }).limit(3)
+респектвно пъвите три -  Housing.find().sort({ _id: 1 }).limit(3)
