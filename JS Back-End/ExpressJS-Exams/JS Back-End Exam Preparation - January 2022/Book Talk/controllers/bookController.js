@@ -20,12 +20,9 @@ bookController.get('/catalog', async (req, res) => {
 
 //create
 bookController.get('/create', hasUser(), (req, res) => {
-
     res.render('create', {
         pageTitle: 'Create Page',
     })
-
-
 });
 
 bookController.post('/create', hasUser(), async (req, res) => {
@@ -55,7 +52,6 @@ bookController.post('/create', hasUser(), async (req, res) => {
             book
         })
     }
-
 });
 
 //details

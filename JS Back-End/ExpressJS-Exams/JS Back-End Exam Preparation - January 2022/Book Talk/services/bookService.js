@@ -20,11 +20,16 @@ function deleteBook(id) {
     return Book.findByIdAndDelete(id);
 }
 
+function editBook(id, book) {
+    return Book.findByIdAndUpdate(id, book);
+}
+
 module.exports = {
     getAll,
     createBook,
     getOne,
     wishBook,
     deleteBook,
+    editBook,
 
 }

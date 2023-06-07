@@ -1,5 +1,5 @@
 const { hasUser } = require('../middlewares/guards.js');
-const { wishBook, getOne, deleteBook } = require('../services/bookService.js');
+const { wishBook, getOne, deleteBook, editBook } = require('../services/bookService.js');
 const { parseError } = require('../util/parser.js');
 
 const actionsController = require('express').Router();
@@ -50,6 +50,34 @@ actionsController.get('/edit/:id', hasUser(), async (req, res) => {
             pageTitle: 'Edit Page',
             book,
             errors: parseError(error),
+        })
+    }
+});
+
+actionsController.post('/edit/:id', async (req, res) => {
+    const id = req.params.id;
+    const book = {
+        title: req.body.title,
+        author: req.body.author,
+        imageUrl: req.body.imageUrl,
+        review: req.body.review,
+        genre: req.body.genre,
+        stars: Number(req.body.stars),
+    }
+    try {
+        if (Object.values(book).some(x => x == '')) {
+            throw new Error('All fields are required!');
+        }
+        if (/(http(s?)):\/\//i.test(book.imageUrl) === false) {
+            throw new Error('The Image should start with http:// or https://!');
+        }
+        await editBook(id, book);
+        res.redirect(`/books/edit/${id}`)
+    } catch (error) {
+        res.render('edit', {
+            pageTitle: 'Edit Page',
+            errors: parseError(error),
+            book
         })
     }
 });
