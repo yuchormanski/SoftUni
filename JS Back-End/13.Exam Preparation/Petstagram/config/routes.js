@@ -1,17 +1,19 @@
 const authController = require("../controllers/authController.js");
-const homeController = require("../controllers/homeController.js")
+const homeController = require("../controllers/homeController.js");
+const petController = require("../controllers/petController.js");
 
 module.exports = (app) => {
     app.use('/', homeController);
     app.use('/auth', authController);
+    app.use('/pets', petController);
 
 
     //Always must be last
 
-    //TODO: check if needed 404 page and set it if it so
     app.use('*', (req, res) => {
         res.render('404', {
-            title: "Page Not Found!"
-        })
+            pageTitle: "Page Not Found!"
+        });
+        res.status(404);
     });
 }

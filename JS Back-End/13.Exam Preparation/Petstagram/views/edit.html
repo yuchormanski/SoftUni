@@ -11,16 +11,6 @@
 <!-- Starts Body Section -->
 
 <body>
-    <!--Error Container-->
-    {{#if errors}}
-    <div>
-        <div class="errorContainer">
-            {{#each errors}}
-            <p>{{this}}</p>
-            {{/each}}
-        </div>
-    </div>
-    {{/if}}
 
     <!-- Starts Header Section with Navigation Bar -->
     <header>
@@ -28,11 +18,12 @@
             <div class="container">
                 <div class="logo">
                     <!-- Link to Home Page -->
-                    <a href="/">
+                    <a href="#">
                         <img width="50px" src="/static/images/free-30-instagram-stories-icons23_122570.png" alt="img1">
                     </a>
+
                     <!-- Link to Home Page -->
-                    <a class="home" href="/">
+                    <a class="home" href="#">
                         <i>Petstagram</i>
                     </a>
                 </div>
@@ -41,49 +32,46 @@
                     <ul class="nav-group">
                         <li class="nav-item">
                             <!-- Link to Catalog Page -->
-                            <a href="/pets/catalog">
+                            <a href="#">
                                 <i>Catalog</i>
                             </a>
                         </li>
-                        {{#if isAuthenticated}}
+
+                        <!--For Guest User-->
+                        <li class="nav-item">
+                            <!-- Link to Login Page -->
+                            <a href="#">
+                                <i>Login</i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- Link to Register Page -->
+                            <a href="#">
+                                <i>Register</i>
+                            </a>
+                        </li>
 
                         <!--For login users-->
                         <li class="nav-item">
                             <!-- Link to Add Photo Page -->
-                            <a href="/pets/add-photo">
+                            <a href="#">
                                 <i>Add Photo</i>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <!-- Link to Profile Page -->
-                            <a href="/profile">
+                            <a href="#">
                                 <i>Profile</i>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <!-- Link to Logout Page -->
-                            <a href="/auth/logout">
+                            <a href="#">
                                 <i>Logout</i>
                             </a>
                         </li>
-                        {{else}}
-                        <!--For Guest User-->
-                        <li class="nav-item">
-                            <!-- Link to Login Page -->
-                            <a href="/auth/login">
-                                <i>Login</i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <!-- Link to Register Page -->
-                            <a href="/auth/register">
-                                <i>Register</i>
-                            </a>
-                        </li>
-
-                        {{/if}}
                     </ul>
                 </div>
             </div>
@@ -92,12 +80,37 @@
 
     <!-- Starts Main Section -->
     <main>
+        <!-- Start Add Photo Section -->
+        <div class="editPage">
+            <h2>Edit photo</h2>
+            <!-- Start Add Photo Form -->
+            <form action="">
+                <p>
+                    <input type="text" name="" placeholder="Name" value="Sal">
+                </p>
 
-        {{{body}}}
+                <p>
+                    <input type="number" name="" placeholder="Age" value="4">
+                </p>
 
+                <p>
+                    <textarea type="text" name="" placeholder="Description">This is my pet!</textarea>
+                </p>
+
+                <p>
+                    <input type="text" name="" placeholder="Location" value="Bansko, Bulgaria">
+                </p>
+
+                <p>
+                    <input type="text" name="" placeholder="Link to image" value="/static/images/axolotl.jpeg">
+                </p>
+                <!-- Add Photo Button -->
+                <button class="edit-btn" type="submit">Edit Photo</button>
+            </form>
+        </div>
     </main>
 
-    <!-- Starts Footer Section -->
+    <!-- Start Footer Section -->
     <div class="footer">
         <span class="footer-section">
             © 2023 SoftUni Back-End Exam
