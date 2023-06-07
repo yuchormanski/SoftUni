@@ -8,7 +8,7 @@ const authController = require('express').Router();
 authController.get('/register', (req, res) => {
     //TODO: replace with actual view by assignment 
     res.render('register', {
-        title: 'Register page' // if needed
+        pageTitle: 'Register Page' // if needed
     });
 });
 
@@ -34,7 +34,7 @@ authController.post('/register', async (req, res) => {
 
         //TODO: add error display to actual template from assignment
         res.render('register', {
-            title: 'Register Page',
+            pageTitle: 'Register Page',
             errors,
             body: {
                 username: req.body.username
@@ -48,7 +48,7 @@ authController.post('/register', async (req, res) => {
 authController.get('/login', (req,res)=>{
     //TODO: replace with actual view by assignment 
     res.render('login', {
-        title: 'Login page',
+        pageTitle: 'Login Page',
     })
 });
 
@@ -64,7 +64,7 @@ authController.post('/login', async (req, res) => {
         
         //TODO: add error display to actual template from assignment
         res.render('login', {
-            title: 'Login Page',
+            pageTitle: 'Login Page',
             errors,
             body: {
                 username: req.body.username
