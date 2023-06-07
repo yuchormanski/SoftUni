@@ -4,7 +4,7 @@
     <div class="top">
         <div class="userDetails">
             <!-- Link to User Profile Page -->
-            <a href="#" action="#" method="#">
+            <a href="/profile/{{owner._id}}">
                 <div class="profilepic">
                     <div class="profile_img">
                         <div class="image">
@@ -17,24 +17,24 @@
                 <!-- Link to User Profile Page -->
                 <p>
                     <!-- show user username -->
-                    MayaB
+            {{owner.username}}
                 </p>
                 <!-- photo's location -->
-                <span>Bansko, Bulgaria</span>
+                <span>{{location}}</span>
             </h3>
         </div>
     </div>
 
     <!-- Start Pet Photo -->
     <div class="imgBx">
-        <img src="/static/images/axolotl.jpeg" alt="post" class="cover">
+        <img src="{{imageUrl}}" alt="post" class="cover">
     </div>
     <!-- Name of Pet -->
-    <h5 class="petName">Name: Sal</h5>
+    <h5 class="petName">Name: {{name}}</h5>
     <!-- Age of Pet -->
-    <h5 class="petAge">Age: 4</h5>
+    <h5 class="petAge">Age: {{age}}</h5>
     <!-- Link to Photo Details Page -->
-    <a href="#" id="see-details">
+    <a href="/pets/details/{{_id}}" id="see-details">
         <h4 class="details">See details</h4>
     </a>
 </div>

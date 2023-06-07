@@ -1,0 +1,97 @@
+<div class="container">
+    <div class="col-9">
+
+        <!-- Start Pet Photo Post Section -->
+        <div class="card">
+            <div class="top">
+
+                <!-- Start User Details and Image Location Section -->
+                <div class="userDetails">
+
+                    <!-- Link to User Profile Details Page-->
+                    <div>
+                        <div class="profilepic">
+                            <div class="profile_img">
+                                <div class="image">
+                                    <img src="/static/images/person.png" alt="img8">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>
+
+                        <!-- Link to User Profile Details Page -->
+                        <p>
+                            <!-- User's username -->
+                            {{pet.owner.username}}
+                        </p>
+                        <!-- photo's location -->
+                        <span>{{pet.location}}</span>
+
+                        <!-- IF the viewer is the creator of the photo -->
+                        {{#if pet.isOwner}}
+                        <div class="edit-delete-btns">
+
+                            <!-- Edit Pet Photo -->
+                            <a href="/actions/edit/{{pet._id}}">
+                                <img class="edit-img" src="/static/images/edit-pen-icon-6.jpg" alt="edit button">
+                            </a>
+
+                            <!--Delete Pet Photo -->
+                            <a href="/actions/delete/{{pet._id}}">
+                                <img class="bin-img" src="/static/images/icon-remove-22.jpg" alt="bin button">
+                            </a>
+                        </div>
+                        {{/if}}
+
+                    </h3>
+                </div>
+
+            </div>
+
+            <!-- Start Pet Photo -->
+            <div class="imgBx">
+                <!-- Pet Photo -->
+                <img src="{{pet.imageUrl}}" alt="post" class="cover">
+            </div>
+
+
+
+            <div class="bottom">
+
+                <p class="message">
+                    <b class="petDescription">{{pet.description}}</b>
+                </p>
+
+
+                <!-- Photo description -->
+                <div class="pet-details">
+                    <p class="petName">Name: {{pet.name}}</p>
+                    <p class="petAge">Age: {{pet.age}}</p>
+                </div>
+                <div class="comments">
+                    <div class="comments-top">
+                        {{#if pet.comments}}
+                        {{#each pet.comments}}
+                        {{> comment}}
+                        {{/each}}
+                        {{/if}}
+
+                    </div>
+                </div>
+            </div>
+            {{#if isAuthenticated}}
+            {{#unless pet.isOwner}}
+                <div class="addComments">
+                    <!-- Start Add Comments Form -->
+                    <form method="post" action="/actions/comment/{{pet._id}}">
+                        <textarea id="comment-textarea" name="comment" cols="40" rows="10" placeholder="Add comment..."></textarea>
+                        <!-- Post Comments Button -->
+                        <button type="submit">Post</button>
+                    </form>
+                </div>
+            {{/unless}}
+            {{/if}}
+        </div>
+    </div>
+</div>

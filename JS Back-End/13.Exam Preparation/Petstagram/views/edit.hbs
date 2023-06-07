@@ -1,8 +1,8 @@
 <!-- Start Add Photo Section -->
-<div class="createPage">
-    <h2>Add photo</h2>
+<div class="editPage">
+    <h2>Edit photo</h2>
     <!-- Start Add Photo Form -->
-    <form action="/pets/add-photo" method="post">
+    <form action="/actions/edit/{{pet._id}}" method="post">
         <p>
             <input type="text" name="name" placeholder="Name" value="{{pet.name}}">
         </p>
@@ -23,6 +23,6 @@
             <input type="text" name="imageUrl" placeholder="Link to image" value="{{pet.imageUrl}}">
         </p>
         <!-- Add Photo Button -->
-        <button class="add-btn" type="submit">Add Photo</button>
+        <button class="edit-btn" type="submit">Edit Photo</button>
     </form>
 </div>
