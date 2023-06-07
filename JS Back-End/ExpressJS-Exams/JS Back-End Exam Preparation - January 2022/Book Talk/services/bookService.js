@@ -1,4 +1,5 @@
 const Book = require("../models/Book.js");
+const User = require("../models/User.js");
 
 function getAll() {
     return Book.find();
@@ -24,6 +25,14 @@ function editBook(id, book) {
     return Book.findByIdAndUpdate(id, book);
 }
 
+function getUser(id) {
+    return User.findById(id);
+}
+
+function getWished(id) {
+    return Book.find({ wishingList: id });
+}
+
 module.exports = {
     getAll,
     createBook,
@@ -31,5 +40,6 @@ module.exports = {
     wishBook,
     deleteBook,
     editBook,
-
+    getUser,
+    getWished,
 }
