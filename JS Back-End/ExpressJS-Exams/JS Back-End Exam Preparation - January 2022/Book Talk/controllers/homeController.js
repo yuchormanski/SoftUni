@@ -2,7 +2,6 @@ const { getUser, getWished } = require('../services/bookService.js');
 
 const homeController = require('express').Router();
 
-
 homeController.get('/', (req, res) => {
     res.render('home', {
         pageTitle: 'Home page',  //if needed
