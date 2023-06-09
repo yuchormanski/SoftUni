@@ -1,19 +1,18 @@
 <h1 class="text-center">Courses</h1>
 <section>
     <a href="/courses/create" class="btn btn-warning ">Create Course</a>
-    <form class="search float-right">
+    <form class="search float-right" method="get">
         <label>Search: </label>
-        <input type="text">
+        <input type="text" name="search">
         <input type="submit" class="btn btn-primary" value="Search">
     </form>
 </section>
-{{#if courses}}
+{{#if homeTutorials}}
 <div class="container mt-3">
     <div class="row ">
         <div class="card-deck d-flex justify-content-center">
-
-            {{#each courses}}
-                {{> user-home}}
+            {{#each homeTutorials}}
+            {{> user}}
             {{/each}}
 
         </div>

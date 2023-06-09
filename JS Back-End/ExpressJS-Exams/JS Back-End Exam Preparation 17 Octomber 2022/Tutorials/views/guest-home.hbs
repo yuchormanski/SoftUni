@@ -8,20 +8,17 @@
 <div>
     <h1 class="text-center">Top Courses</h1>
     <div class="container mt-3">
-        {{#if courses}}
+        {{#if homeTutorials}}
         <div class="row d-flex justify-content-center">
 
             <div class="card-deck">
-                {{#each courses}}
-                    {{> guest-home}}
+                {{#each homeTutorials}}
+                    {{> guest}}
                 {{/each}}
-
             </div>
-
         </div>
         {{else}}
         <h4 class="text-center">No courses...</h4>
-
         {{/if}}
     </div>
 </div>

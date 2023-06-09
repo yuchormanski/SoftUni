@@ -23,6 +23,10 @@ const courseSchema = new Schema({
     enrolled: {
         type: [Types.ObjectId],
         ref: 'User'
+    },
+    owner: {
+        type: Types.ObjectId,
+        ref: 'User'
     }
 },
     {
