@@ -29,6 +29,7 @@ function editCourse(id, course) {
 }
 
 function getSearched(string) {
+    // case-insensitive
     return Course.find({ title: { $regex: string, $options: 'i' } })
 }
 
