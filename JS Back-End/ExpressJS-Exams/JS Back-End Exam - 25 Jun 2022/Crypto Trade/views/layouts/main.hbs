@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{pageTitle}}</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <nav>
+            <img src="/static/images/logo.png" class="logo">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/cryptos/catalog">All Crypto</a></li>
+                <li><a href="/search">Search</a></li>
+                {{#if isAuthenticated}}
+                <li><a href="/cryptos/create">Create Offer</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+                {{else}}
+                <li><a href="/auth/login">Login</a></li>
+                <li><a href="/auth/register">Register</a></li>
+                {{/if}}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- In case of error, you should display div with class "errorContainer" -->
+        <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
+
+        {{#if errors}}
+        <div>
+            <div class="errorContainer">
+                {{#each errors}}
+                <p>{{this}}</p>
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+
+        {{{body}}}
+
+    </main>
+
+    <footer>
+        <p>Back-End 2022</p>
+    </footer>
+
+</body>
+
+</html>
