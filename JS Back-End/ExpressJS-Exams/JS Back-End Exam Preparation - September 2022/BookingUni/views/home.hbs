@@ -1,0 +1,19 @@
+<section id="viewCatalog" class="background-img">
+    {{#if hotels}}
+    <div class="added-hotels">
+        {{#if hotels.hasUser}}
+            {{#each hotels}}
+                {{> homeU}}
+            {{/each}}
+        {{else}}
+            {{#each hotels}}
+                {{> homeG}}
+            {{/each}}
+        {{/if}}
+    </div>
+    {{else}}
+    <div class="guest">
+        There are no Hotels found...
+    </div>
+    {{/if}}
+</section>
