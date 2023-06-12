@@ -7,7 +7,9 @@ const EMAIL_PATTERN = /^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]+$/i;
 EMAIL_PATTERN.test(email)  -- boolean
 
 require npm validator
-validator.isEmail(req.body.email) -- boolean
+        if (!validator.isEmail(req.body.email)) {
+            throw new Error('Invalid email address!')
+        };
 
 
 //image model
