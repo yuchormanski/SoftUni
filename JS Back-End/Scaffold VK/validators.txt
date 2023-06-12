@@ -113,11 +113,19 @@ userSchema.virtual('fullName').
 	v2.
 match: [/^https?:\/\//, 'Invalid URL!'],
 
-v3.
+v3. - worked the best
+in controller
 
         if (/(http(s?)):\/\//i.test(imageUrl) === false) {
             throw new Error('Invalid image URL!')
         }
+		
+in Model:
+
+validate: [/(http(s?)):\/\//i, 'The photo image should start with http:// or https://']
+
+//with image file extention
+validate: /^((http(s?)):\/\/).+(\.jpg|\.png|\.jpeg)$/i
 
 ---------------------------------------------------
 get last Three entries

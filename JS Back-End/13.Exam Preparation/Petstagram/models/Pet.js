@@ -10,6 +10,7 @@ const petSchema = new Schema({
     imageUrl: {
         type: String,
         required: true,
+        validate: [/^(http(s?)):\/\//i, 'The photo image should start with http:// or https://']
     },
     age: {
         type: Number,
@@ -31,16 +32,16 @@ const petSchema = new Schema({
         maxLength: [50, 'The location is required and should be at least 5 and no longer than 50 characters.']
     },
     comments: [
-            {
-                userId: {
-                    type: Types.ObjectId,
-                    ref: 'User'
-                },
-                comment: {
-                    type: String,
-                }
+        {
+            userId: {
+                type: Types.ObjectId,
+                ref: 'User'
+            },
+            comment: {
+                type: String,
             }
-        ],
+        }
+    ],
     owner: {
         type: Types.ObjectId,
         ref: 'User'
