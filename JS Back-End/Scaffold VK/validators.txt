@@ -21,18 +21,26 @@ const IMAGE_PATTERN = /^https?:\/\/.+(.png|.jpg|.jpeg)$/i;
 
 ---------------------
 get selection result
+създаваме утил функцията , която съдържа всички опции от селекта;
+currentOption = записаната в DB стойност
 
-function levels(currentLevel) {
-    const difficultyLevels = [
+function levels(currentOption) {
+    const availableOptions = [
         { key: 'estate', label: 'Real Estate', selected: false },
         { key: 'vehicles', label: 'Vehicles', selected: false },
         { key: 'furniture', label: 'Furniture', selected: false },
         { key: 'electronics', label: 'Electronics', selected: false },
         { key: 'other', label: 'Other', selected: false },
     ]
-    const result = difficultyLevels.map(x => x.label == currentLevel ? { ...x, selected: true } : x);
+    const result = availableOptions.map(x => x.key == currentOption ? { ...x, selected: true } : x);
     return result;
 }
+
+const selectOptions = levels(currentOption);
+
+в темплейта : {{#each selectOptions}}
+                <option value="{{key}}"{{#if selected}}select{{/if}}>{{label}}</option>
+              {{/each}}
 
 function categories(cat) {
     let category;
