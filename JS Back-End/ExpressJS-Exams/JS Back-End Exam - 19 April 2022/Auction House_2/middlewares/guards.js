@@ -1,3 +1,5 @@
+const Auction = require("../models/Auction.js");
+
 function hasUser() {
     return (req, res, next) => {
         if(req.user){
@@ -18,7 +20,13 @@ function isGuest() {
     };
 }
 
+async function hasRights(id, userId){
+    const current =  await Auction.findById(id);
+    return userId === current.author.toString();
+}
+
 module.exports = {
     hasUser,
     isGuest,
+    hasRights,
 };

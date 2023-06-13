@@ -1,5 +1,5 @@
 const { hasUser } = require('../middlewares/guards.js');
-const { getAll, createAuction, getOne } = require('../services/auctionService.js');
+const { getAll, createAuction, getOne, getAllClosed } = require('../services/auctionService.js');
 const { parseError } = require('../util/parser.js');
 
 const auctionController = require('express').Router();
@@ -9,6 +9,7 @@ auctionController.get('/catalog', async (req, res) => {
 
     try {
         const auctions = await getAll().lean();
+        console.log(auctions);
         res.render('browse', {
             pageTitle: 'Browse Auctions',
             auctions,
@@ -61,6 +62,7 @@ auctionController.get('/details/:id', async (req, res) => {
 
     try {
         const auction = await getOne(id).populate('author').populate('bidder').lean();
+
         const categoryName = {
             estate: 'Real Estate',
             vehicles: 'Vehicles',
@@ -70,20 +72,21 @@ auctionController.get('/details/:id', async (req, res) => {
         }
 
         auction.categoryValue = categoryName[auction.category];
+        auction.authorFullName = `${auction.author.firstName} ${auction.author.lastName}`; 
 
-        if (auction.author._id.toString() === req.user._id) {
+        
+        if (req.user?._id === auction.author._id.toString()) {
             auction.isOwner = true;
-            auction.authorFullName = `${auction.author.firstName} ${auction.author.lastName}`;
-
         };
-
-        if (auction.bidder?._id.toString() === req.user._id) {
-            auction.isBidder = true;
+        if(auction.bidder){
+            auction.hasBidder = true;
+            if (req.user?._id === auction.bidder._id.toString()) {
+                auction.isBidder = true;
+            };
             auction.bidderFullName = `${auction.bidder.firstName} ${auction.bidder.lastName}`;
-        };
-
-
-
+        }
+        
+        
         res.render('details', {
             pageTitle: 'Auction Details',
             auction
@@ -92,5 +95,20 @@ auctionController.get('/details/:id', async (req, res) => {
         res.redirect('/404');
     }
 });
+
+//closed
+auctionController.get('/closed', async (req, res) => {
+    try {
+        const allClosed = await getAllClosed().lean();
+        console.log(allClosed);
+        res.render('closed-auctions', {
+            allClosed,
+            pageTitle: 'Closed Auctions'
+        })
+    } catch (error) {
+        res.redirect('/404');
+    }
+});
+
 
 module.exports = auctionController;

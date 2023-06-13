@@ -35,9 +35,11 @@ const auctionSchema = new Schema({
         type: Types.ObjectId,
         ref: 'User',
     },
-    bidderPrice : {
-        type: Number,
+    listed : {
+        type: Boolean,
+        default: true,
     }
+
 });
 
 const Auction = model('Auction', auctionSchema);
