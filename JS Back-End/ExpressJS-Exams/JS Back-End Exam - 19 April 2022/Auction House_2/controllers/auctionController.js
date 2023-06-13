@@ -9,7 +9,6 @@ auctionController.get('/catalog', async (req, res) => {
 
     try {
         const auctions = await getAll().lean();
-        console.log(auctions);
         res.render('browse', {
             pageTitle: 'Browse Auctions',
             auctions,
@@ -98,9 +97,9 @@ auctionController.get('/details/:id', async (req, res) => {
 
 //closed
 auctionController.get('/closed', async (req, res) => {
+    const userId = req.user._id;
     try {
-        const allClosed = await getAllClosed().lean();
-        console.log(allClosed);
+        const allClosed = await getAllClosed(userId).lean();
         res.render('closed-auctions', {
             allClosed,
             pageTitle: 'Closed Auctions'

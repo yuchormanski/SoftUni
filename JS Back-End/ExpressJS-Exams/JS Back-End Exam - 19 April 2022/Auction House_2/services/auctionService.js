@@ -14,6 +14,6 @@ exports.deleteAuction = (id) => Auction.findByIdAndDelete(id);
 
 exports.editAuction = (id, updated) => Auction.findByIdAndUpdate(id, updated);
 
-exports.getAllClosed = () => Auction.find().populate('bidder').where('listed').equals(false);
+exports.getAllClosed = (id) => Auction.find({ author: id, listed: false }).populate('bidder');
 
 exports.closeAuction = (id) => Auction.findByIdAndUpdate(id, { listed: false })
