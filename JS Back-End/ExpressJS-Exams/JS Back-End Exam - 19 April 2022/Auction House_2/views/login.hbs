@@ -1,0 +1,27 @@
+<!-- Login Page -->
+<section id="login-section" class="narrow">
+
+    <h1 class="item">Login</h1>
+
+    <div class="item padded align-center">
+
+        <form class="aligned" method="post" action="/auth/login">
+
+            <label>
+                <span>Email</span>
+                <input type="text" name="email" value="{{body.email}}">
+            </label>
+            <label>
+                <span>Password</span>
+                <input type="password" name="password">
+            </label>
+
+            <div class="align-center">
+                <input class="action" type="submit" value="Sign In">
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
