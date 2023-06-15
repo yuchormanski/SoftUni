@@ -1,0 +1,40 @@
+<main id="edit">
+    <!-- In case of error, you should display div with class "errorContainer" -->
+    <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
+
+    {{#if errors}}
+    <div>
+        <div class="errorContainer">
+            {{#each errors}}
+            <p>{{this}}</p>
+            {{/each}}
+        </div>
+    </div>
+    {{/if}}
+    <section id="edit-container">
+        <div class="edit-container-info">
+            <h1>Edit Game Code Offer</h1>
+            <form action="/games/{{game._id}}/edit" method="post">
+                <label>Platform:</label>
+                <select id="platform" name="">
+                    <option value="">-------</option>
+                    {{#each game.dropDown}}
+                    <option value="{{key}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+                    {{/each}}
+
+                </select>
+                <label>Name:</label>
+                <input type="text" id="name" name="title" value="{{game.title}}">
+                <label>Image:</label>
+                <input type="text" id="image" name="imageUrl" value="{{game.imageUrl}}">
+                <label>Price:</label>
+                <input type="number" id="price" name="price" value="{{game.price}}">
+                <label>Genre:</label>
+                <input type="text" id="genre" name="genre" value="{{game.genre}}">
+                <label>Description:</label>
+                <textarea id="description" name="description">{{game.description}}</textarea>
+                <input type="submit" id="btn" value="EDIT"></input>
+            </form>
+        </div>
+    </section>
+</main>
