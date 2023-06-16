@@ -11,3 +11,5 @@ exports.buyGame = (id, userId) => Game.findByIdAndUpdate(id, { $push: { boughtBy
 exports.deleteGame = (id) => Game.findByIdAndDelete(id);
 
 exports.editGame = (id, edit) => Game.findByIdAndUpdate(id, edit);
+
+exports.searchGames = (search, platform) => Game.find({ title: { $regex: search, $options: 'i' }, platform: { $regex: platform } })

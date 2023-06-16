@@ -1,5 +1,5 @@
 const { hasUser } = require('../middlewares/guards.js');
-const { createGame, getAll, getOne, buyGame, deleteGame, editGame } = require('../services/gameService.js');
+const { createGame, getAll, getOne, buyGame, deleteGame, editGame, searchGames } = require('../services/gameService.js');
 const levels = require('../util/dropDown.js');
 const { parseError } = require('../util/parser.js');
 
@@ -124,7 +124,6 @@ gameController.get('/:id/edit', hasUser(), async (req, res) => {
 
 gameController.post('/:id/edit', hasUser(), async (req, res) => {
     const id = req.params.id;
-    const userId = req.user?._id;
     const editedGame = { ...req.body };
     try {
         if (Object.values(editedGame).some(x => x == '')) {
@@ -134,8 +133,9 @@ gameController.post('/:id/edit', hasUser(), async (req, res) => {
             throw new Error('Price should be a positive number')
         }
         editedGame.price = Number(editedGame.price);
-
+        console.log(editedGame);
         await editGame(id, editedGame);
+
         res.redirect(`/games/${id}/details`);
 
     } catch (error) {
@@ -144,6 +144,27 @@ gameController.post('/:id/edit', hasUser(), async (req, res) => {
             editedGame,
             errors: parseError(error),
         })
+    }
+});
+
+//search
+gameController.get('/search', async (req, res) => {
+    const result = { ...req.query };
+    let games;
+    
+    try {
+
+        if (!!result.search || !!result.platform) {
+            games = await searchGames(result.search, result.platform).lean();
+        } else {
+            games = await getAll().lean()
+        }
+        res.render('search', {
+            pageTitle: 'Search - Gaming Team',
+            games
+        });
+    } catch (error) {
+        res.redirect('/404')
     }
 });
 

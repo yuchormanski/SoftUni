@@ -16,7 +16,7 @@
             <h1>Edit Game Code Offer</h1>
             <form action="/games/{{game._id}}/edit" method="post">
                 <label>Platform:</label>
-                <select id="platform" name="">
+                <select id="platform" name="platform">
                     <option value="">-------</option>
                     {{#each game.dropDown}}
                     <option value="{{key}}" {{#if selected}}selected{{/if}}>{{label}}</option>
