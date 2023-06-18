@@ -97,25 +97,25 @@ actionController.post('/:id/edit', hasUser(), async (req, res) => {
         if (Object.values(post).some(x => x == '')) {
             throw new Error('All fields are required');
         };
-        if (post.title.length < 6) {
-            throw new Error('The title should be at least 6 characters long')
-        }
-        if (post.keyword.length < 6) {
-            throw new Error('The keyword should be at least 6 characters long')
-        };
-        if (post.location.length > 15) {
-            throw new Error('The location should be maximum 15 characters long')
-        };
-        if (!/^[0-9]{2}(\.|\/)([0-9]{2})\1[0-9]{4}$/i.test(post.date)) {
-            throw new Error('The Date should be exactly 10 characters - "02.02.2021"');
-        };
-        if (!/^(http(s?)):\/\//i.test(post.imageUrl)) {
-            throw new Error('The Wildlife Image should start with http:// or https://');
-        };
-        if (post.description.length < 8) {
-            throw new Error('The description should be at least 8 characters long')
-        };
-
+        // if (post.title.length < 6) {
+        //     throw new Error('The title should be at least 6 characters long')
+        // }
+        // if (post.keyword.length < 6) {
+        //     throw new Error('The keyword should be at least 6 characters long')
+        // };
+        // if (post.location.length > 15) {
+        //     throw new Error('The location should be maximum 15 characters long')
+        // };
+        // if (!/^[0-9]{2}(\.|\/)([0-9]{2})\1[0-9]{4}$/i.test(post.date)) {
+        //     throw new Error('The Date should be exactly 10 characters - "02.02.2021"');
+        // };
+        // if (!/^(http(s?)):\/\//i.test(post.imageUrl)) {
+        //     throw new Error('The Wildlife Image should start with http:// or https://');
+        // };
+        // if (post.description.length < 8) {
+        //     throw new Error('The description should be at least 8 characters long')
+        // };
+console.log(post);
         await updatePost(id, post);
         res.redirect(`/wild-life/${id}/details`);
     } catch (error) {

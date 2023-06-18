@@ -13,4 +13,4 @@ exports.voteDown = (id, userId) => Post.findByIdAndUpdate(id, { $push: { votes: 
 
 exports.deletePost = (id) => Post.findByIdAndDelete(id);
 
-exports.updatePost = (id, post) => Post.findByIdAndUpdate(id, post);
+exports.updatePost = (id, post) => Post.findByIdAndUpdate(id, post, { runValidators: true });
