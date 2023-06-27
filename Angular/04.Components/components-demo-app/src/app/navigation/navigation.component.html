@@ -5,8 +5,10 @@
   <!-- v2 - вариант  -->
   <span *ngIf="toggle">
     <ul>
-      <li *ngFor="let user of activeUsers" class="user-list">
-        {{ user.name + ": " + user.age }}
+      <li *ngFor="let user of activeUsers">
+        <span [class.user]="user.age % 2 == 0">
+          {{ user.name + ": " + user.age }}
+        </span>
       </li>
     </ul>
   </span>
@@ -18,10 +20,10 @@
   </span>
 
   <!-- подаване на атрибут -->
-  <input [value]="inputValue" type="text" />
+  <!-- <input [value]="inputValue" type="text" /> -->
 
   <!-- добавяне на custom атрибут -->
-  <input [attr.data-attribute-name]="inputValue" type="text" />
+  <!-- <input [attr.data-attribute-name]="inputValue" type="text" /> -->
 
   <!-- динамична промяна на текста на бутона -->
   <button (click)="clickThis($event)">
