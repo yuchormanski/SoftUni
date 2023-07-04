@@ -1,0 +1,9 @@
+<div *ngIf="!hasUsers">
+  <app-loader />
+</div>
+
+<div *ngIf="hasUsers">
+  <div class="user-list" *ngFor="let user of usersList">
+    <p>{{ user.username }}</p>
+  </div>
+</div>
