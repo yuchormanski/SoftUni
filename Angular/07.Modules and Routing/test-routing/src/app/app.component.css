@@ -1,0 +1,7 @@
+.main-content {
+  display: flex;
+  justify-content: flex-start;
+  width: 500px;
+  min-height: 400px;
+  margin: 20px;
+}
