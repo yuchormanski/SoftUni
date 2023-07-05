@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { CoreModule } from '../core/core.module';
 import { SharedModule } from '../shared/shared.module';
 import { UserModule } from '../user/user.module';
+// import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   declarations: [HomeComponent],

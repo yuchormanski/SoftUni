@@ -1,0 +1,11 @@
+.error-red {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: red;
+}
+.error-link {
+  color: aliceblue;
+  cursor: pointer;
+}
