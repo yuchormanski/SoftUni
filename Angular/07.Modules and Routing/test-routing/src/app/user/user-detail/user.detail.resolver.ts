@@ -8,7 +8,9 @@ import {
 import { User } from 'src/app/types/User';
 import { UserServiceService } from '../user-service.service';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class UserResolver implements Resolve<User> {
   constructor(private userService: UserServiceService) {}
 

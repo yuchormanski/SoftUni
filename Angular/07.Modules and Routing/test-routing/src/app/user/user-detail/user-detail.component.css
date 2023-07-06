@@ -1,0 +1,10 @@
+.current-user-name,
+.bolded-text {
+  font-weight: bold;
+}
+.current-user-name {
+  color: rgb(233, 80, 80);
+}
+.bolded-text {
+  color: rgb(63, 190, 9);
+}

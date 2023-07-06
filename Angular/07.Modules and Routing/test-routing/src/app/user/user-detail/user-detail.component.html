@@ -1,1 +1,22 @@
-<p>user-detail works!</p>
+<div *ngIf="!hasUser">
+  <app-loader />
+</div>
+
+<div *ngIf="hasUser">
+  <div>
+    <h2 class="current-user-name">{{ currentUser.name }}</h2>
+    <br />
+    <p>
+      Username: <span class="bolded-text">{{ currentUser.username }}</span>
+    </p>
+    <p>
+      Email: <span class="bolded-text">{{ currentUser.email }}</span>
+    </p>
+    <p>
+      Phone number: <span class="bolded-text">{{ currentUser.phone }}</span>
+    </p>
+    <p>
+      Website: <span class="bolded-text">{{ currentUser.website }}</span>
+    </p>
+  </div>
+</div>

@@ -3,7 +3,11 @@
 </div>
 
 <div *ngIf="hasUsers">
-  <div class="user-list" *ngFor="let user of usersList">
-    <p>{{ user.username }}</p>
+  <div
+    class="user-list"
+    *ngFor="let user of usersList"
+    [routerLink]="['/user', 'detail', user.id]"
+  >
+    <h3 class="clickable">{{ user.username }}</h3>
   </div>
 </div>
