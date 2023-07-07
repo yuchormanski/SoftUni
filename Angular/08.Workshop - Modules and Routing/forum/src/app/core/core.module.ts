@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { RouterModule } from '@angular/router';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent],
-  imports: [CommonModule],
+  declarations: [HeaderComponent, FooterComponent, ErrorPageComponent],
+  imports: [CommonModule, RouterModule],
   // Note: tells which components to be exported from this module
   exports: [HeaderComponent, FooterComponent],
 })
