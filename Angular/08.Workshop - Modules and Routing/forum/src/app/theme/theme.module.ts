@@ -6,6 +6,6 @@ import { ThemeRoutingModule } from './theme-routing.module';
 
 @NgModule({
   declarations: [NewThemeComponent, CurrentThemeComponent],
-  imports: [ThemeRoutingModule, CommonModule],
+  imports: [CommonModule, ThemeRoutingModule],
 })
 export class ThemeModule {}
