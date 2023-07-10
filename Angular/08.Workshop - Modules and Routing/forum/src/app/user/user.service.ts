@@ -28,7 +28,7 @@ export class UserService {
       firstName: 'John',
     };
     localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
-    this.router.navigate(['home']);
+    this.router.navigate(['/home']);
   }
 
   logout(): void {
