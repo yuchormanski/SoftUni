@@ -17,18 +17,19 @@ export class CurrentThemeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // const id = this.activatedRoute.snapshot.params['themeId'];
+    // this.apiService.getTheme(id).subscribe((theme) => {
+    //   this.theme = theme;
+    //   console.log({ theme });
+    // });
+    this.fetchTheme();
+  }
+
+  fetchTheme(): void {
     const id = this.activatedRoute.snapshot.params['themeId'];
     this.apiService.getTheme(id).subscribe((theme) => {
-      this.theme = { ...theme };
+      this.theme = theme;
       console.log({ theme });
     });
   }
-
-  // fetchTheme(): void {
-  //   const id = this.activatedRoute.snapshot.params['themeId'];
-  //   this.apiService.getTheme(id).subscribe((theme) => {
-  //     this.currentTheme = theme;
-  //     console.log({ theme });
-  //   });
-  // }
 }
