@@ -15,10 +15,14 @@ export class ApiService {
     return this.http.get<Theme[]>(`${appUrl}/themes`);
   }
 
+  getTheme(themeId: string) {
+    const { appUrl } = environment;
+    return this.http.get<Theme>(`${appUrl}/themes/${themeId}`);
+  }
+
   getPosts(limit?: number) {
     const { appUrl } = environment;
     const limitFilter = limit ? `?limit=${limit}` : '';
-
     return this.http.get<Post[]>(`${appUrl}/posts${limitFilter}`);
   }
 }

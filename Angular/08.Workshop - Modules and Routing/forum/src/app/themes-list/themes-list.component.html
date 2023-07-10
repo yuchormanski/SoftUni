@@ -11,7 +11,7 @@
     <div *ngFor="let theme of themesList" class="theme-container">
       <div class="theme-name-wrapper">
         <div class="theme-name">
-          <a href="#" class="normal">
+          <a [routerLink]="theme._id" class="normal">
             <h2>{{ theme.themeName }}</h2>
           </a>
           <div class="columns">
