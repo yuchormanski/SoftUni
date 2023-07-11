@@ -8,10 +8,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, ErrorPageComponent],
-  // declarations: [HeaderComponent, FooterComponent],
   imports: [CommonModule, RouterModule],
   // Note: tells which components to be exported from this module
   exports: [HeaderComponent, FooterComponent, ErrorPageComponent],
-  // exports: [HeaderComponent, FooterComponent],
 })
 export class CoreModule {}
