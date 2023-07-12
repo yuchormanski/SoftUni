@@ -1,0 +1,57 @@
+<!-- v.1 -->
+<form #loginForm="ngForm" (ngSubmit)="submitHandler(loginForm)">
+  `
+
+  <!-- v.2 -->
+  <!-- <form #loginForm="ngForm" (ngSubmit)="submitHandler()"> -->
+  `
+  <!-- 
+        ngForm - връзка към FormModula, импортнат в app.module.ts;
+         #loginForm - създаваме референция, която може да се използва в темплейта или като параметър на функция;
+         ngModel - формата започва да следи за промени и подава данните. Взимат се с value;
+         email - първична валидация за тип email. Прави формата invalid;
+         required - полето е задължително, ако е празно - invalid;
+        #emailInput - първична референция
+    -->
+
+  <div class="form-group">
+    <label for="email">Email </label>
+    <input
+      type="text"
+      id="email"
+      name="email"
+      ngModel
+      email
+      required
+      #emailInput="ngModel"
+    />
+  </div>
+
+  <!-- error messages -->
+  <!-- състоянието на полето-->
+  <div *ngIf="emailInput.touched">
+    <div *ngIf="emailInput.errors?.['required']">Email is required!</div>
+    <div *ngIf="emailInput.errors?.['email']">Invalid Email!</div>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password </label>
+    <input
+      type="text"
+      id="password"
+      name="password"
+      ngModel
+      #passwordInput="ngModel"
+      [appMaxCount]="4"
+    />
+    <!-- създаваме си директива ( ng g d 'name') -->
+  </div>
+
+  <!-- password error message` -->
+
+  <button>Login</button>
+</form>
+
+<!-- <br /><br /> -->
+<!-- real time view -->
+<!-- {{ loginForm.value | json }}  real time view -->
