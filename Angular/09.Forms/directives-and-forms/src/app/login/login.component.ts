@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,6 +8,8 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  constructor(private router: Router) {}
+
   //will be rendered only static content
   ngOnInit(): void {}
 
@@ -32,6 +35,7 @@ export class LoginComponent implements OnInit {
       console.log('Invalid form');
       return;
     }
+    console.log(form.value);
 
     //ресетване на формата
     form.reset();
@@ -41,6 +45,6 @@ export class LoginComponent implements OnInit {
     // Ако се поставят празни стрингове я ресетва
     // form.setValue({ email: '111', password: '222' });
 
-    console.log(form.value);
+    this.router.navigate(['/home']);
   }
 }

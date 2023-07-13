@@ -1,11 +1,10 @@
-<!-- v.1 -->
-<form #loginForm="ngForm" (ngSubmit)="submitHandler(loginForm)">
-  `
+<div class="form-div">
+  <!-- v.1 -->
+  <form #loginForm="ngForm" (ngSubmit)="submitHandler(loginForm)">
+    <!-- v.2 -->
+    <!-- <form #loginForm="ngForm" (ngSubmit)="submitHandler()"> -->
 
-  <!-- v.2 -->
-  <!-- <form #loginForm="ngForm" (ngSubmit)="submitHandler()"> -->
-  `
-  <!-- 
+    <!-- 
         ngForm - връзка към FormModula, импортнат в app.module.ts;
          #loginForm - създаваме референция, която може да се използва в темплейта или като параметър на функция;
          ngModel - формата започва да следи за промени и подава данните. Взимат се с value;
@@ -14,43 +13,59 @@
         #emailInput - първична референция
     -->
 
-  <div class="form-group">
-    <label for="email">Email </label>
-    <input
-      type="text"
-      id="email"
-      name="email"
-      ngModel
-      email
-      required
-      #emailInput="ngModel"
-    />
-  </div>
+    <div class="form-group">
+      <label for="email">Email </label>
+      <input
+        type="text"
+        id="email"
+        name="email"
+        ngModel
+        email
+        required
+        #emailInput="ngModel"
+      />
+    </div>
 
-  <!-- error messages -->
-  <!-- състоянието на полето-->
-  <div *ngIf="emailInput.touched">
-    <div *ngIf="emailInput.errors?.['required']">Email is required!</div>
-    <div *ngIf="emailInput.errors?.['email']">Invalid Email!</div>
-  </div>
+    <!-- error messages -->
+    <!-- състоянието на полето-->
+    <div *ngIf="emailInput.touched">
+      <div *ngIf="emailInput.errors?.['required']">Email is required!</div>
+      <div *ngIf="emailInput.errors?.['email']">Invalid Email!</div>
+    </div>
 
-  <div class="form-group">
-    <label for="password">Password </label>
-    <input
-      type="text"
-      id="password"
-      name="password"
-      ngModel
-      #passwordInput="ngModel"
-      [appMaxCount]="4"
-    />
-    <!-- създаваме си директива ( ng g d 'name') -->
-  </div>
+    <div *ngIf="!emailInput.touched">
+      <div class="spacer"></div>
+    </div>
 
-  <!-- password error message` -->
+    <div class="form-group">
+      <label for="password">Password </label>
+      <input
+        type="text"
+        id="password"
+        name="password"
+        ngModel
+        required
+        #passwordInput="ngModel"
+        minlength="4"
+      />
+      <!-- [appMaxCount]="4" -->
+      <!-- създаваме си директива ( ng g d 'name') -->
+    </div>
 
-  <button>Login</button>
-</form>
+    <!-- password error message -->
+    <div *ngIf="passwordInput.errors?.['appMaxCount']">
+      Invalid password because the length is longer than
+      {{passwordInput.errors?.['appMaxCount']}}...
+    </div>
+    <div *ngIf="passwordInput.touched">
+      <div *ngIf="passwordInput.errors?.['minlength']">
+        Password should be at least 4 characters long
+      </div>
+    </div>
+
+    <button>Login</button>
+  </form>
+</div>
 
 <!-- <br /><br /> -->
 <!-- real time view -->
