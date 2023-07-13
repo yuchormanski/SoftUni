@@ -63,7 +63,10 @@
       </div>
     </div>
 
-    <button>Login</button>
+    <button [disabled]="loginForm.invalid">Login</button>
+    <!-- 
+      [disabled]="loginForm.invalid" - ако формата не е валидна. Динамично се променя стейта
+     -->
   </form>
 </div>
 

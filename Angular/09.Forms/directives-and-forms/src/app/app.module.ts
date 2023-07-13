@@ -7,7 +7,7 @@ import { HighlightOnMoveDirective } from './highlight-on-move.directive';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaxCountDirective } from './max-count.directive';
 
 @NgModule({
@@ -23,6 +23,7 @@ import { MaxCountDirective } from './max-count.directive';
     BrowserModule,
     AppRoutingModule,
     FormsModule, //Template Driven Form
+    ReactiveFormsModule, //Reactive Forms approach
   ],
   providers: [],
   bootstrap: [AppComponent],
