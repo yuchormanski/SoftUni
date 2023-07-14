@@ -29,9 +29,12 @@
     </div>
 
     <!-- password error message -->
-    <div *ngIf="registerForm.get('password')?.errors?.['maxLength']">
+    <div *ngIf="this.registerForm.get('password')?.errors?.['maxlength']">
       Invalid password because the length is longer than
-      {{registerForm.get('password')?.errors?.['maxLength']}}...
+      {{
+        this.registerForm.get('password')?.errors?.['maxlength'].requiredLength
+
+      }}...
     </div>
 
     <button>Login</button>

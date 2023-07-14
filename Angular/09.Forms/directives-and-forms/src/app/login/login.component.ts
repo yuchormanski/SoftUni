@@ -10,12 +10,17 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   constructor(private router: Router) {}
 
+  @ViewChild('loginForm') loginForm: NgForm | undefined; // използва се за viewChanges не е задължително
+
   //will be rendered only static content
   ngOnInit(): void {}
 
   //will render the final content with dynamic components
-  // ngAfterViewInit(): void {
-  // }
+  ngAfterViewInit(): void {
+    if (this.loginForm) {
+      this.loginForm.form.valueChanges.subscribe(console.log); // използва се за viewChanges
+    }
+  }
 
   // v.1
   submitHandler(form: NgForm): void {
@@ -35,6 +40,8 @@ export class LoginComponent implements OnInit {
       console.log('Invalid form');
       return;
     }
+
+    //действията с данните от формата са тук
     console.log(form.value);
 
     //ресетване на формата

@@ -14,7 +14,9 @@ export class RegisterComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.registerForm.get('email')?.valueChanges.subscribe(console.log); // listen for value changes
+  }
 
   handleSubmit(): void {}
 }

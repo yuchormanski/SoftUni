@@ -39,6 +39,7 @@
 
     <div class="form-group">
       <label for="password">Password </label>
+      <!-- вариант с атрибут -->
       <input
         type="text"
         id="password"
@@ -48,18 +49,35 @@
         #passwordInput="ngModel"
         minlength="4"
       />
+
+      <!-- вариант с директива -->
+      <!-- <input
+        type="text"
+        id="password"
+        name="password"
+        ngModel
+        required
+        #passwordInput="ngModel"
+        [appMaxCount]="4"
+      /> -->
+
       <!-- [appMaxCount]="4" -->
       <!-- създаваме си директива ( ng g d 'name') -->
     </div>
 
     <!-- password error message -->
+    <!-- вариант с директива -->
     <div *ngIf="passwordInput.errors?.['appMaxCount']">
       Invalid password because the length is longer than
       {{passwordInput.errors?.['appMaxCount']}}...
     </div>
+
+    <!-- вариант с атрибут -->
     <div *ngIf="passwordInput.touched">
       <div *ngIf="passwordInput.errors?.['minlength']">
-        Password should be at least 4 characters long
+        Password should be at least
+        {{this.passwordInput.errors?.['minlength'].requiredLength}} characters
+        long
       </div>
     </div>
 
