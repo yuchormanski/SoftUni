@@ -1,0 +1,136 @@
+<div class="container">
+  <form class="register" #form="ngForm" (ngSubmit)="register(form)">
+    <fieldset>
+      <h2>Registration Form</h2>
+
+      <!-- username -->
+      <p class="field field-icon">
+        <label for="username"
+          ><span><i class="fas fa-user"></i></span
+        ></label>
+        <input
+          class="input-error"
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Johny"
+          #username="ngModel"
+          required
+          ngModel
+          minlength="5"
+        />
+      </p>
+      <!-- errors -->
+      <ng-container *ngIf="username.touched">
+        <p class="error" *ngIf="username.errors?.['required']">
+          Username is required!
+        </p>
+        <p class="error" *ngIf="username.errors?.['minlength']">
+          Should have at least
+          {{username.errors?.['minlength']['requiredLength']}} symbols!
+        </p>
+      </ng-container>
+
+      <!-- email -->
+      <p class="field field-icon">
+        <label for="email"
+          ><span><i class="fas fa-envelope"></i></span
+        ></label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="john.doe@gmail.com"
+          #email="ngModel"
+          ngModel
+          required
+          [appEmail]="appEmailDomains"
+        />
+      </p>
+      <!-- errors -->
+      <ng-container *ngIf="email.touched">
+        <p class="error" *ngIf="email.errors?.['required']">
+          Email is required!
+        </p>
+        <p class="error" *ngIf="email.errors?.['appEmailValidator']">
+          Email is not valid!
+        </p>
+      </ng-container>
+
+      <!-- telephone -->
+      <p class="field field-icon">
+        <label for="tel"
+          ><span><i class="fas fa-phone"></i></span
+        ></label>
+        <select name="select-tel" id="select-tel" class="tel">
+          <option value="00359">+359</option>
+        </select>
+        <input
+          type="text"
+          name="tel"
+          id="tel"
+          placeholder="885 888 888"
+          #phone="ngModel"
+          ngModel
+        />
+      </p>
+
+      <!-- password -->
+      <p class="field field-icon">
+        <label for="password"
+          ><span><i class="fas fa-lock"></i></span
+        ></label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="******"
+          #password="ngModel"
+          ngModel
+          required
+          minlength="5"
+        />
+      </p>
+      <!-- errors -->
+      <ng-container *ngIf="password.touched">
+        <p class="error" *ngIf="password.errors?.['required']">
+          Password is required!
+        </p>
+        <p class="error" *ngIf="password.errors?.['minlength']">
+          Password must be at least
+          {{password.errors?.['minlength']['requiredLength']}} characters!
+        </p>
+      </ng-container>
+
+      <!-- rePassword -->
+      <p class="field field-icon">
+        <label for="rePassword"
+          ><span><i class="fas fa-lock"></i></span
+        ></label>
+        <input
+          type="password"
+          name="rePassword"
+          id="rePassword"
+          placeholder="******"
+          #rePassword="ngModel"
+          ngModel
+        />
+      </p>
+      <!-- errors -->
+      <ng-container *ngIf="rePassword.touched">
+        <p class="error" *ngIf="rePassword.errors?.['rePassword']">
+          Repeat Password does not match password!
+        </p>
+      </ng-container>
+
+      <button [disabled]="form.invalid">Create Account</button>
+
+      <p class="text-center">
+        Have an account?
+        <a routerLink="/login">Log In</a>
+      </p>
+    </fieldset>
+  </form>
+
+  {{ form.value | json }}
+</div>
