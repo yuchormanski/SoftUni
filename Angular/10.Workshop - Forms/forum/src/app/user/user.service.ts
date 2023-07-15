@@ -27,6 +27,7 @@ export class UserService {
       email: 'john.doe@gmail.com',
       firstName: 'John',
       _id: '5fa64b162183ce1728ff371d',
+      phoneNumber: '67868779878',
     };
     localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
     // this.router.navigate(['/home']);

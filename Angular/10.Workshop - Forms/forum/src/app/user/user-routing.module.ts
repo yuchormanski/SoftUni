@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthActivate } from '../core/guards/auth-activate';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,11 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+    // canActivate: [AuthActivate],
+  },
+  {
+    path: 'edit-profile',
+    component: EditProfileComponent,
     // canActivate: [AuthActivate],
   },
 ];

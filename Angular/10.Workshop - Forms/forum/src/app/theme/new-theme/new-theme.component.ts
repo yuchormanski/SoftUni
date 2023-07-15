@@ -1,9 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ApiService } from 'src/app/api.service';
-import { Post } from 'src/app/types/post';
-import { environment } from 'src/environments/environment';
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-theme',
@@ -11,26 +8,18 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./new-theme.component.css'],
 })
 export class NewThemeComponent {
-  post: Post | undefined;
-  constructor(
-    private activatedRout: ActivatedRoute
-  ) // private http: HttpClient,
-  // private apiService: ApiService
-  {}
+  constructor(private router: Router) {}
 
-  // create(title: string, content: string, author: string, text: string): void {
-  //   this.apiService.createPost();
-  // }
+  postTheme(form: NgForm): void {
+    if (form.invalid) return;
 
-  // ngOnInit() {
-  //   const { appUrl } = environment;
+    console.log(form.value);
+    form.reset();
+    this.router.navigate(['/home']);
+  }
 
-  //   this.http
-  //     .post<Post>(`${appUrl}/themes`, {
-  //       themeName: 'Angular POST Request Example',
-  //     })
-  //     .subscribe((data) => {
-  //       this.post = data;
-  //     });
-  // }
+  resetForm(form: NgForm): void {
+    form.reset();
+    this.router.navigate(['/home']);
+  }
 }
