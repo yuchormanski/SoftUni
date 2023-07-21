@@ -1,0 +1,116 @@
+<div class="container">
+  <div class="profile">
+    <img src="/assets/profile.png" alt="default user" />
+    <h3>User Info:</h3>
+
+    <!-- READONLY MODE -->
+    <ng-container *ngIf="!isEditMode">
+      <div class="flex">
+        <p>Username:</p>
+        <p>{{ username }}</p>
+      </div>
+      <div class="flex">
+        <p>Email:</p>
+        <p>{{ userEmail }}</p>
+      </div>
+      <div class="flex">
+        <p>Phone:</p>
+        <p>{{ tel }}</p>
+      </div>
+      <button class="edit-button" (click)="toggleEdit()">Edit</button>
+    </ng-container>
+
+    <!-- EDIT MODE -->
+
+    <ng-container *ngIf="isEditMode">
+      <form [formGroup]="form" (ngSubmit)="saveProfile()">
+        <!-- username -->
+        <div class="flex">
+          <p>Username:</p>
+          <input
+            type="text"
+            id="username"
+            [value]="profileData?.username"
+            formControlName="firstName"
+          />
+        </div>
+        <!-- username errors -->
+        <ng-container *ngIf="form.get('username')?.touched">
+          <p class="error" *ngIf="form.get('username')?.errors?.['required']">
+            Username is required!
+          </p>
+          <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">
+            Username should be at least {{ minLengthCount }} characters long!
+          </p>
+        </ng-container>
+
+        <!-- email -->
+        <div class="flex">
+          <p>Email:</p>
+          <input
+            type="email"
+            id="email"
+            [value]="profileData?.email"
+            formControlName="email"
+          />
+        </div>
+        <!-- errors -->
+        <ng-container *ngIf="form.get('email')?.touched">
+          <p class="error" *ngIf="form.get('email')?.errors?.['required']">
+            Email is required!
+          </p>
+          <p
+            class="error"
+            *ngIf="form.get('email')?.errors?.['appEmailValidator']"
+          >
+            Email is not valid!
+          </p>
+        </ng-container>
+
+        <!-- phoneNember -->
+        <div class="flex">
+          <p>Phone:</p>
+          <div>
+            <select name="select-tel" id="select-tel" class="tel">
+              <option value="00359">+359</option>
+            </select>
+            <input
+              type="text"
+              id="tel"
+              [value]="profileData?.tel"
+              formControlName="tel"
+            />
+          </div>
+        </div>
+        <button class="red-button">Cancel</button>
+        <button
+          class="green-button"
+          [disabled]="form.invalid"
+          [style]="{ backgroundColor: form.invalid ? '  #aa5040' : null }"
+        >
+          Save
+        </button>
+      </form>
+    </ng-container>
+  </div>
+</div>
+
+<!-- <div class="container">
+  <div class="profile">
+    <img src="/assets/profile.png" alt="default user" />
+    <h3>User Info:</h3>
+    <div class="flex">
+      <p>Username:</p>
+      <p>{{ firstName }}</p>
+    </div>
+    <div class="flex">
+      <p>Email:</p>
+      <p>{{ userEmail }}</p>
+    </div>
+    <div class="flex">
+      <p>Phone:</p>
+      <p>{{ tel }}</p>
+    </div>
+    <button class="edit-button" (click)="editProfile()">Edit</button>
+  </div>
+</div> -->
