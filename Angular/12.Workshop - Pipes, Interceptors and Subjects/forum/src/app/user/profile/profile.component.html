@@ -7,15 +7,15 @@
     <ng-container *ngIf="!isEditMode">
       <div class="flex">
         <p>Username:</p>
-        <p>{{ username }}</p>
+        <p>{{ profileDetails.username }}</p>
       </div>
       <div class="flex">
         <p>Email:</p>
-        <p>{{ userEmail }}</p>
+        <p>{{ profileDetails.email }}</p>
       </div>
       <div class="flex">
         <p>Phone:</p>
-        <p>{{ tel }}</p>
+        <p>{{ profileDetails.tel }}</p>
       </div>
       <button class="edit-button" (click)="toggleEdit()">Edit</button>
     </ng-container>
@@ -30,8 +30,8 @@
           <input
             type="text"
             id="username"
-            [value]="profileData?.username"
-            formControlName="firstName"
+            [value]="profileDetails.username"
+            formControlName="username"
           />
         </div>
         <!-- username errors -->
@@ -50,7 +50,7 @@
           <input
             type="email"
             id="email"
-            [value]="profileData?.email"
+            [value]="profileDetails.email"
             formControlName="email"
           />
         </div>
@@ -77,7 +77,7 @@
             <input
               type="text"
               id="tel"
-              [value]="profileData?.tel"
+              [value]="profileDetails.tel"
               formControlName="tel"
             />
           </div>

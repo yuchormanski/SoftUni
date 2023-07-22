@@ -6,19 +6,19 @@
     <div class="mini-navbar">
       <ul *ngIf="!isLoggedIn">
         <li>
-          <a routerLink="/login">Login</a>
+          <a routerLink="/auth/login">Login</a>
         </li>
         <li>
-          <a routerLink="/register">Register</a>
+          <a routerLink="/auth/register">Register</a>
         </li>
       </ul>
 
       <ul *ngIf="isLoggedIn">
         <li>
-          <a routerLink="/profile">{{ username }}'s profile</a>
+          <a routerLink="/auth/profile">{{ username }}'s profile</a>
         </li>
         <li (click)="logout()">
-          <!-- <a routerLink="/logout">Logout</a> -->
+          <!-- <a routerLink="/auth/logout">Logout</a> -->
           <a>Logout</a>
         </li>
       </ul>

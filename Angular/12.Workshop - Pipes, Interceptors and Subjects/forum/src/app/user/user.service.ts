@@ -50,6 +50,7 @@ export class UserService implements OnDestroy {
         rePassword,
         tel,
       })
+
       .pipe(tap((user) => this.user$$.next(user))); // добавя се за да се логне потребителя атоматично
   }
 
@@ -59,7 +60,19 @@ export class UserService implements OnDestroy {
       .pipe(tap((user) => this.user$$.next(undefined)));
   }
 
+  //за да не се изтрива потребителя при рефреш
+  getProfile() {
+    return this.http
+      .get<User>('/api/users/profile')
+      .pipe(tap((user) => this.user$$.next(user)));
+  }
+
+  updateProfile(username: string, email: string, tel?: string) {
+    return this.http
+      .put<User>('/api/users/profile', { username, email, tel })
+      .pipe(tap((user) => this.user$$.next(user)));
+  }
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscription.unsubscribe(); //изтриване на кукито
   }
 }

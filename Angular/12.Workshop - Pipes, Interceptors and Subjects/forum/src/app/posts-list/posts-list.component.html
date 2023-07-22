@@ -11,11 +11,11 @@
 
     <div>
       <div *ngFor="let post of postsList" class="aside-theme">
-        <a href="#">
+        <a [routerLink]="post.themeId._id">
           <h3>{{ post.themeId.themeName }}</h3>
           <p>{{ post.userId.username }}</p>
           <p>
-            <span>{{ post.created_at }}</span>
+            <span>{{ post.created_at | elapsedTime }}</span>
           </p>
         </a>
       </div>

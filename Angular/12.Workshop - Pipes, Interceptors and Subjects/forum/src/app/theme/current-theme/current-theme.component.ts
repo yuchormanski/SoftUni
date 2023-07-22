@@ -19,11 +19,6 @@ export class CurrentThemeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // const id = this.activatedRoute.snapshot.params['themeId'];
-    // this.apiService.getTheme(id).subscribe((theme) => {
-    //   this.theme = theme;
-    //   console.log({ theme });
-    // });
     this.fetchTheme();
   }
 
@@ -31,7 +26,7 @@ export class CurrentThemeComponent implements OnInit {
     const id = this.activatedRoute.snapshot.params['themeId'];
     this.apiService.getTheme(id).subscribe((theme) => {
       this.theme = theme;
-      console.log({ theme });
+      // console.log({ theme });
     });
   }
 

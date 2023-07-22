@@ -10,12 +10,7 @@ import { Post } from './types/post';
 export class ApiService {
   constructor(private http: HttpClient) {}
 
-  // getThemes() {
-  //   // const { apiUrl } = environment;
-  //   return this.http.get(
-  //     'https://greader-b9149-default-rtdb.europe-west1.firebasedatabase.app/.json'
-  //   );
-  // }
+  //Themes
   getThemes() {
     const { apiUrl } = environment;
     return this.http.get<Theme[]>(`${apiUrl}/themes`);
@@ -26,6 +21,11 @@ export class ApiService {
     return this.http.get<Theme>(`${apiUrl}/themes/${themeId}`);
   }
 
+  createTheme(themeName: string, postText: string) {
+    return this.http.post<Theme>('/api/themes', { themeName, postText });
+  }
+
+  //Posts
   getPosts(limit?: number) {
     const { apiUrl } = environment;
     const limitFilter = limit ? `?limit=${limit}` : '';

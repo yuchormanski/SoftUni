@@ -7,7 +7,7 @@
         <div class="theme-name">
           <h2>{{ theme.themeName }}</h2>
           <p>
-            Date: <time>{{ theme.created_at }}</time>
+            Date: <time>{{ theme.created_at | date }}</time>
           </p>
         </div>
         <div class="subscribers">
@@ -25,7 +25,7 @@
       <header class="header">
         <p>
           <span>{{ post.userId.username }}</span> posted on
-          <time>{{ post.created_at }}</time>
+          <time>{{ post.created_at | date }}</time>
         </p>
       </header>
       <div class="comment-main">

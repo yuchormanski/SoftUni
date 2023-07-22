@@ -24,7 +24,7 @@ export class HeaderComponent {
         this.router.navigate(['/']);
       },
       error: () => {
-        this.router.navigate(['/login']);
+        this.router.navigate(['/auth/login']);
       },
     });
   }
