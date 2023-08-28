@@ -1,0 +1,5 @@
+Ctrl + Shift + P -> open search bar
+	open keyboard shortcuts
+	Ctrl+k Ctrl+s
+Ctrl + Shift + L -> маркира всички повторения
+Ctrl + D -> маркира следващото повторение
