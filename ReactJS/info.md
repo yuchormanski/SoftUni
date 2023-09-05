@@ -73,6 +73,9 @@
   STATE, необходим на много компоненти. Когато създадем GLOBAL STATE , той ще е достъпен от всеки компонент
   в цялото приложение.
 
+![state-mangement](https://github.com/yuchormanski/SoftUni/assets/693307/5604f733-81d6-4eb1-817a-dc1f1acfe6c6)
+
+
 # Hook
 
     [useState, useEffect, ...]
