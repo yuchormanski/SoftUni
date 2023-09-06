@@ -31,7 +31,8 @@
 
 # Data
 
-    Data (информацията) is ONE-WAY DATA FLOW. Информацията се предава само от parent to child
+    Data (информацията) is ONE-WAY DATA FLOW. Информацията се предава само от parent to child.
+    В React е забранено да се мутира информацията!
 
 # Props
 
@@ -74,7 +75,6 @@
   в цялото приложение.
 
 ![state-mangement](https://github.com/yuchormanski/SoftUni/assets/693307/5604f733-81d6-4eb1-817a-dc1f1acfe6c6)
-
 
 # Hook
 
