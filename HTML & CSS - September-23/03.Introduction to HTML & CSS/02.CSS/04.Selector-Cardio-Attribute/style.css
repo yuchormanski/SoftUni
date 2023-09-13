@@ -1,0 +1,13 @@
+/* 	<h1> – change font-size to 50px;
+	class="first" – change text-decoration to underline;
+	id="second" – change font-style to italic. */
+h1{
+    font-size: 50px;
+}
+
+.first{
+    text-decoration: underline;
+}
+#second{
+    font-style: italic;
+}
