@@ -1,0 +1,21 @@
+body {
+  background-color: #f2f4c0;
+  width: 700px;
+}
+section {
+  margin: 15px 10px;
+}
+article {
+  background-color: #e4e978;
+  border: 1px solid #b2ad7d;
+  padding: 5px 15px;
+}
+.header-p {
+}
+/* •	padding: 5px 15px;
+•	font-style: italic
+•	color: #5c6e91
+•	background colors: #f2f4c0, #e4e978, #4c7658;
+•	width: 700px
+•	border: 1px solid #b2ad7d;
+•	margin: 15px 10px; */
