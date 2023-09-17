@@ -1,0 +1,38 @@
+@import "https: //use.fontawesome.com/releases/v5.6.3/css/all.css";
+body {
+  background-color: #eeeeee;
+}
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+button,
+a {
+  font-family: "FontAwesome", "Gill Sans", "Gill Sans MT", Calibri,
+    "Trebuchet MS", sans-serif;
+  font-size: 16px;
+  outline: none;
+  cursor: pointer;
+  border: 2px solid gray;
+  border-radius: 20px;
+  padding: 8px 15px;
+  margin-right: 20px;
+  color: gray;
+  font-weight: 500;
+}
+
+.hover:hover {
+  background-color: #fff;
+  border-color: green;
+  color: green;
+}
+
+.fill {
+  background-color: gray;
+  color: #fff;
+}
+.fill:last-child:hover {
+  background-color: green;
+  color: #fff;
+}

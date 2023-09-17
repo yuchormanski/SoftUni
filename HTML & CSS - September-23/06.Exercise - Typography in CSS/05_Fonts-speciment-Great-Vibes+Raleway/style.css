@@ -1,0 +1,22 @@
+body {
+  font-size: 16px;
+  font-family: "Raleway", sans-serif;
+  line-height: 1.5;
+  padding: 50px;
+}
+
+h2 {
+  font-family: "Great Vibes", cursive;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.first {
+  list-style-type: square;
+}
+.second {
+  list-style-type: disc;
+}
+.third {
+  list-style-type: circle;
+}

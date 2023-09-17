@@ -1,0 +1,23 @@
+@import "https://fonts.googleapis.com/css?family=Montserrat";
+
+body {
+  font-family: "Montserrat", sans-serif;
+  padding: 16px;
+}
+
+th {
+  background: lightblue;
+}
+/* •	<th> and <td>:
+o	Width: 144px
+o	Height: 32px
+o	Solid border with size 1px and color #ccc
+o	Left padding: 5px */
+
+th,
+td {
+  width: 144px;
+  height: 32px;
+  border: 1px solid #ccc;
+  padding-left: 5px;
+}
