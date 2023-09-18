@@ -1,1 +1,4 @@
 /* TODO: style the html */
+ul {
+  list-style: none;
+}

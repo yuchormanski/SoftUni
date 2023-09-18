@@ -1,1 +1,25 @@
 /* TODO: style the html */
+body {
+  font-family: Arial, serif;
+  line-height: 3px;
+  font-size: 18px;
+}
+
+a {
+  display: block;
+  width: 110px;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 5px;
+  padding: 12px 27px;
+  /* cursor: pointer; */
+}
+a:hover {
+  color: #eee;
+}
+.green {
+  background-color: green;
+}
+.orange {
+  background-color: orange;
+}

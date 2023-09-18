@@ -1,0 +1,68 @@
+/* •	Import font awesome link
+
+
+
+•	<a>:
+o	None text decoration
+o	Text color #c83025
+•	<i>:
+o	Width: 1.14em
+o	Right padding: 0.28em
+For all the buttons:
+•	Top & bottom padding 4px 
+•	Left & right padding 12px
+•	Height of the line: 20px
+•	Text color: #ffffff
+•	Border color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25)
+•	Cursor: pointer
+For the button.shopping:
+•	Background color: #83a94c
+For the button.info:
+•	Background color: #008ed0
+For the button.delete:
+•	Background color: #cc4036 */
+
+body {
+  font-family: proxima-nova, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+nav {
+  background: #f5f5f5;
+  width: 200px;
+  border: 1px solid #e3e3e3;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+li {
+  list-style: none;
+  line-height: 25px;
+  margin-left: -15px;
+}
+
+a {
+  text-decoration: none;
+  color: #c83025;
+}
+
+i {
+  width: 1.14em;
+  padding-right: 0.28em;
+}
+
+button {
+  padding: 4px 12px;
+  line-height: 20px;
+  color: #fff;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+.shopping {
+  background: #83a94c;
+}
+.info {
+  background: #008ed0;
+}
+.delete {
+  background: #cc4036;
+}
