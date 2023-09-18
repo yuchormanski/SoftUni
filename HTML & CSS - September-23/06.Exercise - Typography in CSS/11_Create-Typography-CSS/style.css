@@ -1,0 +1,54 @@
+body {
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 70px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Georgia, serif;
+}
+
+ul.level-one {
+  list-style-type: square;
+}
+ul.level-two {
+  list-style-type: disc;
+}
+ul.level-three {
+  list-style-type: circle;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th {
+  text-align: left;
+  padding: 3px 5px;
+  border: 1px solid #ccc;
+}
+tr:nth-child(even) td {
+  background-color: #f1f1f1;
+}
+tr:first-child {
+  background-color: #cccccc;
+}
+td {
+  padding: 3px 5px;
+  border: 1px solid #ccc;
+}
+
+blockquote {
+  padding: 10px 30px;
+  border-left: 4px solid #ccc;
+  font-style: italic;
+}
+.author {
+  position: relative;
+  left: 100%;
+}
