@@ -45,7 +45,7 @@ td {
 
 blockquote {
   padding: 10px 30px;
-  border-left: 4px solid #ccc;
+  border-left: 4px solid rgb(221, 221, 221);
   font-style: italic;
 }
 .author {
