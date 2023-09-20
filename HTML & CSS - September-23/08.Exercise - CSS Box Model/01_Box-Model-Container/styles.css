@@ -1,1 +1,14 @@
 /* TODO: style the html */
+body {
+  background: lightslategray;
+}
+
+p {
+  width: 300px;
+  padding: 20px;
+  margin: auto;
+  background: #0f4069;
+  color: whitesmoke;
+  border: 2px solid #e6eaef;
+  border-radius: 15px 50px;
+}
