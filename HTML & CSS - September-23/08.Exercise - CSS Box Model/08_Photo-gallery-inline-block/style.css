@@ -1,0 +1,45 @@
+/* •	<body>
+o	Padding: 5rem
+o	Background color: #eee
+•	.gallery
+o	Width: 100%
+o	Margin: 0 auto
+o	Align the text to the center
+•	li
+o	Width: 18rem
+o	Display the list as inline-block
+o	Background color: #fff
+o	Solid border with size 0.4rem and color #000
+o	Padding: 1rem
+o	Vertical align: middle
+o	Margin: 0.5rem
+•	img
+o	display: block
+o	width: 100%
+o	height: auto */
+
+body {
+  padding: 5rem;
+  background-color: #eee;
+}
+
+.gallery {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+li {
+  width: 18rem;
+  display: inline-block;
+  background: #fff;
+  border: 0.4rem solid #000;
+  padding: 1rem;
+  vertical-align: middle;
+  margin: 0.5rem;
+}
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
