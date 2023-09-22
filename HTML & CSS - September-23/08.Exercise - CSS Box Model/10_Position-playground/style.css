@@ -1,0 +1,11 @@
+@import url("/font-awesome-4.6.3/css/font-awesome.min.css");
+
+.viewport {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.card {
+  position: absolute;
+}
