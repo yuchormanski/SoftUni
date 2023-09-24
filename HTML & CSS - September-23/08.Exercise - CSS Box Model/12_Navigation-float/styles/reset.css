@@ -91,10 +91,3 @@ textarea:not([rows]) {
 :target {
   scroll-margin-block: 5ex;
 }
-
-/* custom styles */
-
-/* remove all default style on buttons */
-button {
-  all: unset;
-}
