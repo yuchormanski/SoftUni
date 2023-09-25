@@ -5,17 +5,22 @@
   height: 150px;
   flex-wrap: wrap;
 }
-
+.flex-container {
+  display: flex;
+}
 #box1 {
   background-color: pink;
+  order: 2;
 }
 
 #box2 {
   background-color: lightgreen;
+  order: 0;
 }
 
 #box3 {
   background-color: lightblue;
+  order: 1;
 }
 
 .flex-container > div {

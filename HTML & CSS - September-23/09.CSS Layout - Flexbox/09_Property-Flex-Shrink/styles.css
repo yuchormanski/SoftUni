@@ -4,10 +4,23 @@
   width: 350px;
 }
 
+.flex-container {
+  display: flex;
+}
 .flex-container > div {
   background-color: #f1f1f1;
   margin: 10px;
   padding: 20px;
   font-size: 30px;
   flex-basis: 120px;
+}
+
+.flex-container > div:nth-child(1) {
+  flex-shrink: 0;
+}
+.flex-container > div:nth-child(2) {
+  flex-shrink: 1;
+}
+.flex-container > div:nth-child(3) {
+  flex-shrink: 2;
 }

@@ -3,7 +3,10 @@
   background-color: DodgerBlue;
   width: 300px;
 }
-
+.flex-container {
+  display: flex;
+  flex-direction: row-reverse;
+}
 .flex-container > div {
   background-color: #f1f1f1;
   margin: 10px;

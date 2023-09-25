@@ -3,6 +3,11 @@
   width: 300px;
 }
 
+.flex-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .flex-container > div {
   background-color: #f1f1f1;
   margin: 10px;

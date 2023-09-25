@@ -1,8 +1,12 @@
 .flex-container {
   display: flex;
   background-color: DodgerBlue;
-  width:350px;
+  width: 350px;
   height: 260px;
+}
+
+.flex-container {
+  display: flex;
 }
 
 .flex-container > div {
@@ -10,4 +14,14 @@
   margin: 10px;
   padding: 20px;
   font-size: 30px;
+}
+
+.flex-container > div:nth-child(1) {
+  flex-grow: 1;
+}
+.flex-container > div:nth-child(2) {
+  flex-grow: 2;
+}
+.flex-container > div:nth-child(3) {
+  flex-grow: 3;
 }

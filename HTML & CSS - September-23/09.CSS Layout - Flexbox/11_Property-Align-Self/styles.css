@@ -5,9 +5,12 @@
   height: 200px;
   flex-wrap: wrap;
 }
-
+.flex-container {
+  display: flex;
+}
 #box2 {
   background-color: pink;
+  align-self: center;
 }
 
 .flex-container > div {
