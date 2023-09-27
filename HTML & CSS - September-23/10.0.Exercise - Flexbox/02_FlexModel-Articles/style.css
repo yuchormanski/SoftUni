@@ -1,0 +1,21 @@
+body {
+  line-height: 1.5;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Helvetica, sans-serif;
+}
+
+section {
+  max-width: 70vw;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 20px;
+  margin-top: 60px;
+}
+h2 {
+  line-height: 1.2;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
