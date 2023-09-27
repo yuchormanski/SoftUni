@@ -97,4 +97,5 @@ textarea:not([rows]) {
 /* remove all default style on buttons */
 button {
   all: unset;
+  cursor: pointer;
 }
