@@ -1,0 +1,282 @@
+/*
+# FONT SIZE SYSTEM (px)
+        10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+# SPACING SYSTEM (px)
+        2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+*/
+html {
+  font-size: 10px;
+}
+body {
+  position: relative;
+  font-family: "Inter", sans-serif;
+}
+nav {
+  background-color: #d9d9d9;
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 500;
+  padding: 30px 0 20px 50px;
+}
+
+.nav-list {
+  margin: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.item,
+.item.visited {
+  text-decoration: none;
+  color: #000;
+}
+.item:hover,
+.item.active {
+  color: #000;
+}
+
+.nav-btn {
+  margin-right: 50px;
+  margin-left: auto;
+  display: inline-block;
+  background-color: #fff;
+  padding: 0.7rem 1.4rem;
+  font-size: 1.8rem;
+  font-weight: 400;
+  border: 1px solid #000;
+  border-radius: 6px;
+}
+
+.hero {
+  display: flex;
+  height: 760px;
+  background-image: url(../images/background.jpg);
+  background-position-y: -318px;
+  align-items: center;
+  padding-left: 310px;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  width: 745px;
+}
+
+.heading-hero {
+  font-size: 5.8rem;
+  margin-bottom: 100px;
+}
+
+.hero-text {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 50px;
+}
+
+.hero-btn {
+  background-color: #000000;
+  color: #fff;
+  display: inline-block;
+  padding: 1.6rem 3.2rem;
+  width: fit-content;
+  font-size: 1.6rem;
+}
+.container {
+  max-width: 1750px;
+  margin: 0 auto;
+}
+.clients-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 100px 80px 0;
+}
+
+.client-info-element {
+  text-align: center;
+}
+
+.heading--client--element {
+  font-size: 6.2rem;
+  font-weight: 700;
+  color: #ff7c4c;
+  margin-bottom: 50px;
+}
+
+.heading--client--element--title {
+  font-size: 2.4rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.client-element-text {
+  font-size: 1.6rem;
+  color: #777;
+  margin-bottom: 35px;
+}
+
+/* .articles-block {
+} */
+article {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.articles-block {
+  background-color: #d9d9d9;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 70px 0;
+}
+
+.article-img {
+  height: 440px;
+}
+
+.article-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.article--text--theme {
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #777;
+}
+
+.article-heading {
+  font-size: 4rem;
+}
+
+.article-text-content,
+.article-author {
+  font-size: 2rem;
+  color: #777;
+}
+
+.article-link:link,
+.article-link:visited {
+  color: #000;
+  font-size: 2rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.plans {
+  background-color: #f5f5f5;
+}
+
+.pricing-plans {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 60px 60px 60px;
+  gap: 30px;
+}
+
+/* .text-container {
+  padding-right: 20px;
+} */
+
+.pricing-heading {
+  font-size: 4rem;
+  font-weight: 700;
+  margin: 20px 0 50px;
+}
+
+.pricing-text {
+  font-size: 1.95rem;
+  color: #777;
+  line-height: 23px;
+}
+
+figure {
+  flex: 0 0 525px;
+  /* height: 580px; */
+}
+
+.plan-low-price,
+.plan-high-price {
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  gap: 15px;
+}
+
+.plan-low-price {
+  background-color: #ff7c4c;
+  color: #000;
+}
+.plan-high-price {
+  background-color: #000;
+  color: #fff;
+}
+
+.cost {
+  font-size: 3.2rem;
+  font-weight: 600;
+}
+
+.price {
+  font-size: 8rem;
+  font-weight: 200;
+  padding: 10px;
+}
+
+.plan-link:link,
+.plan-link:visited {
+  display: inline-block;
+  padding: 1.6rem 4rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  border-radius: 6px;
+  margin-top: 35px;
+  text-decoration: none;
+}
+
+.low:link,
+.low:visited {
+  background-color: #000000;
+  color: #fff;
+}
+.low:hover,
+.low:active {
+  color: #fff;
+}
+
+.high:link,
+.high:visited {
+  background-color: #ffffff;
+  color: #000000;
+}
+.high:hover,
+.high:active {
+  color: #000000;
+}
+
+footer {
+  background-color: #d9d9d9;
+}
+
+.footer-container {
+  width: 1250px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 70px;
+}
+
+.icon {
+  font-size: 2.4rem;
+}
