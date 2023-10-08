@@ -1,0 +1,84 @@
+@import url(reset.css);
+@import url(typography.css);
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+.green {
+  color: #a4c639;
+}
+.bg-green {
+  background-color: #a4c639;
+}
+
+html {
+  font-family: "Poppins", sans-serif;
+}
+body {
+  display: flex;
+  /* align-items: center;    */
+  justify-content: center;
+  margin-top: 50px;
+}
+.container {
+  /* width: 1145; 
+  height: 640*/
+  width: 120rem;
+  height: 68rem;
+  padding: 2rem 2.7rem;
+  /* box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3); */
+}
+.card-main-heading {
+  text-align: center;
+  font-size: 3.7rem;
+  font-weight: 600;
+  /* letter-spacing: 0.9px; */
+  margin-bottom: 1.5rem;
+}
+
+.heading-text {
+  text-align: center;
+  font-size: 1.5rem;
+  letter-spacing: 1.2px;
+  color: #333;
+  margin-bottom: 8.5rem;
+}
+
+.cards {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.card-img {
+  width: 100%;
+  /* margin-bottom: 3rem; */
+}
+
+.wrapper {
+  background-color: #f7f7f7;
+  padding: 3rem;
+}
+
+.card-heading {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-text {
+  font-size: 1.4rem;
+  line-height: 3rem;
+  color: #444;
+  margin-bottom: 1.5rem;
+}
+
+.link:link,
+.link:visited {
+  display: inline-block;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  width: 13.5rem;
+  padding: 1.1rem 0;
+  border-radius: 100px;
+}
