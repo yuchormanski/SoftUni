@@ -1,0 +1,32 @@
+/*
+# TYPOGRAPHY
+    - FONT SIZE SYSTEM (px)
+        10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+    - FONT WEIGHTS:
+        Default: 400
+
+
+# COLORS
+    - PRIMARY COLOR:
+    - TINTS:
+    - SHADES:
+    - ACCENTS:
+    - GRAYS: 
+
+# SHADOWS: 
+
+# BORDER RADIUS:
+
+# SPACING SYSTEM (px)
+        2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+*/
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://use.fontawesome.com/releases/v6.4.2/css/all.css");
+html {
+  /* font-size: 10px;
+  10px / 16px = 0.625 => 62.5%
+  Percentage of user's browsers fot-size setting
+  */
+  font-size: 62.5%;
+}

@@ -1,0 +1,91 @@
+@import url(reset.css);
+@import url(typography.css);
+body {
+  font-family: "Inter", sans-serif;
+  color: #000;
+}
+main {
+  height: 100vh;
+  background: url(../image/background.jpg);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 85vw;
+  height: 85vh;
+
+  display: grid;
+  grid-template-columns: 51.7rem 52.7rem 51.7rem;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+.card1 {
+  height: 66.4rem;
+}
+.card2 {
+  height: 72.1rem;
+}
+.card3 {
+  height: 69rem;
+}
+
+.card {
+  background-color: #ffffff;
+  padding: 4rem;
+}
+
+.type {
+  font-size: 3rem;
+  font-weight: 600;
+  /* letter-spacing: 0.9px; */
+  text-transform: uppercase;
+  margin-bottom: 2.8rem;
+}
+
+.price-block {
+  font-size: 2.35rem;
+  font-weight: 300;
+  margin-bottom: 2.7rem;
+}
+.price {
+  font-size: 8rem;
+  font-weight: 700;
+}
+
+.period {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 32px;
+}
+
+.list {
+  padding: 0;
+  list-style: none;
+  font-size: 2rem;
+  margin-bottom: 7.8rem;
+}
+
+.item {
+  /* display: flex;
+  align-items: center;
+  gap: 0.5rem; */
+  line-height: normal;
+  margin-bottom: 2rem;
+}
+
+.icon {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.button {
+  background-color: #000;
+  color: #fff;
+  font-size: 2rem;
+  padding: 1.8rem 4rem;
+  border-radius: 5px;
+}

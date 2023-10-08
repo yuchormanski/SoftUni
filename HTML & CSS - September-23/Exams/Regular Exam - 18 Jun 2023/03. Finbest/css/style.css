@@ -1,0 +1,270 @@
+ul {
+  padding-inline-start: 0;
+}
+.container {
+  max-width: 140rem;
+  margin: 0 auto;
+  /* border: 1px dashed gray; */
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 100px 30px 50px;
+}
+.nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-auth {
+  margin-left: auto;
+}
+
+.nav-link:link,
+.nav-link:visited {
+  display: block;
+  padding: 1.8rem 3.2rem;
+  font-size: 2rem;
+  color: #000;
+  text-decoration: none;
+}
+.nav-link:hover,
+.nav-link:active,
+.selected {
+  background-color: #ade2df;
+  color: #000;
+  border-radius: 8px;
+}
+
+/* HERO */
+.head {
+  background-color: #ade2df;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  padding: 100px 0;
+}
+
+.heading-header {
+  font-size: 6.4rem;
+  font-weight: 600;
+}
+
+.hero-text {
+  font-size: 2rem;
+  letter-spacing: -0.5px;
+}
+
+.hero-btns {
+  display: flex;
+}
+.hero-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #000;
+  color: #fff;
+  padding: 1.6rem 3.2rem;
+  border-radius: 6px;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.btn-last {
+  margin-left: 10px;
+}
+
+.hero-icon {
+  color: #fff;
+  font-size: 1.8rem;
+}
+
+/* MAIN */
+
+/* STATS */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 100px 100px 30px 50px;
+}
+.card {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 10px 0;
+  text-align: center;
+  border-left: 1px solid #c7c7c7;
+  margin-bottom: 50px;
+}
+
+.card:last-child {
+  border-right: 1px solid #c7c7c7;
+}
+.heading-card {
+  font-size: 4rem;
+  font-weight: 600;
+}
+
+.card-text {
+  font-size: 2rem;
+  color: #333;
+}
+
+/* EVERYTHING CONTAINER */
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  padding: 0px 50px 0 50px;
+}
+
+.img-container {
+  padding: 0px 30px;
+  border: 1px dashed rgba(164, 164, 164, 0.6);
+}
+
+.phone-img {
+  width: 750px;
+}
+
+.everything-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 100px;
+}
+
+.margin-bt-10 {
+  margin-bottom: 10px;
+}
+.margin-bt-20 {
+  margin-bottom: 10px;
+}
+.margin-bt-30 {
+  margin-bottom: 30px;
+}
+
+.heading-text {
+  font-size: 4rem;
+  font-weight: 600;
+  padding: 10px;
+}
+
+.heading-theme {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+.everything-text {
+  font-size: 2rem;
+  letter-spacing: 0.8px;
+}
+
+.pricing-plans {
+  background-color: #f3f5fa;
+}
+
+.plans:link,
+.plans:visited {
+  width: fit-content;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  border-bottom: 1px solid #000;
+}
+
+.center {
+  text-align: center;
+  margin: 0 auto;
+  padding: 60px 0 100px;
+}
+
+.price-plan-btn {
+  background-color: #ade2df;
+  color: #000;
+  padding: 0.8rem 2.4rem;
+  font-size: 1.8rem;
+  border-radius: 15px;
+  margin-bottom: 40px;
+}
+.plans-heading {
+  font-size: 4.4rem;
+  font-weight: 600;
+}
+
+/* PLANS */
+.price-card-container {
+  display: flex;
+}
+.price-card {
+  width: 22%;
+  padding: 40px 0 40px 40px;
+  background-color: #fff;
+}
+
+.card-wrapper {
+  padding-right: 40px;
+  border-right: 1px solid #c6c6c6;
+}
+.first {
+  border-top: 1px solid #c6c6c6;
+  border-bottom: 1px solid #c6c6c6;
+  border-left: 1px solid #c6c6c6;
+  border-top-left-radius: 15px;
+  border-top-left-radius: 15px;
+}
+.second {
+  border-top: 1px solid #c6c6c6;
+  border-bottom: 1px solid #c6c6c6;
+}
+
+.plan-type {
+  font-size: 2.4rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.plan-description {
+  font-size: 2rem;
+  letter-spacing: 0.8px;
+}
+
+.plan-cost {
+  font-size: 4.4rem;
+  font-weight: 600;
+  padding: 50px 0;
+}
+
+.plan-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.item {
+  font-size: 2rem;
+}
+
+.plan-btn:link,
+.plan-btn:visited {
+  background-color: #ade2df;
+  display: block;
+  width: 100%;
+  font-size: 2rem;
+  padding: 20px 0;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+}
