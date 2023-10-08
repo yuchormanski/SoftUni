@@ -1,0 +1,60 @@
+@import url(./reset.css);
+@import url(./typography.css);
+@import url("https://use.fontawesome.com/releases/v6.4.2/css/all.css");
+body {
+}
+
+.container {
+  width: 171rem;
+  margin: 0 auto;
+}
+.flex {
+  display: flex;
+}
+
+/* NAVIGATION */
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem 6.6rem;
+  background-color: #fff;
+  color: #000;
+  font-size: 3rem;
+  font-weight: 600;
+}
+.logo {
+  margin-left: 8rem;
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  gap: 3rem;
+}
+
+.nav-link:link,
+.nav-link:visited {
+  color: #000;
+  text-decoration: none;
+}
+.nav-link:hover,
+.nav-link:active {
+  color: #333;
+}
+
+/* HERO */
+
+.hero {
+  background-color: #85dcff;
+  width: 100vw;
+  height: 67.8rem;
+  box-shadow: inset 0px 4px 8px 0px rgb(175 175 175 / 83%);
+}
+
+.hero-content {
+  align-items: center;
+}
