@@ -1,1 +1,104 @@
 /* TODO: Add the responsive styles here */
+
+@media screen and (max-width: 600px) {
+  .tm-cta-section {
+    width: 100%;
+  }
+  .tm-welcome-section {
+    max-width: 600px;
+  }
+  .tm-header {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  .tm-site-logo {
+    width: 15%;
+  }
+  .tm-site-title {
+    font-size: 2.9rem;
+  }
+  .tm-site-text-box {
+    width: 320px;
+  }
+  .col-12 {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    margin-left: 0px;
+  }
+  .tm-header-inner {
+    padding: 0 0 0 40px;
+  }
+  .tm-site-description {
+    font-size: 1.4rem;
+  }
+  .tm-nav-ul {
+    margin: 0 0 12px 170px;
+    font-size: 1.2rem;
+  }
+  .tm-paging-link {
+    padding: 12px 37px;
+  }
+  .tm-paging-item {
+    margin: 0 0 0 17px;
+  }
+  .tm-section-title {
+    font-size: 2.4rem;
+    width: 72%;
+    font-weight: 500;
+    margin-left: 10%;
+  }
+  .text-center {
+    width: unset;
+  }
+  .tm-paging-links {
+    width: unset;
+  }
+
+  .tm-gallery-page {
+    margin: 0;
+    flex-direction: column;
+    align-items: center;
+    width: 90vw;
+  }
+  .row {
+    flex-direction: column;
+  }
+  .tm-gallery {
+    margin-left: 0;
+  }
+  .tm-gallery-title {
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+
+  .tm-gallery-description {
+    font-size: 1.2rem;
+    letter-spacing: -1px;
+  }
+  .tm-mb-45 {
+    font-size: 1.3rem;
+    width: unset;
+  }
+
+  .tm-right {
+    font-size: 1.3rem;
+  }
+  .tm-footer {
+    font-size: 1.3rem;
+  }
+  .img-fluid {
+    max-width: unset;
+  }
+  .tm-gallery-img {
+    width: 125%;
+    margin-left: 0;
+  }
+  .tm-gallery-price {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+  img.img-fluid {
+    margin-left: 20px;
+  }
+}
