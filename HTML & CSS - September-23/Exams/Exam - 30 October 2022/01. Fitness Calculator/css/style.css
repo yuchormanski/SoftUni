@@ -1,0 +1,146 @@
+@import url(reset.css);
+@import url(typography.css);
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+
+body {
+  font-family: "Open Sans", sans-serif;
+  padding-left: 20px;
+}
+
+.section {
+  width: 134.4rem;
+  height: 67.3rem;
+  display: flex;
+  align-items: center;
+  margin: 130px auto;
+  border-radius: 15px;
+  border: 1px solid rgb(151, 151, 151);
+  box-shadow: 0 4px 20px 2px rgba(0, 0, 0, 0.3);
+}
+
+input,
+select {
+  border-radius: 3px;
+  border: 1px solid gray;
+}
+
+.section-media {
+  width: 50%;
+  overflow: hidden;
+}
+
+.section-img {
+  height: 100%;
+  border-left: 1px solid rgb(151, 151, 151);
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  filter: brightness(70%);
+}
+
+/* DATA */
+
+.section-data {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  /* gap: 5rem; */
+}
+
+.section-heading {
+  font-size: 3.1rem;
+  font-weight: 600;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  margin-bottom: 68px;
+}
+h3 {
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.units {
+  display: flex;
+  gap: 112px;
+  margin-bottom: 29px;
+
+  /* padding: 20px; */
+}
+.us,
+.metric {
+  height: 38px;
+  text-align: center;
+  font-size: 1.6rem;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+.us {
+  width: 174px;
+  background-color: #86d862;
+}
+
+.metric {
+  width: 159px;
+  background-color: #e0e0df;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.2rem;
+  margin-bottom: 68px;
+}
+.gender {
+  margin-bottom: 0px;
+}
+.gender-block {
+  display: flex;
+  gap: 20px;
+  font-size: 1.3rem;
+}
+
+.gender-block .selection {
+  width: 192px;
+  line-height: 1.5rem;
+}
+.gender-block input {
+  width: 172px;
+  line-height: 1.5rem;
+}
+
+.weight-input {
+  margin-bottom: 0px;
+  width: 524px;
+  line-height: 27px;
+}
+
+.height-block {
+  display: flex;
+  gap: 16px;
+}
+
+.feet {
+  width: 269px;
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+}
+
+.inches {
+  width: 264px;
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+}
+.btn {
+  background-color: #05a2d3;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  border-radius: 100px;
+  width: 580px;
+  height: 40px;
+  box-shadow: 0 4px 10px 5px rgba(0, 0, 0, 0.3);
+}
