@@ -9,3 +9,66 @@
 .button {
   width: 130px;
 }
+
+.site-logos-container {
+  min-width: 600px;
+}
+
+.site-information {
+  flex-direction: column;
+  text-align: center;
+}
+
+.site-information-text {
+  flex: 0 0 50%;
+  padding: 4rem 7rem;
+}
+.site-information-text .entry-title {
+  font-size: 3rem;
+}
+.entry-description {
+  width: 100%;
+}
+.button {
+  width: 100px;
+}
+
+.site-form {
+  margin-top: 0;
+}
+
+.entry-title {
+  font-size: 0.5rem;
+}
+
+.site-form form > p {
+  flex-direction: column;
+}
+
+.site-form input {
+  width: 100%;
+}
+
+.site-form button {
+  display: inline-block;
+}
+
+.site-blog-container {
+  margin-top: 0;
+}
+.site-blog-container .entry-title {
+  display: block;
+  width: 76%;
+  font-size: 3rem;
+  margin: 0 auto 35px;
+}
+
+.site-posts {
+  flex-direction: column;
+  width: 70%;
+  margin: 0 auto;
+}
+.site-footer {
+  flex-direction: column;
+  align-items: center;
+}
