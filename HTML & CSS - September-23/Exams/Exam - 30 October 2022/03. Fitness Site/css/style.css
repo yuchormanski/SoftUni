@@ -1,6 +1,6 @@
 @import url(reset.css);
 @import url(typography.css);
-@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Roboto:wght@400;500;700&display=swap");
 @import url("https://use.fontawesome.com/releases/v6.4.2/css/all.css");
 
 :root {
@@ -8,8 +8,9 @@
 }
 body {
   font-family: "PT Sans", sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
 }
-.navigation {
+.information {
   background-color: var(--header-red-color);
   height: 70px;
   display: flex;
@@ -27,10 +28,181 @@ body {
 
 .hero {
   height: 610px;
+  position: relative;
+  text-align: center;
 }
 
 .hero-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.hero-content {
+  position: absolute;
+  top: 33%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: #fff;
+}
+
+.hero-heading,
+.hero-btn,
+.navigation-link {
+  text-transform: uppercase;
+}
+
+.hero-heading {
+  font-family: "Roboto", sans-serif;
+  font-size: 6.5rem;
+  font-weight: 500;
+  letter-spacing: 8px;
+  margin-bottom: 40px;
+}
+
+.hero-text {
+  width: 580px;
+  margin: 0 auto;
+  font-size: 2rem;
+  letter-spacing: normal;
+  line-height: 2.6rem;
+  margin-bottom: 40px;
+}
+
+.hero-btn {
+  display: inline-block;
+  font-size: 1.7rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 0.7rem 2.3rem;
+  background-color: var(--header-red-color);
+  border-radius: 6px;
+}
+
+.navigation {
+  position: absolute;
+  top: 30px;
+  right: 70px;
+}
+.list {
+  display: flex;
+  gap: 7rem;
+  font-family: sans-serif;
+
+  font-size: 2rem;
+}
+
+.navigation-link:link,
+.navigation-link:visited {
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.3s;
+}
+.navigation-link:hover,
+.navigation-link:active {
+  color: rgb(216, 216, 216);
+}
+
+/* WELCOME */
+.bottom-line {
+  width: 54px;
+  border: 2px solid var(--header-red-color);
+}
+
+.welcome {
+  display: flex;
+  height: 471px;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  padding: 4rem 0 1rem;
+}
+
+.welcome-heading {
+  font-size: 4.2rem;
+}
+
+.welcome-includes,
+.coaches-blocks {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 25rem;
+}
+
+.includes {
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+/* .fa-includes-icon {
+  font-size: 6.4rem;
+} */
+
+.includes-img {
+  width: 20%;
+}
+
+.includes-heading {
+  font-size: 2.1rem;
+  color: var(--header-red-color);
+}
+
+.includes-text {
+  font-size: 1.9rem;
+  text-align: center;
+}
+
+/* COACHES */
+
+.coaches {
+  height: 647px;
+  background-color: #efefef;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  padding: 4rem 0 1rem;
+}
+
+.coaches-figure {
+  width: 380px;
+}
+
+.coach-img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.sm-gap {
+  gap: 1.6rem;
+}
+.coach-heading {
+  font-size: 2.1rem;
+}
+
+.sm-heading {
+  font-size: 1.8rem;
+  color: var(--header-red-color);
+}
+
+.coaches-text {
+  text-align: center;
+  font-size: 1.9rem;
+  color: #999;
+  padding: 0 2rem;
+}
+
+/* FOOTER */
+
+.footer {
+  background-color: var(--header-red-color);
+  height: 4.6rem;
+  font-size: 2rem;
+  line-height: 4.4rem;
+  text-align: center;
+  padding-top: 2px;
 }
