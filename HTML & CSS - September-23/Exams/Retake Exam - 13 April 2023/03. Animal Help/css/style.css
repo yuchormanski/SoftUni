@@ -1,60 +1,218 @@
-@import url(./reset.css);
-@import url(./typography.css);
+@import url(reset.css);
+@import url(typography.css);
 @import url("https://use.fontawesome.com/releases/v6.4.2/css/all.css");
-body {
+
+:root {
+  --header-color: rgb(133, 220, 255);
 }
 
 .container {
-  width: 171rem;
+  width: 1727px;
   margin: 0 auto;
 }
-.flex {
-  display: flex;
+.shadow {
+  width: 100%;
+  height: 0.1rem;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0px 8px 11px 2px rgb(151 151 151);
 }
 
-/* NAVIGATION */
-
-.navigation {
+.header-links {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 3rem 6.6rem;
-  background-color: #fff;
-  color: #000;
-  font-size: 3rem;
-  font-weight: 600;
-}
-.logo {
-  margin-left: 8rem;
+  font-size: 2.8rem;
+  font-weight: 700;
+  padding: 2.5rem 7rem 2.5rem 13rem;
 }
 
-.list {
-  padding: 0;
-  margin: 0;
-  list-style: none;
+ul.list {
   display: flex;
-  gap: 3rem;
+  align-items: center;
+  gap: 2rem;
 }
 
-.nav-link:link,
-.nav-link:visited {
-  color: #000;
+.header-link:link,
+.header-link:visited {
   text-decoration: none;
+  color: #000;
 }
-.nav-link:hover,
-.nav-link:active {
-  color: #333;
-}
-
-/* HERO */
 
 .hero {
-  background-color: #85dcff;
-  width: 100vw;
-  height: 67.8rem;
-  box-shadow: inset 0px 4px 8px 0px rgb(175 175 175 / 83%);
+  background-color: var(--header-color);
 }
 
-.hero-content {
+.hero-wrapper {
+  display: flex;
   align-items: center;
+  gap: 5px;
+}
+
+.hero-text,
+.hero-img {
+  width: 50%;
+  display: flex;
+}
+
+.hero-text {
+  flex-direction: column;
+  justify-content: center;
+  gap: 4rem;
+  padding-left: 185px;
+}
+.hero-heading {
+  font-size: 3.6rem;
+  /* margin-bottom: 2rem; */
+}
+
+.hero-text-content {
+  width: 675px;
+  font-size: 1.8rem;
+}
+.btns {
+  display: flex;
+  gap: 4rem;
+}
+.btn {
+  display: inline-block;
+  font-size: 1.8rem;
+  font-weight: 600;
+  padding: 2rem 9rem;
+  border-radius: 10px;
+}
+
+.btn-l {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+
+.btn-r {
+  background-color: #000;
+  color: #fff;
+}
+
+.hero-img {
+  justify-content: flex-end;
+}
+
+.head-img {
+  height: 608px;
+  margin-right: 110px;
+}
+
+/* ANIMALS-NEED */
+
+.animals-needs {
+  height: 696px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  text-align: center;
+}
+
+.needs-heading {
+  font-size: 2.8rem;
+}
+
+.needs-text {
+  width: 660px;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 4rem;
+}
+
+.needs-cards {
+  display: flex;
+  align-items: center;
+  gap: 14rem;
+}
+
+.card {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.card-fa-icon {
+  font-size: 16rem;
+  color: var(--header-color);
+}
+
+.card-heading {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+.card-text {
+  font-size: 1.8rem;
+}
+
+/* WORK */
+
+.work-bgc {
+  background-color: var(--header-color);
+  height: 769px;
+  padding: 8rem 0;
+}
+
+.work {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+}
+
+.work-heading {
+  font-size: 3.8rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+ul.work-list {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 8rem;
+  row-gap: 3rem;
+  font-size: 2.6rem;
+  padding-left: 2rem;
+}
+
+.work-fa-icon {
+  position: absolute;
+  font-size: 2.4rem;
+  transform: translate(-35px, -1px);
+}
+
+ul.work-list .item {
+  width: 450px;
+}
+
+/* ANIMALS */
+
+.animals {
+}
+.animals-imgs {
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6rem;
+}
+
+.animals-imgs img {
+  width: 335px;
+  height: 315px;
+  object-fit: cover;
 }
