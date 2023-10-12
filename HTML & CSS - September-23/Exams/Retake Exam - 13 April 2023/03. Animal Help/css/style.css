@@ -33,10 +33,19 @@ ul.list {
   gap: 2rem;
 }
 
+.logo:link,
+.logo:visited,
 .header-link:link,
 .header-link:visited {
   text-decoration: none;
   color: #000;
+}
+
+.logo:hover,
+.logo:active,
+.header-link:hover,
+.header-link:active {
+  color: #436e80;
 }
 
 .hero {
@@ -202,7 +211,23 @@ ul.work-list .item {
 /* ANIMALS */
 
 .animals {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  padding: 4rem 0;
 }
+
+.animals-heading {
+  font-size: 5rem;
+  font-weight: 800;
+}
+
+.animals-head-text {
+  font-size: 2.2rem;
+}
+
 .animals-imgs {
   height: 340px;
   display: flex;
@@ -215,4 +240,120 @@ ul.work-list .item {
   width: 335px;
   height: 315px;
   object-fit: cover;
+}
+
+.how-header {
+  font-size: 3.3rem;
+  font-weight: 600;
+}
+
+article {
+  width: 1305px;
+  border-radius: 8px;
+  border: 1px solid lightgray;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.title {
+  background-color: var(--header-color);
+  font-size: 2.3rem;
+  font-weight: 700;
+  padding: 3rem 3rem 2rem;
+}
+
+.article-text {
+  font-size: 2rem;
+  font-weight: 700;
+
+  padding: 4rem 3rem;
+}
+
+/* NEWS */
+
+.news {
+  display: flex;
+  align-items: center;
+  padding-top: 8rem;
+}
+
+.news-content {
+  width: 50%;
+}
+
+.news-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.news-heading {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin: 0 0 6rem 9rem;
+}
+
+.news-text {
+  width: 650px;
+  font-size: 1.8rem;
+  margin: 0 0 5rem 9rem;
+}
+
+.email,
+.send-btn {
+  height: 6rem;
+}
+
+.email {
+  width: 350px;
+  font-size: 2rem;
+  margin: 0 0 5rem 9rem;
+  padding: 0 10px;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+}
+
+input.email::placeholder {
+  padding: 0 10px;
+}
+
+.send-btn {
+  width: 200px;
+  background-color: #000;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 8px;
+  margin: 0 0 5rem 9rem;
+}
+
+/* FOOTER */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem 10rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: 3.8rem;
+}
+
+.social-link:link,
+.social-link:visited {
+  color: #000;
+  text-decoration: none;
+}
+
+.social-link:hover,
+.social-link:active {
+  color: #436e80;
 }
