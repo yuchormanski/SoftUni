@@ -64,8 +64,8 @@ ul.list {
 .hero {
   width: 100%;
   height: 784px;
-  background-image: url(../images/header-bg.png);
-  background-size: 100% 100%;
+  background: url(../images/header-bg.png) 100% 100% no-repeat;
+  /* background-size: 100% 100%;   */
 }
 
 .wrapper {
@@ -213,6 +213,10 @@ ul.list {
   display: flex;
   align-items: center;
   /* gap: 14rem; */
+}
+
+.care-img {
+  filter: ;
 }
 
 .care-img-holder {

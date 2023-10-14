@@ -12,42 +12,51 @@ body {
   font-family: "Mulish", sans-serif;
   font-size: 1.4rem;
 }
-.reg-form {
-}
 
 .form {
   background-image: url(../images/form-background.png);
   background-size: cover;
   width: 852px;
-  height: 614px;
+  height: 605px;
   overflow: hidden;
   border-radius: 30px;
   box-shadow: 15px 15px 20px 0px rgb(87 87 87);
 }
-
+.form label {
+  color: #7e7e7e;
+}
 .input-fields {
   width: 50%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  padding: 4.8rem 0 4.8rem 5.5rem;
+  padding: 9rem 0 4.8rem 5.5rem;
 }
 
 .input-fields input {
   height: 4rem;
   border-radius: 50px;
-  border: 1px solid gray;
+  margin-top: 5px;
 }
+
+input:active,
+input:focus {
+  outline: none;
+  border: 1px solid rgb(108, 108, 108);
+}
+
 .reg-form-hd {
   text-transform: uppercase;
+  margin-bottom: 40px;
 }
 
 .name {
   display: flex;
   align-items: center;
   gap: 1px;
+  margin-bottom: 15px;
 }
 
 .firstName,
@@ -64,20 +73,53 @@ body {
 .repass-f input {
   width: 360px;
 }
-
+.email-f,
+.password-f {
+  margin-bottom: 15px;
+}
 .radio-f {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.repass {
+  margin-bottom: 15px;
 }
 
-.radio-f input {
+input[type="radio"] {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  /* padding: 1px; */
+  border-radius: 1px;
+  background: none;
+  transition: all 0.2s;
+}
+
+input[type="radio"]:checked {
+  background-color: rgb(141, 141, 141);
+  box-shadow: inset 0px 0px 0px 1px #fff;
+}
+input[type="radio"]:focus {
+  outline-color: transparent;
+}
+
+.radio-f span {
+  height: 15px;
 }
 
 .btn {
-  padding: 1.2rem 2.2rem;
+  padding: 1rem 2.2rem;
   border-radius: 100px;
   background-color: #ae3c33;
   color: #fff;
   text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  background-color: #b65047;
+  color: #e6e6e6;
 }

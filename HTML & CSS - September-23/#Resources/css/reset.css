@@ -106,8 +106,14 @@ textarea:not([rows]) {
 
 /* custom styles */
 
-/* remove all default style on buttons */
-button {
+/* remove all default style on buttons and input fields */
+button,
+input {
   all: unset;
+}
+button {
   cursor: pointer;
+}
+input {
+  border: 1px solid gray;
 }
