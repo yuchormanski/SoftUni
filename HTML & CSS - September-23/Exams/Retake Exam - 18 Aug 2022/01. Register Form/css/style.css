@@ -1,0 +1,83 @@
+@import url(reset.css);
+@import url(typography.css);
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../images/background.png);
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Mulish", sans-serif;
+  font-size: 1.4rem;
+}
+.reg-form {
+}
+
+.form {
+  background-image: url(../images/form-background.png);
+  background-size: cover;
+  width: 852px;
+  height: 614px;
+  overflow: hidden;
+  border-radius: 30px;
+  box-shadow: 15px 15px 20px 0px rgb(87 87 87);
+}
+
+.input-fields {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4.8rem 0 4.8rem 5.5rem;
+}
+
+.input-fields input {
+  height: 4rem;
+  border-radius: 50px;
+  border: 1px solid gray;
+}
+.reg-form-hd {
+  text-transform: uppercase;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.firstName,
+.lastName {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.name input {
+  width: 170px;
+}
+.email-f input,
+.password-f input,
+.repass-f input {
+  width: 360px;
+}
+
+.radio-f {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.radio-f input {
+}
+
+.btn {
+  padding: 1.2rem 2.2rem;
+  border-radius: 100px;
+  background-color: #ae3c33;
+  color: #fff;
+  text-transform: uppercase;
+}
