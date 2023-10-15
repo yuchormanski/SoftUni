@@ -1,0 +1,40 @@
+@import url(reset.css);
+/* @import url(typography.css); */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css");
+
+/*
+# TYPOGRAPHY
+    - FONT SIZE SYSTEM (px)
+        10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+    - FONT WEIGHTS:
+        Default: 400
+
+    - LINE HEIGHTS:
+        Default: 1
+
+# COLORS
+
+    - PRIMARY COLOR:
+    - TINTS:
+    - SHADES:
+    - ACCENTS:
+    - GRAYS: 
+
+# SHADOWS: 
+
+# BORDER RADIUS:
+
+# WHITESPACE: 
+
+# SPACING SYSTEM (px)
+        2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+*/
+
+html {
+  /* font-size: 10px;
+    10px / 16px = 0.625 => 62.5%
+    Percentage of user's browsers fot-size setting
+    */
+  font-size: 62.5%;
+}
