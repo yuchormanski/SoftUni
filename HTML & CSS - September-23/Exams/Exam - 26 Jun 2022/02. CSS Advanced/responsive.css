@@ -1,0 +1,57 @@
+@media screen and (max-width: 600px) {
+  body {
+    margin: 0;
+    box-sizing: border-box;
+  }
+  main {
+    width: 100%;
+  }
+
+  .left-to-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .left-to-right:first-child {
+    height: 550px;
+    padding: 0px 0;
+  }
+  main .left-to-right article {
+    width: 400px;
+    padding: 0 30px;
+    border-radius: 20%;
+    font-size: 14px;
+    height: 400px;
+    margin-bottom: 50px;
+  }
+  /* main .left-to-right article button { */
+  button {
+    display: none;
+  }
+  header h1 {
+    font-size: 2.2rem;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    padding-inline: 20px;
+  }
+  header p {
+    line-height: 30px;
+  }
+
+  form {
+    width: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  section form label input,
+  section form textarea {
+    width: 400px;
+  }
+  textarea {
+    resize: none;
+  }
+}
