@@ -92,7 +92,6 @@ input[type="radio"] {
   appearance: none;
   width: 14px;
   height: 14px;
-  /* padding: 1px; */
   border-radius: 1px;
   background: none;
   transition: all 0.2s;
