@@ -1,0 +1,256 @@
+@import url(reset.css);
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css");
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=PT+Serif:wght@400;700&display=swap");
+
+/*
+# 
+    - FONT SIZE SYSTEM (px)
+        10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+#   - SPACING SYSTEM (px)
+        2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+        font-family: 'PT Sans', sans-serif;
+        font-family: 'PT Serif', serif;
+*/
+
+html {
+  /* font-size: 10px = 1rem;
+  10px / 16px = 0.625 => 62.5%
+  */
+  font-size: 62.5%;
+}
+
+:root {
+  --font-size: 2rem;
+  --color-link-link: #b0825c;
+  --color-link-hover: #c8956b;
+  --font-family-hd: "PT Serif", serif;
+  --font-family-text: "PT Sans", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family-text);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-hd);
+}
+.container {
+  width: 1450px;
+}
+
+.header {
+  width: 100%;
+  background-image: url(images/background.jpg);
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 32rem;
+}
+
+.head {
+  display: flex;
+  width: 100%;
+  height: 12rem;
+  padding: 1.5rem 6rem;
+  justify-content: space-between;
+  margin-top: 2.2rem;
+  margin-bottom: 4rem;
+}
+
+.logo {
+  height: 100%;
+}
+
+.nav {
+  margin-top: 1.8rem;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+.nav-link:link,
+.nav-link:visited {
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  font-family: var(--font-family-text);
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+.nav-link:hover,
+.nav-link:active {
+  color: #e3e3e3;
+}
+
+.header-hd {
+  width: 55%;
+  color: #fff;
+}
+
+h1.header-hd {
+  font-size: 6.85rem;
+  font-weight: 400;
+  line-height: 8.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.hd-span {
+  display: block;
+}
+
+p.header-pf {
+  font-size: 2.5rem;
+  line-height: 1.6;
+}
+.main {
+  display: flex;
+  justify-content: center;
+}
+.main:nth-of-type(1) {
+  border-bottom: 2px solid #ccc;
+}
+
+.aims {
+  display: flex;
+  gap: 4.6rem;
+  padding: 15rem 0 10rem;
+}
+
+.aims article {
+  width: 50%;
+}
+.article-hd {
+  font-size: 5.8rem;
+  font-weight: 400;
+  color: #37282b;
+  margin-bottom: 2.5rem;
+}
+
+.article-pf {
+  font-size: var(--font-size);
+  line-height: 1.8;
+  margin-bottom: 4rem;
+}
+
+.article-link:link,
+.article-link:visited {
+  display: inline-block;
+  padding: 1.1rem 2.4rem;
+  color: var(--color-link-link);
+  font-size: var(--font-size);
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid var(--color-link-link);
+  transition: all 0.2s ease-in-out;
+}
+
+.article-link:hover,
+.article-link:active {
+  color: var(--color-link-hover);
+  border-color: var(--color-link-hover);
+}
+
+.partners {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-block: 6rem;
+}
+
+.sponsor-hd,
+.partner-hd {
+  font-size: 5.8rem;
+  font-weight: 400;
+  color: var(--color-link-link);
+  margin-bottom: 3rem;
+}
+
+.sponsor-pf,
+.partner-pf {
+  font-size: var(--font-size);
+  color: #777;
+}
+.sponsor-pf {
+  margin-bottom: 7.5rem;
+}
+
+.sponsor-imgs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rem;
+}
+
+.img-container {
+  width: 19rem;
+  height: 19rem;
+  background-color: #dddddd;
+  border-radius: 50%;
+  padding: 3rem;
+  margin-bottom: 7.5rem;
+}
+
+.img-container img {
+  width: 100%;
+  height: 100%;
+}
+
+.partner-pf {
+  margin-bottom: 2.5rem;
+}
+
+.footer {
+  width: 100%;
+  background-color: #171720;
+  color: #b3a6a8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-content {
+  padding: 6rem 0 7rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.card-hd {
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 3rem;
+}
+
+.footer-list {
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  line-height: 3;
+}
+
+.copyright {
+  background-color: #171720;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid rgba(128, 128, 128, 0.394);
+  padding: 2rem 0;
+}
+
+.copyright p {
+  font-size: 1.6rem;
+  color: #b3a6a8;
+}
