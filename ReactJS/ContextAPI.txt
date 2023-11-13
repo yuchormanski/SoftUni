@@ -11,5 +11,5 @@ const ContextName - createContext()      (from react)
 </ContextName.Provider>
 
 
-в компонента , който се нуждае
+в компонента , който се нуждае, веднага след дефинирането на функцията
 const {neededPart} = useContext(ContectName)    (from react)
