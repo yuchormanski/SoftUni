@@ -1,0 +1,15 @@
+const ContextName - createContext()      (from react)
+
+прави се пради дефинирането на функцията (компонента) 
+
+веднага след return на првайдер компонента:
+(по същият начин като подаването на пропс на компонентите)
+<ContextName.Provider value={{
+		valueName: prop,
+		valueName: prop
+	}}>
+</ContextName.Provider>
+
+
+в компонента , който се нуждае
+const {neededPart} = useContext(ContectName)    (from react)
