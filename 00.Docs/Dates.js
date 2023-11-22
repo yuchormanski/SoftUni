@@ -34,3 +34,7 @@ const date9 = new Date().toLocaleString(undefined, { hour12: false });
 
 const date10 = new Date().toLocaleTimeString("en-US", { hour12: false });
 // expected: 07:57:06
+
+const date11 = Date.now();
+// Returns the number of milliseconds elapsed since midnight, January 1, 1970
+//expected: 1700630802049
