@@ -38,3 +38,24 @@ const date10 = new Date().toLocaleTimeString("en-US", { hour12: false });
 const date11 = Date.now();
 // Returns the number of milliseconds elapsed since midnight, January 1, 1970
 //expected: 1700630802049
+
+const date12 = new Date().toLocaleDateString("en-GB");
+// expected: 03/12/2023  dd/MM//yyy
+
+let currentDate = new Date().getTime();
+//expected: Sun Dec 03 2023   time in mils as number
+console.log(new Date(currentDate).toDateString());
+
+//Difference between two times in mils
+
+function timeResolver(t1, t2) {
+  const diff = (t2 - t1) / (1000 * 60);
+  const minutes = diff % 3600;
+  const hours = minutes / 60;
+  const roundedHours = Math.floor(hours);
+  const min = (hours - roundedHours) * 60;
+  const roundedMinutes = Math.round(min);
+
+  // console.log(rhours + " hours and " + rminutes + " minutes.");
+  return roundedHours + " hours and " + roundedMinutes + " minutes.";
+}
