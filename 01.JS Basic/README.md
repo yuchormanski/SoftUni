@@ -1,6 +1,6 @@
 ###### [Back to Content](/)
 
-# 💻 Programming Basics
+# 💻 [Programming Basics](https://softuni.bg/Certificates/Details/135402/5547e817)
 
 The course "Programming Basics" provides foundational programming skills necessary for all technology-related specializations at SoftUni. This includes writing basic-level code, working with an integrated development environment (IDE), using variables and data, operators and expressions, interacting with the console (reading input data and printing results), and employing conditional constructs (if, if-else) and loops (for, while, do-while).
 
