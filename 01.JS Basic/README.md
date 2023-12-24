@@ -12,3 +12,4 @@ The course "Programming Basics" provides foundational programming skills necessa
 - Working with more complex loops (nested for loops and while loops)
 
 ## 🎓Certificate
+![Programming Basics - May 2022 - Certificate](https://github.com/yuchormanski/SoftUni/assets/693307/a2f22495-65a3-414d-9544-b33b35f8dd64)
