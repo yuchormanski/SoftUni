@@ -14,7 +14,7 @@ Specialize in so called full-stack JavaScript development of modern web applicat
 3. [JS-Advanced-January](https://github.com/TodorYadkov/SoftUni/tree/main/JS-Advanced-January-2023)
 4. [JS-Applications](https://github.com/TodorYadkov/SoftUni/tree/main/JS-Applications-2023)
 5. [JS-Back-End](https://github.com/TodorYadkov/SoftUni/tree/main/JS-Back-End-2023)
-6. [Angular ](https://github.com/TodorYadkov/SoftUni/tree/main/Angular-2023)
+6. [Angular ](/)
 7. [HTML & CSS](/HTML%20&%20CSS%20-%20September-23/)
 8. [React](https://github.com/TodorYadkov/SoftUni/tree/main/React-2023)
 
