@@ -13,3 +13,4 @@ Additional technologies needed by any software developer will be studied, such a
 - Basic HTML and CSS skills.
 
 ## 🎓 Certificate
+![Programming Fundamentals with JavaScript - September 2022 - Certificate](https://github.com/yuchormanski/SoftUni/assets/693307/7109d0b3-55e6-4361-bf7f-5dd0dd10edd1)
