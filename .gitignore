@@ -1,7 +1,6 @@
-node_modules/
-Pencho/
-00.Docs/
-000.Shortcuts + exportable/
+node_modules
+00.Docs
+000.Shortcuts + exportable
 
 
 ## Ignore Visual Studio temporary files, build results, and
