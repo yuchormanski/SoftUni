@@ -12,3 +12,4 @@ Basic knowledge of TypeScript.
 Working with templates and routing.
 
 ## 🎓 Certificate
+![Angular - June 2023 - Certificate](https://github.com/yuchormanski/SoftUni/assets/693307/df49b9ed-8ef1-4c65-a901-8ad75ed98bd9)
