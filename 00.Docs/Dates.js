@@ -59,3 +59,39 @@ function timeResolver(t1, t2) {
   // console.log(rhours + " hours and " + rminutes + " minutes.");
   return roundedHours + " hours and " + roundedMinutes + " minutes.";
 }
+
+// LAST MONTH NAME
+function getMonthName() {
+  // не ми харесва , защото на 31-ви не подава следващия месец
+  // const prevMonth = new Date();
+  // prevMonth.setMonth(prevMonth.getMonth() - 1);
+  // return new Intl.DateTimeFormat("en-GB", { month: "long" }).format(
+  //   prevMonth
+  // );
+
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const lastMont =
+    new Date()
+      .toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+      })
+      .split("/")
+      .at(0) - 2;
+  return monthNames.at(lastMont);
+}
